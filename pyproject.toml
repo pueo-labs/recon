@@ -101,7 +101,7 @@ Changelog = "https://github.com/pueo-labs/recon/blob/main/CHANGELOG.md"
 Issues = "https://github.com/pueo-labs/recon/issues"
 
 [build-system]
-requires = ["hatchling==1.32.4"]
+requires = ["hatchling==1.33.0"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
@@ -132,7 +132,7 @@ exclude = [
 build = [
     # Exact root for the hash-locked isolated artifact build graph exported to
     # build-constraints.txt. This group is not installed by default.
-    "hatchling==1.32.4",
+    "hatchling==1.33.0",
 ]
 # Provider SDKs are confined to the optional, maintainer-invoked validation
 # harness. Exact roots plus uv.lock make those paid-network tools reproducible

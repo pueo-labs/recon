@@ -5,6 +5,7 @@
 from __future__ import annotations
 
 import json
+import os
 import stat
 import subprocess
 import sys
@@ -143,7 +144,16 @@ def test_special_receipt_is_rejected_before_open(prefix: Path, monkeypatch: pyte
 
 def test_opened_receipt_is_rechecked_for_special_file(prefix: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     _receipt(prefix, updater.UV)
-    monkeypatch.setattr(updater.os, "fstat", Mock(return_value=SimpleNamespace(st_mode=stat.S_IFIFO)))
+    # Pytest reads os.fstat() on its capture file while this patch is still
+    # active, so the substitute must keep the real size and other fields.
+    original_fstat = updater.os.fstat
+
+    def special_fstat(fd: int) -> os.stat_result:
+        values = list(original_fstat(fd))
+        values[0] = stat.S_IFIFO | 0o600
+        return os.stat_result(values)
+
+    monkeypatch.setattr(updater.os, "fstat", special_fstat)
     assert updater.detect_install_method() == updater.UNKNOWN
 
 

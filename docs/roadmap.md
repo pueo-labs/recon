@@ -29,8 +29,10 @@ tracked separately from product work.
 > for idle redraws, QML singleton resolution and accent-colored input selection.
 > Typecheck and release jobs run Node 26 with `check-latest`, tracking each new
 > 26.x release, including security releases and the LTS line from 2026-10-28.
-> Python 3.15.1 remains the latest GA default; older maintained versions are
-> compatibility targets, not the development or release default.
+> Python 3.15.1 remains the pinned local and container interpreter. Python
+> 3.15.2, released 2026-10-25, is the current GA security release and is not
+> yet that pin. Older maintained versions are compatibility targets, not the
+> development or release default.
 > The [October review](maintenance-review-2026-10-08.md) records the dependency
 > refresh, synchronized build graph, current bug fixes and local security
 > boundaries. The changelog records its release batch. The pip vendored-transport issue

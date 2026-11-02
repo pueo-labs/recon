@@ -32,6 +32,13 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Refresh the locked development toolchain and the hash-locked Hatchling
+  1.33.0 build root. The development lock moves to pytest 9.2.0,
+  pytest-asyncio 1.4.1, hypothesis 6.170.13, ruff 0.17.3, and virtualenv
+  21.15.1. Workflow pins move to setup-uv v10.3.3, setup-python v7.1.0,
+  and codeql-action v4.39.1. The PLR size ratchet reads Ruff's OSC 8 rule
+  hyperlinks, so those ceilings stay enforced. No runtime dependency or
+  command changes.
 - Update current repository links, installer download instructions, package
   metadata, plugin marketplace, schemas, and release tooling for
   `pueo-labs/recon`. Prepare `io.github.pueo-labs/recon` and its matching PyPI

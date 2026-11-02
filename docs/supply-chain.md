@@ -474,7 +474,7 @@ deployment or the state of uninspected user installations.
 
 The release workflow fixes `SOURCE_DATE_EPOCH` to the tagged commit's committer
 timestamp and selects uv 0.13.5. `pyproject.toml` declares exact Hatchling
-1.32.4 in both the build system and a non-default PEP 735 `build` group.
+1.33.0 in both the build system and a non-default PEP 735 `build` group.
 [`build-constraints.txt`](../build-constraints.txt) is the frozen export of that
 group's `uv.lock` closure. Every backend package has an exact version and
 SHA-256 hashes, and each artifact command uses both `--build-constraints` and

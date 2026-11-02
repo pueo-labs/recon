@@ -82,7 +82,7 @@ def test_build_root_and_uv_are_exactly_selected() -> None:
     dependency_groups = config["dependency-groups"]
     uv_config = config["tool"]["uv"]
 
-    assert build_system["requires"] == ["hatchling==1.32.4"]
+    assert build_system["requires"] == ["hatchling==1.33.0"]
     assert dependency_groups["build"] == build_system["requires"]
     # The floor must admit the reproducible uv version while staying a range
     # (not an exact pin) for patched lock-update tooling to run `uv lock`.
