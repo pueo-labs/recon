@@ -259,16 +259,17 @@ fingerprints:
   detections:
   - type: txt
     pattern: '^yandex-verification:'
-    reference: https://yandex.com/support/connect/
+    reference: https://yandex.ru/dev/webmaster/doc/en/concepts/verification
+    verified: '2026-11-02'
     description: >-
-      Yandex domain-verification TXT (Yandex is a Russian
-      internet-services company offering search, ads, and
-      cloud). Indicates the domain is verified to a Yandex
-      account, typically for Yandex Webmaster, Yandex Direct
-      ads, or Yandex Metrica analytics. Confidence is medium
-      because the verification persists across the various
-      Yandex products and does not identify which one is in
-      use.
+      Yandex Webmaster rights-verification TXT. The current
+      Webmaster API guide shows a TXT record whose value is
+      `yandex-verification:` followed by a confirmation code.
+      This observes that prefix. It does not prove that rights
+      were confirmed, and it does not identify Yandex Direct,
+      Metrica, or Connect. The same guide's meta tag and HTML
+      file are separate records and are not part of this rule.
+      The previously cited Connect support URL returns 404.
 - name: Unbounce
   slug: unbounce
   category: CRM & Marketing

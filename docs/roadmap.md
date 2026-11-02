@@ -819,7 +819,9 @@ undated. The cited Intercom article now serves a different article, so
 that URL is not a current basis for either Intercom rule. The 2026-10-30
 pass dated the Account Engagement tracker-domain CNAME and the Salesforce
 `_spf.salesforce.com` include from pages that print the grammar, and left
-six other rules undated. That work does not cut a release. The 2026-10 documentation
+six other rules undated. The 2026-11-02 pass dated the Yandex Webmaster
+rights-verification TXT from the page that prints the grammar, and left
+seven other rules undated. That work does not cut a release. The 2026-10 documentation
 pass read the IANA DNS parameter update and left collection on the existing
 record types. Agent portability remains a separate maintainer track and does
 not appear here as a product milestone:

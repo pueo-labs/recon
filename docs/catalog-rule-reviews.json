@@ -420,6 +420,20 @@
       "reviewed_on": "2026-10-30",
       "source_checked_on": "2026-10-30",
       "reason": "First-party include guide checked 2026-10-30: https://help.salesforce.com/s/articleView?id=xcloud.emailadmin_spf_include_salesforce.htm&language=en_US&type=5. The SPF include is include:_spf.salesforce.com for mail sent from the Salesforce application. It does not prove messages are being sent. Other salesforce.com SPF records are a separate rule and were not folded in."
+    },
+    {
+      "rule": {
+        "source": "crm-marketing.yaml",
+        "slug": "yandex",
+        "detection_type": "txt",
+        "pattern": "^yandex-verification:"
+      },
+      "before": "ff5590d76ccc3990b7cd402d02d41ec9ee3bdffa28681412e988725ca5ec43d0",
+      "after": "7fee6c7b33f7263c9e9732ed05e3bbf701b914a9f64716b9f04fc3157584b4cd",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-02",
+      "source_checked_on": "2026-11-02",
+      "reason": "First-party Webmaster API rights-verification guide checked 2026-11-02: https://yandex.ru/dev/webmaster/doc/en/concepts/verification. The DNS method prints a TXT value of yandex-verification: followed by a confirmation code. The rule observes that prefix. It does not prove rights were confirmed, and it does not identify Direct, Metrica, or Connect. The same guide's meta tag and HTML file were not added. The cited Connect support URL returns 404."
     }
   ]
 }

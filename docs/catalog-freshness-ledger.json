@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "1235f557eaafc07845a381d977fb972a86debd589461a232a286a5ff27fa234f",
+  "catalog_digest": "b22142a01c35aa0391bd4d78d40d1aa7e84d219ea42d46447b76fa9380895b32",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -576,8 +576,104 @@
       "rule_id": "crm-marketing.yaml/salesforce/txt/^salesforce-domain-verification=",
       "source_checked_on": "2026-10-30",
       "source_status": "checked"
+    },
+    {
+      "basis": "Cited custom-email-domain article checked 2026-11-02 returns HTTP 404. The current sending-records article is a client-rendered shell whose extracted text says Salesloft sends through the customer's mailbox and does not require SPF, DKIM, or DMARC records for Salesloft. It does not print an include of salesloft.com. A support-supplied tracking CNAME is a separate record and was not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://help.salesloft.com/s/article/Custom-Email-Domain-Setup",
+      "next_review": "2026-12-02",
+      "prior_reference": "https://help.salesloft.com/s/article/Custom-Email-Domain-Setup",
+      "review_digest": "5ca829dc498de67db390763877bbc20e29f19199c2e017f3e4617e76ed7d4a32",
+      "reviewed_on": "2026-11-02",
+      "rule_id": "crm-marketing.yaml/salesloft/spf/salesloft.com",
+      "source_checked_on": "2026-11-02",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Cited custom-email-domain article checked 2026-11-02 returns HTTP 404. The current sending-records article is a client-rendered shell whose extracted text does not print a TXT value that begins with salesloft. It says Salesloft sends through the customer's mailbox. A support-supplied tracking CNAME is a separate record and was not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://help.salesloft.com/s/article/Custom-Email-Domain-Setup",
+      "next_review": "2026-12-02",
+      "prior_reference": "https://help.salesloft.com/s/article/Custom-Email-Domain-Setup",
+      "review_digest": "68320a54702709540a5ee4fd9d9d8baa64b0b1fba752807e17211ad92ec82851",
+      "reviewed_on": "2026-11-02",
+      "rule_id": "crm-marketing.yaml/salesloft/txt/^salesloft",
+      "source_checked_on": "2026-11-02",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Current Twilio copy of the cited custom-domain guide checked 2026-11-02: https://www.twilio.com/docs/segment/connections/sources/custom-domain. A CNAME custom domain uses two domains Segment generates for that workspace. It does not print a stable customer CNAME target under segment.com. Twilio organization verification uses twilio-domain-verification= and was not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://segment.com/docs/connections/sources/custom-domain/",
+      "next_review": "2026-12-02",
+      "prior_reference": "https://segment.com/docs/connections/sources/custom-domain/",
+      "review_digest": "5a87a13280d5b8833e0ed1ac8f9cb67a62e37ab7842f5079e59d1742f8a533c5",
+      "reviewed_on": "2026-11-02",
+      "rule_id": "crm-marketing.yaml/segment/cname/segment.com",
+      "source_checked_on": "2026-11-02",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Current Twilio copy of the cited custom-domain guide checked 2026-11-02: https://www.twilio.com/docs/segment/connections/sources/custom-domain. A CNAME custom domain uses two domains Segment generates for that workspace. It does not print a stable customer CNAME target under segment.io. The default Tracking API host api.segment.io is not documented as that customer target. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://segment.com/docs/connections/sources/custom-domain/",
+      "next_review": "2026-12-02",
+      "prior_reference": "https://segment.com/docs/connections/sources/custom-domain/",
+      "review_digest": "0680ab1b2d764905fd99bb20fae0251faa5e1db51fa657c6b7dbfa64cbb320e8",
+      "reviewed_on": "2026-11-02",
+      "rule_id": "crm-marketing.yaml/segment/cname/segment.io",
+      "source_checked_on": "2026-11-02",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Current Twilio copy of the cited custom-domain guide checked 2026-11-02: https://www.twilio.com/docs/segment/connections/sources/custom-domain. It does not print segment-site-verification=. Twilio organization domain verification prints twilio-domain-verification= on a different page. That prefix is a separate record and was not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://segment.com/docs/connections/sources/custom-domain/",
+      "next_review": "2026-12-02",
+      "prior_reference": "https://segment.com/docs/connections/sources/custom-domain/",
+      "review_digest": "10b7b0f350f435b8c3d08190a9a0e5bd61d9d0456a7e50ded07c5e8f73b2600a",
+      "reviewed_on": "2026-11-02",
+      "rule_id": "crm-marketing.yaml/segment/txt/^segment-site-verification=",
+      "source_checked_on": "2026-11-02",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Cited Marketing Cloud overview and the current Register a Domain article checked 2026-11-02. Direct fetches return the Salesforce Help shell. The retrieved Register a Domain steps say to place a generated token in a TXT record and do not print a value beginning with SFMC-. That generated token was not added as this rule. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://help.salesforce.com/s/articleView?id=sf.mc_overview_marketing_cloud.htm",
+      "next_review": "2026-12-02",
+      "prior_reference": "https://help.salesforce.com/s/articleView?id=sf.mc_overview_marketing_cloud.htm",
+      "review_digest": "4dfa5ce0b4d3945331cc7c5b6bb9b423716c6717b3f9db15b6f8a3d240d2f681",
+      "reviewed_on": "2026-11-02",
+      "rule_id": "crm-marketing.yaml/sfmc/txt/^SFMC-",
+      "source_checked_on": "2026-11-02",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Cited article 203510044 checked 2026-11-02 now serves Using a Webhook and does not document a CNAME into unbounce.com. The current Connecting Your Domain article says the CNAME value is a unique string copied from the product and does not print a target under unbounce.com. Default hosts unbouncepages.com and ubpages.com are a different shape and were not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://documentation.unbounce.com/hc/en-us/articles/203510044",
+      "next_review": "2026-12-02",
+      "prior_reference": "https://documentation.unbounce.com/hc/en-us/articles/203510044",
+      "review_digest": "653e202ecbf426ed4bd80b8d71d63558aca09ef45654f701db9cc9d0a07e3ff6",
+      "reviewed_on": "2026-11-02",
+      "rule_id": "crm-marketing.yaml/unbounce/cname/unbounce.com",
+      "source_checked_on": "2026-11-02",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Webmaster API rights-verification guide checked 2026-11-02: https://yandex.ru/dev/webmaster/doc/en/concepts/verification. The DNS method prints a TXT value of yandex-verification: followed by a confirmation code. The rule observes that prefix. It does not prove rights were confirmed, and it does not identify Direct, Metrica, or Connect. The same guide's meta tag and HTML file were not added. The cited Connect support URL returns 404.",
+      "disposition": "narrowed",
+      "new_reference": "https://yandex.ru/dev/webmaster/doc/en/concepts/verification",
+      "next_review": "2026-12-02",
+      "prior_reference": "https://yandex.com/support/connect/",
+      "review_digest": "7fee6c7b33f7263c9e9732ed05e3bbf701b914a9f64716b9f04fc3157584b4cd",
+      "reviewed_on": "2026-11-02",
+      "rule_id": "crm-marketing.yaml/yandex/txt/^yandex-verification:",
+      "source_checked_on": "2026-11-02",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-10-30, including the 2026-10-29 marketing reference check and a 2026-10-30 Salesforce and advertising reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-02, including the 2026-10-30 Salesforce and advertising reference check and a 2026-11-02 CRM and advertising reference check, not a complete catalog review"
 }
