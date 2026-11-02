@@ -36,6 +36,25 @@ def test_parse_statistics_strips_ansi_color_and_reads_tab_columns() -> None:
     }
 
 
+def test_parse_statistics_strips_osc8_rule_hyperlinks() -> None:
+    output = (
+        "\x1b[1m50\x1b[0m\t\x1b]8;;https://docs.astral.sh/ruff/rules/too-many-arguments\x1b\\"
+        "\x1b[1;31mPLR0913\x1b[0m\x1b]8;;\x1b\\\ttoo-many-arguments\n"
+        "\x1b[1m18\x1b[0m\t\x1b]8;;https://docs.astral.sh/ruff/rules/too-many-return-statements\x1b\\"
+        "\x1b[1;31mPLR0911\x1b[0m\x1b]8;;\x1b\\\ttoo-many-return-statements\n"
+        "\x1b[1m 7\x1b[0m\t\x1b]8;;https://docs.astral.sh/ruff/rules/too-many-branches\x1b\\"
+        "\x1b[1;31mPLR0912\x1b[0m\x1b]8;;\x1b\\\ttoo-many-branches\n"
+        "\x1b[1m 7\x1b[0m\t\x1b]8;;https://docs.astral.sh/ruff/rules/too-many-statements\x1b\\"
+        "\x1b[1;31mPLR0915\x1b[0m\x1b]8;;\x1b\\\ttoo-many-statements\n"
+    )
+    assert parse_statistics(output) == {
+        "PLR0911": 18,
+        "PLR0912": 7,
+        "PLR0913": 50,
+        "PLR0915": 7,
+    }
+
+
 def test_parse_statistics_defaults_missing_rules_to_zero() -> None:
     assert parse_statistics("All checks passed!") == {
         "PLR0911": 0,

@@ -37,12 +37,16 @@ absent.
 
 ## Resume here
 
-State at 2026-10-27: v2.27.0 is the published build. Tag `v2.27.0` is
+State at 2026-11-02: v2.27.0 is the published build. Tag `v2.27.0` is
 `9c213f79`. PyPI, the GitHub Release, and the MCP Registry entry
 `io.github.blisspixel/recon` report that version. No issues are open. The
 packaging batch and tracker #324 are closed. Shipped behavior is in the
 changelog. A documentation commit after the tag does not move the tag or
-the package.
+the package. The 2026-11-02 toolchain refresh updates Hatchling to 1.33.0,
+the development lock, and the pinned setup-uv, setup-python, and
+codeql-action releases. It does not cut a release. Dependabot proposed
+those updates. The maintainer re-lands them, because a bot author fails
+the commit-metadata hygiene gate and those pull requests cannot merge.
 
 The 2026-10-29 repository transfer prepares `pueo-labs/recon` and the
 `io.github.pueo-labs/recon` registry identity without a version bump or release.
@@ -181,9 +185,11 @@ and corrects idle ladder redraws, palette singleton shadowing, and input
 selection that did not follow the accent; publication is tracked in the changelog.
 Typecheck and release jobs run Node 26 with `check-latest`, so they pick up
 each new 26.x release, including the 2026-10-21 security release (26.12.1) and
-the LTS line from 2026-10-28, without a pin change. Python 3.15.1 is the latest
-GA default; 3.11 through 3.15 remain the tested compatibility range. Drop PyYAML
-source builds once a cp315 wheel ships.
+the LTS line from 2026-10-28, without a pin change. Python 3.15.1 remains the
+pinned local and container interpreter. Python 3.15.2, released 2026-10-25,
+is the current GA security release and is not yet that pin. 3.11 through
+3.15 remain the tested compatibility range. Drop PyYAML source builds once a
+cp315 wheel ships.
 
 v2.22 isolated lower-trust MCP collection from split-horizon DNS and finished
 the build-toolchain CA remediation. v2.23 published the harness-neutral catalog

@@ -22,12 +22,19 @@ MAX_COUNTS = {
 }
 
 _ANSI_RE = re.compile(r"\x1b\[[0-9;]*m")
+# Ruff 0.17.3 wraps the rule code in an OSC 8 hyperlink. Color stripping
+# leaves that wrapper in place, and the count parser would then read zero.
+_OSC8_RE = re.compile(r"\x1b\]8;;.*?\x1b\\")
 _STAT_RE = re.compile(r"(\d+)\s+(PLR\d{4})")
+
+
+def _strip_ruff_decoration(output: str) -> str:
+    return _ANSI_RE.sub("", _OSC8_RE.sub("", output))
 
 
 def parse_statistics(output: str) -> dict[str, int]:
     counts: dict[str, int] = dict.fromkeys(SELECTED_RULES, 0)
-    cleaned = _ANSI_RE.sub("", output)
+    cleaned = _strip_ruff_decoration(output)
     for count, rule in _STAT_RE.findall(cleaned):
         if rule in counts:
             counts[rule] = int(count)
@@ -63,7 +70,7 @@ def _run_ruff() -> subprocess.CompletedProcess[str]:
 
 def main() -> int:
     result = _run_ruff()
-    output = _ANSI_RE.sub("", f"{result.stdout}\n{result.stderr}")
+    output = _strip_ruff_decoration(f"{result.stdout}\n{result.stderr}")
     if result.returncode not in (0, 1):
         print(output.strip() or "ruff failed before producing PLR statistics", file=sys.stderr)
         return result.returncode
