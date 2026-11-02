@@ -217,7 +217,8 @@ The versioned [public ledger](catalog-freshness-ledger.json) starts with the
 eight documented additions checked on 2026-10-23. Later rows record the
 2026-10-28 checks, including a later CRM pass the same day, and the
 2026-10-29 marketing reference check, and the 2026-10-30 Salesforce and
-advertising reference check. It is a bounded
+advertising reference check, and the 2026-11-02 CRM and advertising
+reference check. It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
 bind due rules to their exact claim/catalog digest, prior/new reference, actual
 source check/review date, disposition, next review and bounded proposal queue.
@@ -532,6 +533,41 @@ begins with `outreach`. Current Salesforce email-domain articles use
 DKIM or an authorized-domain token and do not print either TXT grammar.
 A token host under a Salesforce-owned name is a separate shape and was
 not added.
+
+### Documented reference check, 2026-11-02
+
+This pass checked eight undated CRM, marketing, and advertising rules.
+One received a `verified` date because the current vendor page prints the
+grammar. Seven stay undated. No new detection, DNS record type, or
+collection path was added. This note does not cut a release.
+
+The [Yandex Webmaster rights-verification guide](https://yandex.ru/dev/webmaster/doc/en/concepts/verification)
+prints a TXT value of `yandex-verification:` followed by a confirmation
+code. The existing prefix rule observes that record. It does not prove
+that rights were confirmed, and it does not identify Yandex Direct,
+Metrica, or Connect. The same guide's meta tag and HTML file are separate
+records and were not added. The previously cited Connect support URL
+returns 404.
+
+Salesloft, all three Segment rules, Salesforce Marketing Cloud, and
+Unbounce stay undated. The cited Salesloft custom-email-domain article
+returns 404. The current sending-records page is a client-rendered shell
+whose extracted text says Salesloft sends through the customer's mailbox
+and does not print `salesloft.com` or a TXT value that begins with
+`salesloft`. A support-supplied tracking CNAME is a separate record and
+was not added. The current Twilio copy of the Segment custom-domain guide
+uses two domains Segment generates for that workspace. It does not print
+a stable customer CNAME target under `segment.com` or `segment.io`, and
+it does not print `segment-site-verification=`. Twilio organization
+verification uses `twilio-domain-verification=` and was not added. The
+cited Marketing Cloud overview and the current Register a Domain article
+return the Salesforce Help shell. The retrieved Register a Domain steps
+say to place a generated token in a TXT record and do not print a value
+beginning with `SFMC-`. That token was not added. The cited Unbounce
+article now serves a webhook guide and does not document a CNAME into
+`unbounce.com`. The current domain article says the CNAME value is a
+unique string copied from the product. Default hosts `unbouncepages.com`
+and `ubpages.com` are a different shape and were not added.
 
 ## Executable path
 

@@ -82,6 +82,13 @@ Tool surface changes: no CLI command or flag changes.
   Salesforce record observes `include:_spf.salesforce.com`. It does not
   prove messages are being sent. Six other undated rules in this pass
   stay undated because their cited pages do not print the exact grammar.
+- Date the Yandex Webmaster rights-verification TXT from the current
+  vendor page, and point the rule at that page. The record observes a
+  TXT value of `yandex-verification:` followed by a confirmation code.
+  It does not prove that rights were confirmed, and it does not identify
+  Yandex Direct, Metrica, or Connect. Seven other undated rules in this
+  pass stay undated because their cited pages do not print the exact
+  grammar.
 
 ## [2.27.0] - 2026-10-27
 
