@@ -30,10 +30,11 @@ uv run --group agentic-validation python -m validation.agentic_ux.run \
     --output validation/agentic_ux/local/v1.9.9-update.md
 ```
 
-Rough cost envelope at a low-cost instruction-following tier:
-- 1 persona × 1 fixture × 2 modes = 2 sessions
+Rough cost envelope at `claude-haiku-5-5` standard rates for prompts up to
+100,000 tokens, checked 2026-11-03, omitting cache and regional premiums:
+- 1 persona x 1 fixture x 2 modes = 2 sessions
 - ~3K input tokens + ~1K output tokens per session
-- Total ~6K input + 2K output = ~$0.016 per run
+- Total ~6K input + 2K output = ~$0.0016 per run
 
 Compared to the full default matrix, the focused subset is materially
 cheaper and easier to review.

@@ -33,6 +33,7 @@ from .providers import (
     ChatMessage,
     ProviderError,
     get_provider,
+    require_price_pair,
 )
 
 if TYPE_CHECKING:
@@ -552,7 +553,7 @@ def main(argv: list[str] | None = None) -> int:
     if any(argument == "--api-key" or argument.startswith("--api-key=") for argument in arguments):
         print(
             "error: --api-key is not supported; set the provider-specific environment variable instead "
-            "(ANTHROPIC_API_KEY, OPENAI_API_KEY, or XAI_API_KEY)",
+            "(ANTHROPIC_API_KEY, OPENAI_API_KEY, XAI_API_KEY, OPENROUTER_API_KEY, GEMINI_API_KEY, or LOCAL_API_KEY)",
             file=sys.stderr,
         )
         return 2
@@ -571,6 +572,11 @@ def main(argv: list[str] | None = None) -> int:
     provider_kwargs: dict[str, object] = {}
     if args.base_url is not None:
         provider_kwargs["base_url"] = args.base_url
+    try:
+        require_price_pair(args.input_price, args.output_price)
+    except ValueError as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 2
     if args.input_price is not None:
         provider_kwargs["input_price"] = args.input_price
     if args.output_price is not None:

@@ -37,22 +37,26 @@ absent.
 
 ## Resume here
 
-State at 2026-11-02: v2.27.0 is the published build. Tag `v2.27.0` is
-`9c213f79`. PyPI, the GitHub Release, and the MCP Registry entry
-`io.github.blisspixel/recon` report that version. No issues are open. The
-packaging batch and tracker #324 are closed. Shipped behavior is in the
+State at 2026-11-03: tag `v2.27.0` is `9c213f79`. That tag's PyPI
+release, GitHub Release, and MCP Registry entry
+`io.github.blisspixel/recon` report 2.27.0. No issues are open.
+2.27.1 corrects the validation price table, records the catalog date
+passes, refreshes the toolchain, and points package metadata at
+`pueo-labs/recon`. The packaging batch and tracker #324 are closed. Shipped behavior is in the
 changelog. A documentation commit after the tag does not move the tag or
 the package. The 2026-11-02 toolchain refresh updates Hatchling to 1.33.0,
 the development lock, and the pinned setup-uv, setup-python, and
-codeql-action releases. It does not cut a release. Dependabot proposed
+codeql-action releases. That refresh is part of 2.27.1. Dependabot proposed
 those updates. The maintainer re-lands them, because a bot author fails
 the commit-metadata hygiene gate and those pull requests cannot merge.
 
 The 2026-10-29 repository transfer prepares `pueo-labs/recon` and the
-`io.github.pueo-labs/recon` registry identity without a version bump or release.
-The existing v2.27.0 package and old registry entry are unchanged. Complete the
-[external transfer checklist](docs/release-process.md#repository-transfer-checklist)
-before a separately authorized release and registry migration.
+`io.github.pueo-labs/recon` registry identity. 2.27.1 carries that
+metadata. The v2.27.0 package and its `io.github.blisspixel/recon` registry
+entry stay as published. The external steps in the
+[transfer checklist](docs/release-process.md#repository-transfer-checklist),
+including PyPI trusted publishing and registry deprecation, stay outside
+the source tree.
 
 What is next, and why:
 
@@ -114,8 +118,10 @@ What is next, and why:
 
 Not next, and why:
 
-- Another package release. v2.27.0 is the current build. This note does not
-  change behavior, so it does not cut a version.
+- Another package release after 2.27.1. That batch is the validation price
+  table, the catalog date passes, the toolchain refresh, and the pueo-labs
+  metadata. The next package waits for a new user-visible defect or a
+  catalog change that should ship on its own.
 - A new DNS record-type collector. IANA's parameter table, last updated
   2026-10-16, added temporary `DELEG` and `DELEGPARAM` registrations.
   `HTTPS`, `SVCB`, `DSYNC`, `RESINFO`, `HHIT`, and `BRID` were already
@@ -135,12 +141,12 @@ Not next, and why:
   [What Is Deliberately Not Next](#what-is-deliberately-not-next).
 
 When picking work back up, sync `main` and run
-`uv run python scripts/check.py` before starting anything else. The Unreleased
-catalog note from the 2026-10-28 freshness pass does not by itself cut a
-release. If Unreleased has other user-visible behavior changes, batch them
-through the [release process](docs/release-process.md). Otherwise continue the
+`uv run python scripts/check.py` before starting anything else. 2.27.1 is
+the maintenance batch in the changelog. After it is published, continue the
 freshness loop on rules that are still due, or wait for the upstream blockers
-above.
+above. A later documentation or catalog date pass does not by itself cut
+another release. Batch user-visible behavior through the
+[release process](docs/release-process.md).
 
 ## Current release and next steps
 

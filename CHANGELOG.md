@@ -26,12 +26,35 @@ operator, corporate group, ownership, or control.
 
 ## [Unreleased]
 
+## [2.27.1] - 2026-11-03
+
+Correct the validation price table, and publish the catalog date passes,
+the development toolchain refresh, and the pueo-labs repository metadata.
+
 ### Tool Surface Changes
 
 Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Correct the agentic UX validation price table checked on 2026-11-03.
+  Claude Opus 4.7 is $5 / $25 per million tokens. The cheap-tier examples
+  are `gpt-6-luna` and `gemini-3.5-flash-lite`. `grok-4` and `grok-4-mini`
+  are replaced by `grok-4.3` at $1.25 / $2.50. `grok-4.7` and `grok-4.3`
+  use their published rate for the whole request once the prompt reaches
+  200,000 tokens, and `claude-haiku-5-5` does the same above 100,000
+  tokens. `gemini-3.8-flash` moves from $0.75 / $3.75 to $1.50 / $7.50
+  on 2027-01-01. Each row records the provider page and the date it was
+  checked. A row whose recorded shutdown date has arrived fails the
+  test. Token counts still come from the provider response. Caching,
+  batch discounts, and regional premiums stay outside the estimate. A
+  one-sided `--input-price` / `--output-price` pair is rejected instead
+  of being mixed with the table. (#352)
+- Skip the Omarchy Bash syntax check when the `bash` on `PATH` cannot
+  execute. On Windows that command can be the WSL launcher, which exits
+  before it parses a script when its distribution disk is missing. A
+  working Bash still parses `install.sh`, `uninstall.sh`, and
+  `lifecycle.sh`.
 - Refresh the locked development toolchain and the hash-locked Hatchling
   1.33.0 build root. The development lock moves to pytest 9.2.0,
   pytest-asyncio 1.4.1, hypothesis 6.170.13, ruff 0.17.3, and virtualenv
@@ -41,8 +64,8 @@ Tool surface changes: no CLI command or flag changes.
   command changes.
 - Update current repository links, installer download instructions, package
   metadata, plugin marketplace, schemas, and release tooling for
-  `pueo-labs/recon`. Prepare `io.github.pueo-labs/recon` and its matching PyPI
-  README marker for a future release. Keep the `recon-tool` package identity,
+  `pueo-labs/recon`. Publish `io.github.pueo-labs/recon` and its matching PyPI
+  README marker with this package. Keep the `recon-tool` package identity,
   existing release versions, and historical provenance unchanged.
 - Date the Anthropic and Mistral apex domain-verification TXT rules from
   the current vendor pages, and point each rule at that page. The Anthropic
