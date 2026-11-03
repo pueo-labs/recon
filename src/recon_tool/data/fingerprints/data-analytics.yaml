@@ -209,14 +209,19 @@ fingerprints:
   detections:
   - type: cname
     pattern: pendo.io
-    reference: https://support.pendo.io/
+    reference: https://support.pendo.io/hc/en-us/articles/4402594600589-Configure-organization-CNAME
+    verified: '2026-11-02'
     description: >-
-      CNAME pointing into pendo.io (Pendo offers in-app guides and
-      product analytics). Indicates the domain serves at least
-      one page with Pendo embedded. Common with SaaS apps using
-      Pendo for user-onboarding overlays. Does not distinguish
-      Pendo's Engage (in-app guides) from its analytics-only
-      offering on the same vendor.
+      CNAME target under Pendo's documented `pendo.io` host
+      family. The current organization CNAME guide's examples
+      end in `-content.example.pendo.io` for the content host
+      and `-data.customer.pendo.io` for the data host. This
+      observes that target suffix. It does not prove that
+      guides are served, that events are collected, or that
+      setup is complete. Product-supplied prefixes and
+      certificate-validation records were not copied. The
+      previously cited help-center root does not print the
+      grammar.
 - name: Hotjar
   slug: hotjar
   category: Data & Analytics

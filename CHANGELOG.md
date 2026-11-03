@@ -96,6 +96,17 @@ Tool surface changes: no CLI command or flag changes.
   completed, that the domain is associated with an identity provider,
   or that a cluster exists. Seven other undated rules in this pass stay
   undated because their cited pages do not print the exact grammar.
+- Date the Pendo organization CNAME and the Afternic parking
+  nameservers from the current vendor pages, and point each rule at
+  that page. The Pendo record observes a CNAME target under
+  `pendo.io`. The guide's examples end in `-content.example.pendo.io`
+  and `-data.customer.pendo.io`. It does not prove that guides are
+  served, that events are collected, or that setup is complete. The
+  Afternic record observes an NS host under `afternic.com`. The
+  parking page names `ns1.afternic.com` and `ns2.afternic.com`. It
+  does not establish a for-sale listing, parking revenue, or that the
+  namespace is unused. Six other undated rules in this pass stay
+  undated because their cited pages do not print the exact grammar.
 
 ## [2.27.0] - 2026-10-27
 

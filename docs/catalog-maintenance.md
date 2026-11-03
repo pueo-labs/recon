@@ -218,8 +218,9 @@ eight documented additions checked on 2026-10-23. Later rows record the
 2026-10-28 checks, including a later CRM pass the same day, and the
 2026-10-29 marketing reference check, and the 2026-10-30 Salesforce and
 advertising reference check, and the 2026-11-02 CRM and advertising
-reference check, and a later 2026-11-02 data and analytics reference
-check. It is a bounded
+reference check, a later 2026-11-02 data and analytics reference
+check, and a later 2026-11-02 data, analytics, and infrastructure
+reference check. It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
 bind due rules to their exact claim/catalog digest, prior/new reference, actual
 source check/review date, disposition, next review and bounded proposal queue.
@@ -616,6 +617,53 @@ rule. Default hosts `api.mixpanel.com`, `api-eu.mixpanel.com`,
 `api-in.mixpanel.com`, and `cdn.mxpnl.com` are API or CDN hosts and
 were not added. The current Amplitude SSO guide documents SAML entity
 and ACS URLs and does not print `amplitude-domain-verification=`.
+
+### Documented reference check, 2026-11-02, data, analytics, and infrastructure
+
+This pass checked eight undated data, analytics, and infrastructure
+rules. Two received a `verified` date because the current vendor page
+prints the grammar. Six stay undated. No new detection, DNS record
+type, or collection path was added. This note does not cut a release.
+
+The [Pendo organization CNAME guide](https://support.pendo.io/hc/en-us/articles/4402594600589-Configure-organization-CNAME)
+prints example customer CNAME targets that end in
+`-content.example.pendo.io` and `-data.customer.pendo.io`. The
+existing suffix rule observes a CNAME target under `pendo.io`. It
+does not prove that guides are served, that events are collected, or
+that setup is complete. Product-supplied prefixes and the
+certificate-validation CNAMEs were not copied. The previously cited
+help-center root does not print the grammar.
+
+The [Afternic domain-parking page](https://www.afternic.com/domain-parking)
+says to set the domain nameservers to `ns1.afternic.com` and
+`ns2.afternic.com`. The existing suffix rule observes an NS host
+under `afternic.com`. It does not establish a for-sale listing,
+parking revenue, or that the namespace is unused. A direct fetch of
+the parking help article returned a loading shell and was not used as
+the basis.
+
+New Relic, Optimizely, Snowflake, WalkMe, Adobe Experience Manager
+Cloud Service, and the Alibaba Cloud `alibaba.com` CNAME stay undated.
+A direct fetch of `docs.newrelic.com` did not return a page body. The
+indexed domain-capture guide says to add the TXT record the product
+provides. It does not print `newrelic-domain-verification=`. That
+product-supplied value was not added. The cited Optimizely developer
+host redirects to the current Performance Edge guide, which prints a
+customer CNAME target of `cname.optimizely-edge.com`. It does not
+print a customer CNAME target under `optimizely.com`. That target was
+not added. The current Snowflake domain-verification guide prints an
+apex TXT whose value is `snowflake-verification=` followed by a UUID.
+That prefix is not `snowflake-domain-verification=`. The second prefix
+was not added. The WalkMe EU access-requirements article, last updated
+June 4, 2026, lists script and API hosts under `walkme.com`. Those are
+allowlist hosts, not a customer CNAME target, and they were not added.
+The current AEM as a Cloud Service custom-domain guide, last updated
+September 29, 2026, prints a CNAME target of `cdn.adobeaemcloud.com`.
+It does not print `adobecqms.net`. That cloud-service target was not
+added. The current Alibaba Cloud ALB guide says to CNAME a custom
+hostname to the instance DNS name, for example a host under
+`alb.aliyuncsslb.com`. It does not print a customer CNAME target under
+`alibaba.com`. That instance DNS name was not added.
 
 ## Executable path
 

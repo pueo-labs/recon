@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "d7a19fc4667190628218919cb783a1edd450d1e4e30dd20b224329656b871c5b",
+  "catalog_digest": "be1bfca415f43b0f6f162f6d91092ba30ef855240316159d18439ea573097006",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -768,8 +768,104 @@
       "rule_id": "data-analytics.yaml/mongodb/txt/^mongodb-site-verification=",
       "source_checked_on": "2026-11-02",
       "source_status": "checked"
+    },
+    {
+      "basis": "Direct fetch of docs.newrelic.com did not return a page body on 2026-11-02. The indexed domain-capture guide at https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/domain-capture/ says to add the TXT record the product provides and to keep that record for later checks. It does not print newrelic-domain-verification=. That product-supplied value was not added. The cited docs root does not print the prefix. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.newrelic.com/",
+      "next_review": "2026-12-02",
+      "prior_reference": "https://docs.newrelic.com/",
+      "review_digest": "db1100dcf941cffeb06f947f23c044f9f2d5a77e5b09488438c5bbfbb829dfb7",
+      "reviewed_on": "2026-11-02",
+      "rule_id": "data-analytics.yaml/newrelic/txt/^newrelic-domain-verification=",
+      "source_checked_on": "2026-11-02",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited developer host redirects to the current Performance Edge guide, checked 2026-11-02: https://docs.optimizely.com/performance-edge/docs/implementation-guide. That guide prints a customer CNAME from a chosen subdomain to cname.optimizely-edge.com. It does not print a customer CNAME target under optimizely.com. The cname.optimizely-edge.com target was not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.developers.optimizely.com/",
+      "next_review": "2026-12-02",
+      "prior_reference": "https://docs.developers.optimizely.com/",
+      "review_digest": "42048d6b338aead96f077740475b20baef54d931e4815189b2970edadf42582a",
+      "reviewed_on": "2026-11-02",
+      "rule_id": "data-analytics.yaml/optimizely/cname/optimizely.com",
+      "source_checked_on": "2026-11-02",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Organization CNAME guide checked 2026-11-02: https://support.pendo.io/hc/en-us/articles/4402594600589-Configure-organization-CNAME. The example DNS table prints customer CNAME targets that end in -content.example.pendo.io and -data.customer.pendo.io. The rule observes a CNAME target with the pendo.io suffix. It does not prove that guides are served, that events are collected, or that setup is complete. Product-supplied prefixes and the certificate-validation CNAMEs were not copied. The cited help-center root does not print the grammar.",
+      "disposition": "narrowed",
+      "new_reference": "https://support.pendo.io/hc/en-us/articles/4402594600589-Configure-organization-CNAME",
+      "next_review": "2026-12-02",
+      "prior_reference": "https://support.pendo.io/",
+      "review_digest": "19eed1a1fa017eb25be5e9fbe5a9029f61c87eeb4c3fc8a4f6a8d105864d1f97",
+      "reviewed_on": "2026-11-02",
+      "rule_id": "data-analytics.yaml/pendo/cname/pendo.io",
+      "source_checked_on": "2026-11-02",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Domain verification guide checked 2026-11-02: https://docs.snowflake.com/en/user-guide/admin-domain-verification. The fetched page prints an apex TXT whose value is snowflake-verification= followed by a UUID, returned by SYSTEM$VERIFY_DNS_DOMAIN. That prefix is not snowflake-domain-verification=. The second prefix was not added. The cited docs root does not print the admitted grammar. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.snowflake.com/",
+      "next_review": "2026-12-02",
+      "prior_reference": "https://docs.snowflake.com/",
+      "review_digest": "db03596b3f825c37d70153f5345971bed430ccd7fcd59a5483000164d336e177",
+      "reviewed_on": "2026-11-02",
+      "rule_id": "data-analytics.yaml/snowflake/txt/^snowflake-domain-verification=",
+      "source_checked_on": "2026-11-02",
+      "source_status": "checked"
+    },
+    {
+      "basis": "EU access-requirements article checked 2026-11-02: https://support.walkme.com/knowledge-base/access-requirements-for-walkme-eu-detailed/. Last updated June 4, 2026. It lists script and API hosts under walkme.com, including eu-cdn.walkme.com and eu-playerserver.walkme.com. Those are allowlist hosts, not a customer CNAME target. They were not added. The cited help-center root does not print a customer CNAME target under walkme.com. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://support.walkme.com/",
+      "next_review": "2026-12-02",
+      "prior_reference": "https://support.walkme.com/",
+      "review_digest": "d3d2a5a666458d0995581ae135d3463b7b8f623016caeb7c13047e25ed823902",
+      "reviewed_on": "2026-11-02",
+      "rule_id": "data-analytics.yaml/walkme/cname/walkme.com",
+      "source_checked_on": "2026-11-02",
+      "source_status": "checked"
+    },
+    {
+      "basis": "AEM as a Cloud Service custom-domain guide checked 2026-11-02: https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/using-cloud-manager/custom-domain-names/add-custom-domain-name. Last update September 29, 2026. The CNAME example points a custom hostname at cdn.adobeaemcloud.com. It does not print adobecqms.net. That cloud-service target was not added to this rule. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": null,
+      "next_review": "2026-12-02",
+      "prior_reference": null,
+      "review_digest": "4c8570353c01c1372f80fa00730f898cbb1a4d661522e9559eae3e08badb88b3",
+      "reviewed_on": "2026-11-02",
+      "rule_id": "discovered-signals.yaml/adobe-experience-cloud/cname_target/adobecqms.net",
+      "source_checked_on": "2026-11-02",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Afternic domain-parking page checked 2026-11-02: https://www.afternic.com/domain-parking. The fetched page says to set the domain nameservers to ns1.afternic.com and ns2.afternic.com. The rule observes an NS host under afternic.com. It does not establish a for-sale listing, parking revenue, or that the namespace is unused. A direct fetch of the parking help article returned a loading shell and was not used as the basis.",
+      "disposition": "narrowed",
+      "new_reference": "https://www.afternic.com/domain-parking",
+      "next_review": "2026-12-02",
+      "prior_reference": null,
+      "review_digest": "58bfaac533013db93dc21214cbd6cd6101ec51efeb9fe136bc7883cea5361384",
+      "reviewed_on": "2026-11-02",
+      "rule_id": "discovered-signals.yaml/afternic/ns/afternic.com",
+      "source_checked_on": "2026-11-02",
+      "source_status": "checked"
+    },
+    {
+      "basis": "ALB CNAME guide checked 2026-11-02: https://www.alibabacloud.com/help/en/slb/application-load-balancer/configure-cname-resolution-for-alb. It says to CNAME a custom hostname to the instance DNS name, for example a host under alb.aliyuncsslb.com. It does not print a customer CNAME target under alibaba.com. That instance DNS name was not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": null,
+      "next_review": "2026-12-02",
+      "prior_reference": null,
+      "review_digest": "74f45bbce37f13105a3cea6b816264a4984785ae7a8fa99e976a321a973b9701",
+      "reviewed_on": "2026-11-02",
+      "rule_id": "discovered-signals.yaml/alibaba-cloud/cname_target/alibaba.com",
+      "source_checked_on": "2026-11-02",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-02, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, and a later 2026-11-02 data and analytics reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-02, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, and a later 2026-11-02 data, analytics, and infrastructure reference check, not a complete catalog review"
 }

@@ -824,7 +824,10 @@ rights-verification TXT from the page that prints the grammar, and left
 seven other rules undated. A later pass the same day dated the MongoDB
 Atlas federated-authentication domain-mapping TXT from the page that
 prints the grammar, and left seven other data and analytics rules
-undated. That work does not cut a release. The 2026-10 documentation
+undated. A later pass the same day dated the Pendo organization
+CNAME and the Afternic parking nameservers from pages that print
+the grammar, and left six other data, analytics, and infrastructure
+rules undated. That work does not cut a release. The 2026-10 documentation
 pass read the IANA DNS parameter update and left collection on the existing
 record types. Agent portability remains a separate maintainer track and does
 not appear here as a product milestone:
