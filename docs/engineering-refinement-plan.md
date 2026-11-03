@@ -19,7 +19,7 @@ certificate requests are explicit opt-in direct probes.
 
 ## Baseline
 
-- Release metadata is synchronized on v2.27.0. Publication status requires
+- Release metadata is synchronized on v2.27.1. Publication status requires
   separate remote verification of the exact tag, GitHub Release, PyPI files,
   attestations, SBOM, CI, and channel hashes; a version bump is not evidence.
 - Local release readiness must pass before tagging; remote release readiness

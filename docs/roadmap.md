@@ -6,7 +6,7 @@ in [CHANGELOG.md](../CHANGELOG.md). Historical planning lives in
 [release-process.md](release-process.md). Research and publication work is
 tracked separately from product work.
 
-> **Status:** v2.27.0 is current. The CLI, versioned JSON, local stdio MCP,
+> **Status:** v2.27.1 is current. The CLI, versioned JSON, local stdio MCP,
 > bounded collectors, evidence and renderer contracts, MCP compatibility matrix,
 > and verified release path are established. The resolver and detection engine
 > are feature-complete. Recent shipped work belongs in the

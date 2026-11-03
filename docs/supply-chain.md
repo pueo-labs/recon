@@ -57,8 +57,8 @@ directory, these commands select the exact version tag and its commit instead
 of mutable branch content:
 
 ```bash
-git clone --branch v2.27.0 --single-branch https://github.com/pueo-labs/recon.git recon-2.27.0
-cd recon-2.27.0
+git clone --branch v2.27.1 --single-branch https://github.com/pueo-labs/recon.git recon-2.27.1
+cd recon-2.27.1
 ```
 
 Inspect this document and the referenced local scripts before execution. If you
@@ -84,7 +84,7 @@ See the [GitHub CLI verification rules](https://cli.github.com/manual/gh_attesta
 ```bash
 set -euo pipefail
 
-VERSION=2.27.0
+VERSION=2.27.1
 REPO=pueo-labs/recon
 LEGACY_SBOM_ATTESTATION_SHA=2751dc11c64001272750df29477d6b9052407261
 MAX_RELEASE_ASSET_BYTES=$((64 * 1024 * 1024))
@@ -238,7 +238,7 @@ echo "      PyPI provenance, channel byte parity, and both working wheel entry p
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
-$Version = "2.27.0"
+$Version = "2.27.1"
 $Repo = "pueo-labs/recon"
 $LegacySbomAttestationSha = "2751dc11c64001272750df29477d6b9052407261"
 $MaxReleaseAssetBytes = 64 * 1024 * 1024
@@ -501,7 +501,7 @@ To verify a published release yourself:
 
 ```bash
 # 1. Check out the exact tag.
-VERSION=2.27.0  # replace with the release being verified
+VERSION=2.27.1  # replace with the release being verified
 git clone https://github.com/pueo-labs/recon
 cd recon
 git checkout "v${VERSION}"
