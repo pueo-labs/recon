@@ -87,7 +87,7 @@ uv run --group agentic-validation python -m validation.agentic_ux.run --provider
 uv run --group agentic-validation python -m validation.agentic_ux.run --provider openrouter --model anthropic/claude-sonnet-5-5
 
 # Google Gemini
-uv run --group agentic-validation python -m validation.agentic_ux.run --provider google --model gemini-2.5-flash
+uv run --group agentic-validation python -m validation.agentic_ux.run --provider google --model gemini-3.5-flash-lite
 
 # Local model
 uv run --group agentic-validation python -m validation.agentic_ux.run --provider local --model llama3
@@ -96,11 +96,17 @@ uv run --group agentic-validation python -m validation.agentic_ux.run --provider
 uv run --group agentic-validation python -m validation.agentic_ux.run --personas analyst,ops --fixtures synthetic-dense
 ```
 
-Pricing was reviewed on 2026-10-26 against the provider pages linked in
-`providers.py`. Reports distinguish unknown prices from explicit zero prices.
-Use `--input-price` and `--output-price` together for tiered models, routed
-OpenRouter IDs, or prices outside the table. Local provider runs report zero
-API charges by default; hardware and hosting costs are outside this estimate.
+Pricing was checked on 2026-11-03 against the provider pages linked in
+`providers.py`. Each row records that date. The dollar amount multiplies
+provider-reported token counts by the row, so a stale row mis-states the
+estimate. Reports distinguish unknown prices from explicit zero prices.
+Use `--input-price` and `--output-price` together for routed OpenRouter
+IDs, cache or regional premiums, or prices outside the table. A one-sided
+pair is rejected. `grok-4.7` and `grok-4.3` use their published long-context
+rate once the prompt reaches 200,000 tokens, and `claude-haiku-5-5` uses
+its higher rate once the prompt exceeds 100,000 tokens. Local provider runs
+report zero API charges by default; hardware and hosting costs are outside
+this estimate.
 `--base-url` overrides any OpenAI-compatible provider endpoint. The same
 provider names, key variables and endpoint overrides apply to
 `validation/triage_llm.py`; its private report records the provider and model.

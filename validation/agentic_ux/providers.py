@@ -7,17 +7,20 @@ lazily so installing only one of them is enough; selecting an
 unavailable provider raises a clear ``ProviderError`` instead of an
 ``ImportError``.
 
-Pricing table values are best-effort public defaults at the time of
-authoring (May 2026). Operators are expected to override them via
-``--input-price`` / ``--output-price`` flags on the runner, and the
-report records realized usage straight from the API response so a
-stale default never silently mis-states a run's cost.
+The price table is the pre-run estimate. Token counts in a finished
+report come from the provider response, and the dollar amount
+multiplies those counts by this table or by an explicit override. A
+stale row mis-states that estimate. Pass both price overrides for a
+model the table does not list, or when cache, batch, or regional
+premiums should replace the list rate.
 """
 
 from __future__ import annotations
 
+import math
 import os
 from dataclasses import dataclass
+from datetime import UTC, date, datetime
 from typing import TYPE_CHECKING, Literal, Protocol
 
 if TYPE_CHECKING:
@@ -39,9 +42,8 @@ class ChatMessage:
 class ChatResponse:
     """Result of a single chat call.
 
-    ``cost_usd`` is computed at the call site from realized usage so
-    re-priced runs (e.g. a model with surprising output volume) report
-    the actual spend rather than a pre-trip estimate.
+    ``cost_usd`` multiplies provider-reported token counts by the list
+    price, or by an explicit override. It is an estimate, not an invoice.
     """
 
     text: str
@@ -76,31 +78,224 @@ class ChatProvider(Protocol):
 
 # --- Pricing -----------------------------------------------------------------
 
-# Per-million-token list prices in USD. Best-effort public values at the
-# time of authoring (checked 2026-10-26); the runner accepts overrides on the command line.
+# Per-million-token standard list prices in USD, checked 2026-11-03.
+# Each row records that check on ``ModelPrice.checked_on``.
 # https://platform.claude.com/docs/en/about-claude/pricing
 # https://developers.openai.com/api/docs/pricing
-# https://docs.x.ai/developers/models
-# https://ai.google.dev/gemini-api/docs/pricing
-# Tiered and unlisted models require explicit prices. These estimates omit
-# caching, discounts and provider-specific routing charges.
-PRICING_USD_PER_MTOK: dict[str, tuple[float, float]] = {
-    # Anthropic
-    "claude-opus-4-7": (15.0, 75.0),
-    "claude-sonnet-5-5": (2.0, 10.0),
-    "claude-sonnet-4-6": (3.0, 15.0),  # legacy
-    "claude-haiku-4-5": (1.0, 5.0),  # legacy
-    # OpenAI
-    "gpt-5.6-sol": (4.0, 20.0),
-    "gpt-6-luna": (0.1, 0.5),
-    "gpt-5-mini": (0.25, 1.0),
-    # xAI
-    "grok-4.7": (2.0, 6.0),
-    "grok-4": (3.0, 15.0),  # legacy
-    "grok-4-mini": (0.6, 2.4),
-    # Google
-    "gemini-2.5-flash": (0.3, 2.5),
+# https://developers.openai.com/api/docs/deprecations
+# https://docs.x.ai/developers/pricing
+# https://docs.x.ai/developers/migration/may-15-retirement
+# https://aistudio.google.com/docs/pricing
+# Rates omit caching, batch discounts, and regional premiums. A long-context
+# threshold bills every token in the request at the long-context rate once
+# the prompt reaches it. A successor date replaces the standard rate from
+# that day. Overrides are a flat pair and do not apply either tier.
+_ANTHROPIC_PRICING = "https://platform.claude.com/docs/en/about-claude/pricing"
+_OPENAI_PRICING = "https://developers.openai.com/api/docs/pricing"
+_XAI_PRICING = "https://docs.x.ai/developers/pricing"
+_GOOGLE_PRICING = "https://aistudio.google.com/docs/pricing"
+_PRICE_CHECKED_ON = date(2026, 11, 3)
+
+
+@dataclass(frozen=True, slots=True)
+class ModelPrice:
+    """Public list price for one model id.
+
+    ``shutdown_on`` is the provider's shutdown date. The guard fails on
+    that date. ``long_context_at`` is the first input-token count that
+    bills the whole request at the long-context rate. ``successor_on``
+    is the first day the successor standard rate replaces this one.
+    """
+
+    provider: str
+    input_usd_per_mtok: float
+    output_usd_per_mtok: float
+    checked_on: date
+    source: str
+    shutdown_on: date | None = None
+    long_context_at: int | None = None
+    long_context_input_usd_per_mtok: float | None = None
+    long_context_output_usd_per_mtok: float | None = None
+    successor_on: date | None = None
+    successor_input_usd_per_mtok: float | None = None
+    successor_output_usd_per_mtok: float | None = None
+
+    def __post_init__(self) -> None:
+        _require_rate("input", self.input_usd_per_mtok)
+        _require_rate("output", self.output_usd_per_mtok)
+        long_values = (
+            self.long_context_at,
+            self.long_context_input_usd_per_mtok,
+            self.long_context_output_usd_per_mtok,
+        )
+        if any(value is not None for value in long_values) and any(value is None for value in long_values):
+            raise ValueError("long-context pricing needs a token threshold and both rates")
+        if self.long_context_at is not None and self.long_context_at <= 0:
+            raise ValueError("long-context threshold must be positive")
+        if self.long_context_input_usd_per_mtok is not None:
+            _require_rate("long-context input", self.long_context_input_usd_per_mtok)
+        if self.long_context_output_usd_per_mtok is not None:
+            _require_rate("long-context output", self.long_context_output_usd_per_mtok)
+        successor_values = (
+            self.successor_on,
+            self.successor_input_usd_per_mtok,
+            self.successor_output_usd_per_mtok,
+        )
+        if any(value is not None for value in successor_values) and any(value is None for value in successor_values):
+            raise ValueError("a successor rate needs a start date and both prices")
+        if self.successor_input_usd_per_mtok is not None:
+            _require_rate("successor input", self.successor_input_usd_per_mtok)
+        if self.successor_output_usd_per_mtok is not None:
+            _require_rate("successor output", self.successor_output_usd_per_mtok)
+        if self.long_context_at is not None and self.successor_on is not None:
+            raise ValueError("a row cannot combine a long-context tier with a successor rate")
+        if not self.provider or not self.source:
+            raise ValueError("a price row needs a provider and a source")
+
+    def rates(self, input_tokens: int, *, on: date) -> tuple[float, float]:
+        """Return the list rate that applies to this prompt size on ``on``."""
+        in_price = self.input_usd_per_mtok
+        out_price = self.output_usd_per_mtok
+        if (
+            self.successor_on is not None
+            and on >= self.successor_on
+            and self.successor_input_usd_per_mtok is not None
+            and self.successor_output_usd_per_mtok is not None
+        ):
+            in_price = self.successor_input_usd_per_mtok
+            out_price = self.successor_output_usd_per_mtok
+        if (
+            self.long_context_at is not None
+            and input_tokens >= self.long_context_at
+            and self.long_context_input_usd_per_mtok is not None
+            and self.long_context_output_usd_per_mtok is not None
+        ):
+            return (self.long_context_input_usd_per_mtok, self.long_context_output_usd_per_mtok)
+        return (in_price, out_price)
+
+
+def _require_rate(label: str, value: float) -> None:
+    if not math.isfinite(value) or value < 0:
+        raise ValueError(f"{label} price must be a finite non-negative number")
+
+
+def _price(
+    provider: str,
+    rates: tuple[float, float],
+    source: str,
+    *,
+    long_context: tuple[int, float, float] | None = None,
+    successor: tuple[date, float, float] | None = None,
+) -> ModelPrice:
+    """Build one checked row.
+
+    ``long_context`` is ``(first input-token count, input rate, output rate)``.
+    ``successor`` is ``(first day, input rate, output rate)``.
+    """
+    input_usd, output_usd = rates
+    long_at: int | None = None
+    long_in: float | None = None
+    long_out: float | None = None
+    if long_context is not None:
+        long_at, long_in, long_out = long_context
+    successor_on: date | None = None
+    successor_in: float | None = None
+    successor_out: float | None = None
+    if successor is not None:
+        successor_on, successor_in, successor_out = successor
+    return ModelPrice(
+        provider=provider,
+        input_usd_per_mtok=input_usd,
+        output_usd_per_mtok=output_usd,
+        checked_on=_PRICE_CHECKED_ON,
+        source=source,
+        long_context_at=long_at,
+        long_context_input_usd_per_mtok=long_in,
+        long_context_output_usd_per_mtok=long_out,
+        successor_on=successor_on,
+        successor_input_usd_per_mtok=successor_in,
+        successor_output_usd_per_mtok=successor_out,
+    )
+
+
+# Removed from the estimate, checked 2026-11-03:
+# gpt-5-mini shuts down 2026-12-11 (replacement gpt-5.6-terra). Its listed
+# output rate is $2, not $1. The cheap OpenAI example is gpt-6-luna.
+# gemini-2.5-flash is closed to new projects and routes to
+# gemini-3.5-flash-lite on 2026-12-01.
+# grok-4-0709 retired 2026-05-15 and is served as grok-4.3. The bare grok-4
+# slug was not confirmed, and grok-4-mini is not on the xAI price page.
+PRICING_USD_PER_MTOK: dict[str, ModelPrice] = {
+    "claude-opus-5-5": _price("anthropic", (4.0, 20.0), _ANTHROPIC_PRICING),
+    "claude-opus-4-7": _price("anthropic", (5.0, 25.0), _ANTHROPIC_PRICING),
+    "claude-sonnet-5-5": _price("anthropic", (2.0, 10.0), _ANTHROPIC_PRICING),
+    "claude-sonnet-4-6": _price("anthropic", (3.0, 15.0), _ANTHROPIC_PRICING),
+    "claude-haiku-5-5": _price(
+        "anthropic",
+        (0.10, 0.50),
+        _ANTHROPIC_PRICING,
+        long_context=(100_001, 0.50, 2.50),
+    ),
+    "claude-haiku-4-5": _price("anthropic", (1.0, 5.0), _ANTHROPIC_PRICING),
+    "gpt-6.1-sol": _price("openai", (2.0, 10.0), _OPENAI_PRICING),
+    "gpt-6.1-terra": _price("openai", (1.0, 5.0), _OPENAI_PRICING),
+    "gpt-6-luna": _price("openai", (0.10, 0.50), _OPENAI_PRICING),
+    # Promotional at least through 2026-11-21. The following rate is not published.
+    "gpt-5.6-sol": _price("openai", (4.0, 20.0), _OPENAI_PRICING),
+    "grok-4.7": _price(
+        "xai",
+        (2.0, 6.0),
+        _XAI_PRICING,
+        long_context=(200_000, 4.0, 12.0),
+    ),
+    "grok-4.3": _price(
+        "xai",
+        (1.25, 2.50),
+        _XAI_PRICING,
+        long_context=(200_000, 2.50, 5.0),
+    ),
+    "gemini-3.8-flash": _price(
+        "google",
+        (0.75, 3.75),
+        _GOOGLE_PRICING,
+        successor=(date(2027, 1, 1), 1.50, 7.50),
+    ),
+    "gemini-3.5-flash-lite": _price("google", (0.30, 2.50), _GOOGLE_PRICING),
 }
+
+
+def require_price_pair(input_price: float | None, output_price: float | None) -> None:
+    """Reject a one-sided or non-finite override before it can mix with the table."""
+    if (input_price is None) != (output_price is None):
+        raise ValueError("input_price and output_price must both be set or both be omitted")
+    if input_price is None or output_price is None:
+        return
+    _require_rate("input", input_price)
+    _require_rate("output", output_price)
+
+
+def models_shut_down(
+    prices: dict[str, ModelPrice] | None = None,
+    *,
+    on: date | None = None,
+) -> tuple[str, ...]:
+    """Return priced model ids whose recorded shutdown date has arrived."""
+    table = PRICING_USD_PER_MTOK if prices is None else prices
+    day = datetime.now(UTC).date() if on is None else on
+    return tuple(
+        sorted(model for model, row in table.items() if row.shutdown_on is not None and row.shutdown_on <= day)
+    )
+
+
+def _override_pair(
+    input_price: float | None,
+    output_price: float | None,
+) -> tuple[float, float] | None:
+    """Return a validated flat pair, or ``None`` when the caller omitted both."""
+    require_price_pair(input_price, output_price)
+    if input_price is None or output_price is None:
+        return None
+    return (input_price, output_price)
 
 
 def estimate_cost(
@@ -108,24 +303,28 @@ def estimate_cost(
     output_tokens: int,
     model: str,
     *,
-    input_price: float | None = None,
-    output_price: float | None = None,
+    override: tuple[float, float] | None = None,
+    on: date | None = None,
 ) -> float:
     """Compute USD cost for a call given token counts and a model name.
 
-    When the model is not in the pricing table and no overrides are
-    supplied the function returns ``0.0`` rather than raising — it is
-    used both for live cost reporting (where we want a number even on
-    surprising model strings) and for tests (where a pricing miss
-    should not be a failure).
+    When the model is not in the pricing table and no override is
+    supplied the function returns ``0.0`` rather than raising. Callers
+    that report a dollar amount also check whether the price is known.
+    An explicit pair replaces the list rate for every token, including
+    prompts past a long-context threshold. ``on`` selects a successor
+    rate; the default is the current UTC date.
     """
-    if input_price is None or output_price is None:
-        default_in, default_out = PRICING_USD_PER_MTOK.get(model, (0.0, 0.0))
-        in_price = input_price if input_price is not None else default_in
-        out_price = output_price if output_price is not None else default_out
+    if override is not None:
+        in_price, out_price = override
+        require_price_pair(in_price, out_price)
     else:
-        in_price = input_price
-        out_price = output_price
+        row = PRICING_USD_PER_MTOK.get(model)
+        if row is None:
+            in_price = 0.0
+            out_price = 0.0
+        else:
+            in_price, out_price = row.rates(input_tokens, on=datetime.now(UTC).date() if on is None else on)
     return (input_tokens * in_price + output_tokens * out_price) / 1_000_000
 
 
@@ -145,6 +344,7 @@ class AnthropicProvider:
         input_price: float | None = None,
         output_price: float | None = None,
     ) -> None:
+        require_price_pair(input_price, output_price)
         try:
             import anthropic  # type: ignore[import-not-found]
         except ImportError as exc:  # pragma: no cover - exercised via mock in tests
@@ -190,8 +390,7 @@ class AnthropicProvider:
             in_tok,
             out_tok,
             self.model,
-            input_price=self._input_price,
-            output_price=self._output_price,
+            override=_override_pair(self._input_price, self._output_price),
         )
         return ChatResponse(
             text=text,
@@ -229,6 +428,7 @@ class _OpenAICompatibleProvider:
         input_price: float | None = None,
         output_price: float | None = None,
     ) -> None:
+        require_price_pair(input_price, output_price)
         try:
             import openai  # type: ignore[import-not-found]
         except ImportError as exc:  # pragma: no cover - exercised via mock in tests
@@ -282,8 +482,7 @@ class _OpenAICompatibleProvider:
             in_tok,
             out_tok,
             self.model,
-            input_price=self._input_price,
-            output_price=self._output_price,
+            override=_override_pair(self._input_price, self._output_price),
         )
         return ChatResponse(
             text=text,
@@ -344,6 +543,7 @@ class LocalProvider(_OpenAICompatibleProvider):
         input_price: float | None = None,
         output_price: float | None = None,
     ) -> None:
+        require_price_pair(input_price, output_price)
         key = api_key or os.environ.get(self.api_key_env) or "local"
         super().__init__(
             model,

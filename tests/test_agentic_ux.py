@@ -22,7 +22,7 @@ from __future__ import annotations
 import json
 import sys
 from dataclasses import replace
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 from pathlib import Path
 from typing import Any, ClassVar
 
@@ -52,14 +52,129 @@ def test_estimate_cost_unknown_model_returns_zero() -> None:
 
 
 def test_estimate_cost_overrides_take_precedence() -> None:
-    cost = providers.estimate_cost(
-        1_000_000,
-        1_000_000,
-        "claude-opus-4-7",
-        input_price=2.0,
-        output_price=4.0,
+    cost = providers.estimate_cost(200_000, 0, "grok-4.7", override=(2.0, 4.0))
+    # A flat override replaces the 200k long-context tier.
+    assert cost == pytest.approx(0.4)
+
+
+def test_require_price_pair_rejects_one_sided_override() -> None:
+    with pytest.raises(ValueError, match="both be set or both be omitted"):
+        providers.require_price_pair(1.0, None)
+
+
+def test_estimate_cost_rejects_negative_override() -> None:
+    with pytest.raises(ValueError, match="non-negative"):
+        providers.estimate_cost(1_000, 1_000, "gpt-6-luna", override=(-1.0, 1.0))
+
+
+def test_estimate_cost_rejects_non_finite_override() -> None:
+    with pytest.raises(ValueError, match="finite"):
+        providers.estimate_cost(1_000, 1_000, "gpt-6-luna", override=(float("nan"), 1.0))
+
+
+def test_price_row_rejects_incomplete_or_combined_tiers() -> None:
+    checked = date(2026, 11, 3)
+    source = "https://example.invalid/pricing"
+    with pytest.raises(ValueError, match="long-context pricing"):
+        providers.ModelPrice(
+            provider="example",
+            input_usd_per_mtok=1.0,
+            output_usd_per_mtok=2.0,
+            checked_on=checked,
+            source=source,
+            long_context_at=200_000,
+        )
+    with pytest.raises(ValueError, match="cannot combine"):
+        providers.ModelPrice(
+            provider="example",
+            input_usd_per_mtok=1.0,
+            output_usd_per_mtok=2.0,
+            checked_on=checked,
+            source=source,
+            long_context_at=200_000,
+            long_context_input_usd_per_mtok=2.0,
+            long_context_output_usd_per_mtok=4.0,
+            successor_on=date(2027, 1, 1),
+            successor_input_usd_per_mtok=2.0,
+            successor_output_usd_per_mtok=4.0,
+        )
+    with pytest.raises(ValueError, match="non-negative"):
+        providers.ModelPrice(
+            provider="example",
+            input_usd_per_mtok=-1.0,
+            output_usd_per_mtok=2.0,
+            checked_on=checked,
+            source=source,
+        )
+
+
+def test_provider_rejects_one_sided_price_before_sdk_import() -> None:
+    with pytest.raises(ValueError, match="both be set or both be omitted"):
+        providers.OpenAIProvider("gpt-6-luna", input_price=1.0)
+
+
+@pytest.mark.parametrize(
+    ("model", "input_rate", "output_rate"),
+    [
+        ("claude-opus-4-7", 5.0, 25.0),
+        ("claude-opus-5-5", 4.0, 20.0),
+        ("claude-sonnet-5-5", 2.0, 10.0),
+        ("claude-sonnet-4-6", 3.0, 15.0),
+        ("claude-haiku-5-5", 0.10, 0.50),
+        ("claude-haiku-4-5", 1.0, 5.0),
+        ("gpt-6.1-sol", 2.0, 10.0),
+        ("gpt-6.1-terra", 1.0, 5.0),
+        ("gpt-6-luna", 0.10, 0.50),
+        ("gpt-5.6-sol", 4.0, 20.0),
+        ("grok-4.7", 2.0, 6.0),
+        ("grok-4.3", 1.25, 2.50),
+        ("gemini-3.8-flash", 0.75, 3.75),
+        ("gemini-3.5-flash-lite", 0.30, 2.50),
+    ],
+)
+def test_checked_list_prices(model: str, input_rate: float, output_rate: float) -> None:
+    row = providers.PRICING_USD_PER_MTOK[model]
+    assert row.checked_on == date(2026, 11, 3)
+    assert row.source.startswith("https://")
+    assert row.input_usd_per_mtok == input_rate
+    assert row.output_usd_per_mtok == output_rate
+    assert providers.estimate_cost(1_000, 1_000, model, on=date(2026, 11, 3)) == pytest.approx(
+        (input_rate + output_rate) / 1_000
     )
-    assert cost == pytest.approx(6.0)
+
+
+@pytest.mark.parametrize("model", ["gpt-5-mini", "gemini-2.5-flash", "grok-4", "grok-4-mini"])
+def test_retired_or_unverified_model_is_not_priced(model: str) -> None:
+    assert model not in providers.PRICING_USD_PER_MTOK
+
+
+def test_long_context_rate_applies_to_the_whole_request() -> None:
+    below = providers.estimate_cost(199_999, 1_000, "grok-4.7", on=date(2026, 11, 3))
+    at_threshold = providers.estimate_cost(200_000, 1_000, "grok-4.7", on=date(2026, 11, 3))
+    assert below == pytest.approx((199_999 * 2.0 + 1_000 * 6.0) / 1_000_000)
+    assert at_threshold == pytest.approx((200_000 * 4.0 + 1_000 * 12.0) / 1_000_000)
+    haiku_short = providers.estimate_cost(100_000, 1_000, "claude-haiku-5-5", on=date(2026, 11, 3))
+    haiku_long = providers.estimate_cost(100_001, 1_000, "claude-haiku-5-5", on=date(2026, 11, 3))
+    assert haiku_short == pytest.approx((100_000 * 0.10 + 1_000 * 0.50) / 1_000_000)
+    assert haiku_long == pytest.approx((100_001 * 0.50 + 1_000 * 2.50) / 1_000_000)
+
+
+def test_successor_rate_starts_on_its_published_date() -> None:
+    introductory = providers.estimate_cost(1_000_000, 1_000_000, "gemini-3.8-flash", on=date(2026, 12, 31))
+    standard = providers.estimate_cost(1_000_000, 1_000_000, "gemini-3.8-flash", on=date(2027, 1, 1))
+    assert introductory == pytest.approx(0.75 + 3.75)
+    assert standard == pytest.approx(1.50 + 7.50)
+
+
+def test_price_table_has_no_model_past_its_shutdown_date() -> None:
+    assert providers.models_shut_down() == ()
+
+
+def test_shutdown_guard_reports_a_row_on_its_shutdown_date() -> None:
+    row = providers.PRICING_USD_PER_MTOK["gpt-6-luna"]
+    priced = {"gpt-6-luna": replace(row, shutdown_on=date(2026, 12, 11))}
+    assert providers.models_shut_down(priced, on=date(2026, 12, 10)) == ()
+    assert providers.models_shut_down(priced, on=date(2026, 12, 11)) == ("gpt-6-luna",)
 
 
 def test_get_provider_unknown_raises() -> None:
@@ -154,7 +269,7 @@ def test_openai_provider_normalizes_response(monkeypatch: pytest.MonkeyPatch) ->
     monkeypatch.setitem(sys.modules, "openai", fake_module)
     monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
 
-    provider = providers.OpenAIProvider("gpt-5")
+    provider = providers.OpenAIProvider("gpt-6-luna")
     response = provider.chat(
         system="terse",
         messages=[providers.ChatMessage(role="user", content="hi")],
@@ -164,6 +279,9 @@ def test_openai_provider_normalizes_response(monkeypatch: pytest.MonkeyPatch) ->
     assert response.input_tokens == 200
     assert response.output_tokens == 100
     assert response.provider == "openai"
+    # 200 in @ $0.10/M + 100 out @ $0.50/M
+    assert response.cost_usd == pytest.approx(0.00007)
+    assert response.cost_known is True
 
 
 def test_xai_provider_uses_xai_base_url(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -180,7 +298,7 @@ def test_xai_provider_uses_xai_base_url(monkeypatch: pytest.MonkeyPatch) -> None
     monkeypatch.setitem(sys.modules, "openai", fake_module)
     monkeypatch.setenv("XAI_API_KEY", "sk-grok")
 
-    providers.XAIProvider("grok-4")
+    providers.XAIProvider("grok-4.3")
     assert captured.get("base_url") == "https://api.x.ai/v1"
     assert captured.get("api_key") == "sk-grok"
 
@@ -216,7 +334,7 @@ def test_google_provider_uses_gemini_base_url(monkeypatch: pytest.MonkeyPatch) -
     monkeypatch.setitem(sys.modules, "openai", fake_module)
     monkeypatch.setenv("GEMINI_API_KEY", "sk-gemini-test")
 
-    providers.GoogleProvider("gemini-2.5-flash")
+    providers.GoogleProvider("gemini-3.5-flash-lite")
     assert captured.get("base_url") == "https://generativelanguage.googleapis.com/v1beta/openai/"
     assert captured.get("api_key") == "sk-gemini-test"
 
@@ -505,6 +623,36 @@ def test_main_returns_nonzero_on_provider_error(monkeypatch: pytest.MonkeyPatch,
     assert rc == 2
 
 
+def test_main_rejects_one_sided_price_before_provider(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    provider_initialized = False
+
+    def _unexpected_provider(*args: object, **kwargs: object) -> _FakeProvider:
+        nonlocal provider_initialized
+        provider_initialized = True
+        return _FakeProvider()
+
+    monkeypatch.setattr(run, "get_provider", _unexpected_provider)
+    rc = run.main(
+        [
+            "--provider",
+            "openai",
+            "--model",
+            "gpt-6-luna",
+            "--input-price",
+            "0.10",
+            "--output",
+            str(tmp_path / "report.md"),
+        ]
+    )
+    assert rc == 2
+    assert provider_initialized is False
+    assert "both be set or both be omitted" in capsys.readouterr().err
+
+
 @pytest.mark.parametrize(
     "arguments",
     [
@@ -522,6 +670,8 @@ def test_main_rejects_cli_api_key_without_echoing_secret(
     stderr = capsys.readouterr().err
     assert "--api-key is not supported" in stderr
     assert "ANTHROPIC_API_KEY" in stderr
+    assert "GEMINI_API_KEY" in stderr
+    assert "OPENROUTER_API_KEY" in stderr
     assert "super-secret-cli-value" not in stderr
 
 

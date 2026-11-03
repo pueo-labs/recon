@@ -70,11 +70,36 @@ class TestOmarchyManifest:
         assert data.get("author") == "Nick Seal"
 
 
-@pytest.mark.parametrize("name", ["install.sh", "uninstall.sh", "lifecycle.sh"])
-def test_setup_scripts_have_valid_bash_syntax(name: str) -> None:
+def _working_bash() -> str | None:
+    """Return a Bash that can execute, or None when the PATH entry cannot start.
+
+    Windows resolves ``bash`` to the WSL launcher before any other shell. A
+    missing distribution disk makes that launcher exit before it parses a
+    script, so a syntax check has to probe the command first.
+    """
     bash = shutil.which("bash")
     if bash is None:
-        pytest.skip("Bash is not installed")
+        return None
+    try:
+        probe = subprocess.run(  # noqa: S603 - fixed probe of the discovered Bash, no shell.
+            [bash, "-c", "exit 0"],
+            capture_output=True,
+            text=True,
+            timeout=15,
+            check=False,
+        )
+    except (OSError, subprocess.TimeoutExpired, UnicodeError):
+        return None
+    if probe.returncode != 0:
+        return None
+    return bash
+
+
+@pytest.mark.parametrize("name", ["install.sh", "uninstall.sh", "lifecycle.sh"])
+def test_setup_scripts_have_valid_bash_syntax(name: str) -> None:
+    bash = _working_bash()
+    if bash is None:
+        pytest.skip("A working Bash parser is not installed")
     result = subprocess.run(  # noqa: S603 - parser-only check of the repository-owned script.
         [bash, "-n", str(OMARCHY_DIR / name)], capture_output=True, text=True, check=False
     )
