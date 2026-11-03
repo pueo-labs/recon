@@ -89,6 +89,13 @@ Tool surface changes: no CLI command or flag changes.
   Yandex Direct, Metrica, or Connect. Seven other undated rules in this
   pass stay undated because their cited pages do not print the exact
   grammar.
+- Date the MongoDB Atlas federated-authentication domain-mapping TXT
+  from the current vendor page, and point the rule at that page. The
+  record observes a TXT value of `mongodb-site-verification=` followed
+  by a 32-character string. It does not prove that verification
+  completed, that the domain is associated with an identity provider,
+  or that a cluster exists. Seven other undated rules in this pass stay
+  undated because their cited pages do not print the exact grammar.
 
 ## [2.27.0] - 2026-10-27
 

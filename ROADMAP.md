@@ -89,7 +89,10 @@ What is next, and why:
    `_spf.salesforce.com` include from pages that print the grammar, and left
    six other rules undated. The 2026-11-02 pass dated the Yandex Webmaster
    rights-verification TXT from the page that prints the grammar, and left
-   seven other rules undated. That work does not cut a release.
+   seven other rules undated. A later pass the same day dated the MongoDB
+   Atlas federated-authentication domain-mapping TXT from the page that
+   prints the grammar, and left seven other data and analytics rules
+   undated. That work does not cut a release.
    The next round uses a new question list and the rules that are still due.
    The closed 5,199-row drift round remains a measurement contract. It does
    not promote rules. Start at [catalog maintenance](docs/catalog-maintenance.md).

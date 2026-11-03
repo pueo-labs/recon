@@ -42,13 +42,17 @@ fingerprints:
   detections:
   - type: txt
     pattern: ^mongodb-site-verification=
-    reference: https://www.mongodb.com/docs/
+    reference: https://www.mongodb.com/docs/atlas/security/manage-domain-mapping/
+    verified: '2026-11-02'
     description: >-
-      MongoDB Atlas domain-verification TXT token. Indicates the
-      domain has been registered with an Atlas organization,
-      typically for SSO federation or custom-domain endpoints.
-      Does not prove any specific database is hosted on Atlas.
-      The verification can be set up before any cluster exists.
+      MongoDB Atlas federated-authentication domain-mapping TXT.
+      The current Atlas guide shows a TXT record whose value is
+      `mongodb-site-verification=` followed by a 32-character
+      string. This observes that prefix. It does not prove that
+      verification completed, that the domain is associated with
+      an IdP, or that a cluster exists. The same guide's HTML
+      file is a separate record and is not part of this rule.
+      The previously cited docs root does not print the grammar.
 - name: Dynatrace
   slug: dynatrace
   category: Data & Analytics

@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "b22142a01c35aa0391bd4d78d40d1aa7e84d219ea42d46447b76fa9380895b32",
+  "catalog_digest": "d7a19fc4667190628218919cb783a1edd450d1e4e30dd20b224329656b871c5b",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -672,8 +672,104 @@
       "rule_id": "crm-marketing.yaml/yandex/txt/^yandex-verification:",
       "source_checked_on": "2026-11-02",
       "source_status": "checked"
+    },
+    {
+      "basis": "Current Amplitude SSO guide checked 2026-11-02: https://amplitude.com/docs/admin/single-sign-on/set-up-single-sign-on-sso-for-amplitude-using-another-service. It documents SAML entity and ACS URLs and does not print amplitude-domain-verification=. The cited help center does not print that prefix. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://help.amplitude.com/hc/en-us",
+      "next_review": "2026-12-02",
+      "prior_reference": "https://help.amplitude.com/hc/en-us",
+      "review_digest": "ec5f6fc045011759ffe83be9511802f175e28bfff8a81e4ad11a954787e0ba63",
+      "reviewed_on": "2026-11-02",
+      "rule_id": "data-analytics.yaml/amplitude/txt/^amplitude-domain-verification=",
+      "source_checked_on": "2026-11-02",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Current email-domain sign-in guide checked 2026-11-02: https://docs.databricks.com/aws/en/security/auth/email-login. Last updated 2026-10-09. It refers to a verified email domain for just-in-time provisioning and does not print databricks-domain-verification=. Account SSO pages document identity-provider metadata and do not print that prefix. A quoted search did not find a current vendor page that prints it. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.databricks.com/",
+      "next_review": "2026-12-02",
+      "prior_reference": "https://docs.databricks.com/",
+      "review_digest": "b7647eebbd2d32d9b71687f3d4e0ba4616bb9685f46c3a726059606b596eefb6",
+      "reviewed_on": "2026-11-02",
+      "rule_id": "data-analytics.yaml/databricks/txt/^databricks-domain-verification=",
+      "source_checked_on": "2026-11-02",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Current SAML guide checked 2026-11-02: https://docs.datadoghq.com/account_management/saml/. It documents SAML login and does not print datadog-domain-verification=. Docs searches returned DNS synthetic tests, a Nifcloud nifty-dns-verify= rule, and Entra domain events. None print this prefix. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.datadoghq.com/",
+      "next_review": "2026-12-02",
+      "prior_reference": "https://docs.datadoghq.com/",
+      "review_digest": "518d8f4d065dc6b9d0dc6f6f087306fd796b5945e740d4f56c9991698dbd9d7f",
+      "reviewed_on": "2026-11-02",
+      "rule_id": "data-analytics.yaml/datadog/txt/^datadog-domain-verification=",
+      "source_checked_on": "2026-11-02",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Current SAML guide checked 2026-11-02: https://docs.dynatrace.com/docs/manage/identity-access-management/user-and-group-management/access-saml. Updated 2026-07-30. Domain verification says to copy a TXT value from the product and add that resource record. It does not print dynatrace-site-verification=. The same page says the TXT resource record can be removed after validation. That copied value was not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.dynatrace.com/",
+      "next_review": "2026-12-02",
+      "prior_reference": "https://docs.dynatrace.com/",
+      "review_digest": "1925fc9e418e4aaf88c44a45a9f02fbd641007cc3bc07a6a92844d174bb4e8a3",
+      "reviewed_on": "2026-11-02",
+      "rule_id": "data-analytics.yaml/dynatrace/txt/^dynatrace-site-verification=",
+      "source_checked_on": "2026-11-02",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Direct fetch of developers.heap.io did not return a page body on 2026-11-02. The indexed first-party collection guide at https://developers.heap.io/docs/set-up-first-party-data-collection-in-heap says the customer CNAME value is the CDN distribution domain, for example a CloudFront name, and the CDN origin is heapanalytics.com. It does not print a stable customer CNAME target under heapanalytics.com. Script hosts cdn.heapanalytics.com and heapanalytics.com are a different shape and were not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://help.heap.io/",
+      "next_review": "2026-12-02",
+      "prior_reference": "https://help.heap.io/",
+      "review_digest": "074b7a54b75ce5b6afdfa4a57eb5403dc14ca37bbaa6e6baab0ee3b957f9cbe5",
+      "reviewed_on": "2026-11-02",
+      "rule_id": "data-analytics.yaml/heap/cname/heapanalytics.com",
+      "source_checked_on": "2026-11-02",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Direct fetch of help.hotjar.com did not return a page body on 2026-11-02. The indexed article https://help.hotjar.com/hc/en-us/articles/36820021087377-How-to-Verify-my-Domain-using-DNS-TXT says to add a DNS TXT and points at registrar guides. It does not print hotjar-domain-verification=. A script host under insights.hotjar.com is a different shape and was not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://help.hotjar.com/hc/en-us",
+      "next_review": "2026-12-02",
+      "prior_reference": "https://help.hotjar.com/hc/en-us",
+      "review_digest": "c8e095c0327b3ac3c30d9c7863e568edd7cb28e2cdd7ff0829e99b1fed0a38c4",
+      "reviewed_on": "2026-11-02",
+      "rule_id": "data-analytics.yaml/hotjar/txt/^hotjar-domain-verification=",
+      "source_checked_on": "2026-11-02",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Direct fetch of docs.mixpanel.com did not return a page body on 2026-11-02. The indexed first-party domains guide, updated 2026-10-01, at https://docs.mixpanel.com/docs/tracking-methods/first-party-domains says the customer CNAME value is the Mixpanel proxy host for that region and a separate ACME CNAME. It does not print a stable customer CNAME target under mixpanel.com. The SSO guide prints mixpanel-domain-verify= as a TXT and was not added to this CNAME rule. Default hosts api.mixpanel.com, api-eu.mixpanel.com, api-in.mixpanel.com, and cdn.mxpnl.com are API or CDN hosts and were not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.mixpanel.com/",
+      "next_review": "2026-12-02",
+      "prior_reference": "https://docs.mixpanel.com/",
+      "review_digest": "e730aa31ba0f7743a3cc8d5016577c195b0e63bbcd710c326f5992a5f63f3a1e",
+      "reviewed_on": "2026-11-02",
+      "rule_id": "data-analytics.yaml/mixpanel/cname/mixpanel.com",
+      "source_checked_on": "2026-11-02",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Atlas federated-authentication domain-mapping guide checked 2026-11-02: https://www.mongodb.com/docs/atlas/security/manage-domain-mapping/. The DNS method prints a TXT value of mongodb-site-verification= followed by a 32-character string. The rule observes that prefix. It does not prove verification completed, that the domain is associated with an IdP, or that a cluster exists. The same guide's HTML file was not added. The cited docs root does not print the grammar.",
+      "disposition": "narrowed",
+      "new_reference": "https://www.mongodb.com/docs/atlas/security/manage-domain-mapping/",
+      "next_review": "2026-12-02",
+      "prior_reference": "https://www.mongodb.com/docs/",
+      "review_digest": "b6e0f37642c934d25a2f77ccedba4a1ff0e6a836da90886ba9f5866f5a61114e",
+      "reviewed_on": "2026-11-02",
+      "rule_id": "data-analytics.yaml/mongodb/txt/^mongodb-site-verification=",
+      "source_checked_on": "2026-11-02",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-02, including the 2026-10-30 Salesforce and advertising reference check and a 2026-11-02 CRM and advertising reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-02, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, and a later 2026-11-02 data and analytics reference check, not a complete catalog review"
 }
