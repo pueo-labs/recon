@@ -434,6 +434,20 @@
       "reviewed_on": "2026-11-02",
       "source_checked_on": "2026-11-02",
       "reason": "First-party Webmaster API rights-verification guide checked 2026-11-02: https://yandex.ru/dev/webmaster/doc/en/concepts/verification. The DNS method prints a TXT value of yandex-verification: followed by a confirmation code. The rule observes that prefix. It does not prove rights were confirmed, and it does not identify Direct, Metrica, or Connect. The same guide's meta tag and HTML file were not added. The cited Connect support URL returns 404."
+    },
+    {
+      "rule": {
+        "source": "data-analytics.yaml",
+        "slug": "mongodb",
+        "detection_type": "txt",
+        "pattern": "^mongodb-site-verification="
+      },
+      "before": "de34d1fb122bc0647fb5b0e68f95338d03a340396a1b6c592456411ecf84846e",
+      "after": "b6e0f37642c934d25a2f77ccedba4a1ff0e6a836da90886ba9f5866f5a61114e",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-02",
+      "source_checked_on": "2026-11-02",
+      "reason": "First-party Atlas federated-authentication domain-mapping guide checked 2026-11-02: https://www.mongodb.com/docs/atlas/security/manage-domain-mapping/. The DNS method prints a TXT value of mongodb-site-verification= followed by a 32-character string. The rule observes that prefix. It does not prove verification completed, that the domain is associated with an IdP, or that a cluster exists. The same guide's HTML file was not added. The cited docs root does not print the grammar."
     }
   ]
 }

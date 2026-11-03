@@ -218,7 +218,8 @@ eight documented additions checked on 2026-10-23. Later rows record the
 2026-10-28 checks, including a later CRM pass the same day, and the
 2026-10-29 marketing reference check, and the 2026-10-30 Salesforce and
 advertising reference check, and the 2026-11-02 CRM and advertising
-reference check. It is a bounded
+reference check, and a later 2026-11-02 data and analytics reference
+check. It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
 bind due rules to their exact claim/catalog digest, prior/new reference, actual
 source check/review date, disposition, next review and bounded proposal queue.
@@ -568,6 +569,53 @@ article now serves a webhook guide and does not document a CNAME into
 `unbounce.com`. The current domain article says the CNAME value is a
 unique string copied from the product. Default hosts `unbouncepages.com`
 and `ubpages.com` are a different shape and were not added.
+
+### Documented reference check, 2026-11-02, data and analytics
+
+This pass checked eight undated data and analytics rules. One received a
+`verified` date because the current vendor page prints the grammar.
+Seven stay undated. No new detection, DNS record type, or collection
+path was added. This note does not cut a release.
+
+The [Atlas federated-authentication domain-mapping guide](https://www.mongodb.com/docs/atlas/security/manage-domain-mapping/)
+prints a TXT value of `mongodb-site-verification=` followed by a
+32-character string. The existing prefix rule observes that record. It
+does not prove that verification completed, that the domain is
+associated with an identity provider, or that a cluster exists. The
+same guide's HTML file is a separate record and was not added. The
+previously cited docs root does not print the grammar.
+
+Databricks, Datadog, Dynatrace, Heap, Hotjar, Mixpanel, and Amplitude
+stay undated. The current Databricks email-domain sign-in guide, last
+updated 2026-10-09, refers to a verified email domain for just-in-time
+provisioning and does not print `databricks-domain-verification=`.
+Account SSO pages document identity-provider metadata and do not print
+that prefix. The current Datadog SAML guide does not print
+`datadog-domain-verification=`. Docs searches returned DNS synthetic
+tests, a Nifcloud `nifty-dns-verify=` rule, and Entra domain events.
+None print this prefix. The current Dynatrace SAML guide, updated
+2026-07-30, says to copy a TXT value from the product. It does not
+print `dynatrace-site-verification=`, and it says the TXT resource
+record can be removed after validation. That copied value was not
+added. A direct fetch of `developers.heap.io` did not return a page
+body. The indexed first-party collection guide says the customer CNAME
+value is the CDN distribution domain, for example a CloudFront name,
+and the CDN origin is `heapanalytics.com`. It does not print a stable
+customer CNAME target under `heapanalytics.com`. Script hosts
+`cdn.heapanalytics.com` and `heapanalytics.com` are a different shape
+and were not added. A direct fetch of `help.hotjar.com` did not return
+a page body. The indexed DNS TXT article says to add a TXT and points
+at registrar guides. It does not print `hotjar-domain-verification=`.
+A script host under `insights.hotjar.com` was not added. A direct fetch
+of `docs.mixpanel.com` did not return a page body. The indexed
+first-party domains guide, updated 2026-10-01, says the customer CNAME
+value is the Mixpanel proxy host for that region. It does not print a
+stable customer CNAME target under `mixpanel.com`. The SSO guide prints
+`mixpanel-domain-verify=` as a TXT and was not added to this CNAME
+rule. Default hosts `api.mixpanel.com`, `api-eu.mixpanel.com`,
+`api-in.mixpanel.com`, and `cdn.mxpnl.com` are API or CDN hosts and
+were not added. The current Amplitude SSO guide documents SAML entity
+and ACS URLs and does not print `amplitude-domain-verification=`.
 
 ## Executable path
 
