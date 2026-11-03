@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "recon",
-  "version": "2.27.0",
+  "version": "2.27.1",
   "description": "Public-metadata domain intelligence through the recon MCP server and portable skills.",
   "author": {
     "name": "pueo-labs",

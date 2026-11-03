@@ -1,6 +1,6 @@
 {
   "name": "recon",
-  "version": "2.27.0",
+  "version": "2.27.1",
   "description": "Public-metadata domain intelligence for Microsoft 365 / Google Workspace tenant identification, email security observation (DMARC, DKIM, SPF, MTA-STS, BIMI), SaaS fingerprinting, certificate-transparency findings, and posture analysis. Bundles the recon MCP server and its usage guidance.",
   "author": {
     "name": "pueo-labs",

@@ -1,6 +1,6 @@
 [project]
 name = "recon-tool"
-version = "2.27.0"
+version = "2.27.1"
 description = "Public-metadata domain intelligence CLI and MCP server using DNS, certificate transparency, and unauthenticated identity discovery."
 requires-python = ">=3.11"
 readme = "README.md"

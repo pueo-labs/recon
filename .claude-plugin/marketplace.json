@@ -9,7 +9,7 @@
       "name": "recon",
       "source": "./agents/claude-code",
       "description": "Public-metadata domain intelligence: recon MCP server plus usage and triage skills.",
-      "version": "2.27.0"
+      "version": "2.27.1"
     }
   ]
 }
