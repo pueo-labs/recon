@@ -448,6 +448,34 @@
       "reviewed_on": "2026-11-02",
       "source_checked_on": "2026-11-02",
       "reason": "First-party Atlas federated-authentication domain-mapping guide checked 2026-11-02: https://www.mongodb.com/docs/atlas/security/manage-domain-mapping/. The DNS method prints a TXT value of mongodb-site-verification= followed by a 32-character string. The rule observes that prefix. It does not prove verification completed, that the domain is associated with an IdP, or that a cluster exists. The same guide's HTML file was not added. The cited docs root does not print the grammar."
+    },
+    {
+      "rule": {
+        "source": "data-analytics.yaml",
+        "slug": "pendo",
+        "detection_type": "cname",
+        "pattern": "pendo.io"
+      },
+      "before": "3baa46d8bea51b23a05cad5869c5753ffdbc441c687c71c5893a9b61c31505f6",
+      "after": "19eed1a1fa017eb25be5e9fbe5a9029f61c87eeb4c3fc8a4f6a8d105864d1f97",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-02",
+      "source_checked_on": "2026-11-02",
+      "reason": "First-party organization CNAME guide checked 2026-11-02: https://support.pendo.io/hc/en-us/articles/4402594600589-Configure-organization-CNAME. The example DNS table prints customer CNAME targets that end in -content.example.pendo.io and -data.customer.pendo.io. The rule observes a CNAME target with the pendo.io suffix. It does not prove that guides are served, that events are collected, or that setup is complete. Product-supplied prefixes and the certificate-validation CNAMEs were not copied. The cited help-center root does not print the grammar."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "afternic",
+        "detection_type": "ns",
+        "pattern": "afternic.com"
+      },
+      "before": "4c4944881876b5d623a7fed4831f4e7d6b7355ce1a6868cdc11d516f67513d98",
+      "after": "58bfaac533013db93dc21214cbd6cd6101ec51efeb9fe136bc7883cea5361384",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-02",
+      "source_checked_on": "2026-11-02",
+      "reason": "First-party domain-parking page checked 2026-11-02: https://www.afternic.com/domain-parking. The page says to set the domain nameservers to ns1.afternic.com and ns2.afternic.com. The rule observes an NS host under afternic.com. It does not establish a for-sale listing, parking revenue, or that the namespace is unused. A direct fetch of the parking help article returned a loading shell and was not used as the basis."
     }
   ]
 }

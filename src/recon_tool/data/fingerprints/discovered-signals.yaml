@@ -441,8 +441,15 @@ fingerprints:
   detections:
   - type: ns
     pattern: afternic.com
+    reference: https://www.afternic.com/domain-parking
+    verified: '2026-11-02'
     description: >-
-      Afternic (parking) nameserver (`afternic.com`). Indicates the org runs authoritative DNS on Afternic (parking).
+      Authoritative nameserver under Afternic's documented
+      parking nameservers `ns1.afternic.com` and
+      `ns2.afternic.com`. This observes an NS host under
+      `afternic.com`. It does not establish a for-sale
+      listing, parking revenue, or that the namespace is
+      unused.
 - name: MarkMonitor
   slug: markmonitor
   category: Infrastructure
