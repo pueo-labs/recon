@@ -766,10 +766,11 @@ async def _lookup_standard(
         )
 
         if options.verbose:
-            from recon_tool.collection_view import collection_observable_results
-
+            # The source-health line finalizes these resolver results. The
+            # observable projection can clear a field that made a unit match,
+            # so these rows have to see the same list.
             render_verbose_sources(
-                collection_observable_results(results),
+                results,
                 console=get_err_console(),
                 skip_ct=options.skip_ct,
                 active_probes=options.active_probes,

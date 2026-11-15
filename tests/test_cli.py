@@ -18,6 +18,8 @@ from typer.testing import CliRunner
 
 from recon_tool.cli import app
 from recon_tool.cli.doctor import DoctorCheck
+from recon_tool.collection_view import collection_observable_results
+from recon_tool.formatter.source_ladder import LadderState
 from recon_tool.models import (
     ConfidenceLevel,
     ReconLookupError,
@@ -290,6 +292,31 @@ class TestLookupSubcommand:
         result = runner.invoke(app, ["lookup", "alpha.invalid", "--verbose", "--no-cache"])
         assert result.exit_code == 0
         assert "oidc_discovery" in result.output
+
+    @patch(RESOLVE_PATH, new_callable=AsyncMock)
+    def test_verbose_keeps_a_match_the_observable_projection_would_drop(self, mock_resolve: AsyncMock) -> None:
+        """The health line and --verbose both classify the resolver results.
+
+        Projecting this result clears the tenant id because the OIDC channel
+        is marked degraded, which would turn the ladder match into no match.
+        """
+        raw = SourceResult(
+            source_name="oidc_discovery",
+            tenant_id="synthetic-tenant",
+            degraded_sources=("oidc_discovery",),
+        )
+        projected = LadderState.planned(skip_ct=False, active_probes=False)
+        projected.finalize(collection_observable_results([raw]))
+        projected_outcome = projected.outcome("oidc_discovery")
+        assert projected_outcome is not None
+        assert projected_outcome.state == "no_match"
+
+        mock_resolve.return_value = (SAMPLE_INFO, [raw])
+        result = runner.invoke(app, ["lookup", "alpha.invalid", "--verbose", "--no-cache"])
+        assert result.exit_code == 0
+        assert "1 source: 1 matched" in result.output
+        assert "match oidc_discovery: tenant ID found" in result.output
+        assert "no match oidc_discovery" not in result.output
 
     @patch(RESOLVE_PATH, new_callable=AsyncMock)
     def test_sources_flag(self, mock_resolve) -> None:

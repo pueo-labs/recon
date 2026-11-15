@@ -53,8 +53,8 @@ Tool surface changes: no CLI command or flag changes.
   policy whose effective level is `none`, as a present hardening control. The
   published policy stays visible.
 - `--verbose` lists the same collection units and states as the source-health
-  line, including certificate transparency and MTA-STS. Related-host rows are
-  not added as extra sources.
+  line, including certificate transparency and MTA-STS. Both classify the
+  resolver results. Related-host rows are not added as extra sources.
 
 ### Changed
 
