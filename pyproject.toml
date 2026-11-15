@@ -35,7 +35,9 @@ dependencies = [
     # supplies the library's HTTP/2 transport without a second DNS client.
     # Security floor: 2.9.0 fixes CVE-2026-114605 (GHSA-45c3-73f7-pv4m), excess
     # CPU in name decompression of untrusted wire messages, which recon parses.
-    "dnspython[doh]>=2.9.0",
+    # 2.9.2 fixes CVE-2026-128089 (GHSA-vvf4-9x63-8xvv), excessive memory and
+    # CPU while parsing a malicious WKS record in text form.
+    "dnspython[doh]>=2.9.2",
     "pyyaml>=6.0",
     "defusedxml>=0.7",
     # v2 is the SDK line that speaks MCP 2026-07-28. Serving that revision is
@@ -87,8 +89,10 @@ dependencies = [
     # default CA bundle, including when pip reuses an existing environment.
     "certifi>=2026.10.19",
     # MCP extracts untrusted JSON-RPC trace metadata through this parser.
-    # Exclude quadratic tracestate parsing (CVE-2026-114603).
-    "opentelemetry-api>=1.45.1",
+    # 1.45.1 excludes quadratic tracestate parsing (CVE-2026-114603).
+    # 1.45.2 limits traceparent header length (CVE-2026-126360,
+    # GHSA-mf5v-w3w3-f6cg).
+    "opentelemetry-api>=1.45.2",
 ]
 
 [project.scripts]

@@ -215,6 +215,9 @@ class TestDoctorJson:
         for check in payload["checks"]:
             assert set(check) == {"name", "status", "detail", "next"}
             assert check["status"] in {"ok", "warn", "fail", "info"}
+        names = {check["name"] for check in payload["checks"]}
+        assert "crt.sh (cert transparency)" in names
+        assert "certspotter (cert transparency)" in names
         summary = payload["summary"]
         assert summary["status"] == "ok"
         assert summary["exit_code"] == 0

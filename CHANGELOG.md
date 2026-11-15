@@ -26,6 +26,40 @@ operator, corporate group, ownership, or control.
 
 ## [Unreleased]
 
+Raise the dnspython and OpenTelemetry API security floors, pin local and
+container CPython to 3.15.2, and correct three output defects.
+
+### Tool Surface Changes
+
+Tool surface changes: no CLI command or flag changes.
+
+### Security
+
+- Raise the `dnspython` floor from 2.9.0 to 2.9.2. 2.9.2 fixes
+  CVE-2026-128089 (GHSA-vvf4-9x63-8xvv), excessive memory and CPU while
+  parsing a malicious WKS record in text form. The 2.9.0 floor for
+  CVE-2026-114605 stays in force.
+- Raise the `opentelemetry-api` floor from 1.45.1 to 1.45.2. 1.45.2 fixes
+  CVE-2026-126360 (GHSA-mf5v-w3w3-f6cg), a denial of service through
+  traceparent parsing. The 1.45.1 floor for CVE-2026-114603 stays in force.
+
+### Fixed
+
+- `recon doctor` probes crt.sh and CertSpotter, the two certificate
+  transparency providers a lookup uses. It reports certificate transparency
+  unavailable only when both probes warn. One provider failing is a fallback,
+  not an outage.
+- `--exposure` and posture comparison no longer credit DMARC `p=none`, or a
+  policy whose effective level is `none`, as a present hardening control. The
+  published policy stays visible.
+- `--verbose` lists the same collection units and states as the source-health
+  line, including certificate transparency and MTA-STS. Related-host rows are
+  not added as extra sources.
+
+### Changed
+
+- Pin the local toolchain and the container base image to CPython 3.15.2.
+
 ## [2.27.1] - 2026-11-03
 
 Correct the validation price table, and publish the catalog date passes,

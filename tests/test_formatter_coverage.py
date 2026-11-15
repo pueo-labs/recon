@@ -805,14 +805,16 @@ class TestRenderVerboseSources:
 
     def test_error_with_data_is_failed_in_every_source_view(self) -> None:
         result = SourceResult(
-            source_name="failed_source",
+            source_name="user_realm",
             detected_services=("Microsoft 365",),
             error="upstream failed",
+            source_unavailable=True,
         )
 
         _, buf = _make_console()
         render_verbose_sources([result])
         verbose = _strip(buf.getvalue())
+        assert "unavailable user_realm" in verbose
         assert "upstream failed" in verbose
         assert "data returned" not in verbose
 
@@ -829,6 +831,94 @@ class TestRenderVerboseSources:
         detail = _strip(buf.getvalue())
         assert "unavailable" in detail
         assert "upstream failed" in detail
+
+    def test_verbose_counts_match_the_health_line_for_nxdomain(self) -> None:
+        """A negative realm answer is no match, and CT stays its own unit."""
+        from recon_tool.formatter.source_ladder import LadderState
+
+        results = [
+            SourceResult(
+                source_name="dns_records",
+                degraded_sources=("crt.sh", "certspotter"),
+            ),
+            SourceResult(source_name="oidc_discovery"),
+            SourceResult(
+                source_name="user_realm",
+                error="Could not resolve display name or default domain",
+            ),
+            SourceResult(source_name="google_identity"),
+            SourceResult(
+                source_name="google_workspace",
+                error="No Google Workspace configuration found",
+            ),
+        ]
+        _, buf = _make_console()
+        render_verbose_sources(results)
+        verbose = _strip(buf.getvalue())
+        state = LadderState.planned(skip_ct=False, active_probes=False)
+        state.finalize(results)
+        health = state.health_line()
+        assert health is not None
+        expected = [(outcome.state, unit) for unit in state.units if (outcome := state.outcome(unit)) is not None]
+        assert _verbose_rows(verbose) == expected
+        assert "no match user_realm" in verbose
+        assert "unavailable user_realm" not in verbose
+        assert "unavailable ct" in verbose
+        assert "google_workspace" not in verbose
+        assert "mta_sts" in verbose
+
+    def test_related_host_does_not_add_a_verbose_row(self) -> None:
+        from recon_tool.formatter.source_ladder import LadderState
+
+        results = [
+            SourceResult(source_name="dns_records"),
+            SourceResult(source_name="oidc_discovery"),
+            SourceResult(source_name="user_realm"),
+            SourceResult(source_name="google_identity"),
+            SourceResult(source_name="dns_records", error="related-host residue"),
+        ]
+        _, buf = _make_console()
+        render_verbose_sources(results)
+        verbose = _strip(buf.getvalue())
+        state = LadderState.planned(skip_ct=False, active_probes=False)
+        state.finalize(results)
+        rows = _verbose_rows(verbose)
+        assert [unit for _state, unit in rows].count("dns_records") == 1
+        assert len(rows) == sum(1 for unit in state.units if state.outcome(unit) is not None)
+        assert "related-host residue" not in verbose
+
+    def test_active_probe_adds_the_google_workspace_unit(self) -> None:
+        results = [
+            SourceResult(source_name="dns_records"),
+            SourceResult(source_name="oidc_discovery"),
+            SourceResult(source_name="user_realm"),
+            SourceResult(source_name="google_identity"),
+            SourceResult(source_name="google_workspace", error="No Google Workspace configuration found"),
+        ]
+        _, buf = _make_console()
+        render_verbose_sources(results, active_probes=True)
+        verbose = _strip(buf.getvalue())
+        assert "no match google_workspace" in verbose
+        assert "No Google Workspace configuration found" in verbose
+
+
+def _verbose_rows(output: str) -> list[tuple[str, str]]:
+    rows: list[tuple[str, str]] = []
+    for line in output.splitlines():
+        if ":" not in line:
+            continue
+        head = line.split(":", 1)[0]
+        padded = f" {head} "
+        if " no match " in padded:
+            state = "no_match"
+        elif " unavailable " in padded:
+            state = "unavailable"
+        elif " match " in padded:
+            state = "match"
+        else:
+            continue
+        rows.append((state, head.strip().split()[-1]))
+    return rows
 
 
 class TestCsvStripsTerminalControlCharacters:

@@ -394,7 +394,8 @@ matches. `--json` and `--md --full` are the downstream connection map: every
 lane including empty ones, every vendor row with its evidence role, catalog
 summaries, and related hosts classified by first label (`auth.`, `shop.`,
 `workday.`). `--verbose` keeps the panel summary and adds certificate and
-evidence detail plus per-source status on stderr. `--full` adds the verbose
+evidence detail plus one stderr row per source-health unit, using that
+line's collection units and states. `--full` adds the verbose
 detail, all known domains, and posture observations. `--services` remains
 accepted for compatibility; new workflows do not need it.
 

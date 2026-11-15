@@ -284,6 +284,7 @@ class TestDoctorCommandFailures:
                 request_error,
                 _ok_response(200),
                 _ok_response(200),
+                _ok_response(200),
             ]
         )
         fake_httpx_client.post = AsyncMock(return_value=_ok_response(200))
@@ -301,6 +302,7 @@ class TestDoctorCommandFailures:
         assert "ok  Autodiscover" in result.output
         assert "ok  DNS resolution" in result.output
         assert "ok  crt.sh (cert transparency)" in result.output
+        assert "ok  certspotter (cert transparency)" in result.output
         assert "1 check failed. Lookups may be incomplete. Next:" in " ".join(result.output.split())
 
     def test_doctor_treats_crtsh_request_error_as_warning(self, fake_httpx_client) -> None:
@@ -310,6 +312,7 @@ class TestDoctorCommandFailures:
                 _ok_response(200),
                 _ok_response(200),
                 httpx.RemoteProtocolError("synthetic CT protocol failure"),
+                _ok_response(200),
             ]
         )
         fake_httpx_client.post = AsyncMock(return_value=_ok_response(200))
@@ -323,7 +326,10 @@ class TestDoctorCommandFailures:
         assert result.exit_code == 0
         assert not isinstance(result.exception, httpx.RequestError)
         assert "warn  crt.sh (cert transparency)" in result.output
-        assert "Core checks passed. Optional enrichment sources are degraded (1 warning)." in result.output
+        assert "ok  certspotter (cert transparency)" in result.output
+        assert "crt.sh is degraded; CertSpotter is reachable" in result.output
+        assert "Certificate transparency is unavailable" not in result.output
+        assert "Optional enrichment sources are degraded" not in result.output
 
     def test_doctor_treats_crtsh_http_error_as_warning(self, fake_httpx_client) -> None:
         """crt.sh is optional enrichment; outage should not fail doctor."""
@@ -333,6 +339,7 @@ class TestDoctorCommandFailures:
                 _ok_response(200),  # OIDC discovery
                 _ok_response(200),  # GetUserRealm
                 _ok_response(502),  # crt.sh
+                _ok_response(200),  # CertSpotter
             ]
         )
         fake_httpx_client.post = AsyncMock(return_value=_ok_response(503))
@@ -345,9 +352,60 @@ class TestDoctorCommandFailures:
 
         assert result.exit_code == 0
         assert "warn  crt.sh (cert transparency): HTTP 502" in result.output
+        assert "ok  certspotter (cert transparency)" in result.output
         assert "fail  crt.sh" not in result.output
-        assert "Core checks passed. Optional enrichment sources are degraded (1 warning)." in result.output
+        assert "crt.sh is degraded; CertSpotter is reachable" in result.output
+        assert "Certificate transparency is unavailable" not in result.output
         assert "failed" not in result.output
+
+    def test_doctor_reports_ct_unavailable_only_when_both_providers_fail(self, fake_httpx_client: AsyncMock) -> None:
+        """One live provider is a fallback. Both warnings are an outage."""
+        fake_dns = _honest_resolver(2)
+        fake_httpx_client.get = AsyncMock(
+            side_effect=[
+                _ok_response(200),
+                _ok_response(200),
+                _ok_response(502),
+                _ok_response(503),
+            ]
+        )
+        fake_httpx_client.post = AsyncMock(return_value=_ok_response(200))
+
+        with (
+            patch("httpx.AsyncClient", return_value=fake_httpx_client),
+            patch("dns.resolver.resolve", fake_dns.resolve),
+        ):
+            result = runner.invoke(app, ["doctor"])
+
+        assert result.exit_code == 0
+        assert "warn  crt.sh (cert transparency): HTTP 502" in result.output
+        assert "warn  certspotter (cert transparency): HTTP 503" in result.output
+        assert "fail  crt.sh" not in result.output
+        assert "Certificate transparency is unavailable (2 warnings)." in result.output
+
+    def test_doctor_reports_certspotter_fallback_when_crtsh_is_reachable(self, fake_httpx_client: AsyncMock) -> None:
+        fake_dns = _honest_resolver(1)
+        fake_httpx_client.get = AsyncMock(
+            side_effect=[
+                _ok_response(200),
+                _ok_response(200),
+                _ok_response(200),
+                httpx.TimeoutException("synthetic certspotter timeout"),
+            ]
+        )
+        fake_httpx_client.post = AsyncMock(return_value=_ok_response(200))
+
+        with (
+            patch("httpx.AsyncClient", return_value=fake_httpx_client),
+            patch("dns.resolver.resolve", fake_dns.resolve),
+        ):
+            result = runner.invoke(app, ["doctor"])
+
+        assert result.exit_code == 0
+        assert "ok  crt.sh (cert transparency)" in result.output
+        assert "warn  certspotter (cert transparency)" in result.output
+        assert "CertSpotter is degraded; crt.sh is reachable" in result.output
+        assert "Certificate transparency is unavailable" not in result.output
 
 
 class TestDoctorPathLauncher:

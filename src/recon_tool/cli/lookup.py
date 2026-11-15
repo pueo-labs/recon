@@ -771,6 +771,8 @@ async def _lookup_standard(
             render_verbose_sources(
                 collection_observable_results(results),
                 console=get_err_console(),
+                skip_ct=options.skip_ct,
+                active_probes=options.active_probes,
             )
 
         observations = _lookup_compute_observations(

@@ -16,35 +16,44 @@ from recon_tool.exposure_models import HardeningControl, HardeningStatus
 from recon_tool.models import TenantInfo
 
 
+def _dmarc_hardening_control(info: TenantInfo, *, dmarc_available: bool, slugs: set[str]) -> HardeningControl:
+    """Credit DMARC only when the effective policy enforces.
+
+    A published ``p=none`` record, and a stricter ``p=`` whose ``pct`` or
+    ``t=y`` testing mode leaves the effective level at none, is monitoring.
+    Quarantine and reject after that step still count. The published policy
+    stays visible in the detail either way.
+    """
+    effective = gap_detection.effective_email_dmarc_policy(info)
+    published = info.dmarc_policy
+    if not dmarc_available:
+        detail = "source unavailable"
+    elif published is None:
+        detail = "not configured"
+    elif published == "none":
+        detail = "policy set to none (monitoring only, not enforcing)"
+    elif effective is not None and effective != published:
+        detail = f"{published} (effective {effective})"
+    else:
+        detail = published
+    observed = dmarc_available and published is not None
+    present = dmarc_available and effective in {"quarantine", "reject"}
+    return HardeningControl(
+        name="DMARC",
+        present=present,
+        detail=detail,
+        evidence=_build_evidence_refs(info, {"dmarc"} & slugs) if observed else (),
+    )
+
+
 def compute_hardening_status(info: TenantInfo, *, applicability: MailApplicability | None = None) -> HardeningStatus:
     """Derive hardening control status from TenantInfo."""
     observed = observability.ObservableEmailState.from_info(info)
     services_set = observed_email_control_services(info.evidence)
     slugs_set = set(info.slugs)
-    controls: list[HardeningControl] = []
-
-    # DMARC enforcement
-    dmarc_effective_policy = gap_detection.effective_email_dmarc_policy(info)
-    dmarc_available = observed.dmarc_available
-    if not dmarc_available:
-        detail = "source unavailable"
-    elif info.dmarc_policy is None:
-        detail = "not configured"
-    elif info.dmarc_policy == "none":
-        detail = "policy set to none"
-    elif dmarc_effective_policy is not None and dmarc_effective_policy != info.dmarc_policy:
-        detail = f"{info.dmarc_policy} (effective {dmarc_effective_policy})"
-    else:
-        detail = info.dmarc_policy
-    dmarc_present = dmarc_available and info.dmarc_policy is not None
-    controls.append(
-        HardeningControl(
-            name="DMARC",
-            present=dmarc_present,
-            detail=detail,
-            evidence=_build_evidence_refs(info, {"dmarc"} & slugs_set) if dmarc_present else (),
-        )
-    )
+    controls: list[HardeningControl] = [
+        _dmarc_hardening_control(info, dmarc_available=observed.dmarc_available, slugs=slugs_set)
+    ]
 
     # DKIM
     dkim_available = observed.dkim_available
