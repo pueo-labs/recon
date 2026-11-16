@@ -476,6 +476,20 @@
       "reviewed_on": "2026-11-02",
       "source_checked_on": "2026-11-02",
       "reason": "First-party domain-parking page checked 2026-11-02: https://www.afternic.com/domain-parking. The page says to set the domain nameservers to ns1.afternic.com and ns2.afternic.com. The rule observes an NS host under afternic.com. It does not establish a for-sale listing, parking revenue, or that the namespace is unused. A direct fetch of the parking help article returned a loading shell and was not used as the basis."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "atlassian",
+        "detection_type": "txt",
+        "pattern": "^atlassian-sending-domain-verification="
+      },
+      "before": "b0eeb7b06890835691aa367888c9f570f78c9d410c76d296caeacfc63f3c8333",
+      "after": "c79f327ab06f0ccbaf20efb69e2242279d1866bb6f206f351aa9b8cd9d73172c",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Atlassian Cloud custom-domain email DNS checker article, updated July 24, 2026, checked 2026-11-16: https://support.atlassian.com/jira/kb/why-dns-checker-for-setting-up-custom-domain-email-address-still-unverified-in-cloud/. The verify TXT example begins with atlassian-sending-domain-verification=. The rule observes that prefix. It does not prove the DNS check succeeded or that mail is being sent. The same page's SPF include and DKIM CNAME are separate records and were not added. The example token was not copied."
     }
   ]
 }

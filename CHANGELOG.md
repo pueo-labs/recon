@@ -26,6 +26,20 @@ operator, corporate group, ownership, or control.
 
 ## [Unreleased]
 
+### Tool Surface Changes
+
+Tool surface changes: no CLI command or flag changes.
+
+### Changed
+
+- Date the Atlassian sending-domain verification TXT from the current
+  vendor page, and point the rule at that page. The record observes a
+  TXT value that begins with `atlassian-sending-domain-verification=`.
+  It does not prove that the DNS check succeeded or that mail is being
+  sent. Seven other undated rules in this pass stay undated because
+  their cited pages do not print the exact grammar. This does not cut
+  a release.
+
 ## [2.27.2] - 2026-11-16
 
 Raise the dnspython and OpenTelemetry API security floors, pin local and
