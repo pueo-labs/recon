@@ -1056,8 +1056,104 @@
       "rule_id": "discovered-signals.yaml/campaign-monitor/spf/createsend.com",
       "source_checked_on": null,
       "source_status": "unreachable"
+    },
+    {
+      "basis": "The Cvent community articles What domains does Cvent use and Setting Up a Vanity URL were requested on 2026-11-16. Both returned the community CSS error shell and did not print lwcal.com. The article body was not available, so this is not a source check. A search index is not a vendor basis. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": null,
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "1b0afc7e3919aefea9b294371c5fee54cf8fd230cc76fae438afd46e7b3bf71d",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/certain-cvent/cname_target/lwcal.com",
+      "source_checked_on": null,
+      "source_status": "unreachable"
+    },
+    {
+      "basis": "CISA BOD 18-01 page checked 2026-11-16 prints an aggregate mailbox on the host dmarc.cyber.dhs.gov. That host is narrower than the existing dhs.gov suffix. The broader suffix stays undated. The narrower host was not added as a second rule. The page's other example mailboxes were not copied. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://www.cisa.gov/news-events/directives/bod-18-01-enhance-email-and-web-security",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "0248ed030efb41d670489f2454aace279a6e7279688d72da9283b2bb5db055d1",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/cisa-dmarc/dmarc_rua/dhs.gov",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Cisco document 223136, updated June 23, 2025, checked 2026-11-16. It describes Domain Protection hosting SPF, DKIM, and DMARC records after the operator publishes TXT records that delegate administration. It does not print the hostname dmp.cisco.com. DNS-lookup directories are not a vendor basis. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://www.cisco.com/c/en/us/support/docs/security/cloud-email-security/223136-review-dmarc-reports-and-resolve.html",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "21558432f24d27aba0eae9b6e86e1500dfa394bab3a3672d4af93a5838fcd485",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/cisco-email/dmarc_rua/dmp.cisco.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Secure Email Threat Defense User Added Domains guide checked 2026-11-16. It says to copy the verification code from the product and create a TXT record. It does not print cisco-site-verification=. It also names regional hosts under etd.cisco.com. Those hosts are not this pattern and were not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.cmd.cisco.com/en/Content/secure-email-threat-defense-user-guide/Configuration%20Settings/Mail%20Flow%20Configuration/User%20Added%20Domains.htm",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "67bb499b1c20e89192ab8b32093fcdd8ca79ba15d31b0a71f3404f22c41fb3d6",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/cisco-email/txt/^cisco-site-verification=",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Cloudflare DMARC Management enable page, last updated May 5, 2026, checked 2026-11-16. It says Cloudflare adds another rua using a Cloudflare email address. It does not print that mailbox or a reporting destination under cloudflare.net. The email authentication page, last updated June 9, 2026, prints an example aggregate rua on the reader's own domain and an SPF include of _spf.mx.cloudflare.net. That include is not this dmarc_rua pattern and was not added. The broader cloudflare.net suffix stays undated. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://developers.cloudflare.com/dmarc-management/enable/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "b57e35cac6b86b5d6f134d71539e36151c47e2a4d40404ef8be20963f2d53ad6",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/cloudflare-email-analytics/dmarc_rua/cloudflare.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Cloudflare partial-setup page, last updated July 29, 2026, checked 2026-11-16. It prints a CNAME target of {your-hostname}.cdn.cloudflare.net. It does not print pacloudflare.com. The China Network DNS page, last updated April 30, 2026, prints cdn.cloudflareanycast.net and cdn.cloudflarecn.net, which are already dated sibling rules, and does not print pacloudflare.com. A domain-directory page is not a customer CNAME basis. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://developers.cloudflare.com/dns/zone-setups/partial-setup/setup/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "98fafd02749758eee39283d3892fb73c74fe0f8c374201845c62aa8a8e6ca116",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/cloudflare/cname_target/pacloudflare.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Com Laude Managed DNS Service Terms, version 1.4 dated 2 April 2026, checked 2026-11-16. The terms say anycast DNS is subcontracted to another provider. They do not print an NS hostname ending in comlaude-dns.co.uk. The Ask the Experts DNS management page also does not print that host. DNS-lookup directories are not a vendor basis. The unadmitted comlaude-dns.net and comlaude-dns.eu siblings were not dated. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://comlaude.com/app/uploads/2026/04/Com-Laude-Managed-DNS-Service-Terms-v1.4-2-April-2026.pdf",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "ff97e76e51d7629f3080101d6048e187b3675bc25c76be8bf704f0eb827420c1",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/com-laude/ns/comlaude-dns.co.uk",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Com Laude Managed DNS Service Terms, version 1.4 dated 2 April 2026, checked 2026-11-16. The terms say anycast DNS is subcontracted to another provider. They do not print an NS hostname ending in comlaude-dns.com. The Ask the Experts DNS management page also does not print that host. DNS-lookup directories are not a vendor basis. The unadmitted comlaude-dns.net and comlaude-dns.eu siblings were not dated. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://comlaude.com/app/uploads/2026/04/Com-Laude-Managed-DNS-Service-Terms-v1.4-2-April-2026.pdf",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "70f5a968b7d12909f5202a271a0639bbd064ec176abd9af203d2470d4dbe92ef",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/com-laude/ns/comlaude-dns.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, not a complete catalog review"
 }

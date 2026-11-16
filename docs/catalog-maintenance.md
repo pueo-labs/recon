@@ -221,7 +221,8 @@ advertising reference check, and the 2026-11-02 CRM and advertising
 reference check, a later 2026-11-02 data and analytics reference
 check, and a later 2026-11-02 data, analytics, and infrastructure
 reference check, and the 2026-11-16 email and cloud reference check,
-and a later 2026-11-16 email reporting reference check.
+and a later 2026-11-16 email reporting reference check,
+and a later 2026-11-16 email, DNS, and event reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
 bind due rules to their exact claim/catalog digest, prior/new reference, actual
@@ -780,6 +781,63 @@ Campaign Monitor help articles for email authentication
 troubleshooting and managing authentication returned the help center
 CSS error shell and did not print an SPF record. The article body was
 not available. A search index is not a vendor basis.
+
+### Documented reference check, later on 2026-11-16, email, DNS, and events
+
+This pass checked eight undated email, DNS, and event rules. None
+received a `verified` date. No new detection, DNS record type, or
+collection path was added. This note does not cut a release.
+
+The [CISA BOD 18-01 page](https://www.cisa.gov/news-events/directives/bod-18-01-enhance-email-and-web-security)
+prints an aggregate mailbox on the host `dmarc.cyber.dhs.gov`. That
+host is narrower than the existing `dhs.gov` suffix, so that suffix
+stays undated. The narrower host was not added. The page's other
+example mailboxes were not copied.
+
+The [Cloudflare DMARC Management enable page](https://developers.cloudflare.com/dmarc-management/enable/),
+last updated May 5, 2026, says Cloudflare adds another rua using a
+Cloudflare email address. It does not print that mailbox or a
+reporting destination under `cloudflare.net`. The [email
+authentication page](https://developers.cloudflare.com/email-service/concepts/email-authentication/),
+last updated June 9, 2026, prints an example aggregate rua on the
+reader's own domain and an SPF include of `_spf.mx.cloudflare.net`.
+That include is not this `dmarc_rua` pattern and was not added. The
+broader `cloudflare.net` suffix stays undated.
+
+The [Cloudflare partial-setup page](https://developers.cloudflare.com/dns/zone-setups/partial-setup/setup/),
+last updated July 29, 2026, prints a CNAME target of
+`{your-hostname}.cdn.cloudflare.net`. It does not print
+`pacloudflare.com`. The [China Network DNS page](https://developers.cloudflare.com/china-network/concepts/china-dns/),
+last updated April 30, 2026, prints `cdn.cloudflareanycast.net` and
+`cdn.cloudflarecn.net`, which are already dated sibling rules, and
+does not print `pacloudflare.com`. A domain-directory page is not a
+customer CNAME basis.
+
+[Cisco document 223136](https://www.cisco.com/c/en/us/support/docs/security/cloud-email-security/223136-review-dmarc-reports-and-resolve.html),
+updated June 23, 2025, describes Domain Protection hosting SPF, DKIM,
+and DMARC records after the operator publishes TXT records that
+delegate administration. It does not print the hostname
+`dmp.cisco.com`. DNS-lookup directories are not a vendor basis.
+
+The [Secure Email Threat Defense User Added Domains guide](https://docs.cmd.cisco.com/en/Content/secure-email-threat-defense-user-guide/Configuration%20Settings/Mail%20Flow%20Configuration/User%20Added%20Domains.htm)
+says to copy the verification code from the product and create a TXT
+record. It does not print `cisco-site-verification=`. It also names
+regional hosts under `etd.cisco.com`. Those hosts are not this pattern
+and were not added.
+
+The Cvent community articles for the domains Cvent uses and for vanity
+URL setup returned the community CSS error shell and did not print
+`lwcal.com`. The article body was not available. A search index is
+not a vendor basis.
+
+The [Com Laude Managed DNS Service Terms](https://comlaude.com/app/uploads/2026/04/Com-Laude-Managed-DNS-Service-Terms-v1.4-2-April-2026.pdf),
+version 1.4 dated 2 April 2026, say anycast DNS is subcontracted to
+another provider. They do not print an NS hostname ending in
+`comlaude-dns.com` or `comlaude-dns.co.uk`. The [Ask the Experts DNS
+management page](https://comlaude.com/ask-the-experts-dns-management/)
+also does not print those hosts. DNS-lookup directories are not a
+vendor basis. The unadmitted `comlaude-dns.net` and `comlaude-dns.eu`
+siblings were not dated.
 
 ## Executable path
 
