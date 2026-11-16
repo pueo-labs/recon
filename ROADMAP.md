@@ -132,7 +132,12 @@ What is next, and why:
    nameserver suffixes, the DNS Made Easy nameserver suffix, the
    DNSPod nameserver suffix, the Docebo SPF include, and the easyDNS
    nameserver suffixes from pages that print the grammar. That work
-   does not cut a release.
+   does not cut a release. A later pass the same day dated the
+   easyDNS `easydns.net` nameserver suffix from the page that prints
+   the grammar, and left seven other email and DNS rules undated,
+   because a fetched page prints only a narrower host, does not print
+   the catalog grammar, did not return an article body, or the host
+   did not resolve. That work does not cut a release.
    The next round uses a new question list and the rules that are still due.
    The closed 5,199-row drift round remains a measurement contract. It does
    not promote rules. Start at [catalog maintenance](docs/catalog-maintenance.md).

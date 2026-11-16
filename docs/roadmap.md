@@ -846,7 +846,12 @@ undated. A later pass the same day dated the remaining DNSimple
 nameserver suffixes, the DNS Made Easy nameserver suffix, the
 DNSPod nameserver suffix, the Docebo SPF include, and the easyDNS
 nameserver suffixes from pages that print the grammar. That work
-does not cut a release. The 2026-10 documentation
+does not cut a release. A later pass the same day dated the easyDNS
+`easydns.net` nameserver suffix from the page that prints the
+grammar, and left seven other email and DNS rules undated, because
+a fetched page prints only a narrower host, does not print the
+catalog grammar, did not return an article body, or the host did
+not resolve. That work does not cut a release. The 2026-10 documentation
 pass read the IANA DNS parameter update and left collection on the existing
 record types. Agent portability remains a separate maintainer track and does
 not appear here as a product milestone:

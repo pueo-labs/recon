@@ -32,6 +32,12 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Date the easyDNS `easydns.net` nameserver suffix from the current
+  vendor page. The record observes an NS host under `easydns.net`.
+  Seven other undated rules in this pass stay undated because a
+  fetched page prints only a narrower host, does not print the catalog
+  grammar, did not return an article body, or the host did not resolve.
+  No new detection was added. This does not cut a release.
 - Date the remaining DNSimple nameserver suffixes, the DNS Made Easy
   nameserver suffix, the DNSPod nameserver suffix, the Docebo SPF
   include, and the easyDNS nameserver suffixes from current vendor

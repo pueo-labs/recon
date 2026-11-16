@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "7e39ccef0b55456ed9226da5fe5e41d98dc00538be2636ec06f025a70922d815",
+  "catalog_digest": "58db6ed205b6d6928fdd7444b8dbeb0960cb8961dc11e5d8c06b05576486b84b",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -1440,8 +1440,104 @@
       "rule_id": "discovered-signals.yaml/easydns2/ns/easydns.com",
       "source_checked_on": "2026-11-16",
       "source_status": "checked"
+    },
+    {
+      "basis": "easyDNS nameserver page checked 2026-11-16 lists DNS2.EASYDNS.NET as a current nameserver constellation. The rule observes an NS host under easydns.net. It does not prove that the zone is delegated or that easyDNS is the only DNS provider. The specific dns2 host was not added as a separate rule. easydns.info on the same page was not dated in this pass.",
+      "disposition": "narrowed",
+      "new_reference": "https://easydns.com/our-nameservers/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "01ae538a38a937cfa6982a42030e9301f090e182313c9710b4c0b11ad405c437",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/easydns2/ns/easydns.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Elastic Email domain-verification article checked 2026-11-16 prints include:_spf.elasticemail.com. That host is narrower than the existing elasticemail.com suffix. The broader suffix stays undated. The narrower host was not added.",
+      "disposition": "deferred",
+      "new_reference": "https://help.elasticemail.com/en/articles/4934400-how-to-verify-your-domain",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "390364dbfea51edbe6462fca6bdb3fb4a9c0e27ef6d8cc56e3c4c2cc9f09f3ff",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/elasticemail/spf/elasticemail.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Oracle Eloqua email-authentication page checked 2026-11-16 describes SPF and does not print an include for eloqua.com. Third-party SPF guides are not a vendor basis. The Oracle knowledge article is behind a sign-in. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.oracle.com/en/cloud/saas/marketing/eloqua-user/Help/Deliverability/EmailSendingDomainSubdomain.htm",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "026c39e3adb375af163fe31eb303080c3cc3a4ea4c21150df6b480f8468598fa",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/eloqua/spf/eloqua.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "A documentation page for emailanalyst.com was requested on 2026-11-16. The apex and www host did not resolve, so no vendor page was available. This is not a source check. Third-party explainers and DNS-lookup directories are not a vendor basis. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": null,
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "4f695d753b5fdb2690d154cfa00250e9534c1639b850e36711f028d307cef81d",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/emailanalyst/dmarc_rua/emailanalyst.com",
+      "source_checked_on": null,
+      "source_status": "unreachable"
+    },
+    {
+      "basis": "The Emma SPF setup article was requested on 2026-11-16. The fetched page did not return the article body. A search snippet is not a vendor basis. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://help.myemma.com/s/article/spf-authentication-setup",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "bba8111c293974db96979bac3cf59afcd968e478cc72c0ec7c49b5d04f1fb740",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/emma/spf/e2ma.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Etisalat domain pages checked 2026-11-16 describe domain registration and DNS management and do not print an NS hostname ending in etisalatdomains.ae. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://www.nic.ae/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "d3bb7a58cc67cc2ed4250dad82713f21d7ba1ff4dd821a01029aa421141e7c38",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/etisalat-dns/ns/etisalatdomains.ae",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The Everbridge custom-from article was requested on 2026-11-16. The fetched page is a support sign-in wall and does not print include:everbridge.net. A sign-in wall is not a vendor basis. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://supportcenter.everbridge.com/hc/en-us/articles/19141627397659-EBS-Emails-Not-Being-Received-From-Everbridge-Suite-When-Custom-From-Email-Address-Is-Configured",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "024689d05c8c4474a936ca8f6c0e8d88e0829ea22f7ac7297d5c96c1df7bab59",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/everbridge/spf/everbridge.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Exclaimer SPF article checked 2026-11-16 prints include:spf.<region>.exclaimer.net. It does not print emailsignatures365.com. The regional host is a different suffix and was not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://support.exclaimer.com/hc/en-gb/articles/4404775962641-How-to-update-the-Sender-Policy-Framework-SPF",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "280b628d6719c138bf10a8b39e14aef9877a242cab1b321efdbd131b46d79822",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/exclaimer/spf/emailsignatures365.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, not a complete catalog review"
 }

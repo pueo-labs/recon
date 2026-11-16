@@ -484,8 +484,13 @@ fingerprints:
   detections:
   - type: ns
     pattern: easydns.net
+    reference: https://easydns.com/our-nameservers/
+    verified: '2026-11-16'
     description: >-
-      easyDNS nameserver (`easydns.net`). Indicates the org runs authoritative DNS on easyDNS.
+      Authoritative nameserver under the documented easyDNS
+      name server `dns2.easydns.net`. This observes an NS host
+      under `easydns.net`. It does not prove that the zone is
+      delegated or that easyDNS is the only DNS provider.
 - name: easyDNS
   slug: easydns2
   category: Infrastructure

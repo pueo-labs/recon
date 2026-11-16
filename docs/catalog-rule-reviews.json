@@ -644,6 +644,20 @@
       "reviewed_on": "2026-11-16",
       "source_checked_on": "2026-11-16",
       "reason": "easyDNS nameserver page checked 2026-11-16: https://easydns.com/our-nameservers/. It lists DNS1.EASYDNS.COM as a current nameserver constellation. The rule observes an NS host under easydns.com. It does not prove that the zone is delegated or that easyDNS is the only DNS provider. The specific dns1 host was not added as a separate rule. easydns.net and easydns.info on the same page were not dated in this pass."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "easydns2",
+        "detection_type": "ns",
+        "pattern": "easydns.net"
+      },
+      "before": "ba68368f758e769834061a23c16468c62b7d47829337d64cfa8f4529f403d2b7",
+      "after": "01ae538a38a937cfa6982a42030e9301f090e182313c9710b4c0b11ad405c437",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "easyDNS nameserver page checked 2026-11-16: https://easydns.com/our-nameservers/. It lists DNS2.EASYDNS.NET as a current nameserver constellation. The rule observes an NS host under easydns.net. It does not prove that the zone is delegated or that easyDNS is the only DNS provider. The specific dns2 host was not added as a separate rule. easydns.info on the same page was not dated in this pass."
     }
   ]
 }
