@@ -842,7 +842,10 @@ grammar, the page did not return an article body, or the host did
 not resolve. A later pass the same day dated the DMARCLY aggregate
 mailbox domain and the DNSimple nameserver suffix from pages that
 print the grammar, and left six other DMARC reporting and DNS rules
-undated. That work
+undated. A later pass the same day dated the remaining DNSimple
+nameserver suffixes, the DNS Made Easy nameserver suffix, the
+DNSPod nameserver suffix, the Docebo SPF include, and the easyDNS
+nameserver suffixes from pages that print the grammar. That work
 does not cut a release. The 2026-10 documentation
 pass read the IANA DNS parameter update and left collection on the existing
 record types. Agent portability remains a separate maintainer track and does
