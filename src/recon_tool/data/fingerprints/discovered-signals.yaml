@@ -103,8 +103,14 @@ fingerprints:
   detections:
   - type: spf
     pattern: helpscoutemail.com
+    reference: https://docs.helpscout.com/article/58-spf-records
+    verified: '2026-11-16'
     description: >-
-      Help Scout SPF include (`helpscoutemail.com`). Indicates the org authorizes Help Scout to send email for this domain.
+      Help Scout SPF include (`include:helpscoutemail.com`).
+      The SPF article prints that include as the entry that
+      can be removed. This observes the include. It does not
+      prove that Help Scout sends mail or that the include
+      is still required.
 - name: Atlassian (Jira/Confluence)
   slug: atlassian
   category: Productivity & Collaboration
@@ -758,10 +764,15 @@ fingerprints:
   detections:
   - type: mx
     pattern: hornetsecurity.com
+    reference: https://support.hornetsecurity.com/hc/en-us/articles/45997388779537-Migration-for-Vade-Cloud-Customers
+    verified: '2026-11-16'
     description: >-
-      Hornetsecurity (email security gateway) MX target
-      (`hornetsecurity.com`). Indicates inbound mail is filtered by
-      Hornetsecurity.
+      MX host under a documented Hornetsecurity exchanger
+      `vade-mx-fr01.hornetsecurity.com`. The Vade Cloud
+      migration article prints that host as an MX record.
+      This observes an MX host under `hornetsecurity.com`.
+      It does not prove that mail is delivered or that
+      Hornetsecurity is the only exchanger.
 - name: AppRiver (Zix)
   slug: appriver
   parent_vendor: Zix
@@ -1881,9 +1892,15 @@ fingerprints:
   detections:
   - type: cname_target
     pattern: herokuspace.com
+    reference: https://devcenter.heroku.com/articles/understanding-tls-on-heroku
+    verified: '2026-11-16'
     description: >-
-      Heroku custom-DNS CNAME target (`herokuspace.com`). Customer-
-      configured app hostnames.
+      CNAME target under the documented Heroku Private Space
+      DNS suffix `herokuspace.com`. The TLS article says ACM
+      DNS targets for Private Spaces end in that suffix. This
+      observes a CNAME target under `herokuspace.com`. It does
+      not prove that the app runs in a Private Space or that
+      this target is the only route.
 - name: Alibaba Cloud (compute / generic)
   slug: alibaba-cloud
   category: Cloud

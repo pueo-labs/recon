@@ -229,6 +229,7 @@ and a later 2026-11-16 DNS provider reference check,
 and a later 2026-11-16 email and DNS reference check,
 and a later 2026-11-16 nameserver and mail reference check,
 and a later 2026-11-16 nameserver, mail, and reporting reference
+check, and a later 2026-11-16 mail, SPF, and custom-DNS reference
 check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
@@ -1131,6 +1132,63 @@ The [GoDaddy nameserver help](https://www.godaddy.com/help/find-my-godaddy-names
 does not print `gdnsdef.com` or any nameserver hostname. Registry and
 DNS-directory pages are not a vendor basis. The suffix stays undated.
 No nameserver host was added.
+
+### Documented reference check, later on 2026-11-16, mail, SPF, and custom DNS
+
+This pass checked eight undated MX, TXT, SPF, and CNAME rules. Three
+received a `verified` date because the fetched vendor page prints the
+catalog grammar. Five stayed undated. No new detection, DNS record
+type, or collection path was added. This note does not cut a release.
+
+The [Help Scout SPF article](https://docs.helpscout.com/article/58-spf-records),
+updated January 30, 2024, prints `include:helpscoutemail.com` as the
+SPF entry that can be removed. The rule observes that include. It
+does not prove that Help Scout sends mail or that the include is
+still required.
+
+The [Heroku TLS article](https://devcenter.heroku.com/articles/understanding-tls-on-heroku),
+last updated September 30, 2024, says ACM DNS targets end with
+`herokuspace.com` for Private Spaces apps. The custom domains article,
+last updated June 7, 2026, says Cedar Private Spaces use a DNS target
+ending in that suffix. The rule observes a CNAME target under
+`herokuspace.com`. It does not prove that the app runs in a Private
+Space or that this target is the only route. The example host was not
+added.
+
+The [Hornetsecurity Vade Cloud migration article](https://support.hornetsecurity.com/hc/en-us/articles/45997388779537-Migration-for-Vade-Cloud-Customers),
+updated October 13, 2026, prints MX hosts under `hornetsecurity.com`.
+The rule observes an MX host under that suffix. It does not prove
+that mail is delivered or that Hornetsecurity is the only exchanger.
+The specific hosts were not added.
+
+The [Google Workspace MX article](https://knowledge.workspace.google.com/admin/domains/set-up-mx-records-for-google-workspace)
+prints `smtp.google.com`. The legacy note says older values start
+with `aspmx` and does not print `googlemail.com`. That different
+suffix was not added. The catalog MX stays undated.
+
+The [Google Workspace password-recovery article](https://knowledge.workspace.google.com/admin/domains/recover-your-google-workspace-password-with-a-cname-record)
+tells the operator to add a unique CNAME whose destination is
+`google.com`. It does not print
+`google-gws-recovery-domain-verification=`. The domain TXT
+verification article prints `google-site-verification=`, a different
+prefix. The example label and token were not copied. The catalog TXT
+stays undated.
+
+The [Google Workspace business-email unlock article](https://knowledge.workspace.google.com/admin/domains/verify-your-domain-to-unlock-features-for-business-email-accounts)
+says to follow the verification tool. It does not print
+`work-accounts-domain-verification=`. The same TXT article prints a
+different prefix. The example token was not copied. The catalog TXT
+stays undated.
+
+The [Greenhouse Mailgun update article](https://support.greenhouse.io/hc/en-us/articles/24674627688475-Greenhouse-Mailgun-Updates-April-2024),
+last updated April 10, 2024, prints `include:mg-spf.greenhouse.io`.
+That host is narrower than the existing `greenhouse.io` suffix, so
+that suffix stays undated. The narrower host was not added.
+
+The [Heroku custom domains article](https://devcenter.heroku.com/articles/custom-domains),
+last updated June 7, 2026, says Heroku does not explicitly verify
+domain ownership when a domain is added. It does not print
+`heroku-domain-verification=`. The catalog TXT stays undated.
 
 ## Executable path
 

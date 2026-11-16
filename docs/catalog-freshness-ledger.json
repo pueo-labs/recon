@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "0c1f3bab5e5f9d57fd76db4309f3584e81810edf8d05e618abdbf64ef06f3083",
+  "catalog_digest": "c8fef7b1e0e771c123c2b252cdca507848ab5a2fadc9c11231b238de69b01523",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -1728,8 +1728,104 @@
       "rule_id": "discovered-signals.yaml/google-domains-dns/ns/googledomains.com",
       "source_checked_on": "2026-11-16",
       "source_status": "checked"
+    },
+    {
+      "basis": "Google Workspace MX article checked 2026-11-16. The MX value it prints is smtp.google.com. The legacy note says older values start with aspmx and does not print googlemail.com. smtp.google.com is a different suffix and was not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://knowledge.workspace.google.com/admin/domains/set-up-mx-records-for-google-workspace",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "0fb6928d7e0a282051b2e5b1b2d18cd7ea374cf7d0c9f78001f180ca552866f9",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/google-workspace/mx/googlemail.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Google Workspace password-recovery article checked 2026-11-16 tells the operator to add a unique CNAME whose destination is google.com. It does not print google-gws-recovery-domain-verification=. The domain TXT verification article prints google-site-verification=, which is a different prefix. The example CNAME label and the example TXT token were not copied. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://knowledge.workspace.google.com/admin/domains/recover-your-google-workspace-password-with-a-cname-record",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "a31468b1946c031de36937675207932af2e552acf46fe2d16a1a4a70a264eed8",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/google-workspace/txt/^google-gws-recovery-domain-verification=",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Google Workspace business-email unlock article checked 2026-11-16 says to follow the verification tool. It does not print work-accounts-domain-verification=. The domain TXT verification article prints google-site-verification=, which is a different prefix. The example token was not copied. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://knowledge.workspace.google.com/admin/domains/verify-your-domain-to-unlock-features-for-business-email-accounts",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "a064f0b28953d3203e295a0404f02c37e7a06cef2a7747e7c9ea7e8fb7cf94e8",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/google-workspace/txt/^work-accounts-domain-verification=",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Greenhouse Mailgun update article, last updated April 10, 2024, checked 2026-11-16 prints v=spf1 include:mg-spf.greenhouse.io ~all. That host is narrower than the existing greenhouse.io suffix. The broader suffix stays undated. The narrower host was not added. The email-domain verification article describes generated SPF records and does not print include:greenhouse.io.",
+      "disposition": "deferred",
+      "new_reference": "https://support.greenhouse.io/hc/en-us/articles/24674627688475-Greenhouse-Mailgun-Updates-April-2024",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "3b6112ae7ea7263181e872a4a9966ccaddd34ecbc4d2884e7afbc6e0d5ae2f8d",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/greenhouse/spf/greenhouse.io",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Help Scout SPF article, updated January 30, 2024, checked 2026-11-16 prints include:helpscoutemail.com as the SPF entry that can be removed. The rule observes that include. It does not prove that Help Scout sends mail or that the include is still required.",
+      "disposition": "narrowed",
+      "new_reference": "https://docs.helpscout.com/article/58-spf-records",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "4284def1ad62de8e680b1b23d11bc60422abf7f05a0592aaf04e0dcfe0f1c7a9",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/helpscout/spf/helpscoutemail.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Heroku TLS article, last updated September 30, 2024, checked 2026-11-16 says ACM DNS targets end with herokuspace.com for Private Spaces apps and prints an example target under that suffix. The custom domains article, last updated June 7, 2026, says Cedar Private Spaces use a DNS target ending in herokuspace.com. The rule observes a CNAME target under herokuspace.com. It does not prove that the app runs in a Private Space or that this target is the only route. The example host was not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://devcenter.heroku.com/articles/understanding-tls-on-heroku",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "898e6498b5d339d2d608356a9fa5b289e218018390b33e0930de5666c1aa1a36",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/heroku/cname_target/herokuspace.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Heroku custom domains article, last updated June 7, 2026, checked 2026-11-16 says Heroku does not explicitly verify domain ownership when a domain is added. It does not print heroku-domain-verification=. The TLS article also does not print that prefix. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://devcenter.heroku.com/articles/custom-domains",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "134c4c00f783ba27d30300093183e3a7a93b7464448f6c75e17855bc3f5a2d5e",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/heroku/txt/^heroku-domain-verification=",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Hornetsecurity Vade Cloud migration article, updated October 13, 2026, checked 2026-11-16 prints MX records vade-mx-fr01.hornetsecurity.com, vade-mx-fr02.hornetsecurity.com, vade-mx-eu-fallback01.hornetsecurity.com, and vade-mx-eu-fallback02.hornetsecurity.com. The rule observes an MX host under hornetsecurity.com. It does not prove that mail is delivered or that Hornetsecurity is the only exchanger. The specific hosts were not added as separate rules.",
+      "disposition": "narrowed",
+      "new_reference": "https://support.hornetsecurity.com/hc/en-us/articles/45997388779537-Migration-for-Vade-Cloud-Customers",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "d955c479b4f0d5073ba97b1a57afbe3c12bd143cc369c01c4baf3997140af20b",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/hornetsecurity/mx/hornetsecurity.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, not a complete catalog review"
 }

@@ -812,6 +812,48 @@
       "reviewed_on": "2026-11-16",
       "source_checked_on": "2026-11-16",
       "reason": "Squarespace nameserver article, last updated September 17, 2026, checked 2026-11-16: https://support.squarespace.com/hc/en-us/articles/4404183898125-Review-change-or-reset-your-domain-s-nameservers. It says Squarespace default nameservers may end in .googledomains.com, .nsone.net, .squarespacedns.com, or .systemdns.com. The rule observes an NS host under googledomains.com. It does not prove that the zone is delegated, that Google Domains is the registrar, or that Squarespace is the only DNS provider. The other suffixes were not added."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "helpscout",
+        "detection_type": "spf",
+        "pattern": "helpscoutemail.com"
+      },
+      "before": "71c1a4fe46665f4f9f9c105e4aa98f2bbb1ced9628712f41cc3508ca2f4a7944",
+      "after": "4284def1ad62de8e680b1b23d11bc60422abf7f05a0592aaf04e0dcfe0f1c7a9",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Help Scout SPF article, updated January 30, 2024, checked 2026-11-16: https://docs.helpscout.com/article/58-spf-records. It prints include:helpscoutemail.com as the SPF entry that can be removed. The rule observes that include. It does not prove that Help Scout sends mail or that the include is still required."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "heroku",
+        "detection_type": "cname_target",
+        "pattern": "herokuspace.com"
+      },
+      "before": "9577d91578df494b1f2228b484e9f5d8cfd79239db1c5ed03fd0507d3c1fcb14",
+      "after": "898e6498b5d339d2d608356a9fa5b289e218018390b33e0930de5666c1aa1a36",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Heroku TLS article, last updated September 30, 2024, checked 2026-11-16: https://devcenter.heroku.com/articles/understanding-tls-on-heroku. It says ACM DNS targets end with herokuspace.com for Private Spaces apps and prints an example target under that suffix. The custom domains article, last updated June 7, 2026, says Cedar Private Spaces use a DNS target ending in herokuspace.com. The rule observes a CNAME target under herokuspace.com. It does not prove that the app runs in a Private Space or that this target is the only route. The example host was not added."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "hornetsecurity",
+        "detection_type": "mx",
+        "pattern": "hornetsecurity.com"
+      },
+      "before": "6860d631a38d62c309b55ab19ebadf28c645b5f40bdb6420f3496cadd481357b",
+      "after": "d955c479b4f0d5073ba97b1a57afbe3c12bd143cc369c01c4baf3997140af20b",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Hornetsecurity Vade Cloud migration article, updated October 13, 2026, checked 2026-11-16: https://support.hornetsecurity.com/hc/en-us/articles/45997388779537-Migration-for-Vade-Cloud-Customers. It prints MX records vade-mx-fr01.hornetsecurity.com, vade-mx-fr02.hornetsecurity.com, vade-mx-eu-fallback01.hornetsecurity.com, and vade-mx-eu-fallback02.hornetsecurity.com. The rule observes an MX host under hornetsecurity.com. It does not prove that mail is delivered or that Hornetsecurity is the only exchanger. The specific hosts were not added as separate rules."
     }
   ]
 }
