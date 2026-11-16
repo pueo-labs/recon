@@ -121,6 +121,7 @@ class TestDoctorMcp:
         # These appear in regular --doctor but not in --mcp
         assert "OIDC discovery" not in result.output
         assert "crt.sh" not in result.output
+        assert "certspotter" not in result.output
 
     def test_doctor_mcp_exits_one_when_mcp_missing(self) -> None:
         """A missing MCP package cannot produce a working setup, so --mcp exits 1

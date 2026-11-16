@@ -17,6 +17,7 @@ from rich.panel import Panel
 from rich.table import Table
 from rich.text import Text
 
+from recon_tool.collection_progress import CT_UNIT, MTA_STS_UNIT, UnitOutcome
 from recon_tool.formatter.briefing import (
     briefing_insights,
     cap_insights,
@@ -96,6 +97,7 @@ from recon_tool.formatter.serialize import (
     format_tenant_plain,
     plain_lines,
 )
+from recon_tool.formatter.source_ladder import LadderState
 from recon_tool.formatter.terminal import (  # re-exported: stable import path
     get_console,
     get_err_console,
@@ -971,26 +973,82 @@ def _render_explain_conflicts(info: TenantInfo, explain: bool, verbose: bool) ->
     return conf_block
 
 
-# Source state -> (glyph name, status word, role). The glyph carries the role
-# color; the status word stays in the default foreground beside it.
-_SOURCE_MARKS: dict[str, tuple[str, str, str]] = {
+# Ladder state -> (glyph name, status word, role). The glyph carries the role
+# color; the status word stays in the default foreground beside it. The word
+# matches the source-health line's states. The health line says "matched"
+# for the count; the row keeps "match" so a row is one unit, not a tally.
+_VERBOSE_MARKS: dict[str, tuple[str, str, str]] = {
     "match": ("ok", "match", SUCCESS),
     "no_match": ("neutral", "no match", MUTED),
-    "unavailable": ("fail", "error", ERROR),
+    "unavailable": ("fail", "unavailable", ERROR),
 }
 
 
-def render_verbose_sources(results: list[SourceResult], *, console: Console | None = None) -> None:
-    """Print per-source status lines to console."""
-    c = console or get_console()
+def _verbose_state_word(outcome: UnitOutcome) -> str:
+    """Prefer the ladder reason, then the same state word the health line uses."""
+    if outcome.reason:
+        return outcome.reason
+    if outcome.state == "no_match":
+        return "no match"
+    return "unavailable"
+
+
+def _verbose_transport_detail(unit: str, dns: SourceResult | None) -> str:
+    """Detail for a matched certificate-transparency or MTA-STS unit."""
+    if unit == CT_UNIT:
+        if dns is not None and dns.ct_subdomain_count:
+            return f"{dns.ct_subdomain_count} names"
+        return "certificate data observed"
+    if dns is not None and dns.mta_sts_mode:
+        return f"mode {dns.mta_sts_mode}"
+    return "record observed"
+
+
+def _verbose_unit_detail(unit: str, outcome: UnitOutcome, primary: dict[str, SourceResult]) -> str:
+    """Describe one settled ladder unit without quoting a related-host row."""
+    if unit in {CT_UNIT, MTA_STS_UNIT}:
+        if outcome.state == "match":
+            return _verbose_transport_detail(unit, primary.get("dns_records"))
+        return _verbose_state_word(outcome)
+    result = primary.get(unit)
+    if outcome.state == "match":
+        if result is None:
+            return "data returned"
+        return _source_success_description(result)
+    if result is not None and result.error:
+        return result.error
+    return _verbose_state_word(outcome)
+
+
+def render_verbose_sources(
+    results: list[SourceResult],
+    *,
+    console: Console | None = None,
+    skip_ct: bool = False,
+    active_probes: bool = False,
+) -> None:
+    """Print one row per settled source-ladder unit.
+
+    The rows use the same planned units and the same classifier as the
+    source-health line. Certificate transparency and MTA-STS are included.
+    A later result with a source name already seen (related-host enrichment)
+    does not add a row.
+    """
+    state = LadderState.planned(skip_ct=skip_ct, active_probes=active_probes)
+    state.finalize(results)
+    primary: dict[str, SourceResult] = {}
     for result in results:
-        state = source_display_state(result)
-        success = state == "match"
-        mark, word, role = _SOURCE_MARKS[state if state in _SOURCE_MARKS else "unavailable"]
+        primary.setdefault(result.source_name, result)
+    c = console or get_console()
+    for unit in state.units:
+        outcome = state.outcome(unit)
+        if outcome is None:
+            continue
+        mark, word, role = _VERBOSE_MARKS[outcome.state]
         marker = f"[{role}]{glyph(mark)}[/{role}] {word}"
-        detail = _source_success_description(result) if success else result.error or state.replace("_", " ")
+        detail = _verbose_unit_detail(unit, outcome, primary)
         safe_detail = escape(strip_control_chars(detail))
-        c.print(f"  {marker} {result.source_name}: {safe_detail}")
+        c.print(f"  {marker} {unit}: {safe_detail}")
 
 
 def _source_success_description(result: SourceResult) -> str:

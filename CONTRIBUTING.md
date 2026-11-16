@@ -77,8 +77,11 @@ updater still bundles older uv, its update must fail closed until that tool is
 upgraded; do not lower the floor to restore compatibility. The hosted
 Dependabot executable is not verified by the local gate.
 
-`.python-version` pins the local toolchain to final CPython 3.15.1. uv 0.13.5
-can download that final release with refreshed pip and ensurepip bundles.
+`.python-version` pins the local toolchain to final CPython 3.15.2. uv 0.13.5
+can use an installed 3.15.2 interpreter. Its managed download index does not
+yet offer a 3.15.2 build, so install that interpreter before recreating the
+environment. CI asks setup-python for 3.15 and sets `UV_PYTHON` to that
+request, which tracks setup-python's maintained 3.15 patch.
 Existing managed interpreters and virtual environments are not updated just
 by changing this manifest. See the
 [toolchain remediation procedure](docs/supply-chain.md#toolchain-ca-remediation)

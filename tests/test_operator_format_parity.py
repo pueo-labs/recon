@@ -90,23 +90,43 @@ def test_sparse_plain_guidance_only_appears_before_diagnostics(confidence: Confi
 
 
 @pytest.mark.parametrize(
-    ("result", "expected"),
+    ("result", "panel_state", "verbose_state"),
     [
-        (SourceResult(source_name="synthetic", tenant_id="synthetic-tenant"), "match"),
-        (SourceResult(source_name="synthetic"), "no_match"),
-        (SourceResult(source_name="synthetic", error="No Google Workspace configuration found"), "no_match"),
-        (SourceResult(source_name="synthetic", error="HTTP 400 from OIDC discovery"), "no_match"),
-        (SourceResult(source_name="synthetic", error="request timed out", source_unavailable=True), "unavailable"),
-        (SourceResult(source_name="synthetic", error="request timed out", tenant_id="synthetic"), "unavailable"),
+        (SourceResult(source_name="oidc_discovery", tenant_id="synthetic-tenant"), "match", "match"),
+        (SourceResult(source_name="oidc_discovery"), "no_match", "no_match"),
         (
-            SourceResult(source_name="synthetic", error="No Google Workspace response", source_unavailable=True),
+            SourceResult(source_name="oidc_discovery", error="No Google Workspace configuration found"),
+            "no_match",
+            "no_match",
+        ),
+        (SourceResult(source_name="oidc_discovery", error="HTTP 400 from OIDC discovery"), "no_match", "no_match"),
+        (
+            SourceResult(source_name="oidc_discovery", error="request timed out", source_unavailable=True),
+            "unavailable",
             "unavailable",
         ),
-        (SourceResult(source_name="synthetic", source_unavailable=True), "unavailable"),
+        # The panel treats a non-soft error as unavailable. The source ladder,
+        # which --verbose and the source-health line share, counts that row as
+        # no match unless source_unavailable is set.
+        (
+            SourceResult(source_name="oidc_discovery", error="request timed out", tenant_id="synthetic"),
+            "unavailable",
+            "no_match",
+        ),
+        (
+            SourceResult(source_name="oidc_discovery", error="No Google Workspace response", source_unavailable=True),
+            "unavailable",
+            "unavailable",
+        ),
+        (SourceResult(source_name="oidc_discovery", source_unavailable=True), "unavailable", "unavailable"),
     ],
 )
-def test_source_views_share_match_miss_and_unavailable_states(result: SourceResult, expected: str) -> None:
-    assert source_display_state(result) == expected
+def test_source_views_share_match_miss_and_unavailable_states(
+    result: SourceResult,
+    panel_state: str,
+    verbose_state: str,
+) -> None:
+    assert source_display_state(result) == panel_state
     buffer = StringIO()
     console = Console(file=buffer, width=180, no_color=True)
     render_verbose_sources([result], console=console)
@@ -120,12 +140,15 @@ def test_source_views_share_match_miss_and_unavailable_states(result: SourceResu
     console.print(render_source_status_panel([result]))
     status = buffer.getvalue()
 
-    assert {"match": "match synthetic", "no_match": "no match synthetic", "unavailable": "error synthetic"}[
-        expected
-    ] in verbose
-    assert {"match": "success", "no_match": "no match", "unavailable": "unavailable"}[expected] in detail
-    marker = {"match": "\u2713", "no_match": "\u2013", "unavailable": "\u2717"}[expected]
-    assert f"{marker} synthetic" in status
-    if expected == "unavailable":
+    assert {
+        "match": "match oidc_discovery",
+        "no_match": "no match oidc_discovery",
+        "unavailable": "unavailable oidc_discovery",
+    }[verbose_state] in verbose
+    assert {"match": "success", "no_match": "no match", "unavailable": "unavailable"}[panel_state] in detail
+    marker = {"match": "\u2713", "no_match": "\u2013", "unavailable": "\u2717"}[panel_state]
+    assert f"{marker} oidc_discovery" in status
+    if verbose_state == "unavailable":
         assert "no match" not in verbose
+    if panel_state == "unavailable":
         assert "no match" not in detail

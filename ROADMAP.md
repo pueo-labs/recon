@@ -37,9 +37,17 @@ absent.
 
 ## Resume here
 
-State at 2026-11-03: tag `v2.27.1` is `ab4c602f`. That tag's PyPI
+State at 2026-11-15: tag `v2.27.1` is still `ab4c602f`. That tag's PyPI
 release, GitHub Release, and MCP Registry entry
-`io.github.pueo-labs/recon` report 2.27.1. No issues are open.
+`io.github.pueo-labs/recon` report 2.27.1. Unreleased work raises the
+dnspython floor to 2.9.2 (CVE-2026-128089) and the opentelemetry-api
+floor to 1.45.2 (CVE-2026-126360), pins local and container CPython to
+3.15.2, and corrects three output defects: doctor reports both
+certificate-transparency providers, DMARC `p=none` is not a present
+hardening control, and `--verbose` uses the source-health ladder.
+Issues 356, 357, and 358 stay open until that change merges. The four
+Dependabot alerts are addressed by the maintainer commit, because a bot
+author fails the commit-metadata hygiene gate.
 2.27.1 corrected the validation price table, recorded the catalog date
 passes, refreshed the toolchain, and pointed package metadata at
 `pueo-labs/recon`. The packaging batch and tracker #324 are closed.
@@ -112,10 +120,11 @@ What is next, and why:
    local pin or drop the audit to make the refresh look finished. See
    [the October review](docs/maintenance-review-2026-10-08.md).
 
-3. Black-box defects before any new surface. None are open. A new collector,
-   score, inference path, or set-level review bundle needs a named operator
-   handoff that the existing surfaces cannot solve. Output truthfulness
-   outranks another feature release.
+3. Black-box defects before any new surface. Issues 356, 357, and 358 are
+   corrected in the unreleased change above and are not yet released. A new
+   collector, score, inference path, or set-level review bundle needs a named
+   operator handoff that the existing surfaces cannot solve. Output
+   truthfulness outranks another feature release.
 
 Not next, and why:
 
@@ -143,10 +152,12 @@ Not next, and why:
 
 When picking work back up, sync `main` and run
 `uv run python scripts/check.py` before starting anything else. 2.27.1 is
-published. Continue the freshness loop on rules that are still due, or wait
-for the upstream blockers above. A later documentation or catalog date pass
-does not by itself cut another release. Batch user-visible behavior through
-the [release process](docs/release-process.md).
+published. The unreleased security floors, Python 3.15.2 pin, and the three
+output corrections are the open follow-up. After that merges, continue the
+freshness loop on rules that are still due, or wait for the upstream
+blockers above. A later documentation or catalog date pass does not by
+itself cut another release. Batch user-visible behavior through the
+[release process](docs/release-process.md).
 
 ## Current release and next steps
 
@@ -199,9 +210,9 @@ and corrects idle ladder redraws, palette singleton shadowing, and input
 selection that did not follow the accent; publication is tracked in the changelog.
 Typecheck and release jobs run Node 26 with `check-latest`, so they pick up
 each new 26.x release, including the 2026-10-21 security release (26.12.1) and
-the LTS line from 2026-10-28, without a pin change. Python 3.15.1 remains the
-pinned local and container interpreter. Python 3.15.2, released 2026-10-25,
-is the current GA security release and is not yet that pin. 3.11 through
+the LTS line from 2026-10-28, without a pin change. Python 3.15.2 is the
+pinned local and container interpreter. It is the current GA security
+release, published 2026-10-25. 3.11 through
 3.15 remain the tested compatibility range. Drop PyYAML source builds once a
 cp315 wheel ships.
 

@@ -44,6 +44,8 @@ DOCTOR_JSON_SCHEMA_VERSION = 1
 NEXT_RERUN = "then rerun `recon doctor`"
 NEXT_MCP_REINSTALL = "pip install -U recon-tool, then rerun `recon doctor --mcp`"
 CT_CHECK_NAME = "crt.sh (cert transparency)"
+CERTSPOTTER_CHECK_NAME = "certspotter (cert transparency)"
+_CT_PROBE_NAMES = frozenset({CT_CHECK_NAME, CERTSPOTTER_CHECK_NAME})
 
 
 @dataclass(frozen=True)
@@ -59,6 +61,29 @@ class DoctorSummary:
 
 def _plural(count: int, noun: str) -> str:
     return f"{count} {noun}" if count == 1 else f"{count} {noun}s"
+
+
+def _ct_warning_message(warnings: Sequence[DoctorCheck]) -> str | None:
+    """Summarize certificate-transparency warnings, or None when other rows warn.
+
+    Lookups try crt.sh and then CertSpotter. Both probes warning means
+    certificate transparency is unavailable. One probe warning means lookups
+    can fall back to the provider that answered.
+    """
+    names = {check.name for check in warnings}
+    if not names or not names <= _CT_PROBE_NAMES:
+        return None
+    if names == {CT_CHECK_NAME, CERTSPOTTER_CHECK_NAME}:
+        return f"Core checks passed. Certificate transparency is unavailable ({_plural(len(warnings), 'warning')})."
+    if CT_CHECK_NAME in names:
+        return (
+            "Core checks passed. crt.sh is degraded; CertSpotter is reachable, "
+            "so certificate transparency lookups can fall back."
+        )
+    return (
+        "Core checks passed. CertSpotter is degraded; crt.sh is reachable, "
+        "so certificate transparency lookups can fall back."
+    )
 
 
 def summarize_checks(
@@ -100,8 +125,8 @@ def summarize_checks(
         noun = _plural(len(warnings), "warning")
         if mode == "client":
             message = f"recon is registered in this client's config, with {noun}. Review the rows above."
-        elif mode == "doctor" and all(check.name == CT_CHECK_NAME for check in warnings):
-            message = f"Core checks passed. Optional enrichment sources are degraded ({noun})."
+        elif mode == "doctor" and (ct_message := _ct_warning_message(warnings)) is not None:
+            message = ct_message
         else:
             message = f"Core checks passed with {noun}. Review the rows above."
         return DoctorSummary("warn", counts, message, next_step, 0)

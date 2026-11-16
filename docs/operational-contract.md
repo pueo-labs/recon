@@ -88,8 +88,10 @@ concrete message and map to exit 4. Successful JSON, Markdown, and plain
 payloads are written alone to stdout. Human progress and `--verbose` source
 diagnostics use stderr, so a successful structured stdout stream can be parsed
 without removing presentation lines. Verbose source diagnostics use explicit
-`match`, `no match`, and `error` states; a clean negative observation is not
-styled or labeled as a transport failure.
+`match`, `no match`, and `unavailable` states; a clean negative observation
+is not styled or labeled as a transport failure. Those rows are printed for
+the collection that produced the source-health line. A result reused from
+cache keeps the expanded panel and does not invent unit states.
 
 Batch processing is record-oriented. Once batch arguments and input are valid,
 per-domain validation, lookup, timeout, and internal failure records retain
@@ -169,9 +171,12 @@ uses `No information found for ...`; timeouts and total source failure retain
 truthful failure text instead of being presented as an empty observation.
 
 The `recon doctor` health check follows the same convention: it exits 0 when
-every check passes or only optional enrichment (for example crt.sh) is degraded,
-and exits 1 when a core check fails, so a CI or monitoring job can gate on
-environment health instead of always reading success. `recon doctor --mcp`
+every check passes or only optional enrichment is degraded, and exits 1 when
+a core check fails, so a CI or monitoring job can gate on environment health
+instead of always reading success. Certificate transparency is optional
+enrichment. Doctor probes crt.sh and CertSpotter. It calls certificate
+transparency unavailable only when both probes warn. One provider answering
+means lookups can fall back. `recon doctor --mcp`
 follows the same rule for MCP setup: it exits 1 when the package or server
 cannot load, instructions are absent, or any canonical tool or local resource
 registration is missing. `recon mcp doctor` separately spawns the local stdio
@@ -185,7 +190,8 @@ timeout, or protocol failure. Completed protocol phases remain visible when a
 later phase fails. This live server check does not inspect a client's saved
 configuration; `recon doctor --client=<name>` covers that boundary.
 Default mode contacts Microsoft identity endpoints, DNS for `example.com`, and
-crt.sh using synthetic inputs; it does not accept or query a target namespace.
+one certificate-transparency request each to crt.sh and CertSpotter, using
+synthetic inputs. It does not accept or query a target namespace.
 It also asks the system resolver for one random name under the reserved
 `.invalid` top-level domain. Any answer other than NXDOMAIN is a `warn` row
 naming a resolver that answers names that should not exist, a condition that

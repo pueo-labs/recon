@@ -26,6 +26,7 @@ import typer
 
 from recon_tool.cli.config_directory import config_directory_check
 from recon_tool.cli.doctor_report import (
+    CERTSPOTTER_CHECK_NAME,
     CT_CHECK_NAME,
     NEXT_MCP_REINSTALL,
     NEXT_RERUN,
@@ -748,22 +749,31 @@ def _doctor_resolver_probe() -> DoctorCheck:
     return DoctorCheck(name, "warn", RESOLVER_ANSWERS_NONEXISTENT, _NEXT_RESOLVER)
 
 
-async def _doctor_ct_check() -> DoctorCheck:
-    """Check crt.sh connectivity (certificate transparency, optional enrichment)."""
+def _doctor_ct_status(name: str, status_code: int) -> DoctorCheck:
+    """Map one certificate-transparency probe to a doctor row."""
+    if status_code == 200:
+        return DoctorCheck(name, "ok", "HTTP 200")
+    return DoctorCheck(name, "warn", f"HTTP {status_code} (optional enrichment degraded)")
+
+
+async def _doctor_ct_checks() -> list[DoctorCheck]:
+    """Probe crt.sh, then CertSpotter, once each for the reserved example.com name."""
     import httpx
+
+    from recon_tool.sources.cert_providers import CertSpotterProvider
 
     async with httpx.AsyncClient(timeout=8.0) as client:
         try:
             resp = await client.get("https://crt.sh/?q=%.example.com&output=json")
-            if resp.status_code == 200:
-                return DoctorCheck(CT_CHECK_NAME, "ok", "HTTP 200")
-            return DoctorCheck(
-                CT_CHECK_NAME,
-                "warn",
-                f"HTTP {resp.status_code} (optional enrichment degraded)",
-            )
+            crtsh = _doctor_ct_status(CT_CHECK_NAME, resp.status_code)
         except (httpx.RequestError, OSError) as exc:
-            return DoctorCheck(CT_CHECK_NAME, "warn", f"{_fmt_exc(exc)} (optional enrichment degraded)")
+            crtsh = DoctorCheck(CT_CHECK_NAME, "warn", f"{_fmt_exc(exc)} (optional enrichment degraded)")
+        try:
+            resp = await CertSpotterProvider().connectivity_probe(client, "example.com")
+            certspotter = _doctor_ct_status(CERTSPOTTER_CHECK_NAME, resp.status_code)
+        except (httpx.RequestError, OSError) as exc:
+            certspotter = DoctorCheck(CERTSPOTTER_CHECK_NAME, "warn", f"{_fmt_exc(exc)} (optional enrichment degraded)")
+    return [crtsh, certspotter]
 
 
 def _doctor_mcp_check() -> DoctorCheck:
@@ -939,7 +949,7 @@ async def doctor(*, json_output: bool = False) -> None:
 
     The check order is load-bearing: ``tests/test_doctor.py`` drives the
     httpx mock with a positional side-effect list, so identity probes must
-    run before the crt.sh probe.
+    run before the certificate-transparency probes (crt.sh, then CertSpotter).
 
     Exit code is 0 when every check passes or only optional checks (including
     release status) report warnings, and 1 when any core check fails, so a CI or
@@ -971,7 +981,7 @@ async def collect_doctor_checks() -> list[DoctorCheck]:
     checks.extend(await _doctor_identity_checks())
     checks.append(_doctor_dns_check())
     checks.append(_doctor_resolver_probe())
-    checks.append(await _doctor_ct_check())
+    checks.extend(await _doctor_ct_checks())
     checks.append(_doctor_mcp_check())
     checks.append(_doctor_fingerprint_db_check())
     config_directory = config_directory_check()

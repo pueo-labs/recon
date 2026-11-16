@@ -803,6 +803,10 @@ class CertSpotterProvider:
             params["after"] = after_cursor
         return await client.get(self._BASE_URL, params=params)
 
+    async def connectivity_probe(self, client: httpx.AsyncClient, domain: str) -> httpx.Response:
+        """One unauthenticated first-page request, the same shape lookups use."""
+        return await self._fetch_page(client, domain, None)
+
     async def _fetch_page_with_feedback(
         self,
         client: httpx.AsyncClient,

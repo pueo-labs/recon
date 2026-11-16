@@ -428,19 +428,49 @@ class TestConfidenceColorMappingCompleteness:
         )
 
 
-class TestVerboseOutputListsAllSources:
-    """Property 21: Verbose output lists all attempted sources.
+def _verbose_rows(output: str) -> list[tuple[str, str]]:
+    """Return (state, unit) for each verbose ladder row."""
+    rows: list[tuple[str, str]] = []
+    for line in output.splitlines():
+        if ":" not in line:
+            continue
+        head = line.split(":", 1)[0]
+        padded = f" {head} "
+        if " no match " in padded:
+            state = "no_match"
+        elif " unavailable " in padded:
+            state = "unavailable"
+        elif " match " in padded:
+            state = "match"
+        else:
+            continue
+        rows.append((state, head.strip().split()[-1]))
+    return rows
 
-    For any list of SourceResult objects (both successful and failed),
-    render_verbose_sources(results) should produce output containing the
-    source_name of every result.
 
-    **Validates: Requirements 11.5**
+def _health_counts(line: str) -> dict[str, int]:
+    """Parse the source-health tally, ignoring the parenthetical reasons."""
+    summary = line.split(" (", 1)[0].split(": ", 1)[1]
+    counts = {"match": 0, "no_match": 0, "unavailable": 0}
+    labels = {"matched": "match", "no match": "no_match", "unavailable": "unavailable"}
+    for part in summary.split(", "):
+        number, label = part.split(" ", 1)
+        counts[labels[label]] = int(number)
+    return counts
+
+
+class TestVerboseOutputMatchesSourceHealth:
+    """Verbose rows are the settled source-ladder units.
+
+    A related-host result reuses a source name and must not add a row. The
+    match, no-match, and unavailable counts equal the source-health line.
     """
 
     @given(results=st.lists(source_result_st, min_size=1, max_size=10))
     @settings(max_examples=100, suppress_health_check=[HealthCheck.too_slow], deadline=None)
-    def test_verbose_output_contains_all_source_names(self, results: list[SourceResult]):
+    def test_verbose_rows_match_the_source_health_line(self, results: list[SourceResult]):
+        from recon_tool.formatter.source_ladder import LadderState
+
         buf = io.StringIO()
         test_console = Console(
             file=buf,
@@ -449,16 +479,27 @@ class TestVerboseOutputListsAllSources:
             no_color=True,
             highlight=False,
         )
+        state = LadderState.planned(skip_ct=False, active_probes=False)
+        state.finalize(results)
         original = get_console()
         set_console(test_console)
         try:
-            render_verbose_sources(results)
+            render_verbose_sources(results, console=test_console)
             output = buf.getvalue()
-
-            for result in results:
-                assert result.source_name in output, f"source_name {result.source_name!r} not found in verbose output"
         finally:
             set_console(original)
+
+        settled = [unit for unit in state.units if state.outcome(unit) is not None]
+        rows = _verbose_rows(output)
+        assert [unit for _state, unit in rows] == settled
+        health = state.health_line()
+        if health is None:
+            assert rows == []
+            return
+        counts = {"match": 0, "no_match": 0, "unavailable": 0}
+        for state_name, _unit in rows:
+            counts[state_name] += 1
+        assert counts == _health_counts(health)
 
 
 class TestMarkdownEscaping:

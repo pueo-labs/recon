@@ -431,7 +431,9 @@ class TestProperty6GapDetectionCorrectness:
         gaps = find_gaps_from_info(info)
 
         assert assessment.posture_score == 0
-        assert any(control.detail == "quarantine (effective none)" for control in assessment.hardening_status.controls)
+        dmarc = next(control for control in assessment.hardening_status.controls if control.name == "DMARC")
+        assert dmarc.present is False
+        assert dmarc.detail == "quarantine (effective none)"
         assert any("not effectively enforcing" in gap.observation for gap in gaps.gaps)
 
     def test_gateway_with_dmarc_testing_reject_still_has_consistency_gap(self) -> None:
@@ -1324,8 +1326,7 @@ class TestMtaStsModeNoneIsNotInEffect:
         control = next(c for c in assessment.hardening_status.controls if c.name == "MTA-STS")
 
         assert control.present is False
-        # "Declared but disabled" is different from "absent": the record was
-        # observed, so the detail must say so rather than erase it.
+        # The record was observed, so the detail must say so rather than erase it.
         assert control.detail == "policy published with mode none (not in effect)"
         assert control.evidence
         assert assessment.email_posture.mta_sts_mode == "none"
@@ -1337,3 +1338,79 @@ class TestMtaStsModeNoneIsNotInEffect:
 
         assert any("mode none" in observation for observation in observations)
         assert not any("No MTA-STS policy detected" in observation for observation in observations)
+
+
+class TestDmarcNoneIsNotAHardeningControl:
+    """DMARC p=none is monitoring. It is not a present hardening control.
+
+    The same rule applies when pct or t=y testing leaves the effective
+    policy at none. A reject record compared with a none record is one
+    DMARC difference.
+    """
+
+    @staticmethod
+    def _info(
+        *,
+        queried_domain: str = "test.invalid",
+        dmarc_policy: str = "none",
+        dmarc_pct: int | None = None,
+        evidence: tuple[EvidenceRecord, ...] | None = None,
+    ) -> TenantInfo:
+        if evidence is None:
+            evidence = (EvidenceRecord("DMARC", "v=DMARC1; p=none", SVC_DMARC, "dmarc"),)
+        return TenantInfo(
+            tenant_id=None,
+            display_name="Test Corp",
+            default_domain="test.onmicrosoft.com",
+            queried_domain=queried_domain,
+            confidence=ConfidenceLevel.HIGH,
+            sources=("test_source",),
+            services=(SVC_DMARC,),
+            slugs=("dmarc",),
+            dmarc_policy=dmarc_policy,
+            dmarc_pct=dmarc_pct,
+            evidence=evidence,
+        )
+
+    def test_policy_none_is_visible_and_not_present(self) -> None:
+        assessment = assess_exposure_from_info(self._info())
+        control = next(item for item in assessment.hardening_status.controls if item.name == "DMARC")
+
+        assert control.present is False
+        assert control.detail == "policy set to none (monitoring only, not enforcing)"
+        assert control.evidence
+        assert assessment.email_posture.dmarc_policy == "none"
+
+        output = io.StringIO()
+        Console(file=output, width=120, force_terminal=False).print(render_exposure_panel(assessment))
+        rendered = output.getvalue()
+        assert "- DMARC: policy set to none (monitoring only, not enforcing)" in rendered
+
+    def test_partial_quarantine_is_not_present(self) -> None:
+        assessment = assess_exposure_from_info(
+            self._info(
+                dmarc_policy="quarantine",
+                dmarc_pct=50,
+                evidence=(EvidenceRecord("DMARC", "v=DMARC1; p=quarantine; pct=50", SVC_DMARC, "dmarc"),),
+            )
+        )
+        control = next(item for item in assessment.hardening_status.controls if item.name == "DMARC")
+
+        assert control.present is False
+        assert control.detail == "quarantine (effective none)"
+        assert control.evidence
+
+    def test_reject_versus_none_is_one_dmarc_difference(self) -> None:
+        reject = self._info(
+            queried_domain="reject.invalid",
+            dmarc_policy="reject",
+            evidence=(EvidenceRecord("DMARC", "v=DMARC1; p=reject", SVC_DMARC, "dmarc"),),
+        )
+        monitoring = self._info(queried_domain="none.invalid")
+
+        comparison = compare_postures_from_infos(reject, monitoring)
+        dmarc = [item for item in comparison.differences if item.description.startswith("DMARC")]
+
+        assert len(dmarc) == 1
+        assert dmarc[0].domain_a_has is True
+        assert dmarc[0].domain_b_has is False

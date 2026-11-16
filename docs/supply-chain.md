@@ -444,13 +444,14 @@ uv --version  # must report 0.13.5
 uv python upgrade  # refresh uv-managed Python builds, if used
 ```
 
-uv 0.13.5 can install final CPython 3.15.1 with patched pip and ensurepip
-bundles. Existing virtual environments pinned to an older interpreter do not
+uv 0.13.5 can use an installed final CPython 3.15.2. Its managed download
+index does not yet offer a 3.15.2 build, so install that interpreter first.
+Existing virtual environments pinned to an older interpreter do not
 switch automatically. Recreate maintained build environments with the reviewed
 interpreter, then restore their locked dependencies:
 
 ```bash
-uv venv --clear --python 3.15.1 .venv
+uv venv --clear --python 3.15.2 .venv
 uv sync --locked
 uv run python -c "import sys, certifi; print(sys.version); print(certifi.__version__)"
 uv run python -m pip --version  # development environment: >=26.2.2
