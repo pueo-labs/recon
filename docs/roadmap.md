@@ -831,7 +831,11 @@ rules undated. The 2026-11-16 pass dated the Atlassian sending-domain
 verification TXT from the page that prints the grammar, and left
 seven other email and cloud rules undated. A later pass the same day
 dated the Brevo DMARC aggregate rua host from the page that prints
-the grammar, and left seven other email rules undated. That work
+the grammar, and left seven other email rules undated. A later pass
+the same day checked eight undated email, DNS, and event rules and
+left them undated, because a fetched page does not print the
+catalog grammar, prints only a narrower host than the existing
+suffix, or did not return an article body. That work
 does not cut a release. The 2026-10 documentation
 pass read the IANA DNS parameter update and left collection on the existing
 record types. Agent portability remains a separate maintainer track and does

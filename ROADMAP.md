@@ -117,7 +117,11 @@ What is next, and why:
    verification TXT from the page that prints the grammar, and left
    seven other email and cloud rules undated. A later pass the same day
    dated the Brevo DMARC aggregate rua host from the page that prints
-   the grammar, and left seven other email rules undated. That work
+   the grammar, and left seven other email rules undated. A later pass
+   the same day checked eight undated email, DNS, and event rules and
+   left them undated, because a fetched page does not print the
+   catalog grammar, prints only a narrower host than the existing
+   suffix, or did not return an article body. That work
    does not cut a release.
    The next round uses a new question list and the rules that are still due.
    The closed 5,199-row drift round remains a measurement contract. It does

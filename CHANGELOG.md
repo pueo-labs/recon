@@ -32,6 +32,11 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Check eight undated email, DNS, and event rules against current
+  vendor pages. None received a `verified` date. A fetched page does
+  not print the catalog grammar, prints only a narrower host than the
+  existing suffix, or did not return an article body. No new detection
+  was added. This does not cut a release.
 - Date the Brevo DMARC aggregate reporting destination from the current
   vendor page, and point the rule at that page. The record observes a
   rua mailbox domain of `dmarc.brevo.com`. It does not prove that
