@@ -1152,8 +1152,104 @@
       "rule_id": "discovered-signals.yaml/com-laude/ns/comlaude-dns.com",
       "source_checked_on": "2026-11-16",
       "source_status": "checked"
+    },
+    {
+      "basis": "Com Laude Managed DNS Service Terms, version 1.4 dated 2 April 2026, checked 2026-11-16. The terms say anycast DNS is subcontracted to another provider. They do not print an NS hostname ending in comlaude-dns.eu. The Ask the Experts DNS management page also does not print that host. DNS-lookup directories are not a vendor basis. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://comlaude.com/app/uploads/2026/04/Com-Laude-Managed-DNS-Service-Terms-v1.4-2-April-2026.pdf",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "ffa2a5735432d92f9a7e66ae6284b0d87482cb87bf4dd8e212c3f3a91e84e7ce",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/com-laude/ns/comlaude-dns.eu",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Com Laude Managed DNS Service Terms, version 1.4 dated 2 April 2026, checked 2026-11-16. The terms say anycast DNS is subcontracted to another provider. They do not print an NS hostname ending in comlaude-dns.net. The Ask the Experts DNS management page also does not print that host. DNS-lookup directories are not a vendor basis. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://comlaude.com/app/uploads/2026/04/Com-Laude-Managed-DNS-Service-Terms-v1.4-2-April-2026.pdf",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "6823f9520eb9622c69f4c66bf32bd67539089e541f693d69c980a58191a41311",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/com-laude/ns/comlaude-dns.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The Constant Contact article on adding addresses to an SPF record was requested on 2026-11-16. The knowledge base returned a template shell with placeholder article text and did not print an SPF include. The article body was not available, so this is not a source check. A search index is not a vendor basis. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": null,
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "e20b6e755a58c825fd577d640c625df39fa21493ca4adce5e869525694f5ab57",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/constantcontact/spf/constantcontact.com",
+      "source_checked_on": null,
+      "source_status": "unreachable"
+    },
+    {
+      "basis": "Constellix registrar delegation guide, updated March 3, 2025, checked 2026-11-16. It says to enter the nameservers assigned in the product. It does not print an NS hostname ending in constellix.com. The SOA guide prints dns.constellix.com as the default administrator mailbox host, which is not this NS target. That host was not added. DNS-lookup directories are not a vendor basis. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://support.constellix.com/hc/en-us/articles/34573633265435-How-to-Point-Your-Registrar-to-a-New-DNS-Provider",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "a7f5f7950bf638e2363b65efb35baf25ff5824a561ad1d16989ecb1b8e7d0113",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/constellix/ns/constellix.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Constellix registrar delegation guide, updated March 3, 2025, checked 2026-11-16. It says to enter the nameservers assigned in the product. It does not print an NS hostname ending in constellix.net. The SOA guide prints dns.constellix.com as an administrator mailbox host and does not print constellix.net. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://support.constellix.com/hc/en-us/articles/34573633265435-How-to-Point-Your-Registrar-to-a-New-DNS-Provider",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "0074b42e31233ef0f3de536bbd84f612e16571894954dd0028ee03c5f2632af2",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/constellix/ns/constellix.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "A documentation page for cp-dmarc.com was requested on 2026-11-16. The apex and www host did not resolve, so no vendor page was available. This is not a source check. Third-party DMARC explainers are not a vendor basis. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": null,
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "d3ba28e449ca9a533dd064c43dd26c3e643cbcbc6bcdfe1227a79635b09b4842",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/cp-dmarc/dmarc_rua/cp-dmarc.com",
+      "source_checked_on": null,
+      "source_status": "unreachable"
+    },
+    {
+      "basis": "CSC Domain Manager zone-management guide checked 2026-11-16. It tells the operator to enter MX values in the product. It does not print cscdns.net. The DNS Flag Day article says CSC DNS supports EDNS and does not print that host. DNS-lookup directories are not a vendor basis. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://www.cscglobal.com/cscglobal/pdfs/domains/Zone-Management-Process.pdf",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "b1809ace1ca36d4c8e7dad8205e01a77ba708b8bf7cdfec51127f236744a58a3",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/csc/mx/cscdns.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "CSC Domain Manager zone-management guide checked 2026-11-16. It tells the operator to select a name server group in the product. It does not print cscdns.net. The DNS Flag Day article says CSC DNS supports EDNS and does not print that host. DNS-lookup directories are not a vendor basis. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://www.cscglobal.com/cscglobal/pdfs/domains/Zone-Management-Process.pdf",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "a9b646e670a747885dba4d1cf98c01cbd0bc3fbfb8daf7c21f33ff1e7d83b192",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/csc/ns/cscdns.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, not a complete catalog review"
 }

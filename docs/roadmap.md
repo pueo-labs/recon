@@ -835,7 +835,11 @@ the grammar, and left seven other email rules undated. A later pass
 the same day checked eight undated email, DNS, and event rules and
 left them undated, because a fetched page does not print the
 catalog grammar, prints only a narrower host than the existing
-suffix, or did not return an article body. That work
+suffix, or did not return an article body. A later pass the same
+day checked eight undated DNS and email rules and left them
+undated, because a fetched page does not print the catalog
+grammar, the page did not return an article body, or the host did
+not resolve. That work
 does not cut a release. The 2026-10 documentation
 pass read the IANA DNS parameter update and left collection on the existing
 record types. Agent portability remains a separate maintainer track and does

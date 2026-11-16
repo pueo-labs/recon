@@ -121,7 +121,11 @@ What is next, and why:
    the same day checked eight undated email, DNS, and event rules and
    left them undated, because a fetched page does not print the
    catalog grammar, prints only a narrower host than the existing
-   suffix, or did not return an article body. That work
+   suffix, or did not return an article body. A later pass the same
+   day checked eight undated DNS and email rules and left them
+   undated, because a fetched page does not print the catalog
+   grammar, the page did not return an article body, or the host did
+   not resolve. That work
    does not cut a release.
    The next round uses a new question list and the rules that are still due.
    The closed 5,199-row drift round remains a measurement contract. It does
