@@ -32,6 +32,14 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Date the DMARCLY aggregate mailbox domain and the DNSimple
+  nameserver suffix from current vendor pages. The DMARCLY record
+  observes a rua mailbox domain of `dmarcly.com`. The DNSimple record
+  observes an NS host under `dnsimple-edge.com`. Six other undated
+  rules in this pass stay undated because a fetched page prints only
+  a narrower host, does not print the catalog grammar, or the host
+  did not resolve. No new detection was added. This does not cut a
+  release.
 - Check eight undated DNS and email rules against current vendor
   pages. None received a `verified` date. A fetched page does not
   print the catalog grammar, the page did not return an article body,
