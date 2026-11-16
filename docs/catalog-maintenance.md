@@ -223,7 +223,8 @@ check, and a later 2026-11-02 data, analytics, and infrastructure
 reference check, and the 2026-11-16 email and cloud reference check,
 and a later 2026-11-16 email reporting reference check,
 and a later 2026-11-16 email, DNS, and event reference check,
-and a later 2026-11-16 DNS and email reference check.
+and a later 2026-11-16 DNS and email reference check,
+and a later 2026-11-16 DMARC reporting and DNS reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
 bind due rules to their exact claim/catalog digest, prior/new reference, actual
@@ -877,6 +878,60 @@ tells the operator to select a name server group and enter MX values.
 It does not print `cscdns.net`. The [DNS Flag Day article](https://www.cscdbs.com/blog/dns-down-alert-for-dns-flag-day/)
 says CSC DNS supports EDNS and does not print that host. DNS-lookup
 directories are not a vendor basis.
+
+### Documented reference check, later on 2026-11-16, DMARC reporting and DNS
+
+This pass checked eight undated DMARC reporting and DNS rules. Two
+received a `verified` date because the current vendor page prints the
+grammar. Six stay undated. No new detection, DNS record type, or
+collection path was added. This note does not cut a release.
+
+The [DMARCLY rua article](https://www.dmarcly.com/blog/what-is-rua-in-dmarc-dmarc-rua-tag-explained),
+dated 20 February 2024, prints an example aggregate rua whose mailbox
+domain is `dmarcly.com`. The rule observes that mailbox domain. It
+does not prove that reports are collected. The aggregate-reports
+article prints a product mailbox on the narrower host `ag.dmarcly.com`.
+That host was not added. Example and product local-parts were not
+copied.
+
+The [DNSimple name servers article](https://support.dnsimple.com/articles/dnsimple-nameservers/),
+last updated October 26, 2026, says the name servers are
+`ns1.dnsimple-edge.com`, `ns2.dnsimple-edge.net`,
+`ns3.dnsimple-edge.io`, and `ns4.dnsimple-edge.org`. The rule observes
+an NS host under `dnsimple-edge.com`. It does not prove that the zone
+is delegated or that DNSimple is the only DNS provider. The sibling
+suffixes were not dated in this pass. The specific `ns1` host was not
+added as a separate rule.
+
+The [Mimecast DMARC record guide](https://www.mimecast.com/content/how-to-create-a-dmarc-record/)
+prints an aggregate rua on the host `for.dmarcanalyzer.com`. That host
+is narrower than the existing `dmarcanalyzer.com` suffix, so that
+suffix stays undated. The narrower host was not added. The placeholder
+local-part was not copied.
+
+The [DMARC Digests reporting-address article](https://support.dmarcdigests.com/article/1223-what-is-a-reporting-address),
+last updated February 22, 2024, prints an aggregate rua on the host
+`inbound.dmarcdigests.com`. That host is narrower than the existing
+`dmarcdigests.com` suffix, so that suffix stays undated. The narrower
+host was not added. The placeholder local-part was not copied.
+
+The [DMARC/25 English product page](https://www.dmarc25.jp/index-en.html)
+describes report analysis and does not print a DMARC record or an
+aggregate rua. The site name is not the catalog grammar.
+
+The `dmarc360.com` apex redirects to the [CTM360 email-intelligence page](https://www.ctm360.com/platform/email-intelligence-oversight).
+That page uses DMARC360 as a product name and does not print the
+hostname `dmarc360.com` or an aggregate rua. The contact mailbox is on
+a different domain and was not used.
+
+A documentation page for `dmarcinput.com` was requested. The apex and
+www host did not resolve, so no vendor page was available. Third-party
+explainers are not a vendor basis.
+
+The [CSC managed DNS page](https://www.cscdbs.com/en/solutions/dns-services-ddos/)
+describes managed DNS and does not print an NS hostname ending in
+`cscdns.uk`. The zone-management guide also does not print that host.
+DNS-lookup directories are not a vendor basis.
 
 ## Executable path
 

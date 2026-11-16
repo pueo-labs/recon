@@ -360,8 +360,14 @@ fingerprints:
   detections:
   - type: dmarc_rua
     pattern: dmarcly.com
+    reference: https://www.dmarcly.com/blog/what-is-rua-in-dmarc-dmarc-rua-tag-explained
+    verified: '2026-11-16'
     description: >-
-      DMARCLY DMARC aggregate-report endpoint (`dmarcly.com`). Indicates the org uses DMARCLY for DMARC monitoring.
+      DMARCLY aggregate reporting destination (`dmarcly.com`).
+      The rua article prints an example aggregate mailbox on
+      that domain. This observes that mailbox domain. It does
+      not prove that reports are collected. A product mailbox
+      on `ag.dmarcly.com` was not added.
 - name: Validity
   slug: validity
   category: Email & Communication
@@ -911,8 +917,14 @@ fingerprints:
       DNSimple authoritative DNS NS target (`dnsimple-edge.net`).
   - type: ns
     pattern: dnsimple-edge.com
+    reference: https://support.dnsimple.com/articles/dnsimple-nameservers/
+    verified: '2026-11-16'
     description: >-
-      DNSimple authoritative DNS NS target (`dnsimple-edge.com`).
+      Authoritative nameserver under DNSimple's documented
+      name server `ns1.dnsimple-edge.com`. This observes an
+      NS host under `dnsimple-edge.com`. It does not prove
+      that the zone is delegated or that DNSimple is the
+      only DNS provider.
   - type: ns
     pattern: dnsimple-edge.io
     description: >-

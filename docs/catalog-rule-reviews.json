@@ -504,6 +504,34 @@
       "reviewed_on": "2026-11-16",
       "source_checked_on": "2026-11-16",
       "reason": "Brevo domain-setup article checked 2026-11-16: https://help.brevo.com/hc/en-us/articles/35337929909778-Set-up-your-domain-in-Brevo. It prints an aggregate rua of rua=mailto:rua@dmarc.brevo.com and the example record v=DMARC1; p=none; rua=mailto:rua@dmarc.brevo.com. The domain authentication article prints the same rua. The rule observes that mailbox domain. It does not prove that reports are collected or that mail is sent through Brevo. The p=none value is the page's example policy and is not a claim about a customer namespace."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "dmarcly",
+        "detection_type": "dmarc_rua",
+        "pattern": "dmarcly.com"
+      },
+      "before": "84efaf8f7afe99cc7c69dd320b6728a6a852e9a19122aa959e7cd27fe314400b",
+      "after": "4d0a2a8ce7b7707c062e1383e6730f085ab5e8b6587925b34a99880b9933f0ed",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "DMARCLY rua article, dated 20 February 2024, checked 2026-11-16: https://www.dmarcly.com/blog/what-is-rua-in-dmarc-dmarc-rua-tag-explained. It prints an example aggregate rua whose mailbox domain is dmarcly.com. The rule observes that mailbox domain. It does not prove that reports are collected. The aggregate-reports article prints a product mailbox on the narrower host ag.dmarcly.com. That host was not added. Example and product local-parts were not copied."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "dnsimple",
+        "detection_type": "ns",
+        "pattern": "dnsimple-edge.com"
+      },
+      "before": "06d435d96c5a7b45673399132f7ce81d7e7d90018aa33ba840b1576febd977b2",
+      "after": "7966678b332a16708c6801b987718d7bd5e18e127f04bee26caad4bab5eeabba",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "DNSimple name servers article, last updated October 26, 2026, checked 2026-11-16: https://support.dnsimple.com/articles/dnsimple-nameservers/. It says the name servers are ns1.dnsimple-edge.com, ns2.dnsimple-edge.net, ns3.dnsimple-edge.io, and ns4.dnsimple-edge.org. The rule observes an NS host under dnsimple-edge.com. It does not prove that the zone is delegated or that DNSimple is the only DNS provider. The sibling suffixes on the same page were not dated in this pass. The specific ns1 host was not added as a separate rule."
     }
   ]
 }

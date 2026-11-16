@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "844cd07a521eabee84533df6b5984108e015561d3901b4785b3cfa0b51cb7261",
+  "catalog_digest": "076619beee8b75099529e273f0290a5e452c9136d60bc64db0eadd12b15ccef5",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -1248,8 +1248,104 @@
       "rule_id": "discovered-signals.yaml/csc/ns/cscdns.net",
       "source_checked_on": "2026-11-16",
       "source_status": "checked"
+    },
+    {
+      "basis": "CSC managed DNS page checked 2026-11-16 describes managed DNS and does not print an NS hostname ending in cscdns.uk. The zone-management guide also does not print that host. DNS-lookup directories are not a vendor basis. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://www.cscdbs.com/en/solutions/dns-services-ddos/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "56594197f57e8123d524cc16211375d0e1a414307450442b3b33ba9ab9a3fa32",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/csc/ns/cscdns.uk",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Mimecast DMARC record guide checked 2026-11-16 prints an aggregate rua on the host for.dmarcanalyzer.com. That host is narrower than the existing dmarcanalyzer.com suffix. The broader suffix stays undated. The narrower host was not added. The placeholder local-part was not copied. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://www.mimecast.com/content/how-to-create-a-dmarc-record/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "7ee8e58bf7ebcb670ec6d2d7ce7e0c4ac1fb2bd47a9de8510d15042d84f76dcd",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/dmarc-analyzer/dmarc_rua/dmarcanalyzer.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "DMARC Digests reporting-address article, last updated February 22, 2024, checked 2026-11-16. It prints an aggregate rua on the host inbound.dmarcdigests.com. That host is narrower than the existing dmarcdigests.com suffix. The broader suffix stays undated. The narrower host was not added. The placeholder local-part was not copied. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://support.dmarcdigests.com/article/1223-what-is-a-reporting-address",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "632858ccd3df1f923f2991e6b891e6c1462cf4cf833440945469b5fee5d25e60",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/dmarc-digests/dmarc_rua/dmarcdigests.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "DMARC/25 English product page checked 2026-11-16. It describes report analysis and does not print a DMARC record or an aggregate rua. The site name is not the catalog grammar. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://www.dmarc25.jp/index-en.html",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "0deca4ddeeeec675ba6c39bba5f0433d2e20bfb1a5fe124a97a5c95954175599",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/dmarc25/dmarc_rua/dmarc25.jp",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The dmarc360.com apex redirects to the CTM360 email-intelligence page, checked 2026-11-16. That page uses DMARC360 as a product name and does not print the hostname dmarc360.com or an aggregate rua. The contact mailbox is on a different domain and was not used. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://www.ctm360.com/platform/email-intelligence-oversight",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "1ebaf265ccd72dcd1897d93d970c2e9830f50ca14dcf42556cc92fbf841a47d8",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/dmarc360/dmarc_rua/dmarc360.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "A documentation page for dmarcinput.com was requested on 2026-11-16. The apex and www host did not resolve, so no vendor page was available. This is not a source check. Third-party explainers are not a vendor basis. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": null,
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "23e7cde614dd0518a446653eaee659404ef5572dbfe99e7ec41c6247107d8157",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/dmarcinput/dmarc_rua/dmarcinput.com",
+      "source_checked_on": null,
+      "source_status": "unreachable"
+    },
+    {
+      "basis": "DMARCLY rua article, dated 20 February 2024, checked 2026-11-16. It prints an example aggregate rua whose mailbox domain is dmarcly.com. The rule observes that mailbox domain. It does not prove that reports are collected. The aggregate-reports article prints a product mailbox on the narrower host ag.dmarcly.com. That host was not added. Example and product local-parts were not copied.",
+      "disposition": "narrowed",
+      "new_reference": "https://www.dmarcly.com/blog/what-is-rua-in-dmarc-dmarc-rua-tag-explained",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "4d0a2a8ce7b7707c062e1383e6730f085ab5e8b6587925b34a99880b9933f0ed",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/dmarcly/dmarc_rua/dmarcly.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "DNSimple name servers article, last updated October 26, 2026, checked 2026-11-16. It says the name servers are ns1.dnsimple-edge.com, ns2.dnsimple-edge.net, ns3.dnsimple-edge.io, and ns4.dnsimple-edge.org. The rule observes an NS host under dnsimple-edge.com. It does not prove that the zone is delegated or that DNSimple is the only DNS provider. The sibling suffixes on the same page were not dated in this pass. The specific ns1 host was not added as a separate rule.",
+      "disposition": "narrowed",
+      "new_reference": "https://support.dnsimple.com/articles/dnsimple-nameservers/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "7966678b332a16708c6801b987718d7bd5e18e127f04bee26caad4bab5eeabba",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/dnsimple/ns/dnsimple-edge.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, not a complete catalog review"
 }
