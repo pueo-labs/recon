@@ -32,6 +32,13 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Date the Mailgun MX suffix and the Mailhardener reporting host
+  from fetched vendor pages. The Mailgun rule observes an MX host
+  under `mailgun.org`. The Mailhardener rule observes the
+  documented aggregate reporting host. Six other undated rules in
+  this pass stay undated because the fetched page prints a
+  narrower include, a different suffix, or a different TXT
+  prefix. No new detection was added. This does not cut a release.
 - Date the iCloud Mail MX suffix from the Apple custom-domain
   article. The rule observes an MX host under `icloud.com`. Seven
   other undated rules in this pass stay undated because a fetched

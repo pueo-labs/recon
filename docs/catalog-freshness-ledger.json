@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "30dd666f2e6b99f6132b5b38d09c92acc04259732210d1f7ead29e4708e64044",
+  "catalog_digest": "5dfc24378623d62474c99b58cfd8f94402610e4a1073f54e900a215353c00338",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -1920,8 +1920,104 @@
       "rule_id": "discovered-signals.yaml/loom/txt/^loom-verification=",
       "source_checked_on": "2026-11-16",
       "source_status": "checked"
+    },
+    {
+      "basis": "MailChannels outbound SPF article checked 2026-11-16 prints include:relay.mailchannels.net. It does not print include:mailchannels.net. The narrower host does not date the catalog suffix. Verification date not advanced. That host was not added.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.mailchannels.com/outbound/spf-records",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "28c2e935e43ea6c648f5bd4283b36f584a38cb89ed4484f34ccc4adc780094e4",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/mailchannels/spf/mailchannels.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "MailerLite SPF merge article checked 2026-11-16 prints include:_spf.mlsend.com. It does not print include:mlsend.com. The narrower host does not date the catalog suffix. Verification date not advanced. That host was not added.",
+      "disposition": "deferred",
+      "new_reference": "https://www.mailerlite.com/help/how-to-merge-spf-records",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "099c0f51fbd7372486d7d678fa42a7d5147d4fa812d07f52906f2c85555b2d63",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/mailerlite/spf/mlsend.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Mailgun DMARC article checked 2026-11-16 explains aggregate reporting with an example mailbox on a fictional domain. It does not print a rua host under mailgun.org. Verification date not advanced. The example mailbox was not copied.",
+      "disposition": "deferred",
+      "new_reference": "https://help.mailgun.com/hc/en-us/articles/13285772266011-DMARC",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "8887cc9d6e5fe376ae898bd044346394089304cfb72a0a2b6ae2e564d4e8a7e4",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/mailgun/dmarc_rua/mailgun.org",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Mailgun domain verification article, last updated 2026-03-19, checked 2026-11-16 prints MX records mxa.mailgun.org and mxb.mailgun.org at priority 10. The rule observes an MX host under mailgun.org. It does not prove that mail is delivered or that Mailgun is the only exchanger. The specific hosts were not added. The SPF include on the same page is a different detection and was not added here.",
+      "disposition": "narrowed",
+      "new_reference": "https://documentation.mailgun.com/docs/mailgun/user-manual/domains/domains-verify",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "9cc23d5b7ff59f5754a12437cd472ed45b40a8cfeb045f3c428dd8c3f350f7d8",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/mailgun/mx/mailgun.org",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Mailgun domain verification guide checked 2026-11-16 prints include:mailgun.org for SPF and tells the operator to copy the DKIM record from the control panel. It does not print mgverify=. The domain verification article last updated 2026-03-19 also does not print that prefix. Verification date not advanced. No TXT prefix was added.",
+      "disposition": "deferred",
+      "new_reference": "https://help.mailgun.com/hc/en-us/articles/32884702360603-Domain-Verification-Setup-Guide",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "fae7b19b276276d10b5f26450b05f7f20f5210b2d1caa43fe02e63d68edef3d0",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/mailgun/txt/^mgverify=",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Mailhardener DMARC article checked 2026-11-16 prints an example aggregate record rua=mailto:dmarc-reports@mailhardener.com. A second example uses a mailbox at in.mailhardener.com. The rule observes the mailhardener.com reporting host. It does not prove that reports are delivered or that Mailhardener is the only destination. The mailbox local-parts were not added as patterns. The in.mailhardener.com host was not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://www.mailhardener.com/kb/dmarc",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "6be573c4655def2220a3bb1469692cb3c2e2a5a3855cace3081943c540b229b3",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/mailhardener/dmarc_rua/mailhardener.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Mailjet SPF and DKIM guide, updated 2026-07-27, checked 2026-11-16 prints include:spf.mailjet.com. It does not print include:mailjet.com. The narrower host does not date the catalog suffix. Verification date not advanced. That host was not added.",
+      "disposition": "deferred",
+      "new_reference": "https://documentation.mailjet.com/hc/en-us/articles/360049641733-Authenticating-Domains-with-SPF-and-DKIM-A-Complete-Guide",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "a00ab4b053bc2fb24b986213802f253690c93e49d77a85f2e1551e9ebac5cddd",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/mailjet/spf/mailjet.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Mailprotector MX article, updated 2025-08-28, checked 2026-11-16 prints hostnames under inbound.emailservice.io, inbound.emailservice.cc, and inbound.emailservice.co. It does not print mxrecord.io. Those other suffixes were not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://support.mailprotector.com/hc/en-us/articles/360030206592-How-MX-Records-Are-Used-for-Email",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "11dc2370bb6896898a41002500903b02985c547709768bb60d9ee127d28b7d41",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/mailprotector/mx/mxrecord.io",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, not a complete catalog review"
 }

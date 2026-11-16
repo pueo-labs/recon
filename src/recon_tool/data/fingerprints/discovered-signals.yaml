@@ -281,8 +281,15 @@ fingerprints:
   detections:
   - type: mx
     pattern: mailgun.org
+    reference: https://documentation.mailgun.com/docs/mailgun/user-manual/domains/domains-verify
+    verified: '2026-11-16'
     description: >-
-      Mailgun mail exchanger (`mailgun.org`). Indicates Mailgun handles inbound mail for this domain.
+      MX host under the documented Mailgun exchangers
+      `mxa.mailgun.org` and `mxb.mailgun.org`. The domain
+      verification article prints both hosts at priority 10.
+      This observes an MX host under `mailgun.org`. It does not
+      prove that mail is delivered or that Mailgun is the only
+      exchanger.
 - name: Proofpoint
   slug: proofpoint
   category: Email & Communication
@@ -917,9 +924,14 @@ fingerprints:
   detections:
   - type: dmarc_rua
     pattern: mailhardener.com
+    reference: https://www.mailhardener.com/kb/dmarc
+    verified: '2026-11-16'
     description: >-
-      MailHardener (DMARC / SPF / DKIM monitoring) DMARC aggregate-
-      report destination (`mailhardener.com`).
+      DMARC aggregate reporting host `mailhardener.com`. The
+      DMARC article prints
+      `rua=mailto:dmarc-reports@mailhardener.com`. This observes
+      that reporting host. It does not prove that reports are
+      delivered or that Mailhardener is the only destination.
 - name: DMARC25
   slug: dmarc25
   category: Email

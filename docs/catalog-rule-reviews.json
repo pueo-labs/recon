@@ -868,6 +868,34 @@
       "reviewed_on": "2026-11-16",
       "source_checked_on": "2026-11-16",
       "reason": "Apple custom email domain article, published November 3, 2026, checked 2026-11-16: https://support.apple.com/en-us/102374. It prints MX records mx01.mail.icloud.com and mx02.mail.icloud.com at priority 10. The rule observes an MX host under icloud.com. It does not prove that mail is delivered or that iCloud Mail is the only exchanger. The specific hosts were not added. The SPF include on the same page was not added."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "mailgun",
+        "detection_type": "mx",
+        "pattern": "mailgun.org"
+      },
+      "before": "b32ff75aa631747eed79b54440008d220f64ac3ef6fd2590acac2ceb1895c988",
+      "after": "9cc23d5b7ff59f5754a12437cd472ed45b40a8cfeb045f3c428dd8c3f350f7d8",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Mailgun domain verification article, last updated 2026-03-19, checked 2026-11-16: https://documentation.mailgun.com/docs/mailgun/user-manual/domains/domains-verify. It prints MX records mxa.mailgun.org and mxb.mailgun.org at priority 10. The rule observes an MX host under mailgun.org. It does not prove that mail is delivered or that Mailgun is the only exchanger. The specific hosts were not added. The SPF include on the same page was not added."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "mailhardener",
+        "detection_type": "dmarc_rua",
+        "pattern": "mailhardener.com"
+      },
+      "before": "7ca1b60ae3efa02d36fbed3e839b963e56b2b72e2eab8e36bac067ea95193ce8",
+      "after": "6be573c4655def2220a3bb1469692cb3c2e2a5a3855cace3081943c540b229b3",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Mailhardener DMARC article checked 2026-11-16: https://www.mailhardener.com/kb/dmarc. It prints rua=mailto:dmarc-reports@mailhardener.com. A second example uses a mailbox at in.mailhardener.com. The rule observes the mailhardener.com reporting host. It does not prove that reports are delivered or that Mailhardener is the only destination. The mailbox local-parts were not added as patterns. The in.mailhardener.com host was not added."
     }
   ]
 }
