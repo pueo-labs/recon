@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "c8fef7b1e0e771c123c2b252cdca507848ab5a2fadc9c11231b238de69b01523",
+  "catalog_digest": "30dd666f2e6b99f6132b5b38d09c92acc04259732210d1f7ead29e4708e64044",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -1824,8 +1824,104 @@
       "rule_id": "discovered-signals.yaml/hornetsecurity/mx/hornetsecurity.com",
       "source_checked_on": "2026-11-16",
       "source_status": "checked"
+    },
+    {
+      "basis": "Iberlayer Email Guardian page checked 2026-11-16 says to change the company MX records. The after diagram prints mx1.emailguardian. and mx2.emailguardian. beside a placeholder customer name. It does not print an MX host under iberlayer.com. The only iberlayer.com string is a contact mailbox, which is not an MX record. Verification date not advanced. Those diagram hosts were not added.",
+      "disposition": "deferred",
+      "new_reference": "https://www.iberlayer.com/es/email-guardian",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "ee465ccfd9adc9dbd46b8263359d3cd80a361ddc3ca8b640117789df0ae8f758",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/iberlayer/mx/iberlayer.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Apple custom email domain article, published November 3, 2026, checked 2026-11-16 prints MX records mx01.mail.icloud.com and mx02.mail.icloud.com at priority 10. The rule observes an MX host under icloud.com. It does not prove that mail is delivered or that iCloud Mail is the only exchanger. The specific hosts were not added. The SPF include on the same page was not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://support.apple.com/en-us/102374",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "2964e0f6aa61c283a6a62d877e1ad0fe001b994955ef40ed117435d3ce5ad581",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/icloud-mail/mx/icloud.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Thales Imperva basic managed DNS page checked 2026-11-16 does not print impervasecuredns.net. The fetched page is a documentation shell. The indexed article says to update name servers supplied in the console and does not print that suffix. Registry and DNS-directory observations are not a vendor basis. Verification date not advanced. No nameserver host was added.",
+      "disposition": "deferred",
+      "new_reference": "https://docs-cybersec.thalesgroup.com/bundle/cloud-application-security/page/dns-basic-managed.htm",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "3137db5510cea39b8205f4de30d2586e387b4f856ac434ff6fde45554cf0a090",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/imperva-securedns/ns/impervasecuredns.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "InboxMonster help center checked 2026-11-16 discusses DMARC setup and monitoring. It says a none policy sends reports to the specified email addresses and that DMARC information is available in Settings. It does not print an aggregate rua host under inboxmonster.com. Verification date not advanced. No mailbox was added.",
+      "disposition": "deferred",
+      "new_reference": "https://inboxmonster.com/help-center",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "204d8c2e5ef58e0b878d996935371de5bdff96d8016ef75a54009f5fb942cd8d",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/inboxmonster/dmarc_rua/inboxmonster.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Intercom email support article checked 2026-11-16 says to add CNAME and TXT records supplied by the product. It does not print intercom-domain-validation=. Help Center hosts under intercom.help and intercomhelpcenter.com are a different target and were not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://www.intercom.com/help/en/articles/9744849-connect-your-email-support-channel",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "9ff0792e59bcdd88a074433b46bec0b8ffbe52586dc4b6b3fae389f008754552",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/intercom/txt/^intercom-domain-validation=",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Ipreo terms of use checked 2026-11-16 discuss email sent through the product and do not print include:ipreomail.com. A third-party SPF guide is not the vendor page. Verification date not advanced. The include host was not added.",
+      "disposition": "deferred",
+      "new_reference": "https://irm.ipreo.com/App_Themes/Login/TermsOfUse.html",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "b6c950f67fabf13554d93f3cf3569686034d4befc385580895a836cea6e75d6d",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/ipreo/spf/ipreomail.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Lumen advanced domain setup article checked 2026-11-16 describes changing registrar name servers and does not print level3.net. DNS-directory observations are not a vendor basis. Verification date not advanced. No nameserver host was added.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.lumen.com/application-delivery-solutions/advanced-domain-setup/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "a868649595665738118a0fcff9446cf6ad5cf5fbdb874670ef6e1e503b97e4b0",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/level3/ns/level3.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Atlassian Loom TXT article, updated October 16, 2025, checked 2026-11-16 prints loom-site-verification= with an example token. It does not print loom-verification=. That is a different prefix. The example token was not copied. The other prefix was not dated in this pass. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://support.atlassian.com/loom/kb/add-a-dns-text-record/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "910506314734f03664d169f90a2c7db938462f249bbbd03a46c82a2a9a6da5b4",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/loom/txt/^loom-verification=",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, not a complete catalog review"
 }

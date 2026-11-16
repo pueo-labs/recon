@@ -801,9 +801,15 @@ fingerprints:
   detections:
   - type: mx
     pattern: icloud.com
+    reference: https://support.apple.com/en-us/102374
+    verified: '2026-11-16'
     description: >-
-      Apple iCloud Mail MX target (`icloud.com`). Indicates the org
-      uses iCloud (or iCloud Custom Email Domain) for inbound mail.
+      MX host under the documented iCloud Mail exchanger
+      `mx01.mail.icloud.com`. The custom-domain article prints
+      that host, and `mx02.mail.icloud.com`, as MX records.
+      This observes an MX host under `icloud.com`. It does not
+      prove that mail is delivered or that iCloud Mail is the
+      only exchanger.
 - name: Iberlayer Mailguard
   slug: iberlayer
   category: Email

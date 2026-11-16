@@ -32,6 +32,12 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Date the iCloud Mail MX suffix from the Apple custom-domain
+  article. The rule observes an MX host under `icloud.com`. Seven
+  other undated rules in this pass stay undated because a fetched
+  page does not print the catalog grammar, or prints a different TXT
+  prefix or an incomplete MX host. No new detection was added. This
+  does not cut a release.
 - Date the Help Scout SPF include, the Heroku Private Space DNS
   suffix, and the Hornetsecurity MX suffix from current vendor pages.
   Each record observes the documented suffix. Five other undated rules

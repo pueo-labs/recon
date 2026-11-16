@@ -230,7 +230,7 @@ and a later 2026-11-16 email and DNS reference check,
 and a later 2026-11-16 nameserver and mail reference check,
 and a later 2026-11-16 nameserver, mail, and reporting reference
 check, and a later 2026-11-16 mail, SPF, and custom-DNS reference
-check.
+check, and a later 2026-11-16 mail and verification reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
 bind due rules to their exact claim/catalog digest, prior/new reference, actual
@@ -1189,6 +1189,62 @@ The [Heroku custom domains article](https://devcenter.heroku.com/articles/custom
 last updated June 7, 2026, says Heroku does not explicitly verify
 domain ownership when a domain is added. It does not print
 `heroku-domain-verification=`. The catalog TXT stays undated.
+
+### Documented reference check, later on 2026-11-16, mail and verification
+
+This pass checked eight undated MX, NS, SPF, DMARC, and TXT rules.
+One received a `verified` date because the fetched vendor page prints
+the catalog grammar. Seven stayed undated. No new detection, DNS
+record type, or collection path was added. This note does not cut a
+release.
+
+The [Apple custom email domain article](https://support.apple.com/en-us/102374),
+published November 3, 2026, prints MX hosts `mx01.mail.icloud.com` and
+`mx02.mail.icloud.com`. The rule observes an MX host under
+`icloud.com`. It does not prove that mail is delivered or that iCloud
+Mail is the only exchanger. The specific hosts were not added. The
+SPF include on the same page was not added.
+
+The [Iberlayer Email Guardian page](https://www.iberlayer.com/es/email-guardian)
+says to change the company MX records. The diagram prints
+`mx1.emailguardian.` and `mx2.emailguardian.` beside a placeholder
+customer name. It does not print an MX host under `iberlayer.com`.
+The contact mailbox is not an MX record. Those diagram hosts were not
+added. The catalog MX stays undated.
+
+The [Thales Imperva basic managed DNS page](https://docs-cybersec.thalesgroup.com/bundle/cloud-application-security/page/dns-basic-managed.htm)
+does not print `impervasecuredns.net`. The indexed article says to
+update name servers supplied in the console. Registry and
+DNS-directory observations are not a vendor basis. No nameserver host
+was added. The catalog NS stays undated.
+
+The [InboxMonster help center](https://inboxmonster.com/help-center)
+discusses DMARC setup and says reports go to the specified email
+addresses. It does not print an aggregate rua host under
+`inboxmonster.com`. No mailbox was added. The catalog rua stays
+undated.
+
+The [Intercom email support article](https://www.intercom.com/help/en/articles/9744849-connect-your-email-support-channel)
+says to add CNAME and TXT records supplied by the product. It does
+not print `intercom-domain-validation=`. Help Center hosts under
+`intercom.help` and `intercomhelpcenter.com` were not added. The
+catalog TXT stays undated.
+
+The [Ipreo terms of use](https://irm.ipreo.com/App_Themes/Login/TermsOfUse.html)
+discuss email sent through the product and do not print
+`include:ipreomail.com`. A third-party SPF guide is not the vendor
+page. The include host was not added. The catalog SPF stays undated.
+
+The [Lumen advanced domain setup article](https://docs.lumen.com/application-delivery-solutions/advanced-domain-setup/)
+describes changing registrar name servers and does not print
+`level3.net`. DNS-directory observations are not a vendor basis. No
+nameserver host was added. The catalog NS stays undated.
+
+The [Atlassian Loom TXT article](https://support.atlassian.com/loom/kb/add-a-dns-text-record/),
+updated October 16, 2025, prints `loom-site-verification=` with an
+example token. It does not print `loom-verification=`. That is a
+different prefix. The example token was not copied, and the other
+prefix was not dated in this pass. The catalog TXT stays undated.
 
 ## Executable path
 
