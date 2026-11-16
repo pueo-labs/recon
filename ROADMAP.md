@@ -46,8 +46,10 @@ and corrected three output defects: doctor reports both
 certificate-transparency providers, DMARC `p=none` is not a present
 hardening control, and `--verbose` uses the source-health ladder.
 Issues 356, 357, and 358 are closed. The four Dependabot alerts are
-fixed. Issue 364 remains open: the agentic-validation provider SDKs
-and the Terraform Google provider are still on older majors. The
+fixed. The agentic-validation pins are Anthropic 2.9.0 and OpenAI
+3.51.0, and the draft Cloud Run Google provider constraint is
+`>= 8.0, < 9.0`. That maintainer-harness and draft-module bump does not
+cut a release. The
 public Scorecard API reports SAST as an internal error for this
 commit, the same result it reports for tag `v2.27.1`. The repository
 Scorecard workflow succeeded. Do not lower the SAST floor.
@@ -126,10 +128,10 @@ What is next, and why:
    [the October review](docs/maintenance-review-2026-10-08.md).
 
 3. Black-box defects before any new surface. Issues 356, 357, and 358
-   shipped in 2.27.2. Issue 364 is the open follow-up: bring the
-   agentic-validation provider SDKs and the Terraform Google provider up
-   to current majors. That bump is its own pull request. A new collector,
-   score, inference path, or set-level review bundle needs a named
+   shipped in 2.27.2. The agentic-validation provider SDKs are Anthropic
+   2.9.0 and OpenAI 3.51.0, and the draft Cloud Run Google provider
+   constraint is `>= 8.0, < 9.0`. That bump does not cut a release. A new
+   collector, score, inference path, or set-level review bundle needs a named
    operator handoff that the existing surfaces cannot solve. Output
    truthfulness outranks another feature release.
 
@@ -138,7 +140,8 @@ Not next, and why:
 - Another package release. 2.27.2 shipped the security floors, the
   CPython 3.15.2 pin, and the three output corrections. The next package
   waits for a new user-visible defect or a catalog change that should
-  ship on its own. Issue 364 does not by itself cut a release.
+  ship on its own. The provider-SDK and Terraform constraint bump does
+  not by itself cut a release.
 - A new DNS record-type collector. IANA's parameter table, last updated
   2026-10-16, added temporary `DELEG` and `DELEGPARAM` registrations.
   `HTTPS`, `SVCB`, `DSYNC`, `RESINFO`, `HHIT`, and `BRID` were already
@@ -159,8 +162,8 @@ Not next, and why:
 
 When picking work back up, sync `main` and run
 `uv run python scripts/check.py` before starting anything else. 2.27.2 is
-published. Continue the freshness loop on rules that are still due, then
-issue 364, or wait for the upstream blockers above. A later documentation
+published. Continue the freshness loop on rules that are still due, or
+wait for the upstream blockers above. A later documentation
 or catalog date pass does not by itself cut another release. Batch
 user-visible behavior through the
 [release process](docs/release-process.md).
