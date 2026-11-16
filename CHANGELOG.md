@@ -32,6 +32,12 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Date the Help Scout SPF include, the Heroku Private Space DNS
+  suffix, and the Hornetsecurity MX suffix from current vendor pages.
+  Each record observes the documented suffix. Five other undated rules
+  in this pass stay undated because a fetched page prints a different
+  MX or TXT value, or only a narrower SPF host. No new detection was
+  added. This does not cut a release.
 - Date the Gandi nameserver suffix, the GoDaddy Professional Email MX
   suffix, the GoDaddy SPF include, the GoDaddy DMARC reporting suffix,
   and the Squarespace-documented Google Domains nameserver suffix from
