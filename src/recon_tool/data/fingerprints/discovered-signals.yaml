@@ -423,8 +423,14 @@ fingerprints:
   detections:
   - type: ns
     pattern: foundationdns.com
+    reference: https://developers.cloudflare.com/dns/nameservers/
+    verified: '2026-11-16'
     description: >-
-      Foundation DNS nameserver (`foundationdns.com`). Indicates the org runs authoritative DNS on Foundation DNS.
+      Authoritative nameserver under Cloudflare Foundation
+      DNS (`foundationdns.com`). This observes an NS host
+      under `foundationdns.com`. It does not prove that the
+      zone is delegated or that Cloudflare is the only DNS
+      provider.
 - name: Foundation DNS
   slug: foundationdns
   category: Infrastructure
@@ -432,8 +438,14 @@ fingerprints:
   detections:
   - type: ns
     pattern: foundationdns.net
+    reference: https://developers.cloudflare.com/dns/nameservers/
+    verified: '2026-11-16'
     description: >-
-      Foundation DNS nameserver (`foundationdns.net`). Indicates the org runs authoritative DNS on Foundation DNS.
+      Authoritative nameserver under Cloudflare Foundation
+      DNS (`foundationdns.net`). This observes an NS host
+      under `foundationdns.net`. It does not prove that the
+      zone is delegated or that Cloudflare is the only DNS
+      provider.
 - name: Foundation DNS
   slug: foundationdns
   category: Infrastructure
@@ -441,8 +453,14 @@ fingerprints:
   detections:
   - type: ns
     pattern: foundationdns.org
+    reference: https://developers.cloudflare.com/dns/nameservers/
+    verified: '2026-11-16'
     description: >-
-      Foundation DNS nameserver (`foundationdns.org`). Indicates the org runs authoritative DNS on Foundation DNS.
+      Authoritative nameserver under Cloudflare Foundation
+      DNS (`foundationdns.org`). This observes an NS host
+      under `foundationdns.org`. It does not prove that the
+      zone is delegated or that Cloudflare is the only DNS
+      provider.
 - name: Network Solutions
   slug: worldnic
   category: Infrastructure
@@ -714,9 +732,14 @@ fingerprints:
   detections:
   - type: mx
     pattern: messagingengine.com
+    reference: https://www.fastmail.help/hc/en-us/articles/1500000280261-Setting-up-your-domain-MX-only
+    verified: '2026-11-16'
     description: >-
-      Fastmail MX target (`messagingengine.com`). Indicates the org
-      uses Fastmail as its inbound mail provider.
+      MX host under the documented Fastmail exchanger
+      `in1-smtp.messagingengine.com`. This observes an MX
+      host under `messagingengine.com`. It does not prove
+      that mail is delivered or that Fastmail is the only
+      exchanger.
 - name: Hornetsecurity
   slug: hornetsecurity
   category: Email
@@ -975,9 +998,14 @@ fingerprints:
   detections:
   - type: ns
     pattern: f5clouddns.com
+    reference: https://docs.cloud.f5.com/docs-v2/dns-management/quickstart/dns-services
+    verified: '2026-11-16'
     description: >-
-      F5 Distributed Cloud DNS NS target (`f5clouddns.com`).
-      Indicates the org uses F5's managed DNS service.
+      Authoritative nameserver under the documented F5
+      Distributed Cloud name servers `ns1.f5clouddns.com`
+      and `ns2.f5clouddns.com`. This observes an NS host
+      under `f5clouddns.com`. It does not prove that the zone
+      is delegated or that F5 is the only DNS provider.
 - name: NameBright DNS
   slug: namebright
   category: Cloud
@@ -1621,8 +1649,15 @@ fingerprints:
   detections:
   - type: mx
     pattern: fortimailcloud.com
+    reference: https://fortinetweb.s3.amazonaws.com/docs.fortinet.com/v2/attachments/b35ad4f6-bef7-11ee-8673-fa163e15d75b/FortiMail_Cloud_Integration_with_Microsoft_365_Using_MX_Records.pdf
+    verified: '2026-11-16'
     description: >-
-      Fortinet FortiMail Cloud MX target (`fortimailcloud.com`).
+      MX host under the documented FortiMail Cloud suffix
+      `fortimailcloud.com`. The vendor example uses a tenant
+      label under that suffix. This observes an MX host under
+      `fortimailcloud.com`. It does not prove that mail is
+      routed through FortiMail or that FortiMail is the only
+      exchanger.
 - name: Trend Micro Email Security
   slug: trendmicro
   category: Email & Communication

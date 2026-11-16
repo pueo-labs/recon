@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "58db6ed205b6d6928fdd7444b8dbeb0960cb8961dc11e5d8c06b05576486b84b",
+  "catalog_digest": "94d307a1d975fbf4bd9a892f0b3efa87822fc617b079b95861337490570dccdf",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -1536,8 +1536,104 @@
       "rule_id": "discovered-signals.yaml/exclaimer/spf/emailsignatures365.com",
       "source_checked_on": "2026-11-16",
       "source_status": "checked"
+    },
+    {
+      "basis": "Exclaimer SPF article checked 2026-11-16 prints include:spf.<region>.exclaimer.net. That host is narrower than the existing exclaimer.net suffix. The broader suffix stays undated. The regional host was not added.",
+      "disposition": "deferred",
+      "new_reference": "https://support.exclaimer.com/hc/en-gb/articles/4404775962641-How-to-update-the-Sender-Policy-Framework-SPF",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "29e0134a31266ad081050115be2c57906b6653a608c5ae500c52d2066f11fab0",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/exclaimer/spf/exclaimer.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "F5 Distributed Cloud DNS quickstart checked 2026-11-16 says to add nameservers ns1.f5clouddns.com and ns2.f5clouddns.com at the registrar or parent zone. The rule observes an NS host under f5clouddns.com. It does not prove that the zone is delegated or that F5 is the only DNS provider. The specific ns1 and ns2 hosts were not added as separate rules.",
+      "disposition": "narrowed",
+      "new_reference": "https://docs.cloud.f5.com/docs-v2/dns-management/quickstart/dns-services",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "370b097f00bfb217ac36b410e83173387a626e841b2d006cdcdd7554130f540f",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/f5-clouddns/ns/f5clouddns.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Fastmail MX setup article checked 2026-11-16 says to set MX records to in1-smtp.messagingengine.com and in2-smtp.messagingengine.com. The rule observes an MX host under messagingengine.com. It does not prove that mail is delivered or that Fastmail is the only exchanger. The specific hosts were not added as separate rules. The SPF include spf.messagingengine.com on the same page was not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://www.fastmail.help/hc/en-us/articles/1500000280261-Setting-up-your-domain-MX-only",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "deb3310bc0fe8ca40450adc07d47198a3beb771c8ac7de8e3889fc1c0a3b658b",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/fastmail/mx/messagingengine.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "FortiMail Cloud Microsoft 365 MX guide, last updated April 16, 2026, checked 2026-11-16. The fetched PDF prints example MX targets example-com-1.fortimailcloud.com and example-com-2.fortimailcloud.com. The rule observes an MX host under fortimailcloud.com. It does not prove that mail is routed through FortiMail or that FortiMail is the only exchanger. The example tenant labels were not added. The SPF include _spf.fortimailcloud.com on the same page was not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://fortinetweb.s3.amazonaws.com/docs.fortinet.com/v2/attachments/b35ad4f6-bef7-11ee-8673-fa163e15d75b/FortiMail_Cloud_Integration_with_Microsoft_365_Using_MX_Records.pdf",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "337b58e886615039e7be73d66cd02417fd30ae4cedbcdb6436dc66ce03468be8",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/fortinet/mx/fortimailcloud.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Cloudflare nameserver documentation, last updated October 14, 2026, checked 2026-11-16. It says advanced nameservers are hosted on foundationdns.com, foundationdns.net, and foundationdns.org, and that each zone is assigned a color host under each suffix. The rule observes an NS host under foundationdns.com. It does not prove that the zone is delegated or that Cloudflare is the only DNS provider. The color host was not added as a separate rule.",
+      "disposition": "narrowed",
+      "new_reference": "https://developers.cloudflare.com/dns/nameservers/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "1bd26a9fa7a52b25e5727b555d272958544304e338bd8c89d936428a21a5377d",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/foundationdns/ns/foundationdns.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Cloudflare nameserver documentation, last updated October 14, 2026, checked 2026-11-16. It says advanced nameservers are hosted on foundationdns.com, foundationdns.net, and foundationdns.org, and that each zone is assigned a color host under each suffix. The rule observes an NS host under foundationdns.net. It does not prove that the zone is delegated or that Cloudflare is the only DNS provider. The color host was not added as a separate rule.",
+      "disposition": "narrowed",
+      "new_reference": "https://developers.cloudflare.com/dns/nameservers/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "a84df28a7b9024b60a62d31240355c997b65907a7b8b2669fd34c9e7bf6f4222",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/foundationdns/ns/foundationdns.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Cloudflare nameserver documentation, last updated October 14, 2026, checked 2026-11-16. It says advanced nameservers are hosted on foundationdns.com, foundationdns.net, and foundationdns.org, and that each zone is assigned a color host under each suffix. The rule observes an NS host under foundationdns.org. It does not prove that the zone is delegated or that Cloudflare is the only DNS provider. The color host was not added as a separate rule.",
+      "disposition": "narrowed",
+      "new_reference": "https://developers.cloudflare.com/dns/nameservers/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "4594501642a842ef628697ba89469fc90bd784aaf6233f65165629c78f6a6f54",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/foundationdns/ns/foundationdns.org",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Freshservice SPF article checked 2026-11-16 prints include:email.freshservice.com. That host is narrower than the existing freshservice.com suffix. The broader suffix stays undated. The narrower host was not added.",
+      "disposition": "deferred",
+      "new_reference": "https://support.freshservice.com/support/solutions/articles/193639-creating-an-spf-record",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "7a60529f96a710c9c0ea107807e386a8fd09f22f68d9f3aecacd3f473c5b90f1",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/freshservice/spf/freshservice.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, not a complete catalog review"
 }

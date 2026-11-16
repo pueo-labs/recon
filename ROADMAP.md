@@ -137,7 +137,13 @@ What is next, and why:
    the grammar, and left seven other email and DNS rules undated,
    because a fetched page prints only a narrower host, does not print
    the catalog grammar, did not return an article body, or the host
-   did not resolve. That work does not cut a release.
+   did not resolve. That work does not cut a release. A later pass
+   the same day dated the F5 Distributed Cloud nameserver suffix,
+   the Fastmail MX suffix, the FortiMail Cloud MX suffix, and the
+   Cloudflare Foundation DNS nameserver suffixes from pages that
+   print the grammar, and left two other email rules undated because
+   a fetched page prints only a narrower host. That work does not
+   cut a release.
    The next round uses a new question list and the rules that are still due.
    The closed 5,199-row drift round remains a measurement contract. It does
    not promote rules. Start at [catalog maintenance](docs/catalog-maintenance.md).

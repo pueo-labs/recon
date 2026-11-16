@@ -32,6 +32,12 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Date the F5 Distributed Cloud nameserver suffix, the Fastmail MX
+  suffix, the FortiMail Cloud MX suffix, and the Cloudflare Foundation
+  DNS nameserver suffixes from current vendor pages. Each record
+  observes the documented suffix. Two other undated rules in this pass
+  stay undated because a fetched page prints only a narrower host. No
+  new detection was added. This does not cut a release.
 - Date the easyDNS `easydns.net` nameserver suffix from the current
   vendor page. The record observes an NS host under `easydns.net`.
   Seven other undated rules in this pass stay undated because a
