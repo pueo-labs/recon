@@ -32,6 +32,11 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Date the remaining DNSimple nameserver suffixes, the DNS Made Easy
+  nameserver suffix, the DNSPod nameserver suffix, the Docebo SPF
+  include, and the easyDNS nameserver suffixes from current vendor
+  pages. Each record observes the documented suffix. No new detection
+  was added. This does not cut a release.
 - Date the DMARCLY aggregate mailbox domain and the DNSimple
   nameserver suffix from current vendor pages. The DMARCLY record
   observes a rua mailbox domain of `dmarcly.com`. The DNSimple record

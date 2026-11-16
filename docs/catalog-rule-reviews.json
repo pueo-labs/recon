@@ -532,6 +532,118 @@
       "reviewed_on": "2026-11-16",
       "source_checked_on": "2026-11-16",
       "reason": "DNSimple name servers article, last updated October 26, 2026, checked 2026-11-16: https://support.dnsimple.com/articles/dnsimple-nameservers/. It says the name servers are ns1.dnsimple-edge.com, ns2.dnsimple-edge.net, ns3.dnsimple-edge.io, and ns4.dnsimple-edge.org. The rule observes an NS host under dnsimple-edge.com. It does not prove that the zone is delegated or that DNSimple is the only DNS provider. The sibling suffixes on the same page were not dated in this pass. The specific ns1 host was not added as a separate rule."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "dnsimple",
+        "detection_type": "ns",
+        "pattern": "dnsimple-edge.io"
+      },
+      "before": "0fd5f33ea2afe568511f5da8614fce8601d76df1f503c3e3b142f1c178c0a31c",
+      "after": "82b598746f1231448c7207976ac0fd2be9cfc284766c69ab1170f9d6050fb298",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "DNSimple name servers article checked 2026-11-16: https://support.dnsimple.com/articles/dnsimple-nameservers/. It says the name servers are ns1.dnsimple-edge.com, ns2.dnsimple-edge.net, ns3.dnsimple-edge.io, and ns4.dnsimple-edge.org. The rule observes an NS host under dnsimple-edge.io. It does not prove that the zone is delegated or that DNSimple is the only DNS provider. The specific ns3 host was not added as a separate rule."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "dnsimple",
+        "detection_type": "ns",
+        "pattern": "dnsimple-edge.net"
+      },
+      "before": "101ebc8617155ceec9a6c91af0cfa05119246c543c9826a980f0ce1a60ce899c",
+      "after": "05eeef39c2d118d70d9fbaa2f25d888c3dc371487f7a70a245946dbeb25ee97d",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "DNSimple name servers article checked 2026-11-16: https://support.dnsimple.com/articles/dnsimple-nameservers/. It says the name servers are ns1.dnsimple-edge.com, ns2.dnsimple-edge.net, ns3.dnsimple-edge.io, and ns4.dnsimple-edge.org. The rule observes an NS host under dnsimple-edge.net. It does not prove that the zone is delegated or that DNSimple is the only DNS provider. The specific ns2 host was not added as a separate rule."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "dnsimple",
+        "detection_type": "ns",
+        "pattern": "dnsimple-edge.org"
+      },
+      "before": "aa1173678f5bbbbd78090570b9d527d14600d485e8c48633d76e20d51d8faf6c",
+      "after": "3a08afb38f4ca32e45b2ac8ac1533ef566ec5f8cbd6af8d517806261ecc3546a",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "DNSimple name servers article checked 2026-11-16: https://support.dnsimple.com/articles/dnsimple-nameservers/. It says the name servers are ns1.dnsimple-edge.com, ns2.dnsimple-edge.net, ns3.dnsimple-edge.io, and ns4.dnsimple-edge.org. The rule observes an NS host under dnsimple-edge.org. It does not prove that the zone is delegated or that DNSimple is the only DNS provider. The specific ns4 host was not added as a separate rule."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "dnsmadeeasy",
+        "detection_type": "ns",
+        "pattern": "dnsmadeeasy.com"
+      },
+      "before": "d5073a270be994d4293e1c0e32192527bef28d5e3984f5d7d3f54f8bfc1d26c5",
+      "after": "add7ac5ff68d03e753f35a68a84dfed7958311f2ce8f5ea70be952d2cea4043d",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "DigiCert DNS nameserver transition article, updated February 24, 2025, checked 2026-11-16: https://support.dnsmadeeasy.com/hc/en-us/articles/34327239032603-DigiCert-DNS-Nameserver-Transition. It lists legacy DNS Made Easy name servers, including ns0.dnsmadeeasy.com and ns1.dnsmadeeasy.com, and says those legacy names continue to operate. The rule observes an NS host under dnsmadeeasy.com. It does not prove that the zone is delegated or that DNS Made Easy is the only DNS provider. Addresses on the page were not copied. The specific hosts were not added as separate rules."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "dnspod",
+        "detection_type": "ns",
+        "pattern": "dnsv5.com"
+      },
+      "before": "60e8c9ab74e79fcbbe15dfbc6336b79e9eca2bf62c5ec3529530f937f876f92d",
+      "after": "adb8e8e5a5e89b0be83120e1c260b8e64e06607a31d439afa5602113facac7c8",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "DNSPod domain-change article, last updated August 25, 2025, checked 2026-11-16: https://docs.dnspod.cn/dns/dns-domain-change/. The premium plan row lists ns3.dnsv5.com and ns4.dnsv5.com. The rule observes an NS host under dnsv5.com. It does not prove that the zone is delegated or that DNSPod is the only DNS provider. The specific hosts were not added as separate rules."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "docebo",
+        "detection_type": "spf",
+        "pattern": "docebosaas.com"
+      },
+      "before": "183983b9f8db70aa54bf1eb519fdd5ea70a2bca2ff59278022d1d0d12f33a2f7",
+      "after": "fefcf8868c42fa706181decb917b8db91a1c5ca05f5c2e05fef23f8c023d3bfb",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Docebo domain-management article, last updated June 3, 2026, checked 2026-11-16: https://help.docebo.com/hc/en-us/articles/14651659200402-Domain-management-DNS-and-SSL-configuration-requirements. It prints an SPF value of v=spf1 mx include:docebosaas.com ~all, and says an existing SPF record should add include:docebosaas.com. The rule observes that include. It does not prove that Docebo sends mail for the domain."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "easydns-org",
+        "detection_type": "ns",
+        "pattern": "easydns.org"
+      },
+      "before": "dcd90b55670bcba6dca2188ab03fde132a010d424462c2e351d94226c7082866",
+      "after": "4efc3caaf73ed732e7eb51dafc00d2b2c08356747dea54e6c76115a4db600a1a",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "easyDNS nameserver page checked 2026-11-16: https://easydns.com/our-nameservers/. It lists DNS3.EASYDNS.ORG as a current nameserver constellation. The rule observes an NS host under easydns.org. It does not prove that the zone is delegated or that easyDNS is the only DNS provider. The specific dns3 host was not added as a separate rule. easydns.net and easydns.info on the same page were not dated in this pass."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "easydns2",
+        "detection_type": "ns",
+        "pattern": "easydns.com"
+      },
+      "before": "b0c81b7efcbea0a5cc7b223e66f0af12bd95d2fde01c31d07e84f5e363a02df0",
+      "after": "62a6fb02d682d4186d1f228e886dd053137326b51065933b5115b9262271768e",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "easyDNS nameserver page checked 2026-11-16: https://easydns.com/our-nameservers/. It lists DNS1.EASYDNS.COM as a current nameserver constellation. The rule observes an NS host under easydns.com. It does not prove that the zone is delegated or that easyDNS is the only DNS provider. The specific dns1 host was not added as a separate rule. easydns.net and easydns.info on the same page were not dated in this pass."
     }
   ]
 }

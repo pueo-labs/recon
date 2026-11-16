@@ -89,8 +89,13 @@ fingerprints:
   detections:
   - type: spf
     pattern: docebosaas.com
+    reference: https://help.docebo.com/hc/en-us/articles/14651659200402-Domain-management-DNS-and-SSL-configuration-requirements
+    verified: '2026-11-16'
     description: >-
-      Docebo SPF include (`docebosaas.com`). Indicates the org authorizes Docebo to send email for this domain.
+      Docebo SPF include (`include:docebosaas.com`). The
+      domain-management article prints that include. This
+      observes the include. It does not prove that Docebo
+      sends mail for the domain.
 - name: Help Scout
   slug: helpscout
   category: Productivity & Collaboration
@@ -402,8 +407,15 @@ fingerprints:
   detections:
   - type: ns
     pattern: dnsmadeeasy.com
+    reference: https://support.dnsmadeeasy.com/hc/en-us/articles/34327239032603-DigiCert-DNS-Nameserver-Transition
+    verified: '2026-11-16'
     description: >-
-      DNS Made Easy nameserver (`dnsmadeeasy.com`). Indicates the org runs authoritative DNS on DNS Made Easy.
+      Authoritative nameserver under the documented DNS Made
+      Easy legacy name server `ns1.dnsmadeeasy.com`. This
+      observes an NS host under `dnsmadeeasy.com`. It does not
+      prove that the zone is delegated or that DNS Made Easy
+      is the only DNS provider. Addresses on the page were
+      not copied.
 - name: Foundation DNS
   slug: foundationdns
   category: Infrastructure
@@ -481,8 +493,13 @@ fingerprints:
   detections:
   - type: ns
     pattern: easydns.com
+    reference: https://easydns.com/our-nameservers/
+    verified: '2026-11-16'
     description: >-
-      easyDNS nameserver (`easydns.com`). Indicates the org runs authoritative DNS on easyDNS.
+      Authoritative nameserver under the documented easyDNS
+      name server `dns1.easydns.com`. This observes an NS host
+      under `easydns.com`. It does not prove that the zone is
+      delegated or that easyDNS is the only DNS provider.
 - name: Gandi
   slug: gandi
   category: Infrastructure
@@ -908,13 +925,24 @@ fingerprints:
   detections:
   - type: ns
     pattern: dnsimple-edge.org
+    reference: https://support.dnsimple.com/articles/dnsimple-nameservers/
+    verified: '2026-11-16'
     description: >-
-      DNSimple authoritative DNS NS target (`dnsimple-edge.org`).
-      Indicates the org uses DNSimple as its managed DNS provider.
+      Authoritative nameserver under DNSimple's documented
+      name server `ns4.dnsimple-edge.org`. This observes an
+      NS host under `dnsimple-edge.org`. It does not prove
+      that the zone is delegated or that DNSimple is the
+      only DNS provider.
   - type: ns
     pattern: dnsimple-edge.net
+    reference: https://support.dnsimple.com/articles/dnsimple-nameservers/
+    verified: '2026-11-16'
     description: >-
-      DNSimple authoritative DNS NS target (`dnsimple-edge.net`).
+      Authoritative nameserver under DNSimple's documented
+      name server `ns2.dnsimple-edge.net`. This observes an
+      NS host under `dnsimple-edge.net`. It does not prove
+      that the zone is delegated or that DNSimple is the
+      only DNS provider.
   - type: ns
     pattern: dnsimple-edge.com
     reference: https://support.dnsimple.com/articles/dnsimple-nameservers/
@@ -927,8 +955,14 @@ fingerprints:
       only DNS provider.
   - type: ns
     pattern: dnsimple-edge.io
+    reference: https://support.dnsimple.com/articles/dnsimple-nameservers/
+    verified: '2026-11-16'
     description: >-
-      DNSimple authoritative DNS NS target (`dnsimple-edge.io`).
+      Authoritative nameserver under DNSimple's documented
+      name server `ns3.dnsimple-edge.io`. This observes an
+      NS host under `dnsimple-edge.io`. It does not prove
+      that the zone is delegated or that DNSimple is the
+      only DNS provider.
 - name: F5 Cloud DNS
   slug: f5-clouddns
   category: Cloud
@@ -1003,9 +1037,13 @@ fingerprints:
   detections:
   - type: ns
     pattern: easydns.org
+    reference: https://easydns.com/our-nameservers/
+    verified: '2026-11-16'
     description: >-
-      EasyDNS secondary / backup NS target (`easydns.org`). Different
-      authoritative pool from the primary easydns.com / .net surface.
+      Authoritative nameserver under the documented easyDNS
+      name server `dns3.easydns.org`. This observes an NS host
+      under `easydns.org`. It does not prove that the zone is
+      delegated or that easyDNS is the only DNS provider.
 - name: Com Laude
   slug: com-laude
   category: Cloud
@@ -1045,9 +1083,14 @@ fingerprints:
   detections:
   - type: ns
     pattern: dnsv5.com
+    reference: https://docs.dnspod.cn/dns/dns-domain-change/
+    verified: '2026-11-16'
     description: >-
-      DNSPod (Tencent Cloud) NS target (`dnsv5.com`). Common on
-      Chinese-market apexes.
+      Authoritative nameserver under the documented DNSPod
+      premium name server `ns3.dnsv5.com`. This observes an
+      NS host under `dnsv5.com`. It does not prove that the
+      zone is delegated or that DNSPod is the only DNS
+      provider.
 # v1.9.24 EXTEND batch appended to discovered-signals.yaml.
 # Each entry shares slug + display name with an existing catalog entry;
 # multiple YAML entries can legitimately share both name and slug

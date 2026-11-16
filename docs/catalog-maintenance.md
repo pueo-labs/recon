@@ -224,7 +224,8 @@ reference check, and the 2026-11-16 email and cloud reference check,
 and a later 2026-11-16 email reporting reference check,
 and a later 2026-11-16 email, DNS, and event reference check,
 and a later 2026-11-16 DNS and email reference check,
-and a later 2026-11-16 DMARC reporting and DNS reference check.
+and a later 2026-11-16 DMARC reporting and DNS reference check,
+and a later 2026-11-16 DNS provider reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
 bind due rules to their exact claim/catalog digest, prior/new reference, actual
@@ -932,6 +933,44 @@ The [CSC managed DNS page](https://www.cscdbs.com/en/solutions/dns-services-ddos
 describes managed DNS and does not print an NS hostname ending in
 `cscdns.uk`. The zone-management guide also does not print that host.
 DNS-lookup directories are not a vendor basis.
+
+### Documented reference check, later on 2026-11-16, DNS providers
+
+This pass checked eight undated DNS and SPF rules. All eight received
+a `verified` date because the fetched vendor page prints the catalog
+grammar. No new detection, DNS record type, or collection path was
+added. This note does not cut a release.
+
+The [DNSimple name servers article](https://support.dnsimple.com/articles/dnsimple-nameservers/)
+lists `ns2.dnsimple-edge.net`, `ns3.dnsimple-edge.io`, and
+`ns4.dnsimple-edge.org` beside the already dated `.com` suffix. Each
+rule observes an NS host under its suffix. None proves that the zone
+is delegated or that DNSimple is the only DNS provider. The specific
+hosts were not added as separate rules.
+
+The [DigiCert DNS nameserver transition article](https://support.dnsmadeeasy.com/hc/en-us/articles/34327239032603-DigiCert-DNS-Nameserver-Transition),
+updated February 24, 2025, lists legacy DNS Made Easy name servers,
+including `ns0.dnsmadeeasy.com` and `ns1.dnsmadeeasy.com`, and says
+those legacy names continue to operate. The rule observes an NS host
+under `dnsmadeeasy.com`. Addresses on the page were not copied. The
+specific hosts were not added as separate rules.
+
+The [DNSPod domain-change article](https://docs.dnspod.cn/dns/dns-domain-change/),
+last updated August 25, 2025, lists `ns3.dnsv5.com` and
+`ns4.dnsv5.com` for the premium plan. The rule observes an NS host
+under `dnsv5.com`. The specific hosts were not added as separate
+rules.
+
+The [Docebo domain-management article](https://help.docebo.com/hc/en-us/articles/14651659200402-Domain-management-DNS-and-SSL-configuration-requirements),
+last updated June 3, 2026, prints `include:docebosaas.com`. The rule
+observes that include. It does not prove that Docebo sends mail for
+the domain.
+
+The [easyDNS nameserver page](https://easydns.com/our-nameservers/)
+lists `DNS1.EASYDNS.COM` and `DNS3.EASYDNS.ORG` as current nameserver
+constellations. Each rule observes an NS host under its suffix. The
+specific hosts were not added as separate rules. `easydns.net` and
+`easydns.info` on the same page were not dated in this pass.
 
 ## Executable path
 

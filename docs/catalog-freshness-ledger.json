@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "076619beee8b75099529e273f0290a5e452c9136d60bc64db0eadd12b15ccef5",
+  "catalog_digest": "7e39ccef0b55456ed9226da5fe5e41d98dc00538be2636ec06f025a70922d815",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -1344,8 +1344,104 @@
       "rule_id": "discovered-signals.yaml/dnsimple/ns/dnsimple-edge.com",
       "source_checked_on": "2026-11-16",
       "source_status": "checked"
+    },
+    {
+      "basis": "DNSimple name servers article checked 2026-11-16. It says the name servers are ns1.dnsimple-edge.com, ns2.dnsimple-edge.net, ns3.dnsimple-edge.io, and ns4.dnsimple-edge.org. The rule observes an NS host under dnsimple-edge.io. It does not prove that the zone is delegated or that DNSimple is the only DNS provider. The specific ns3 host was not added as a separate rule.",
+      "disposition": "narrowed",
+      "new_reference": "https://support.dnsimple.com/articles/dnsimple-nameservers/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "82b598746f1231448c7207976ac0fd2be9cfc284766c69ab1170f9d6050fb298",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/dnsimple/ns/dnsimple-edge.io",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "DNSimple name servers article checked 2026-11-16. It says the name servers are ns1.dnsimple-edge.com, ns2.dnsimple-edge.net, ns3.dnsimple-edge.io, and ns4.dnsimple-edge.org. The rule observes an NS host under dnsimple-edge.net. It does not prove that the zone is delegated or that DNSimple is the only DNS provider. The specific ns2 host was not added as a separate rule.",
+      "disposition": "narrowed",
+      "new_reference": "https://support.dnsimple.com/articles/dnsimple-nameservers/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "05eeef39c2d118d70d9fbaa2f25d888c3dc371487f7a70a245946dbeb25ee97d",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/dnsimple/ns/dnsimple-edge.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "DNSimple name servers article checked 2026-11-16. It says the name servers are ns1.dnsimple-edge.com, ns2.dnsimple-edge.net, ns3.dnsimple-edge.io, and ns4.dnsimple-edge.org. The rule observes an NS host under dnsimple-edge.org. It does not prove that the zone is delegated or that DNSimple is the only DNS provider. The specific ns4 host was not added as a separate rule.",
+      "disposition": "narrowed",
+      "new_reference": "https://support.dnsimple.com/articles/dnsimple-nameservers/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "3a08afb38f4ca32e45b2ac8ac1533ef566ec5f8cbd6af8d517806261ecc3546a",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/dnsimple/ns/dnsimple-edge.org",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "DigiCert DNS nameserver transition article, updated February 24, 2025, checked 2026-11-16. It lists legacy DNS Made Easy name servers, including ns0.dnsmadeeasy.com and ns1.dnsmadeeasy.com, and says those legacy names continue to operate. The rule observes an NS host under dnsmadeeasy.com. It does not prove that the zone is delegated or that DNS Made Easy is the only DNS provider. Addresses on the page were not copied. The specific hosts were not added as separate rules.",
+      "disposition": "narrowed",
+      "new_reference": "https://support.dnsmadeeasy.com/hc/en-us/articles/34327239032603-DigiCert-DNS-Nameserver-Transition",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "add7ac5ff68d03e753f35a68a84dfed7958311f2ce8f5ea70be952d2cea4043d",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/dnsmadeeasy/ns/dnsmadeeasy.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "DNSPod domain-change article, last updated August 25, 2025, checked 2026-11-16. The premium plan row lists ns3.dnsv5.com and ns4.dnsv5.com. The rule observes an NS host under dnsv5.com. It does not prove that the zone is delegated or that DNSPod is the only DNS provider. The specific hosts were not added as separate rules.",
+      "disposition": "narrowed",
+      "new_reference": "https://docs.dnspod.cn/dns/dns-domain-change/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "adb8e8e5a5e89b0be83120e1c260b8e64e06607a31d439afa5602113facac7c8",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/dnspod/ns/dnsv5.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Docebo domain-management article, last updated June 3, 2026, checked 2026-11-16. It prints an SPF value of v=spf1 mx include:docebosaas.com ~all, and says an existing SPF record should add include:docebosaas.com. The rule observes that include. It does not prove that Docebo sends mail for the domain.",
+      "disposition": "narrowed",
+      "new_reference": "https://help.docebo.com/hc/en-us/articles/14651659200402-Domain-management-DNS-and-SSL-configuration-requirements",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "fefcf8868c42fa706181decb917b8db91a1c5ca05f5c2e05fef23f8c023d3bfb",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/docebo/spf/docebosaas.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "easyDNS nameserver page checked 2026-11-16 lists DNS3.EASYDNS.ORG as a current nameserver constellation. The rule observes an NS host under easydns.org. It does not prove that the zone is delegated or that easyDNS is the only DNS provider. The specific dns3 host was not added as a separate rule. easydns.net and easydns.info on the same page were not dated in this pass.",
+      "disposition": "narrowed",
+      "new_reference": "https://easydns.com/our-nameservers/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "4efc3caaf73ed732e7eb51dafc00d2b2c08356747dea54e6c76115a4db600a1a",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/easydns-org/ns/easydns.org",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "easyDNS nameserver page checked 2026-11-16 lists DNS1.EASYDNS.COM as a current nameserver constellation. The rule observes an NS host under easydns.com. It does not prove that the zone is delegated or that easyDNS is the only DNS provider. The specific dns1 host was not added as a separate rule. easydns.net and easydns.info on the same page were not dated in this pass.",
+      "disposition": "narrowed",
+      "new_reference": "https://easydns.com/our-nameservers/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "62a6fb02d682d4186d1f228e886dd053137326b51065933b5115b9262271768e",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/easydns2/ns/easydns.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, not a complete catalog review"
 }

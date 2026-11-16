@@ -128,7 +128,10 @@ What is next, and why:
    not resolve. A later pass the same day dated the DMARCLY aggregate
    mailbox domain and the DNSimple nameserver suffix from pages that
    print the grammar, and left six other DMARC reporting and DNS rules
-   undated. That work
+   undated. A later pass the same day dated the remaining DNSimple
+   nameserver suffixes, the DNS Made Easy nameserver suffix, the
+   DNSPod nameserver suffix, the Docebo SPF include, and the easyDNS
+   nameserver suffixes from pages that print the grammar. That work
    does not cut a release.
    The next round uses a new question list and the rules that are still due.
    The closed 5,199-row drift round remains a measurement contract. It does
