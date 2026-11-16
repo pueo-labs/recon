@@ -142,8 +142,8 @@ build = [
 # harness. Exact roots plus uv.lock make those paid-network tools reproducible
 # without adding either SDK to recon's runtime or default development graph.
 agentic-validation = [
-    "anthropic==0.125.0",
-    "openai==2.54.0",
+    "anthropic==2.9.0",
+    "openai==3.51.0",
 ]
 dev = [
     "hypothesis>=6.0",

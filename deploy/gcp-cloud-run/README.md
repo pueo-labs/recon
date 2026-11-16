@@ -76,7 +76,7 @@ and authorization server. That is a later, separately gated layer in the
 
 ## Prerequisites
 
-- Terraform 1.8 or newer
+- Terraform 1.8 or newer. The Google provider constraint is `>= 8.0, < 9.0`.
 - Google Cloud credentials authorized to enable APIs, create the service and
   service account, and manage the named IAM bindings
 - An existing Artifact Registry repository and pushed `linux/amd64` image

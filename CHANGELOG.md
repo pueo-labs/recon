@@ -32,6 +32,16 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Move the maintainer-only `agentic-validation` pins from Anthropic 0.125.0
+  to 2.9.0 and from OpenAI 2.54.0 to 3.51.0, and refresh the lock. The
+  harness still calls `messages.create` and `chat.completions.create` with
+  `max_tokens` and without `temperature`. Both current SDKs accept that
+  shape. The new SDK requirements stay inside packages the runtime graph
+  already uses. This does not cut a release.
+- Move the draft Cloud Run Google provider constraint from `>= 7.0, < 8.0`
+  to `>= 8.0, < 9.0` and refresh the provider lock. The 8.0 upgrade guide
+  does not change `google_cloud_run_v2_service` or the other resources in
+  that module. This does not cut a release.
 - Date the Atlassian sending-domain verification TXT from the current
   vendor page, and point the rule at that page. The record observes a
   TXT value that begins with `atlassian-sending-domain-verification=`.
