@@ -225,7 +225,8 @@ and a later 2026-11-16 email reporting reference check,
 and a later 2026-11-16 email, DNS, and event reference check,
 and a later 2026-11-16 DNS and email reference check,
 and a later 2026-11-16 DMARC reporting and DNS reference check,
-and a later 2026-11-16 DNS provider reference check.
+and a later 2026-11-16 DNS provider reference check,
+and a later 2026-11-16 email and DNS reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
 bind due rules to their exact claim/catalog digest, prior/new reference, actual
@@ -971,6 +972,53 @@ lists `DNS1.EASYDNS.COM` and `DNS3.EASYDNS.ORG` as current nameserver
 constellations. Each rule observes an NS host under its suffix. The
 specific hosts were not added as separate rules. `easydns.net` and
 `easydns.info` on the same page were not dated in this pass.
+
+### Documented reference check, later on 2026-11-16, email and DNS
+
+This pass checked eight undated email and DNS rules. One received a
+`verified` date because the fetched vendor page prints the catalog
+grammar. Seven stayed undated. No new detection, DNS record type, or
+collection path was added. This note does not cut a release.
+
+The [easyDNS nameserver page](https://easydns.com/our-nameservers/)
+lists `DNS2.EASYDNS.NET` as a current nameserver constellation. The
+rule observes an NS host under `easydns.net`. It does not prove that
+the zone is delegated or that easyDNS is the only DNS provider. The
+specific host was not added as a separate rule. `easydns.info` on the
+same page was not dated in this pass.
+
+The [Elastic Email domain-verification article](https://help.elasticemail.com/en/articles/4934400-how-to-verify-your-domain)
+prints `include:_spf.elasticemail.com`. That host is narrower than
+the existing `elasticemail.com` suffix. The broader suffix stays
+undated. The narrower host was not added.
+
+The [Oracle Eloqua email-authentication page](https://docs.oracle.com/en/cloud/saas/marketing/eloqua-user/Help/Deliverability/EmailSendingDomainSubdomain.htm)
+describes SPF and does not print an include for `eloqua.com`.
+Third-party SPF guides are not a vendor basis. The Oracle knowledge
+article is behind a sign-in.
+
+The apex and `www` host for `emailanalyst.com` did not resolve, so
+no vendor page was available. This is not a source check.
+Third-party explainers and DNS-lookup directories are not a vendor
+basis.
+
+The [Emma SPF setup article](https://help.myemma.com/s/article/spf-authentication-setup)
+was requested and the fetched page did not return the article body.
+A search snippet is not a vendor basis.
+
+The [Etisalat domain pages](https://www.nic.ae/) describe domain
+registration and DNS management and do not print an NS hostname
+ending in `etisalatdomains.ae`.
+
+The [Everbridge custom-from article](https://supportcenter.everbridge.com/hc/en-us/articles/19141627397659-EBS-Emails-Not-Being-Received-From-Everbridge-Suite-When-Custom-From-Email-Address-Is-Configured)
+was requested. The fetched page is a support sign-in wall and does
+not print `include:everbridge.net`. A sign-in wall is not a vendor
+basis.
+
+The [Exclaimer SPF article](https://support.exclaimer.com/hc/en-gb/articles/4404775962641-How-to-update-the-Sender-Policy-Framework-SPF)
+prints `include:spf.<region>.exclaimer.net`. It does not print
+`emailsignatures365.com`. The regional host is a different suffix
+and was not added.
 
 ## Executable path
 
