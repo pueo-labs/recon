@@ -227,7 +227,9 @@ and a later 2026-11-16 DNS and email reference check,
 and a later 2026-11-16 DMARC reporting and DNS reference check,
 and a later 2026-11-16 DNS provider reference check,
 and a later 2026-11-16 email and DNS reference check,
-and a later 2026-11-16 nameserver and mail reference check.
+and a later 2026-11-16 nameserver and mail reference check,
+and a later 2026-11-16 nameserver, mail, and reporting reference
+check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
 bind due rules to their exact claim/catalog digest, prior/new reference, actual
@@ -1067,6 +1069,68 @@ The [Freshservice SPF article](https://support.freshservice.com/support/solution
 prints `include:email.freshservice.com`. That host is narrower than
 the existing `freshservice.com` suffix, so that suffix stays undated.
 The narrower host was not added.
+
+### Documented reference check, later on 2026-11-16, nameservers, mail, and reporting
+
+This pass checked eight undated nameserver, MX, SPF, DMARC, and TXT
+rules. Five received a `verified` date because the fetched vendor page
+prints the catalog grammar. Three stayed undated. No new detection,
+DNS record type, or collection path was added. This note does not cut
+a release.
+
+The [Gandi secondary nameserver documentation](https://docs.gandi.net/en/domain_names/advanced_users/secondary_nameserver.html)
+says Gandi's secondary DNS is `ns6.gandi.net` and that the operator
+must declare `ns6.gandi.net` as an NS at the apex. The rule observes
+an NS host under `gandi.net`. It does not prove that the zone is
+delegated or that Gandi is the only DNS provider. The specific host
+was not added. Glue addresses on the page were not copied.
+
+The [GoDaddy Professional Email DNS article](https://www.godaddy.com/help/what-are-my-dns-settings-for-professional-email-powered-by-titan-42767)
+says the MX records are the same for all users:
+`smtp.secureserver.net` at priority 0 and
+`mailstore1.secureserver.net` at priority 10. The rule observes an MX
+host under `secureserver.net`. It does not prove that mail is
+delivered or that GoDaddy is the only exchanger. The specific hosts
+were not added.
+
+The [GoDaddy SPF article](https://www.godaddy.com/help/add-an-spf-record-19218)
+says the SPF value must be `v=spf1 include:secureserver.net -all` for
+the listed GoDaddy mail products. The rule observes that include. It
+does not prove that mail is sent or that GoDaddy is the only sender.
+No second include was added.
+
+The [GoDaddy DKIM, DMARC, and SPF article](https://www.godaddy.com/help/what-is-dkim-dmarc-and-spf-24605)
+prints a default DMARC record whose rua mailbox is at
+`onsecureserver.net`. The rule observes an aggregate rua host under
+that suffix. It does not prove that reports are delivered or that
+GoDaddy is the only reporting destination. The mailbox local-part was
+not added.
+
+The [Squarespace nameserver article](https://support.squarespace.com/hc/en-us/articles/4404183898125-Review-change-or-reset-your-domain-s-nameservers),
+last updated September 17, 2026, says Squarespace default nameservers
+may end in `.googledomains.com`. The rule observes an NS host under
+that suffix. It does not prove that the zone is delegated, that
+Google Domains is the registrar, or that Squarespace is the only DNS
+provider. The other suffixes named on that page were not added.
+
+The [GitHub organization domain verification documentation](https://docs.github.com/en/organizations/managing-organization-settings/verifying-or-approving-a-domain-for-your-organization)
+tells the operator to follow on-screen TXT instructions and does not
+print `github-verification=`. The Pages verification article prints a
+different challenge name. That name was not added. The catalog TXT
+stays undated.
+
+The [GlockApps DMARC help article](https://help.glockapps.com/art/multiple-dmarc-records/),
+updated March 5, 2025, prints a generated aggregate rua at
+`ar.glockapps.com`. That host is narrower than the existing
+`glockapps.com` suffix, and the local-part is account-specific. A tag
+glossary uses a mailbox at `glockapps.com` as a syntax example. The
+broader suffix stays undated. The narrower host and the account
+local-part were not added.
+
+The [GoDaddy nameserver help](https://www.godaddy.com/help/find-my-godaddy-nameservers-12318)
+does not print `gdnsdef.com` or any nameserver hostname. Registry and
+DNS-directory pages are not a vendor basis. The suffix stays undated.
+No nameserver host was added.
 
 ## Executable path
 

@@ -857,7 +857,14 @@ Fastmail MX suffix, the FortiMail Cloud MX suffix, and the
 Cloudflare Foundation DNS nameserver suffixes from pages that
 print the grammar, and left two other email rules undated because
 a fetched page prints only a narrower host. That work does not cut
-a release. The 2026-10 documentation
+a release. A later pass the same day dated the Gandi nameserver
+suffix, the GoDaddy Professional Email MX suffix, the GoDaddy SPF
+include, the GoDaddy DMARC reporting suffix, and the
+Squarespace-documented Google Domains nameserver suffix from pages
+that print the grammar, and left three other rules undated because
+a fetched page does not print the catalog grammar, prints only a
+narrower host, or uses a mailbox at the suffix only as a syntax
+example. That work does not cut a release. The 2026-10 documentation
 pass read the IANA DNS parameter update and left collection on the existing
 record types. Agent portability remains a separate maintainer track and does
 not appear here as a product milestone:

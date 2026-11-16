@@ -742,6 +742,76 @@
       "reviewed_on": "2026-11-16",
       "source_checked_on": "2026-11-16",
       "reason": "Cloudflare nameserver documentation, last updated October 14, 2026, checked 2026-11-16: https://developers.cloudflare.com/dns/nameservers/. It says advanced nameservers are hosted on foundationdns.com, foundationdns.net, and foundationdns.org, and that each zone is assigned a color host under each suffix. The rule observes an NS host under foundationdns.org. It does not prove that the zone is delegated or that Cloudflare is the only DNS provider. The color host was not added as a separate rule."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "gandi",
+        "detection_type": "ns",
+        "pattern": "gandi.net"
+      },
+      "before": "ec11e7a52d55839fa3a2a6640996e6bd0130f17ca56277f4c382e1ba236f1d23",
+      "after": "4471fe5727e2d9acf704a65a1a18e0523e14194fdcfbec991b464ad0d47a3d54",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Gandi secondary nameserver documentation checked 2026-11-16: https://docs.gandi.net/en/domain_names/advanced_users/secondary_nameserver.html. It says Gandi's secondary DNS is ns6.gandi.net and that the operator must declare ns6.gandi.net as an NS at the apex. The rule observes an NS host under gandi.net. It does not prove that the zone is delegated or that Gandi is the only DNS provider. The specific host was not added. Glue addresses on the page were not copied."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "godaddy",
+        "detection_type": "dmarc_rua",
+        "pattern": "onsecureserver.net"
+      },
+      "before": "9c4da83610650631bcf5eb6602361c03cd8c3e11872558b82d69ddcb6fec1ecf",
+      "after": "318d99b93847db6303e801e1e5a51907ea2e182910c94a7f2368362a8aa36846",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "GoDaddy DKIM, DMARC, and SPF article checked 2026-11-16: https://www.godaddy.com/help/what-is-dkim-dmarc-and-spf-24605. It prints a default DMARC record whose rua mailbox is at onsecureserver.net. The rule observes an aggregate rua host under onsecureserver.net. It does not prove that reports are delivered or that GoDaddy is the only reporting destination. The mailbox local-part was not added as a separate rule."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "godaddy",
+        "detection_type": "mx",
+        "pattern": "secureserver.net"
+      },
+      "before": "493ca46ab619b57abb3283f4c52244fbe1cff202a61bc17689e50c0d60406f27",
+      "after": "6f76dd56ea3ddecb49942a3ce98347aaad7b7cfca18a209743be17e8e29a4e2a",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "GoDaddy Professional Email DNS article checked 2026-11-16: https://www.godaddy.com/help/what-are-my-dns-settings-for-professional-email-powered-by-titan-42767. It says the MX records are the same for all users: smtp.secureserver.net at priority 0 and mailstore1.secureserver.net at priority 10. The rule observes an MX host under secureserver.net. It does not prove that mail is delivered or that GoDaddy is the only exchanger. The specific hosts were not added as separate rules."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "godaddy",
+        "detection_type": "spf",
+        "pattern": "secureserver.net"
+      },
+      "before": "34cb5efe2a3b334a795dcf9d625c3ad23fec9f2da0ba664b8bad38c3e49fc7cc",
+      "after": "5805773b1e57c5bc03750f576555ae6d94c66d31df3cc546f4c4ffb91aecd626",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "GoDaddy SPF article checked 2026-11-16: https://www.godaddy.com/help/add-an-spf-record-19218. It says the SPF value for Professional Email, Microsoft 365 from GoDaddy, Linux Hosting, Gen 4 VPS and Dedicated Hosting, and Media Temple Mail must be v=spf1 include:secureserver.net -all. The rule observes that include. It does not prove that mail is sent or that GoDaddy is the only sender. No second include was added."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "google-domains-dns",
+        "detection_type": "ns",
+        "pattern": "googledomains.com"
+      },
+      "before": "29863f61c17e67aad5694e40db2aa7b3eddeb44d1c9b482d8c984cc548c1796f",
+      "after": "db736b7877bd966620f6a36b4a5e30361812411229318487e1e7eae71c7711c3",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Squarespace nameserver article, last updated September 17, 2026, checked 2026-11-16: https://support.squarespace.com/hc/en-us/articles/4404183898125-Review-change-or-reset-your-domain-s-nameservers. It says Squarespace default nameservers may end in .googledomains.com, .nsone.net, .squarespacedns.com, or .systemdns.com. The rule observes an NS host under googledomains.com. It does not prove that the zone is delegated, that Google Domains is the registrar, or that Squarespace is the only DNS provider. The other suffixes were not added."
     }
   ]
 }

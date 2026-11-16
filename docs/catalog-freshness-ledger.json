@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "94d307a1d975fbf4bd9a892f0b3efa87822fc617b079b95861337490570dccdf",
+  "catalog_digest": "0c1f3bab5e5f9d57fd76db4309f3584e81810edf8d05e618abdbf64ef06f3083",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -1632,8 +1632,104 @@
       "rule_id": "discovered-signals.yaml/freshservice/spf/freshservice.com",
       "source_checked_on": "2026-11-16",
       "source_status": "checked"
+    },
+    {
+      "basis": "Gandi secondary nameserver documentation checked 2026-11-16 says Gandi's secondary DNS is ns6.gandi.net and that the operator must declare ns6.gandi.net as an NS at the apex. The rule observes an NS host under gandi.net. It does not prove that the zone is delegated or that Gandi is the only DNS provider. The specific host was not added. Glue addresses on the page were not copied.",
+      "disposition": "narrowed",
+      "new_reference": "https://docs.gandi.net/en/domain_names/advanced_users/secondary_nameserver.html",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "4471fe5727e2d9acf704a65a1a18e0523e14194fdcfbec991b464ad0d47a3d54",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/gandi/ns/gandi.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "GitHub organization domain verification documentation checked 2026-11-16 tells the operator to follow on-screen TXT instructions and does not print github-verification=. The GitHub Pages verification article prints a challenge name _github-pages-challenge-<account> under the domain being verified. That name is not the catalog grammar and was not added. The catalog TXT stays undated.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.github.com/en/organizations/managing-organization-settings/verifying-or-approving-a-domain-for-your-organization",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "20ff3405df163b858988375744ae5572edd2ee71b436a39ad941d8aff2b2ab38",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/github/txt/^github-verification=",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "GlockApps DMARC help article checked 2026-11-16, updated March 5, 2025, prints a generated aggregate rua at ar.glockapps.com. That host is narrower than the existing glockapps.com suffix, and the local-part is account-specific. The tag glossary uses a mailbox at glockapps.com as a syntax example beside testdomain.com. The syntax example does not date the broader suffix. The narrower host and the account local-part were not added.",
+      "disposition": "deferred",
+      "new_reference": "https://help.glockapps.com/art/multiple-dmarc-records/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "ee8e1453473888a8a961e0153771bb3735f828af994b5a8500632c27bfa420d3",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/glockapps/dmarc_rua/glockapps.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "GoDaddy DKIM, DMARC, and SPF article checked 2026-11-16 prints a default DMARC record whose rua mailbox is at onsecureserver.net. The rule observes an aggregate rua host under onsecureserver.net. It does not prove that reports are delivered or that GoDaddy is the only reporting destination. The mailbox local-part was not added as a separate rule.",
+      "disposition": "narrowed",
+      "new_reference": "https://www.godaddy.com/help/what-is-dkim-dmarc-and-spf-24605",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "318d99b93847db6303e801e1e5a51907ea2e182910c94a7f2368362a8aa36846",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/godaddy/dmarc_rua/onsecureserver.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "GoDaddy Professional Email DNS article checked 2026-11-16 says the MX records are the same for all users: smtp.secureserver.net at priority 0 and mailstore1.secureserver.net at priority 10. The rule observes an MX host under secureserver.net. It does not prove that mail is delivered or that GoDaddy is the only exchanger. The specific hosts were not added as separate rules.",
+      "disposition": "narrowed",
+      "new_reference": "https://www.godaddy.com/help/what-are-my-dns-settings-for-professional-email-powered-by-titan-42767",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "6f76dd56ea3ddecb49942a3ce98347aaad7b7cfca18a209743be17e8e29a4e2a",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/godaddy/mx/secureserver.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "GoDaddy nameserver help checked 2026-11-16 does not print gdnsdef.com or any nameserver hostname. Registry and DNS-directory pages are not a vendor basis. The suffix stays undated. No nameserver host was added.",
+      "disposition": "deferred",
+      "new_reference": "https://www.godaddy.com/help/find-my-godaddy-nameservers-12318",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "91fedbf0f9cc82743bb9bd1374adaca4c90a0806d7eba42799fb36738b2d8d91",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/godaddy/ns/gdnsdef.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "GoDaddy SPF article checked 2026-11-16 says the SPF value for Professional Email, Microsoft 365 from GoDaddy, Linux Hosting, Gen 4 VPS and Dedicated Hosting, and Media Temple Mail must be v=spf1 include:secureserver.net -all. The rule observes that include. It does not prove that mail is sent or that GoDaddy is the only sender. No second include was added.",
+      "disposition": "narrowed",
+      "new_reference": "https://www.godaddy.com/help/add-an-spf-record-19218",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "5805773b1e57c5bc03750f576555ae6d94c66d31df3cc546f4c4ffb91aecd626",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/godaddy/spf/secureserver.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Squarespace nameserver article, last updated September 17, 2026, checked 2026-11-16. It says Squarespace default nameservers may end in .googledomains.com, .nsone.net, .squarespacedns.com, or .systemdns.com. The rule observes an NS host under googledomains.com. It does not prove that the zone is delegated, that Google Domains is the registrar, or that Squarespace is the only DNS provider. The other suffixes were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://support.squarespace.com/hc/en-us/articles/4404183898125-Review-change-or-reset-your-domain-s-nameservers",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "db736b7877bd966620f6a36b4a5e30361812411229318487e1e7eae71c7711c3",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/google-domains-dns/ns/googledomains.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, not a complete catalog review"
 }
