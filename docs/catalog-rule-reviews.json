@@ -490,6 +490,20 @@
       "reviewed_on": "2026-11-16",
       "source_checked_on": "2026-11-16",
       "reason": "Atlassian Cloud custom-domain email DNS checker article, updated July 24, 2026, checked 2026-11-16: https://support.atlassian.com/jira/kb/why-dns-checker-for-setting-up-custom-domain-email-address-still-unverified-in-cloud/. The verify TXT example begins with atlassian-sending-domain-verification=. The rule observes that prefix. It does not prove the DNS check succeeded or that mail is being sent. The same page's SPF include and DKIM CNAME are separate records and were not added. The example token was not copied."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "brevo",
+        "detection_type": "dmarc_rua",
+        "pattern": "dmarc.brevo.com"
+      },
+      "before": "9d3e7bc1ce049da502dfe1480a0960e69db4910afba47dc6fb391e47bafa9aff",
+      "after": "f4ccf4a119ba8009ae2c6ce5093e397d8a90172718e2fc97c81cf02a5ee06c3a",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Brevo domain-setup article checked 2026-11-16: https://help.brevo.com/hc/en-us/articles/35337929909778-Set-up-your-domain-in-Brevo. It prints an aggregate rua of rua=mailto:rua@dmarc.brevo.com and the example record v=DMARC1; p=none; rua=mailto:rua@dmarc.brevo.com. The domain authentication article prints the same rua. The rule observes that mailbox domain. It does not prove that reports are collected or that mail is sent through Brevo. The p=none value is the page's example policy and is not a claim about a customer namespace."
     }
   ]
 }

@@ -32,6 +32,13 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Date the Brevo DMARC aggregate reporting destination from the current
+  vendor page, and point the rule at that page. The record observes a
+  rua mailbox domain of `dmarc.brevo.com`. It does not prove that
+  reports are collected or that mail is sent through Brevo. Seven other
+  undated rules in this pass stay undated because their cited pages do
+  not print the exact grammar, or the help page did not return an
+  article body. This does not cut a release.
 - Move the maintainer-only `agentic-validation` pins from Anthropic 0.125.0
   to 2.9.0 and from OpenAI 2.54.0 to 3.51.0, and refresh the lock. The
   harness still calls `messages.create` and `chat.completions.create` with

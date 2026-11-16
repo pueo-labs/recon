@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "5faa7b3c0d90558dfef92fc3d95b86ef88bed9b0ea24ac3e709e79ea0a30f1f6",
+  "catalog_digest": "844cd07a521eabee84533df6b5984108e015561d3901b4785b3cfa0b51cb7261",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -960,8 +960,104 @@
       "rule_id": "discovered-signals.yaml/atlassian/txt/^atlassian-sending-domain-verification=",
       "source_checked_on": "2026-11-16",
       "source_status": "checked"
+    },
+    {
+      "basis": "AT&T Business DNS support article, last updated December 7, 2022, checked 2026-11-16. It tells the reader to list AT&T as primary DNS with the registrar. It does not print an NS hostname ending in att.net. DNS-lookup directories are not a vendor basis. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://www.att.com/support/smallbusiness/article/smb-internet/KM1188676/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "793c200ec4dd84141a8b0f62c843eea7ab4cfc056408158756beddaf47976390",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/att-dns/ns/att.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "AutoSPF query-tracking article, modified August 4, 2025, checked 2026-11-16. It describes a host under autospf.email that AutoSPF uses to count DNS queries. It does not print a customer SPF include of autospf.email. The manual setup article, modified April 8, 2026, says the customer SPF record uses an include that points at AutoSPF DNS space, and it does not print that include. The query-tracking host label was not copied. No second SPF include was added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://support.autospf.com/support/solutions/articles/5000874728",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "7c2376e74429187c1f9d148d863e7f5353f82a87f754e03144f4516167946923",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/autospf/spf/autospf.email",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Barracuda Domain Fraud Protection DMARC step, published April 2, 2026, checked 2026-11-16. The example aggregate rua and forensic ruf mailboxes use the host dmarc.barracudanetworks.com. That host is narrower than the existing barracudanetworks.com suffix. The broader suffix stays undated. The narrower host was not added as a second rule. The example mailbox local-part was not copied. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://documentation.campus.barracuda.com/wiki/display/BDFP/Step+1+-+Configuring+DMARC+on+Your+Domain",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "45c784a3feab8758752121e97a45033352fad6a61d6dc26637a910eae85a70a1",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/barracuda/dmarc_rua/barracudanetworks.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "PayPal Braintree SPF guide checked 2026-11-16 says configuring SPF records is no longer required for integration. The retained steps print include:spf.braintreegateway.com. That exact include is narrower than the existing braintreegateway.com suffix. The broader suffix stays undated. The exact include was not added as a second rule. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://developer.paypal.com/braintree/articles/guides/configuring-spf-records/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "647a1ffdf14b5a4374fba7196c9fdfd14cc673395f781d6695d2423e6041b7ae",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/braintree/spf/braintreegateway.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Brevo domain-setup article checked 2026-11-16 prints an aggregate rua of rua=mailto:rua@dmarc.brevo.com and the example record v=DMARC1; p=none; rua=mailto:rua@dmarc.brevo.com. The domain authentication article prints the same rua. The rule observes that mailbox domain. It does not prove that reports are collected or that mail is sent through Brevo. The p=none value is the page's example policy and is not a claim about a customer namespace.",
+      "disposition": "narrowed",
+      "new_reference": "https://help.brevo.com/hc/en-us/articles/35337929909778-Set-up-your-domain-in-Brevo",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "f4ccf4a119ba8009ae2c6ce5093e397d8a90172718e2fc97c81cf02a5ee06c3a",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/brevo/dmarc_rua/dmarc.brevo.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Brevo domain authentication article checked 2026-11-16 says SPF and MX records are not required to authenticate a domain and are provided only when setting up a dedicated IP. The dedicated-IP article prints NS values ns1.sendinblue.com and ns2.sendinblue.com and says to copy the SPF value from the product. It does not print an SPF include of sendinblue.com. Those nameserver hosts were not added. The current domain-setup article also does not print that include. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://help.brevo.com/hc/en-us/articles/115000240344",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "c9d2eb8d3e0e50c3eb9bdb5cc7d218bd8bca44363de7fe533ad0d5bfb023d09a",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/brevo/spf/sendinblue.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Brevo domain authentication article checked 2026-11-16 calls the ownership TXT a Brevo code and says to copy its value from the product. It does not print sendinblue-site-verification=. The current domain-setup article also does not print that prefix. The copied product value was not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://help.brevo.com/hc/en-us/articles/12163873383186",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "c7a2b19f05d524a66a1df438450a8298c675183dd11788ef0b5151733d61fd5c",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/brevo/txt/^sendinblue-site-verification=",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Campaign Monitor help articles for email authentication troubleshooting and managing authentication were requested on 2026-11-16. Both returned the help center CSS error shell and did not print an SPF record. The article body was not available, so this is not a source check. A search index is not a vendor basis. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": null,
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "3ab594a8f72b74bddeb5218c39299db67acedf810ab20ff6cc3e3b5e6d841211",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/campaign-monitor/spf/createsend.com",
+      "source_checked_on": null,
+      "source_status": "unreachable"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, and the 2026-11-16 email and cloud reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, not a complete catalog review"
 }
