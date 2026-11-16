@@ -226,7 +226,8 @@ and a later 2026-11-16 email, DNS, and event reference check,
 and a later 2026-11-16 DNS and email reference check,
 and a later 2026-11-16 DMARC reporting and DNS reference check,
 and a later 2026-11-16 DNS provider reference check,
-and a later 2026-11-16 email and DNS reference check.
+and a later 2026-11-16 email and DNS reference check,
+and a later 2026-11-16 nameserver and mail reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
 bind due rules to their exact claim/catalog digest, prior/new reference, actual
@@ -1019,6 +1020,53 @@ The [Exclaimer SPF article](https://support.exclaimer.com/hc/en-gb/articles/4404
 prints `include:spf.<region>.exclaimer.net`. It does not print
 `emailsignatures365.com`. The regional host is a different suffix
 and was not added.
+
+### Documented reference check, later on 2026-11-16, nameservers and mail
+
+This pass checked eight undated nameserver, MX, and SPF rules. Six
+received a `verified` date because the fetched vendor page prints the
+catalog grammar. Two stayed undated. No new detection, DNS record
+type, or collection path was added. This note does not cut a release.
+
+The [F5 Distributed Cloud DNS quickstart](https://docs.cloud.f5.com/docs-v2/dns-management/quickstart/dns-services)
+says to add nameservers `ns1.f5clouddns.com` and `ns2.f5clouddns.com`.
+The rule observes an NS host under `f5clouddns.com`. It does not prove
+that the zone is delegated or that F5 is the only DNS provider. The
+specific hosts were not added as separate rules.
+
+The [Fastmail MX setup article](https://www.fastmail.help/hc/en-us/articles/1500000280261-Setting-up-your-domain-MX-only)
+says to set MX records to `in1-smtp.messagingengine.com` and
+`in2-smtp.messagingengine.com`. The rule observes an MX host under
+`messagingengine.com`. It does not prove that mail is delivered or
+that Fastmail is the only exchanger. The specific hosts were not
+added. The SPF include `spf.messagingengine.com` on the same page
+was not added.
+
+The [FortiMail Cloud Microsoft 365 MX guide](https://fortinetweb.s3.amazonaws.com/docs.fortinet.com/v2/attachments/b35ad4f6-bef7-11ee-8673-fa163e15d75b/FortiMail_Cloud_Integration_with_Microsoft_365_Using_MX_Records.pdf),
+last updated April 16, 2026, prints example MX targets under
+`fortimailcloud.com`. The rule observes an MX host under that suffix.
+It does not prove that mail is routed through FortiMail or that
+FortiMail is the only exchanger. The example tenant labels were not
+added. The SPF include `_spf.fortimailcloud.com` on the same page was
+not added.
+
+The [Cloudflare nameserver documentation](https://developers.cloudflare.com/dns/nameservers/),
+last updated October 14, 2026, says advanced nameservers are hosted
+on `foundationdns.com`, `foundationdns.net`, and `foundationdns.org`,
+and that each zone is assigned a color host under each suffix. Each
+rule observes an NS host under its suffix. None proves that the zone
+is delegated or that Cloudflare is the only DNS provider. The color
+host was not added as a separate rule.
+
+The same [Exclaimer SPF article](https://support.exclaimer.com/hc/en-gb/articles/4404775962641-How-to-update-the-Sender-Policy-Framework-SPF)
+prints `include:spf.<region>.exclaimer.net`. That host is narrower
+than the existing `exclaimer.net` suffix, so that suffix stays
+undated. The regional host was not added.
+
+The [Freshservice SPF article](https://support.freshservice.com/support/solutions/articles/193639-creating-an-spf-record)
+prints `include:email.freshservice.com`. That host is narrower than
+the existing `freshservice.com` suffix, so that suffix stays undated.
+The narrower host was not added.
 
 ## Executable path
 

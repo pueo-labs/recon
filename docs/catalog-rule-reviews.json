@@ -658,6 +658,90 @@
       "reviewed_on": "2026-11-16",
       "source_checked_on": "2026-11-16",
       "reason": "easyDNS nameserver page checked 2026-11-16: https://easydns.com/our-nameservers/. It lists DNS2.EASYDNS.NET as a current nameserver constellation. The rule observes an NS host under easydns.net. It does not prove that the zone is delegated or that easyDNS is the only DNS provider. The specific dns2 host was not added as a separate rule. easydns.info on the same page was not dated in this pass."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "f5-clouddns",
+        "detection_type": "ns",
+        "pattern": "f5clouddns.com"
+      },
+      "before": "fc6f94c27e3ccedc54db18ff0d0a8408d8f1833aed941b343bfb36a30e1ecd2c",
+      "after": "370b097f00bfb217ac36b410e83173387a626e841b2d006cdcdd7554130f540f",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "F5 Distributed Cloud DNS quickstart checked 2026-11-16: https://docs.cloud.f5.com/docs-v2/dns-management/quickstart/dns-services. It says to add nameservers ns1.f5clouddns.com and ns2.f5clouddns.com at the registrar or parent zone. The rule observes an NS host under f5clouddns.com. It does not prove that the zone is delegated or that F5 is the only DNS provider. The specific ns1 and ns2 hosts were not added as separate rules."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "fastmail",
+        "detection_type": "mx",
+        "pattern": "messagingengine.com"
+      },
+      "before": "f63ac4500f5bdbc692236a3770c49e5892950c09bc63631bce7201f256f96225",
+      "after": "deb3310bc0fe8ca40450adc07d47198a3beb771c8ac7de8e3889fc1c0a3b658b",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Fastmail MX setup article checked 2026-11-16: https://www.fastmail.help/hc/en-us/articles/1500000280261-Setting-up-your-domain-MX-only. It says to set MX records to in1-smtp.messagingengine.com and in2-smtp.messagingengine.com. The rule observes an MX host under messagingengine.com. It does not prove that mail is delivered or that Fastmail is the only exchanger. The specific hosts were not added as separate rules. The SPF include spf.messagingengine.com on the same page was not added."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "fortinet",
+        "detection_type": "mx",
+        "pattern": "fortimailcloud.com"
+      },
+      "before": "ac31a7ab4826303d80a07ace511244276eadaa7d0f21770d296a947dfb85341d",
+      "after": "337b58e886615039e7be73d66cd02417fd30ae4cedbcdb6436dc66ce03468be8",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "FortiMail Cloud Microsoft 365 MX guide, last updated April 16, 2026, checked 2026-11-16: https://fortinetweb.s3.amazonaws.com/docs.fortinet.com/v2/attachments/b35ad4f6-bef7-11ee-8673-fa163e15d75b/FortiMail_Cloud_Integration_with_Microsoft_365_Using_MX_Records.pdf. The fetched PDF prints example MX targets example-com-1.fortimailcloud.com and example-com-2.fortimailcloud.com. The rule observes an MX host under fortimailcloud.com. It does not prove that mail is routed through FortiMail or that FortiMail is the only exchanger. The example tenant labels were not added. The SPF include _spf.fortimailcloud.com on the same page was not added."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "foundationdns",
+        "detection_type": "ns",
+        "pattern": "foundationdns.com"
+      },
+      "before": "7e8cd16be7d0fc4f04d21416cb054fe2164408bddbb67fb63a0357c7a8258f60",
+      "after": "1bd26a9fa7a52b25e5727b555d272958544304e338bd8c89d936428a21a5377d",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Cloudflare nameserver documentation, last updated October 14, 2026, checked 2026-11-16: https://developers.cloudflare.com/dns/nameservers/. It says advanced nameservers are hosted on foundationdns.com, foundationdns.net, and foundationdns.org, and that each zone is assigned a color host under each suffix. The rule observes an NS host under foundationdns.com. It does not prove that the zone is delegated or that Cloudflare is the only DNS provider. The color host was not added as a separate rule."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "foundationdns",
+        "detection_type": "ns",
+        "pattern": "foundationdns.net"
+      },
+      "before": "e23039773dc940fe99bc8e1356f96b788c87cfcfa4ecbd4f5cbb00b0f8095dd7",
+      "after": "a84df28a7b9024b60a62d31240355c997b65907a7b8b2669fd34c9e7bf6f4222",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Cloudflare nameserver documentation, last updated October 14, 2026, checked 2026-11-16: https://developers.cloudflare.com/dns/nameservers/. It says advanced nameservers are hosted on foundationdns.com, foundationdns.net, and foundationdns.org, and that each zone is assigned a color host under each suffix. The rule observes an NS host under foundationdns.net. It does not prove that the zone is delegated or that Cloudflare is the only DNS provider. The color host was not added as a separate rule."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "foundationdns",
+        "detection_type": "ns",
+        "pattern": "foundationdns.org"
+      },
+      "before": "2f49f88bfa07824f5ace4c6b9bd7dbf456c4c59965037049ad4abb3e56887e62",
+      "after": "4594501642a842ef628697ba89469fc90bd784aaf6233f65165629c78f6a6f54",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Cloudflare nameserver documentation, last updated October 14, 2026, checked 2026-11-16: https://developers.cloudflare.com/dns/nameservers/. It says advanced nameservers are hosted on foundationdns.com, foundationdns.net, and foundationdns.org, and that each zone is assigned a color host under each suffix. The rule observes an NS host under foundationdns.org. It does not prove that the zone is delegated or that Cloudflare is the only DNS provider. The color host was not added as a separate rule."
     }
   ]
 }
