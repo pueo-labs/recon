@@ -230,7 +230,8 @@ and a later 2026-11-16 email and DNS reference check,
 and a later 2026-11-16 nameserver and mail reference check,
 and a later 2026-11-16 nameserver, mail, and reporting reference
 check, and a later 2026-11-16 mail, SPF, and custom-DNS reference
-check, and a later 2026-11-16 mail and verification reference check.
+check, and a later 2026-11-16 mail and verification reference check,
+and a later 2026-11-16 mail exchanger and reporting reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
 bind due rules to their exact claim/catalog digest, prior/new reference, actual
@@ -1245,6 +1246,58 @@ updated October 16, 2025, prints `loom-site-verification=` with an
 example token. It does not print `loom-verification=`. That is a
 different prefix. The example token was not copied, and the other
 prefix was not dated in this pass. The catalog TXT stays undated.
+
+### Documented reference check, later on 2026-11-16, mail exchanger and reporting
+
+This pass checked eight undated SPF, MX, DMARC, and TXT rules. Two
+received a `verified` date because the fetched vendor page prints the
+catalog grammar. Six stayed undated. No new detection, DNS record
+type, or collection path was added. This note does not cut a release.
+
+The [Mailgun domain verification article](https://documentation.mailgun.com/docs/mailgun/user-manual/domains/domains-verify),
+last updated March 19, 2026, prints MX hosts `mxa.mailgun.org` and
+`mxb.mailgun.org` at priority 10. The rule observes an MX host under
+`mailgun.org`. It does not prove that mail is delivered or that
+Mailgun is the only exchanger. The specific hosts were not added. The
+SPF include on the same page was not added to this rule.
+
+The [Mailhardener DMARC article](https://www.mailhardener.com/kb/dmarc)
+prints `rua=mailto:dmarc-reports@mailhardener.com`. The rule observes
+that reporting host. It does not prove that reports are delivered or
+that Mailhardener is the only destination. A second example uses
+`in.mailhardener.com`. That host and the mailbox local-parts were not
+added.
+
+The [MailChannels SPF article](https://docs.mailchannels.com/outbound/spf-records)
+prints `include:relay.mailchannels.net`. It does not print
+`include:mailchannels.net`. The narrower host was not added. The
+catalog SPF stays undated.
+
+The [MailerLite SPF article](https://www.mailerlite.com/help/how-to-merge-spf-records)
+prints `include:_spf.mlsend.com`. It does not print
+`include:mlsend.com`. The narrower host was not added. The catalog
+SPF stays undated.
+
+The [Mailgun DMARC article](https://help.mailgun.com/hc/en-us/articles/13285772266011-DMARC)
+explains aggregate reporting with an example mailbox on a fictional
+domain. It does not print a rua host under `mailgun.org`. The example
+mailbox was not copied. The catalog rua stays undated.
+
+The [Mailgun domain verification guide](https://help.mailgun.com/hc/en-us/articles/32884702360603-Domain-Verification-Setup-Guide)
+prints `include:mailgun.org` for SPF and says to copy the DKIM record
+from the control panel. It does not print `mgverify=`. No TXT prefix
+was added. The catalog TXT stays undated.
+
+The [Mailjet SPF and DKIM guide](https://documentation.mailjet.com/hc/en-us/articles/360049641733-Authenticating-Domains-with-SPF-and-DKIM-A-Complete-Guide),
+updated July 27, 2026, prints `include:spf.mailjet.com`. It does not
+print `include:mailjet.com`. The narrower host was not added. The
+catalog SPF stays undated.
+
+The [Mailprotector MX article](https://support.mailprotector.com/hc/en-us/articles/360030206592-How-MX-Records-Are-Used-for-Email),
+updated August 28, 2025, prints hostnames under `inbound.emailservice.io`,
+`inbound.emailservice.cc`, and `inbound.emailservice.co`. It does not
+print `mxrecord.io`. Those other suffixes were not added. The catalog
+MX stays undated.
 
 ## Executable path
 
