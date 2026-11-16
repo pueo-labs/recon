@@ -220,7 +220,8 @@ eight documented additions checked on 2026-10-23. Later rows record the
 advertising reference check, and the 2026-11-02 CRM and advertising
 reference check, a later 2026-11-02 data and analytics reference
 check, and a later 2026-11-02 data, analytics, and infrastructure
-reference check. It is a bounded
+reference check, and the 2026-11-16 email and cloud reference check.
+It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
 bind due rules to their exact claim/catalog digest, prior/new reference, actual
 source check/review date, disposition, next review and bounded proposal queue.
@@ -664,6 +665,62 @@ added. The current Alibaba Cloud ALB guide says to CNAME a custom
 hostname to the instance DNS name, for example a host under
 `alb.aliyuncsslb.com`. It does not print a customer CNAME target under
 `alibaba.com`. That instance DNS name was not added.
+
+### Documented reference check, 2026-11-16
+
+This pass checked eight undated email and cloud rules. One received a
+`verified` date because the current vendor page prints the grammar.
+Seven stay undated. No new detection, DNS record type, or collection
+path was added. This note does not cut a release.
+
+The [Atlassian Cloud custom-domain email DNS checker](https://support.atlassian.com/jira/kb/why-dns-checker-for-setting-up-custom-domain-email-address-still-unverified-in-cloud/)
+prints a TXT value that begins with
+`atlassian-sending-domain-verification=`. The existing prefix rule
+observes that record. It does not prove that the DNS check succeeded
+or that mail is being sent. The same page prints
+`include:_spf.atlassian.net` and a DKIM CNAME. Those are separate
+records and were not added. The example token on the page was not
+copied.
+
+Alibaba Cloud `alibabadns.com`, `alibaba-inc.com`,
+`service.alibaba.com`, and `aliyun-site-verification=`, the Amadeus
+`amadeus.com` SPF suffix, the AppRiver `arsmtp.com` MX, and the
+broader Atlassian `atlassian.net` SPF suffix stay undated. The
+[Alibaba Mail MX, CNAME, and TXT guide](https://www.alibabacloud.com/help/en/alibaba-mail/latest/explanation-of-terms-for-mx-cname-and-txt-records)
+prints regional CNAME targets `mail.sg.aliyun.com`,
+`mail.hk.aliyun.com`, `mail.de.alibabacloud.com`, and
+`mail.us.alibabacloud.com`. It does not print `alibabadns.com`. The
+Alibaba Cloud DNS getting-started page reached from the CNAME
+configuration URL prints `ns1.alidns.com` and does not print
+`alibabadns.com`. Those regional mail hosts were not added. The same
+Mail guide prints regional MX hosts `mx1.sg.aliyun.com`,
+`mx1.hk.aliyun.com`, `mx1.de.alibabacloud.com`, and
+`mx1.us.alibabacloud.com`, plus the `mx2` equivalents. It does not
+print `alibaba-inc.com`. Those regional hosts were not added. It also
+prints SPF includes `spf.sg.aliyun.com`, `spf.hk.aliyun.com`,
+`spf.de.alibabacloud.com`, and `spf.us.alibabacloud.com`. Those
+includes were not added. The [international Direct Mail DMARC
+guide](https://www.alibabacloud.com/help/en/direct-mail/what-is-dmarc-and-how-to-configure-dmarc-records)
+prints a placeholder `rua` of `dmarc_report@example.net`. The
+[Aliyun Direct Mail DMARC guide](https://help.aliyun.com/en/direct-mail/what-is-dmarc-and-how-to-configure-dmarc-records)
+prints `rua=mailto:dmarc_report@service.aliyun.com` and calls that
+mailbox the default report mailbox. Neither prints
+`service.alibaba.com`. The `service.aliyun.com` mailbox is a separate
+shape and was not added. The [Aliyun site-verification
+guide](https://help.aliyun.com/en/document_detail/3043313.html)
+describes HTML tag and file checks for Baidu, 360, and Sogou, and a
+TXT record copied from Google Search Console. It does not print
+`aliyun-site-verification=`. The copied value was not added. A direct
+fetch of the [Amadeus developer flight
+guide](https://developers.amadeus.com/self-service/apis-docs/guides/developer-guides/resources/flights/)
+returned an empty body and did not print an SPF include of
+`amadeus.com`. The indexed guide uses `include=` as an API query
+parameter, not an SPF include. A community thread is not a vendor
+basis. No second SPF shape was added. The [OpenText support
+portal](https://support.opentext.com/csm) returns a login page and
+does not print `arsmtp.com`. DNS-lookup directories are not a vendor
+basis. The Atlassian page's exact SPF include is narrower than the
+existing `atlassian.net` suffix, so that suffix stays undated.
 
 ## Executable path
 

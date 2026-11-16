@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "be1bfca415f43b0f6f162f6d91092ba30ef855240316159d18439ea573097006",
+  "catalog_digest": "5faa7b3c0d90558dfef92fc3d95b86ef88bed9b0ea24ac3e709e79ea0a30f1f6",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -864,8 +864,104 @@
       "rule_id": "discovered-signals.yaml/alibaba-cloud/cname_target/alibaba.com",
       "source_checked_on": "2026-11-02",
       "source_status": "checked"
+    },
+    {
+      "basis": "Alibaba Mail MX, CNAME, and TXT guide checked 2026-11-16 prints regional CNAME targets mail.sg.aliyun.com, mail.hk.aliyun.com, mail.de.alibabacloud.com, and mail.us.alibabacloud.com. It does not print alibabadns.com. The Alibaba Cloud DNS getting-started page reached from the CNAME configuration URL prints ns1.alidns.com and does not print alibabadns.com. Those regional mail hosts were not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://www.alibabacloud.com/help/en/alibaba-mail/latest/explanation-of-terms-for-mx-cname-and-txt-records",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "066997c0790105b393f8cad9c7a1590772cbde945a17b7dd38e15778ab9a8ee1",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/alibaba-cloud/cname_target/alibabadns.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Direct Mail DMARC guides checked 2026-11-16. The international guide prints a placeholder rua of dmarc_report@example.net. The Aliyun guide prints rua=mailto:dmarc_report@service.aliyun.com and calls that mailbox the Direct Mail default report mailbox. Neither prints service.alibaba.com. The service.aliyun.com mailbox is a separate shape and was not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://help.aliyun.com/en/direct-mail/what-is-dmarc-and-how-to-configure-dmarc-records",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "355de44ef02ebd60c87ecee0d5d864a061c52177bc5874b9d3fe76f5369ed86d",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/alibaba-cloud/dmarc_rua/service.alibaba.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Alibaba Mail MX, CNAME, and TXT guide checked 2026-11-16 prints regional MX hosts mx1.sg.aliyun.com, mx1.hk.aliyun.com, mx1.de.alibabacloud.com, and mx1.us.alibabacloud.com, plus the mx2 equivalents. It does not print alibaba-inc.com. Those regional hosts were not added. The same page prints SPF includes spf.sg.aliyun.com, spf.hk.aliyun.com, spf.de.alibabacloud.com, and spf.us.alibabacloud.com. Those includes were not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://www.alibabacloud.com/help/en/alibaba-mail/latest/explanation-of-terms-for-mx-cname-and-txt-records",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "feb0745bded0b5e94e56a844fecb982c5d6459c427860632a998a90eed2a11d9",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/alibaba-cloud/mx/alibaba-inc.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Aliyun site-verification guide checked 2026-11-16 describes HTML tag and file checks for Baidu, 360, and Sogou, and a TXT record copied from Google Search Console. It does not print aliyun-site-verification=. The copied Google TXT value was not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://help.aliyun.com/en/document_detail/3043313.html",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "e8eaaf33c8588382a0cbf2490d692712ac382aba0e7d411826734b014ed795b4",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/alibaba-cloud/txt/^aliyun-site-verification=",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Amadeus developer flight guide checked 2026-11-16. A direct fetch returned an empty body and did not print an SPF include of amadeus.com. The indexed guide uses include= as an API query parameter, not an SPF include. A community thread is not a vendor basis. No second SPF shape was added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://developers.amadeus.com/self-service/apis-docs/guides/developer-guides/resources/flights/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "28a5080cf53b9fd97dd1082c97e978f458afb447baa282b410c21c2928120903",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/amadeus/spf/amadeus.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "OpenText support portal checked 2026-11-16 returns a login page and does not print arsmtp.com. Public search did not find an unauthenticated vendor page that prints that MX host. DNS-lookup directories are not a vendor basis. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://support.opentext.com/csm",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "72ba19b2e60bd9c745219de1dbe706fd63e53aeed82738f9cb588344ae514e74",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/appriver/mx/arsmtp.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Atlassian Cloud custom-domain email DNS checker article, updated July 24, 2026, checked 2026-11-16. It prints the default SPF include include:_spf.atlassian.net. That exact include is narrower than the existing atlassian.net suffix. The broader suffix stays undated. The exact include was not added as a second rule. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://support.atlassian.com/jira/kb/why-dns-checker-for-setting-up-custom-domain-email-address-still-unverified-in-cloud/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "fd747d99b567cdbafbde426924814fece6c49bb92d635f29416d6094e9999a96",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/atlassian/spf/atlassian.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Atlassian Cloud custom-domain email DNS checker article, updated July 24, 2026, checked 2026-11-16. The verify TXT example begins with atlassian-sending-domain-verification=. The rule observes that prefix. It does not prove the DNS check succeeded or that mail is being sent. The same page's SPF include and DKIM CNAME are separate records and were not added. The example token was not copied.",
+      "disposition": "narrowed",
+      "new_reference": "https://support.atlassian.com/jira/kb/why-dns-checker-for-setting-up-custom-domain-email-address-still-unverified-in-cloud/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "c79f327ab06f0ccbaf20efb69e2242279d1866bb6f206f351aa9b8cd9d73172c",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/atlassian/txt/^atlassian-sending-domain-verification=",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-02, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, and a later 2026-11-02 data, analytics, and infrastructure reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, and the 2026-11-16 email and cloud reference check, not a complete catalog review"
 }

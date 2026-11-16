@@ -111,7 +111,9 @@ What is next, and why:
    undated. A later pass the same day dated the Pendo organization
    CNAME and the Afternic parking nameservers from pages that print
    the grammar, and left six other data, analytics, and infrastructure
-   rules undated. That work does not cut a release.
+   rules undated. The 2026-11-16 pass dated the Atlassian sending-domain
+   verification TXT from the page that prints the grammar, and left
+   seven other email and cloud rules undated. That work does not cut a release.
    The next round uses a new question list and the rules that are still due.
    The closed 5,199-row drift round remains a measurement contract. It does
    not promote rules. Start at [catalog maintenance](docs/catalog-maintenance.md).

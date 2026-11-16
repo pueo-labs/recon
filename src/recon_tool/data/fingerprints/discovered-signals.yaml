@@ -1049,11 +1049,16 @@ fingerprints:
   detections:
   - type: txt
     pattern: ^atlassian-sending-domain-verification=
+    reference: https://support.atlassian.com/jira/kb/why-dns-checker-for-setting-up-custom-domain-email-address-still-unverified-in-cloud/
+    verified: '2026-11-16'
     description: >-
-      Atlassian sending-domain TXT
-      (`atlassian-sending-domain-verification=`). Confirms outbound
-      Atlassian email (Jira / Confluence notifications) from this
-      domain. Account-binding signal only.
+      Atlassian sending-domain verification TXT
+      (`atlassian-sending-domain-verification=`). The current
+      custom-domain email DNS checker prints this prefix. This
+      observes an administrative verification record. It does not
+      prove that the DNS check succeeded or that mail is being sent.
+      The same page's SPF include and DKIM CNAME are separate records
+      and are not part of this rule.
 - name: Google Workspace
   slug: google-workspace
   category: Email & Communication
