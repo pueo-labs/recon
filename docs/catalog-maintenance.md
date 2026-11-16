@@ -222,7 +222,8 @@ reference check, a later 2026-11-02 data and analytics reference
 check, and a later 2026-11-02 data, analytics, and infrastructure
 reference check, and the 2026-11-16 email and cloud reference check,
 and a later 2026-11-16 email reporting reference check,
-and a later 2026-11-16 email, DNS, and event reference check.
+and a later 2026-11-16 email, DNS, and event reference check,
+and a later 2026-11-16 DNS and email reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
 bind due rules to their exact claim/catalog digest, prior/new reference, actual
@@ -838,6 +839,44 @@ management page](https://comlaude.com/ask-the-experts-dns-management/)
 also does not print those hosts. DNS-lookup directories are not a
 vendor basis. The unadmitted `comlaude-dns.net` and `comlaude-dns.eu`
 siblings were not dated.
+
+### Documented reference check, later on 2026-11-16, DNS and email
+
+This pass checked eight undated DNS and email rules. None received a
+`verified` date. No new detection, DNS record type, or collection path
+was added. This note does not cut a release.
+
+The [Com Laude Managed DNS Service Terms](https://comlaude.com/app/uploads/2026/04/Com-Laude-Managed-DNS-Service-Terms-v1.4-2-April-2026.pdf),
+version 1.4 dated 2 April 2026, say anycast DNS is subcontracted to
+another provider. They do not print an NS hostname ending in
+`comlaude-dns.eu` or `comlaude-dns.net`. The [Ask the Experts DNS
+management page](https://comlaude.com/ask-the-experts-dns-management/)
+also does not print those hosts. DNS-lookup directories are not a
+vendor basis.
+
+The Constant Contact article on adding addresses to an SPF record
+returned a knowledge-base template shell and did not print an SPF
+include. The article body was not available. A search index is not a
+vendor basis. The broader `constantcontact.com` suffix stays undated.
+A narrower include was not added.
+
+The [Constellix registrar delegation guide](https://support.constellix.com/hc/en-us/articles/34573633265435-How-to-Point-Your-Registrar-to-a-New-DNS-Provider),
+updated March 3, 2025, says to enter the nameservers assigned in the
+product. It does not print an NS hostname ending in `constellix.com`
+or `constellix.net`. The [SOA guide](https://support.constellix.com/hc/en-us/articles/34573686671259-Create-an-SOA-Record)
+prints `dns.constellix.com` as the default administrator mailbox host.
+That host is not an NS target and was not added. DNS-lookup
+directories are not a vendor basis.
+
+A documentation page for `cp-dmarc.com` was requested. The apex and
+www host did not resolve, so no vendor page was available. Third-party
+DMARC explainers are not a vendor basis.
+
+The [CSC Domain Manager zone-management guide](https://www.cscglobal.com/cscglobal/pdfs/domains/Zone-Management-Process.pdf)
+tells the operator to select a name server group and enter MX values.
+It does not print `cscdns.net`. The [DNS Flag Day article](https://www.cscdbs.com/blog/dns-down-alert-for-dns-flag-day/)
+says CSC DNS supports EDNS and does not print that host. DNS-lookup
+directories are not a vendor basis.
 
 ## Executable path
 

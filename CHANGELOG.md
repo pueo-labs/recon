@@ -32,6 +32,11 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Check eight undated DNS and email rules against current vendor
+  pages. None received a `verified` date. A fetched page does not
+  print the catalog grammar, the page did not return an article body,
+  or the host did not resolve. No new detection was added. This does
+  not cut a release.
 - Check eight undated email, DNS, and event rules against current
   vendor pages. None received a `verified` date. A fetched page does
   not print the catalog grammar, prints only a narrower host than the
