@@ -829,7 +829,10 @@ CNAME and the Afternic parking nameservers from pages that print
 the grammar, and left six other data, analytics, and infrastructure
 rules undated. The 2026-11-16 pass dated the Atlassian sending-domain
 verification TXT from the page that prints the grammar, and left
-seven other email and cloud rules undated. That work does not cut a release. The 2026-10 documentation
+seven other email and cloud rules undated. A later pass the same day
+dated the Brevo DMARC aggregate rua host from the page that prints
+the grammar, and left seven other email rules undated. That work
+does not cut a release. The 2026-10 documentation
 pass read the IANA DNS parameter update and left collection on the existing
 record types. Agent portability remains a separate maintainer track and does
 not appear here as a product milestone:

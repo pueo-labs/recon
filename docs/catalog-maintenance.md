@@ -220,7 +220,8 @@ eight documented additions checked on 2026-10-23. Later rows record the
 advertising reference check, and the 2026-11-02 CRM and advertising
 reference check, a later 2026-11-02 data and analytics reference
 check, and a later 2026-11-02 data, analytics, and infrastructure
-reference check, and the 2026-11-16 email and cloud reference check.
+reference check, and the 2026-11-16 email and cloud reference check,
+and a later 2026-11-16 email reporting reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
 bind due rules to their exact claim/catalog digest, prior/new reference, actual
@@ -721,6 +722,64 @@ portal](https://support.opentext.com/csm) returns a login page and
 does not print `arsmtp.com`. DNS-lookup directories are not a vendor
 basis. The Atlassian page's exact SPF include is narrower than the
 existing `atlassian.net` suffix, so that suffix stays undated.
+
+### Documented reference check, later on 2026-11-16
+
+This pass checked eight undated email rules. One received a
+`verified` date because the current vendor page prints the grammar.
+Seven stay undated. No new detection, DNS record type, or collection
+path was added. This note does not cut a release.
+
+The [Brevo domain-setup article](https://help.brevo.com/hc/en-us/articles/35337929909778-Set-up-your-domain-in-Brevo)
+prints an aggregate rua of `rua=mailto:rua@dmarc.brevo.com` and the
+example record `v=DMARC1; p=none; rua=mailto:rua@dmarc.brevo.com`. The
+[domain authentication article](https://help.brevo.com/hc/en-us/articles/12163873383186)
+prints the same rua. The existing `dmarc.brevo.com` rule observes that
+mailbox domain. It does not prove that reports are collected or that
+mail is sent through Brevo. The `p=none` value is the page's example
+policy.
+
+The authentication article calls the ownership TXT a Brevo code and
+says to copy its value from the product. It does not print
+`sendinblue-site-verification=`. The domain-setup article also does
+not print that prefix. The copied product value was not added. The
+same authentication article says SPF and MX records are not required
+to authenticate a domain and are provided only when setting up a
+dedicated IP. The [dedicated-IP article](https://help.brevo.com/hc/en-us/articles/115000240344)
+prints NS values `ns1.sendinblue.com` and `ns2.sendinblue.com` and
+says to copy the SPF value from the product. It does not print an SPF
+include of `sendinblue.com`. Those nameserver hosts were not added.
+
+The [PayPal Braintree SPF guide](https://developer.paypal.com/braintree/articles/guides/configuring-spf-records/)
+says configuring SPF records is no longer required for integration.
+The retained steps print `include:spf.braintreegateway.com`. That
+exact include is narrower than the existing `braintreegateway.com`
+suffix, so that suffix stays undated. The exact include was not added.
+
+The [Barracuda Domain Fraud Protection DMARC step](https://documentation.campus.barracuda.com/wiki/display/BDFP/Step+1+-+Configuring+DMARC+on+Your+Domain)
+prints example aggregate rua and forensic ruf mailboxes on the host
+`dmarc.barracudanetworks.com`. That host is narrower than the existing
+`barracudanetworks.com` suffix, so that suffix stays undated. The
+narrower host was not added. The example mailbox local-part was not
+copied.
+
+The [AutoSPF query-tracking article](https://support.autospf.com/support/solutions/articles/5000874728)
+describes a host under `autospf.email` that AutoSPF uses to count DNS
+queries. It does not print a customer SPF include of `autospf.email`.
+The [manual setup article](https://support.autospf.com/support/solutions/articles/5000819575-manual-autospf-setup)
+says the customer SPF record uses an include that points at AutoSPF
+DNS space, and it does not print that include. The query-tracking
+host label was not copied. No second SPF include was added.
+
+The [AT&T Business DNS support article](https://www.att.com/support/smallbusiness/article/smb-internet/KM1188676/),
+last updated December 7, 2022, tells the reader to list AT&T as
+primary DNS with the registrar. It does not print an NS hostname
+ending in `att.net`. DNS-lookup directories are not a vendor basis.
+
+Campaign Monitor help articles for email authentication
+troubleshooting and managing authentication returned the help center
+CSS error shell and did not print an SPF record. The article body was
+not available. A search index is not a vendor basis.
 
 ## Executable path
 

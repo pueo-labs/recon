@@ -1637,8 +1637,14 @@ fingerprints:
   detections:
   - type: dmarc_rua
     pattern: dmarc.brevo.com
+    reference: https://help.brevo.com/hc/en-us/articles/35337929909778-Set-up-your-domain-in-Brevo
+    verified: '2026-11-16'
     description: >-
-      Brevo DMARC reporting destination (`dmarc.brevo.com`).
+      Brevo DMARC aggregate reporting destination
+      (`dmarc.brevo.com`). The current domain-setup article
+      prints `rua=mailto:rua@dmarc.brevo.com`. This observes
+      that mailbox domain. It does not prove that reports are
+      collected or that mail is sent through Brevo.
 - name: Trend Micro Email Security
   slug: trendmicro
   category: Email & Communication
