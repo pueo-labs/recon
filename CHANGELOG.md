@@ -54,7 +54,9 @@ Tool surface changes: no CLI command or flag changes.
   published policy stays visible.
 - `--verbose` lists the same collection units and states as the source-health
   line, including certificate transparency and MTA-STS. Both classify the
-  resolver results. Related-host rows are not added as extra sources.
+  resolver results. A result reused from cache keeps the expanded panel and
+  does not invent those unit states. Related-host rows are not added as
+  extra sources.
 
 ### Changed
 

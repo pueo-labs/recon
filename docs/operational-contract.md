@@ -88,8 +88,10 @@ concrete message and map to exit 4. Successful JSON, Markdown, and plain
 payloads are written alone to stdout. Human progress and `--verbose` source
 diagnostics use stderr, so a successful structured stdout stream can be parsed
 without removing presentation lines. Verbose source diagnostics use explicit
-`match`, `no match`, and `error` states; a clean negative observation is not
-styled or labeled as a transport failure.
+`match`, `no match`, and `unavailable` states; a clean negative observation
+is not styled or labeled as a transport failure. Those rows are printed for
+the collection that produced the source-health line. A result reused from
+cache keeps the expanded panel and does not invent unit states.
 
 Batch processing is record-oriented. Once batch arguments and input are valid,
 per-domain validation, lookup, timeout, and internal failure records retain

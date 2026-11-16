@@ -385,8 +385,13 @@ async def _lookup_resolve_standard(
     console: Any,
     validated: str,
     options: LookupOptions,
-) -> tuple[Any, list[Any]]:
-    """Cache read, resolve on miss, apply fusion, write back. Returns (info, results)."""
+) -> tuple[Any, list[Any], bool]:
+    """Cache read, resolve on miss, apply fusion, write back.
+
+    The third value is true when ``results`` are the resolver list. A cache
+    hit returns the synthetic reconstruction instead, which cannot drive the
+    source-health rows.
+    """
     info: Any = None
     results: list[Any] = []
     # The cache key is the domain alone, so it cannot distinguish results
@@ -437,7 +442,7 @@ async def _lookup_resolve_standard(
         from recon_tool.cache import cache_put
 
         cache_put(validated, info)
-    return info, results
+    return info, results, cache_miss
 
 
 def _lookup_compute_observations(info: Any, profile_name: str | None, show_posture: bool) -> tuple[Any, ...]:
@@ -759,16 +764,18 @@ async def _lookup_standard(
     from recon_tool.models import ReconLookupError
 
     try:
-        info, results = await _lookup_resolve_standard(
+        info, results, collected = await _lookup_resolve_standard(
             console,
             validated,
             options=options,
         )
 
-        if options.verbose:
-            # The source-health line finalizes these resolver results. The
-            # observable projection can clear a field that made a unit match,
-            # so these rows have to see the same list.
+        if options.verbose and collected:
+            # The source-health line finalizes these resolver results. A cache
+            # hit has no resolver list and no health line, and the synthetic
+            # reconstruction would report certificate transparency and MTA-STS
+            # as no match. The observable projection can also clear a field
+            # that made a unit match, so these rows see the resolver list.
             render_verbose_sources(
                 results,
                 console=get_err_console(),

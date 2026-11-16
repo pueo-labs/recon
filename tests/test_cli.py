@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import json
 import re
+from dataclasses import replace
 from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
@@ -317,6 +318,31 @@ class TestLookupSubcommand:
         assert "1 source: 1 matched" in result.output
         assert "match oidc_discovery: tenant ID found" in result.output
         assert "no match oidc_discovery" not in result.output
+
+    @patch("recon_tool.cache.cache_get")
+    @patch(RESOLVE_PATH, new_callable=AsyncMock)
+    def test_verbose_cache_hit_does_not_invent_unit_states(
+        self, mock_resolve: AsyncMock, mock_cache_get: MagicMock
+    ) -> None:
+        """A reused result has no resolver list and no source-health line.
+
+        The synthetic reconstruction omits certificate-transparency counts
+        and the MTA-STS mode, so ladder rows would call both no match.
+        """
+        mock_cache_get.return_value = replace(
+            SAMPLE_INFO,
+            sources=("oidc_discovery", "dns_records"),
+            ct_subdomain_count=4,
+            mta_sts_mode="enforce",
+            cached_at="2026-11-16T00:00:00+00:00",
+        )
+        mock_resolve.side_effect = AssertionError("a cache hit must not resolve")
+        result = runner.invoke(app, ["lookup", "alpha.invalid", "--verbose"])
+        assert result.exit_code == 0, result.output
+        assert "Synthetic Alpha Ltd" in result.output
+        assert " ct:" not in result.output
+        assert " mta_sts:" not in result.output
+        mock_resolve.assert_not_called()
 
     @patch(RESOLVE_PATH, new_callable=AsyncMock)
     def test_sources_flag(self, mock_resolve) -> None:

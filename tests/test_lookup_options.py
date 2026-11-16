@@ -161,7 +161,10 @@ class TestCollectionScopeIsNotSharedThroughTheCache:
         monkeypatch.setattr(cli_lookup, "_resolve_with_spinner", _fake_resolve)
 
         asyncio.run(cli_lookup._lookup_resolve_standard(None, "alpha.invalid", self._scoped(skip_ct=True)))
-        info, _results = asyncio.run(cli_lookup._lookup_resolve_standard(None, "alpha.invalid", self._scoped()))
+        info, _results, collected = asyncio.run(
+            cli_lookup._lookup_resolve_standard(None, "alpha.invalid", self._scoped())
+        )
+        assert collected is True
 
         # The full lookup must resolve rather than reuse the degraded entry.
         assert calls == [True, False]
