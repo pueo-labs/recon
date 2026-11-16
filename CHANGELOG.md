@@ -32,6 +32,14 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Date the Gandi nameserver suffix, the GoDaddy Professional Email MX
+  suffix, the GoDaddy SPF include, the GoDaddy DMARC reporting suffix,
+  and the Squarespace-documented Google Domains nameserver suffix from
+  current vendor pages. Each record observes the documented suffix.
+  Three other undated rules in this pass stay undated because a fetched
+  page does not print the catalog grammar, prints only a narrower host,
+  or uses a mailbox at the suffix only as a syntax example. No new
+  detection was added. This does not cut a release.
 - Date the F5 Distributed Cloud nameserver suffix, the Fastmail MX
   suffix, the FortiMail Cloud MX suffix, and the Cloudflare Foundation
   DNS nameserver suffixes from current vendor pages. Each record

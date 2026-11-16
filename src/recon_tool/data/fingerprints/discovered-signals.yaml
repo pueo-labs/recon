@@ -251,8 +251,14 @@ fingerprints:
   detections:
   - type: mx
     pattern: secureserver.net
+    reference: https://www.godaddy.com/help/what-are-my-dns-settings-for-professional-email-powered-by-titan-42767
+    verified: '2026-11-16'
     description: >-
-      GoDaddy mail exchanger (`secureserver.net`). Indicates GoDaddy handles inbound mail for this domain.
+      Mail exchanger under the documented GoDaddy Professional
+      Email hosts `smtp.secureserver.net` and
+      `mailstore1.secureserver.net`. This observes an MX host
+      under `secureserver.net`. It does not prove that mail is
+      delivered or that GoDaddy is the only exchanger.
 - name: Mailprotector
   slug: mailprotector
   category: Email & Communication
@@ -530,8 +536,13 @@ fingerprints:
   detections:
   - type: ns
     pattern: gandi.net
+    reference: https://docs.gandi.net/en/domain_names/advanced_users/secondary_nameserver.html
+    verified: '2026-11-16'
     description: >-
-      Gandi nameserver (`gandi.net`). Indicates the org runs authoritative DNS on Gandi.
+      Authoritative nameserver under the documented Gandi
+      secondary nameserver `ns6.gandi.net`. This observes an NS
+      host under `gandi.net`. It does not prove that the zone is
+      delegated or that Gandi is the only DNS provider.
 # v1.9.24 SPF additions appended to discovered-signals.yaml.
 # 16 new vendors identified at >=3 domains in the corpus SPF mine.
 
@@ -1425,9 +1436,12 @@ fingerprints:
   detections:
   - type: spf
     pattern: secureserver.net
+    reference: https://www.godaddy.com/help/add-an-spf-record-19218
+    verified: '2026-11-16'
     description: >-
-      GoDaddy hosted-email SPF include (`secureserver.net`). Outbound
-      mail dispatched through GoDaddy hosting.
+      SPF include `include:secureserver.net` from GoDaddy's SPF
+      article. This observes that include. It does not prove that
+      mail is sent or that GoDaddy is the only sender.
 - name: Microsoft 365 (US Government cloud)
   slug: microsoft365-gov
   category: Email & Communication
@@ -1766,8 +1780,14 @@ fingerprints:
   detections:
   - type: dmarc_rua
     pattern: onsecureserver.net
+    reference: https://www.godaddy.com/help/what-is-dkim-dmarc-and-spf-24605
+    verified: '2026-11-16'
     description: >-
-      GoDaddy DMARC reporting destination (`onsecureserver.net`).
+      DMARC aggregate rua host under `onsecureserver.net`, the
+      domain in GoDaddy's documented default rua mailbox. This
+      observes that reporting host. It does not prove that
+      reports are delivered or that GoDaddy is the only
+      reporting destination.
 - name: Alibaba Cloud (compute / generic)
   slug: alibaba-cloud
   category: Cloud
@@ -1787,11 +1807,14 @@ fingerprints:
   detections:
   - type: ns
     pattern: googledomains.com
+    reference: https://support.squarespace.com/hc/en-us/articles/4404183898125-Review-change-or-reset-your-domain-s-nameservers
+    verified: '2026-11-16'
     description: >-
-      Google Domains NS target (`googledomains.com`). Indicates authoritative
-      DNS hosting on the legacy Google Domains namespace, now operated by
-      Squarespace. It does not establish Google Workspace or a Google identity
-      tenant.
+      Nameserver suffix documented by Squarespace for default
+      nameservers that may end in `googledomains.com`. This
+      observes an NS host under that suffix. It does not prove
+      that the zone is delegated, that Google Domains is the
+      registrar, or that Squarespace is the only DNS provider.
 - name: Oracle Cloud Infrastructure
   slug: oracle-cloud
   category: Cloud
