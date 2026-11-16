@@ -37,17 +37,20 @@ absent.
 
 ## Resume here
 
-State at 2026-11-15: tag `v2.27.1` is still `ab4c602f`. That tag's PyPI
+State at 2026-11-16: tag `v2.27.2` is `071c4356`. That tag's PyPI
 release, GitHub Release, and MCP Registry entry
-`io.github.pueo-labs/recon` report 2.27.1. Unreleased work raises the
-dnspython floor to 2.9.2 (CVE-2026-128089) and the opentelemetry-api
-floor to 1.45.2 (CVE-2026-126360), pins local and container CPython to
-3.15.2, and corrects three output defects: doctor reports both
+`io.github.pueo-labs/recon` report 2.27.2. 2.27.2 raised the dnspython
+floor to 2.9.2 (CVE-2026-128089) and the opentelemetry-api floor to
+1.45.2 (CVE-2026-126360), pinned local and container CPython to 3.15.2,
+and corrected three output defects: doctor reports both
 certificate-transparency providers, DMARC `p=none` is not a present
 hardening control, and `--verbose` uses the source-health ladder.
-Issues 356, 357, and 358 stay open until that change merges. The four
-Dependabot alerts are addressed by the maintainer commit, because a bot
-author fails the commit-metadata hygiene gate.
+Issues 356, 357, and 358 are closed. The four Dependabot alerts are
+fixed. Issue 364 remains open: the agentic-validation provider SDKs
+and the Terraform Google provider are still on older majors. The
+public Scorecard API reports SAST as an internal error for this
+commit, the same result it reports for tag `v2.27.1`. The repository
+Scorecard workflow succeeded. Do not lower the SAST floor.
 2.27.1 corrected the validation price table, recorded the catalog date
 passes, refreshed the toolchain, and pointed package metadata at
 `pueo-labs/recon`. The packaging batch and tracker #324 are closed.
@@ -120,18 +123,20 @@ What is next, and why:
    local pin or drop the audit to make the refresh look finished. See
    [the October review](docs/maintenance-review-2026-10-08.md).
 
-3. Black-box defects before any new surface. Issues 356, 357, and 358 are
-   corrected in the unreleased change above and are not yet released. A new
-   collector, score, inference path, or set-level review bundle needs a named
+3. Black-box defects before any new surface. Issues 356, 357, and 358
+   shipped in 2.27.2. Issue 364 is the open follow-up: bring the
+   agentic-validation provider SDKs and the Terraform Google provider up
+   to current majors. That bump is its own pull request. A new collector,
+   score, inference path, or set-level review bundle needs a named
    operator handoff that the existing surfaces cannot solve. Output
    truthfulness outranks another feature release.
 
 Not next, and why:
 
-- Another package release. 2.27.1 shipped the validation price table,
-  the catalog date passes, the toolchain refresh, and the pueo-labs
-  metadata. The next package waits for a new user-visible defect or a
-  catalog change that should ship on its own.
+- Another package release. 2.27.2 shipped the security floors, the
+  CPython 3.15.2 pin, and the three output corrections. The next package
+  waits for a new user-visible defect or a catalog change that should
+  ship on its own. Issue 364 does not by itself cut a release.
 - A new DNS record-type collector. IANA's parameter table, last updated
   2026-10-16, added temporary `DELEG` and `DELEGPARAM` registrations.
   `HTTPS`, `SVCB`, `DSYNC`, `RESINFO`, `HHIT`, and `BRID` were already
@@ -151,12 +156,11 @@ Not next, and why:
   [What Is Deliberately Not Next](#what-is-deliberately-not-next).
 
 When picking work back up, sync `main` and run
-`uv run python scripts/check.py` before starting anything else. 2.27.1 is
-published. The unreleased security floors, Python 3.15.2 pin, and the three
-output corrections are the open follow-up. After that merges, continue the
-freshness loop on rules that are still due, or wait for the upstream
-blockers above. A later documentation or catalog date pass does not by
-itself cut another release. Batch user-visible behavior through the
+`uv run python scripts/check.py` before starting anything else. 2.27.2 is
+published. Continue the freshness loop on rules that are still due, then
+issue 364, or wait for the upstream blockers above. A later documentation
+or catalog date pass does not by itself cut another release. Batch
+user-visible behavior through the
 [release process](docs/release-process.md).
 
 ## Current release and next steps
