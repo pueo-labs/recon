@@ -854,6 +854,20 @@
       "reviewed_on": "2026-11-16",
       "source_checked_on": "2026-11-16",
       "reason": "Hornetsecurity Vade Cloud migration article, updated October 13, 2026, checked 2026-11-16: https://support.hornetsecurity.com/hc/en-us/articles/45997388779537-Migration-for-Vade-Cloud-Customers. It prints MX records vade-mx-fr01.hornetsecurity.com, vade-mx-fr02.hornetsecurity.com, vade-mx-eu-fallback01.hornetsecurity.com, and vade-mx-eu-fallback02.hornetsecurity.com. The rule observes an MX host under hornetsecurity.com. It does not prove that mail is delivered or that Hornetsecurity is the only exchanger. The specific hosts were not added as separate rules."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "icloud-mail",
+        "detection_type": "mx",
+        "pattern": "icloud.com"
+      },
+      "before": "412819c3d0fc95e7050b2ee480262c8f1ab0ab8950149e9885bc225e8b002d7b",
+      "after": "2964e0f6aa61c283a6a62d877e1ad0fe001b994955ef40ed117435d3ce5ad581",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Apple custom email domain article, published November 3, 2026, checked 2026-11-16: https://support.apple.com/en-us/102374. It prints MX records mx01.mail.icloud.com and mx02.mail.icloud.com at priority 10. The rule observes an MX host under icloud.com. It does not prove that mail is delivered or that iCloud Mail is the only exchanger. The specific hosts were not added. The SPF include on the same page was not added."
     }
   ]
 }
