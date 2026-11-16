@@ -26,6 +26,8 @@ operator, corporate group, ownership, or control.
 
 ## [Unreleased]
 
+## [2.27.2] - 2026-11-16
+
 Raise the dnspython and OpenTelemetry API security floors, pin local and
 container CPython to 3.15.2, and correct three output defects.
 
