@@ -90,14 +90,13 @@ What is next, and why:
    organization uses a service, and it does not receive an apex, a tenant
    identifier, an opaque token, or a per-domain row. Those stay in the
    gitignored private roots when an operator supplies them. The passes
-   from 2026-10-28 through the 2026-11-17 pointing-label check are the
+   from 2026-10-28 through the 2026-11-17 community-label check are the
    record in [catalog maintenance](docs/catalog-maintenance.md) and the
    [public freshness ledger](docs/catalog-freshness-ledger.json). Main
-   `fdc8674676b033d3fd153a75465dfeabc63a6dd0` carries the nameserver-label
-   check. This pointing-label check dates the Wix pointing label, the
-   WP Engine legacy label, and the Adobe Sign, Airtable, and Apple
-   verification values, and it leaves three admitted rules undated.
-   The catalog has 287 dated rules and 836 undated rules. Those passes
+   `d5c44f0425ba71b2fe81c0453c2ff083580463d7` carries the pointing-label
+   check. This community-label check dates the Disciple CNAME label,
+   and it leaves seven admitted rules undated.
+   The catalog has 288 dated rules and 835 undated rules. Those passes
    do not cut a release. Tag `v2.27.2` stays `071c4356`.
    The next round uses a new question list and the rules that are still due.
    The closed 5,199-row drift round remains a measurement contract. It does
