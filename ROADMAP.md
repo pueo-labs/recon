@@ -37,7 +37,7 @@ absent.
 
 ## Resume here
 
-State at 2026-11-16: tag `v2.27.2` is `071c4356`. That tag's PyPI
+State at 2026-11-17: tag `v2.27.2` is `071c4356`. That tag's PyPI
 release, GitHub Release, and MCP Registry entry
 `io.github.pueo-labs/recon` report 2.27.2. 2.27.2 raised the dnspython
 floor to 2.9.2 (CVE-2026-128089) and the opentelemetry-api floor to
@@ -89,68 +89,15 @@ What is next, and why:
    receives that pattern. It does not receive a statement that a named
    organization uses a service, and it does not receive an apex, a tenant
    identifier, an opaque token, or a per-domain row. Those stay in the
-   gitignored private roots when an operator supplies them. The 2026-10-28
-   pass dated the Anthropic and Mistral apex TXT rules from current vendor
-   pages and left six other AI rules undated, because those cited
-   pages do not print the exact grammar. A later pass the same day checked
-   eight undated CRM and marketing rules and left them undated for the same
-   reason. The older Dynamics authenticate-domains article now redirects, and
-   a search-index copy of it is not a current basis. A later pass the same
-   day dated the Emma account-validation TXT and the Eloqua tracking-domain
-   CNAME from pages that print the grammar, and left six other CRM rules
-   undated. The 2026-10-29 pass dated the Klaviyo branded-sending TXT, the
-   Kartra custom-domain CNAME, and the Iterable tracking-domain CNAME from
-   pages that print the grammar, and left five other marketing rules
-   undated. The cited Intercom article now serves a different article, so
-   that URL is not a current basis for either Intercom rule. The 2026-10-30
-   pass dated the Account Engagement tracker-domain CNAME and the Salesforce
-   `_spf.salesforce.com` include from pages that print the grammar, and left
-   six other rules undated. The 2026-11-02 pass dated the Yandex Webmaster
-   rights-verification TXT from the page that prints the grammar, and left
-   seven other rules undated. A later pass the same day dated the MongoDB
-   Atlas federated-authentication domain-mapping TXT from the page that
-   prints the grammar, and left seven other data and analytics rules
-   undated. A later pass the same day dated the Pendo organization
-   CNAME and the Afternic parking nameservers from pages that print
-   the grammar, and left six other data, analytics, and infrastructure
-   rules undated. The 2026-11-16 pass dated the Atlassian sending-domain
-   verification TXT from the page that prints the grammar, and left
-   seven other email and cloud rules undated. A later pass the same day
-   dated the Brevo DMARC aggregate rua host from the page that prints
-   the grammar, and left seven other email rules undated. A later pass
-   the same day checked eight undated email, DNS, and event rules and
-   left them undated, because a fetched page does not print the
-   catalog grammar, prints only a narrower host than the existing
-   suffix, or did not return an article body. A later pass the same
-   day checked eight undated DNS and email rules and left them
-   undated, because a fetched page does not print the catalog
-   grammar, the page did not return an article body, or the host did
-   not resolve. A later pass the same day dated the DMARCLY aggregate
-   mailbox domain and the DNSimple nameserver suffix from pages that
-   print the grammar, and left six other DMARC reporting and DNS rules
-   undated. A later pass the same day dated the remaining DNSimple
-   nameserver suffixes, the DNS Made Easy nameserver suffix, the
-   DNSPod nameserver suffix, the Docebo SPF include, and the easyDNS
-   nameserver suffixes from pages that print the grammar. That work
-   does not cut a release. A later pass the same day dated the
-   easyDNS `easydns.net` nameserver suffix from the page that prints
-   the grammar, and left seven other email and DNS rules undated,
-   because a fetched page prints only a narrower host, does not print
-   the catalog grammar, did not return an article body, or the host
-   did not resolve. That work does not cut a release. A later pass
-   the same day dated the F5 Distributed Cloud nameserver suffix,
-   the Fastmail MX suffix, the FortiMail Cloud MX suffix, and the
-   Cloudflare Foundation DNS nameserver suffixes from pages that
-   print the grammar, and left two other email rules undated because
-   a fetched page prints only a narrower host. That work does not
-   cut a release. A later pass the same day dated the Gandi
-   nameserver suffix, the GoDaddy Professional Email MX suffix, the
-   GoDaddy SPF include, the GoDaddy DMARC reporting suffix, and the
-   Squarespace-documented Google Domains nameserver suffix from pages
-   that print the grammar, and left three other rules undated because
-   a fetched page does not print the catalog grammar, prints only a
-   narrower host, or uses a mailbox at the suffix only as a syntax
-   example. That work does not cut a release.
+   gitignored private roots when an operator supplies them. The passes
+   from 2026-10-28 through the 2026-11-17 store-suffix check are the
+   record in [catalog maintenance](docs/catalog-maintenance.md) and the
+   [public freshness ledger](docs/catalog-freshness-ledger.json). Main
+   `e43d5fc9fc247f1c6f4b6a7df402ab348249222e` carries that check. It
+   dates the Sectigo issuer, the Shopify store suffix, and the
+   Squarespace site suffix, and it leaves five admitted rules undated.
+   The catalog has 280 dated rules and 843 undated rules. Those passes
+   do not cut a release. Tag `v2.27.2` stays `071c4356`.
    The next round uses a new question list and the rules that are still due.
    The closed 5,199-row drift round remains a measurement contract. It does
    not promote rules. Start at [catalog maintenance](docs/catalog-maintenance.md).
@@ -197,10 +144,12 @@ Not next, and why:
 
 When picking work back up, sync `main` and run
 `uv run python scripts/check.py` before starting anything else. 2.27.2 is
-published. Continue the freshness loop on rules that are still due, or
-wait for the upstream blockers above. A later documentation
-or catalog date pass does not by itself cut another release. Batch
-user-visible behavior through the
+published. Issue 399 is the open CI lock-consistency defect: qualifying
+jobs should refuse a dependency metadata change that is not in
+`uv.lock`. That fix is its own change. Continue the freshness loop
+after it, on rules that are still due, or wait for the upstream
+blockers above. A later documentation or catalog date pass does not by
+itself cut another release. Batch user-visible behavior through the
 [release process](docs/release-process.md).
 
 ## Current release and next steps
