@@ -2400,8 +2400,104 @@
       "rule_id": "discovered-signals.yaml/salesforce/cname_target/.desk.com",
       "source_checked_on": "2026-11-16",
       "source_status": "checked"
+    },
+    {
+      "basis": "The names sdmarc.net and www.sdmarc.net were requested on 2026-11-16 and did not resolve, so no article body was available. This is not a source check. A DNS directory is not a vendor basis. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": null,
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "ed2da6a2cad5508288b6fabf2e0d7bf93499b7a1e6e51754e6ed964a766c69aa",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/sdmarc/dmarc_rua/sdmarc.net",
+      "source_checked_on": null,
+      "source_status": "unreachable"
+    },
+    {
+      "basis": "The IIJ Secure MX service page was fetched on 2026-11-16. It says the customer work is account registration and switching the domain MX record, and that the service does not include domain maintenance or DNS. The fetched page does not print a mail exchanger under securemx.jp. No narrower host was added. The catalog suffix stays undated. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://www.iij.ad.jp/biz/smx/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "24ce251e26242b93e40a59a0eb90cbf87f5aadaf97eb43e7c587176ddc02e5ae",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/securemx/mx/securemx.jp",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The Shopify email setup article was fetched on 2026-11-16. It says CNAME records handle SPF and DKIM and that a separate SPF TXT record is not required. The fetched page does not print include:shopify.com. The domains terminology page also does not print that include. No narrower include was added. Example sender addresses were not copied. The catalog suffix stays undated. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://help.shopify.com/en/manual/intro-to-shopify/initial-setup/setup-your-email",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "510124c759b075a4ebbc7013a9a234209fd403744149dffcaac37f1c4727d678",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/shopify/spf/shopify.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The Smartsheet Manage domains article was retrieved on 2026-11-16. It says to match the DNS TXT value precisely as shown in the Domain registration UI. The article does not print the smartsheet-gov-site-validation= prefix. The Smartsheet Gov FAQ and the Smartsheet Gov SAML article were also retrieved and do not print that prefix. A direct request to the same Manage domains URL returned HTTP 406 with an empty body; the retrieved article text is the source check. A published DNS token was not copied. The catalog prefix stays undated. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://help.smartsheet.com/articles/2483051-domain-management",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "3db3ac56877796b10a9d5bd0579b113f3bc29b9a27afc6c6387e7eb1de3d7406",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/smartsheet/txt/^smartsheet-gov-site-validation=",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The SMTP.com article SPF setup for SMTP.com customers was rendered on 2026-11-16. It tells the reader to add include:_spf.smtp.com when editing an existing SPF record and when publishing a new TXT value. The host is auto-linked in the page, and the article does not print include:smtp.com. A separate SMTP.com authentication blog gives the generic form include:yourprovider.com and then one example record that contains include:smtp.com beside another provider include. That example was not treated as the documented customer include. The narrower include was not added. Address ranges in the check section were not copied. The catalog suffix stays undated. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://knowledge.smtp.com/s/article/SPF-setup-for-SMTP-com-customers",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "0a792364e1e7585b86a0913459f488b5d9ba6bfb4fef62596d044a3b046ba578",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/smtp-com/spf/smtp.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The names spf-report.com and www.spf-report.com were requested on 2026-11-16 and did not resolve, so no article body was available. This is not a source check. A generic SPF syntax page is not a vendor basis. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": null,
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "2b8aff9a0478021102550661c8ce10bb0f0c0a4bf2cfc0226f77e1a193be30e7",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/spf-report/spf/spf-report.com",
+      "source_checked_on": null,
+      "source_status": "unreachable"
+    },
+    {
+      "basis": "The stackpath.com homepage was fetched on 2026-11-16. The body is a short styled page with empty headings. It does not print a CNAME target under netdna-cdn.com. The name docs.stackpath.com did not resolve. The fetched page was not a CNAME document. No narrower host was added. The catalog suffix stays undated. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://www.stackpath.com/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "adc91b422f0ce9fd73807846fd8c858942ce500b029b02b43c21fc64472d60b2",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/stackpath/cname_target/netdna-cdn.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The Stibee SPF and DKIM article was fetched on 2026-11-16. It tells the reader to publish include:mail.stibee.com, either as a new TXT value or merged into an existing TXT record. It also prints a DKIM CNAME target at dkim.stibee.com. It does not print include:stibee.com. Those narrower hosts were not added. Example local-parts were not copied. The catalog suffix stays undated. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://help.stibee.com/email/managing-sender/spf-dkim.md",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "5809c64bdf178eca3c2c8e30c2367bfa8266e35a2faf9719c4b8a79cb88dbea3",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/stibee/spf/stibee.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, not a complete catalog review"
 }

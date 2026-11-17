@@ -236,7 +236,8 @@ and a later 2026-11-16 CloudHub and mail exchanger reference check,
 and a later 2026-11-16 nameserver and sender-policy reference check,
 and a later 2026-11-16 portal verification and mail routing
 reference check, and a later 2026-11-16 SPF, reporting, and
-support-domain reference check.
+support-domain reference check, and a later 2026-11-16 mail
+exchanger, SPF, and site-validation reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
 bind due rules to their exact claim/catalog digest, prior/new reference, actual
@@ -1549,6 +1550,72 @@ says to publish a CNAME whose target is an internal host under
 `live.siteforce.com`. The fetched rendered page does not print a
 CNAME target under `desk.com`. The siteforce host was not added.
 Example names were not copied. The catalog CNAME stays undated.
+
+### Documented reference check, later on 2026-11-16, mail exchanger, SPF, and site validation
+
+This pass checked eight undated DMARC, MX, SPF, TXT, and CNAME
+rules. None received a `verified` date. Fetched pages do not print
+the catalog grammar, print a narrower include or exchanger host, or
+could not be retrieved. No new detection, DNS record type, or
+collection path was added. This note does not cut a release.
+
+The names `sdmarc.net` and `www.sdmarc.net` were requested on
+2026-11-16 and did not resolve, so no article body was available.
+This is not a source check. A DNS directory is not a vendor basis.
+The catalog DMARC suffix stays undated.
+
+The [IIJ Secure MX service page](https://www.iij.ad.jp/biz/smx/)
+says the customer work is account registration and switching the
+domain MX record, and that the service does not include domain
+maintenance or DNS. The fetched page does not print a mail exchanger
+under `securemx.jp`. No narrower host was added. The catalog MX
+suffix stays undated.
+
+The [Shopify email setup article](https://help.shopify.com/en/manual/intro-to-shopify/initial-setup/setup-your-email)
+says CNAME records handle SPF and DKIM and that a separate SPF TXT
+record is not required. The fetched page does not print
+`include:shopify.com`. The domains terminology page also does not
+print that include. No narrower include was added. Example sender
+addresses were not copied. The catalog SPF stays undated.
+
+The [Smartsheet Manage domains article](https://help.smartsheet.com/articles/2483051-domain-management)
+says to match the DNS TXT value precisely as shown in the Domain
+registration UI. It does not print the
+`smartsheet-gov-site-validation=` prefix. The Smartsheet Gov FAQ and
+the Smartsheet Gov SAML article also do not print that prefix. A
+direct request to the same Manage domains URL returned HTTP 406 with
+an empty body; the retrieved article text is the source check. A
+published DNS token was not copied. The catalog TXT prefix stays
+undated.
+
+The [SMTP.com SPF setup article](https://knowledge.smtp.com/s/article/SPF-setup-for-SMTP-com-customers)
+tells the reader to add `include:_spf.smtp.com` when editing an
+existing SPF record and when publishing a new TXT value. The host is
+auto-linked in the page, and the article does not print
+`include:smtp.com`. A separate SMTP.com authentication blog gives
+the generic form `include:yourprovider.com` and then one example
+record that contains `include:smtp.com` beside another provider
+include. That example was not treated as the documented customer
+include. The narrower include was not added. Address ranges in the
+check section were not copied. The catalog SPF stays undated.
+
+The names `spf-report.com` and `www.spf-report.com` were requested
+on 2026-11-16 and did not resolve, so no article body was available.
+This is not a source check. A generic SPF syntax page is not a
+vendor basis. The catalog SPF stays undated.
+
+The [stackpath.com homepage](https://www.stackpath.com/) is a short
+styled page with empty headings. It does not print a CNAME target
+under `netdna-cdn.com`. The name `docs.stackpath.com` did not
+resolve. The fetched page was not a CNAME document. No narrower host
+was added. The catalog CNAME stays undated.
+
+The [Stibee SPF and DKIM article](https://help.stibee.com/email/managing-sender/spf-dkim.md)
+tells the reader to publish `include:mail.stibee.com`, either as a
+new TXT value or merged into an existing TXT record. It also prints
+a DKIM CNAME target at `dkim.stibee.com`. It does not print
+`include:stibee.com`. Those narrower hosts were not added. Example
+local-parts were not copied. The catalog SPF stays undated.
 
 ## Executable path
 
