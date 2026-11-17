@@ -927,11 +927,15 @@ fingerprints:
   detections:
   - type: cname
     pattern: imgix.net
-    reference: https://docs.imgix.com/setup/serving-images/custom-domains
+    reference: https://docs.imgix.com/en-US/getting-started/setup/creating-sources/advanced-settings
+    verified: '2026-11-17'
     description: >-
       CNAME pointing into imgix.net (imgix is a real-time
-      image processing and delivery CDN). Indicates the
-      domain proxies image assets through imgix.
+      image processing and delivery CDN). The advanced
+      settings page says the CNAME points to a hostname
+      under that suffix. This observes that suffix. It does
+      not prove that Imgix is serving the site. The example
+      base URL was not added.
 - name: KeyCDN
   slug: keycdn
   category: Infrastructure
@@ -946,11 +950,15 @@ fingerprints:
       through KeyCDN's edge.
   - type: cname
     pattern: kxcdn.com
-    reference: https://www.keycdn.com/support/create-a-zonealias
+    reference: https://www.keycdn.com/support/create-a-zone-alias
+    verified: '2026-11-17'
     description: >-
       CNAME pointing into kxcdn.com (KeyCDN's edge-zone
-      domain). Same CDN semantics as the keycdn.com form;
-      kxcdn.com is the zone-hostname pattern.
+      domain). The zone alias page says the CNAME points to
+      a zone URL under that suffix. This observes that
+      suffix. It does not prove that KeyCDN is serving the
+      site. The example alias and the example zone URL were
+      not added.
 - name: StackPath / MaxCDN
   slug: stackpath
   category: Infrastructure
@@ -989,10 +997,13 @@ fingerprints:
   - type: caa
     pattern: letsencrypt.org
     reference: https://letsencrypt.org/docs/caa/
+    verified: '2026-11-17'
     description: >-
       CAA record authorizing Let's Encrypt to issue
-      certificates for the domain. It does not establish that
-      a certificate was issued or is currently deployed.
+      certificates for the domain. The CAA page prints an
+      issue record whose issuer is letsencrypt.org. This
+      observes that issuer. It does not prove that a
+      certificate was issued. The example name was not added.
 - name: 'CAA: DigiCert'
   slug: digicert
   category: Infrastructure
