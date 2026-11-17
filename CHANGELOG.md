@@ -32,6 +32,13 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Check eight undated TXT and CNAME rules against current
+  vendor pages. Date the Wix pointing label, the WP Engine
+  legacy label, and the Adobe Sign, Airtable, and Apple
+  verification values. Three rules stay undated because the
+  fetched page does not print the catalog grammar at the
+  matching record shape. No new detection was added. This does
+  not cut a release.
 - Check eight undated TXT, NS, and CNAME rules against current
   vendor pages. Date the Unity SSO verification value and the
   UltraDNS nameserver label. Six rules stay undated because the

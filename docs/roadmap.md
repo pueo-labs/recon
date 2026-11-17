@@ -805,14 +805,14 @@ Registry metadata. That release did not change this slice. A round makes a
 new temporary question list, keeps that list private, and publishes only a
 disclosure-safe pattern with synthetic fixtures. It does not publish a claim
 that a named organization uses a service. The passes from 2026-10-28
-through the 2026-11-17 nameserver-label check are the record in
+through the 2026-11-17 pointing-label check are the record in
 [catalog maintenance](catalog-maintenance.md) and the
 [public freshness ledger](catalog-freshness-ledger.json). Main
-`e43d5fc9fc247f1c6f4b6a7df402ab348249222e` carries the store-suffix
-check. This nameserver-label check dates the Unity SSO verification
-value and the UltraDNS nameserver label, and it leaves six admitted
-rules undated.
-The catalog has 282 dated rules and 841 undated rules. Those passes
+`fdc8674676b033d3fd153a75465dfeabc63a6dd0` carries the nameserver-label
+check. This pointing-label check dates the Wix pointing label, the
+WP Engine legacy label, and the Adobe Sign, Airtable, and Apple
+verification values, and it leaves three admitted rules undated.
+The catalog has 287 dated rules and 836 undated rules. Those passes
 do not cut a release. Tag `v2.27.2` stays `071c4356`. Qualifying CI
 jobs install the project environment with `uv sync --locked` and
 `UV_LOCKED`. A dependency change that `uv.lock` does not contain

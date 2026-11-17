@@ -153,11 +153,14 @@ fingerprints:
       workspace, typically for SSO federation.
   - type: txt
     pattern: ^airtable-verification=
-    reference: https://support.airtable.com/
+    reference: https://support.airtable.com/articles/9354970066-airtable-domain-federation-and-verification
+    verified: '2026-11-17'
     description: >-
-      Alternative Airtable verification TXT format. Same
-      administrative-binding semantics as the prefixed
-      `airtable-domain-verification=` form.
+      Airtable domain-verification TXT. The federation page
+      says to publish `airtable-verification=` as the value
+      of a TXT record on the root domain. This observes that
+      prefix. It does not prove that verification succeeded.
+      The example domain was not copied.
 - name: ClickUp
   slug: clickup
   category: Productivity & Collaboration
@@ -309,12 +312,14 @@ fingerprints:
   detections:
   - type: txt
     pattern: ^adobe-sign-verification=
-    reference: https://helpx.adobe.com/sign/using/sign-up-domain-claim.html
+    reference: https://helpx.adobe.com/sign/web/using/claim-domain-names.html
+    verified: '2026-11-17'
     description: >-
-      Adobe Sign domain-verification TXT (Adobe Sign is the
-      e-signature product within Adobe Document Cloud,
-      formerly EchoSign). Indicates the domain is registered
-      with an Adobe Sign tenant.
+      Adobe Sign domain-verification TXT. The domain-claiming
+      page says to publish a TXT value that begins
+      `adobe-sign-verification=`. This observes that prefix.
+      It does not prove that the domain claim is complete.
+      The example token was not copied.
 - name: Apple Business
   slug: apple
   category: Productivity & Collaboration
@@ -323,14 +328,15 @@ fingerprints:
   detections:
   - type: txt
     pattern: ^apple-domain-verification=
-    reference: https://developer.apple.com/account/
+    reference: https://support.apple.com/en-sg/guide/apple-school-manager-m/axm48c3280c0/web
+    verified: '2026-11-17'
     description: >-
-      Apple Business / Apple Developer domain-verification TXT.
-      Indicates the domain is claimed against an Apple
-      enterprise account, typically for Apple Business Manager,
-      Apple School Manager, or Sign in with Apple custom-
-      domain setups. Does not distinguish which Apple service
-      the verification is for.
+      Apple domain-verification TXT. The School Manager
+      domains page prints `apple-domain-verification=` as the
+      example TXT record added to the domain zone file. This
+      observes that prefix. It does not prove that the domain
+      is verified. The example token and the example school
+      name were not copied.
 - name: Box
   slug: box
   category: Productivity & Collaboration

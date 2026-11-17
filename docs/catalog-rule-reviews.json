@@ -1610,6 +1610,76 @@
       "reviewed_on": "2026-11-17",
       "source_checked_on": "2026-11-17",
       "reason": "Domains page checked 2026-11-17: https://docs.unity.com/en-us/cloud/organizations/domains. It says to publish unity-sso-verification= as the value of a TXT record on the root domain. The rule observes that prefix. It does not prove that SSO is active. The token placeholder was not copied."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "wix",
+        "detection_type": "cname",
+        "pattern": "wixdns.net"
+      },
+      "before": "333adcf9fc5e8a9289c393c927783b1ed4e71ddd3693c65df8b08cbd999e04b9",
+      "after": "63b37b09856bc8168fc292b5a571ec66d2902407d51b1b612b11ee340b110028",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-17",
+      "source_checked_on": "2026-11-17",
+      "reason": "Pointing page checked 2026-11-17: https://support.wix.com/en/article/pointing-widget. It prints a CNAME target whose label contains wixdns.net. The rule observes that label. It does not prove that Wix is serving the site. The specific target and the address were not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "wpengine",
+        "detection_type": "cname",
+        "pattern": "wpengine.com"
+      },
+      "before": "5b9c3b5953c7cd759804f97c4bac37e3454bfd990817d64214dd81d6a50b8a60",
+      "after": "045739f077216b3137f8c6332251e6a143d536e1007ec8996b154edbaa225fac",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-17",
+      "source_checked_on": "2026-11-17",
+      "reason": "Network page checked 2026-11-17: https://wpengine.com/support/network/. It prints a legacy CNAME example whose label contains wpengine.com. The rule observes that label. It does not prove that the legacy network is still in use. The example host, the advanced-network host, and the edge host were not added."
+    },
+    {
+      "rule": {
+        "source": "productivity.yaml",
+        "slug": "adobe-sign",
+        "detection_type": "txt",
+        "pattern": "^adobe-sign-verification="
+      },
+      "before": "94f090046a42cc0bcc44363c0ba8f42f0aa8f5d73bc44f7220f152d13ef8c50b",
+      "after": "92e0864be6f9185196a699158b664b2a580cebd47c0bc1b05b87f9c765318556",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-17",
+      "source_checked_on": "2026-11-17",
+      "reason": "Domain-claiming page checked 2026-11-17: https://helpx.adobe.com/sign/web/using/claim-domain-names.html. It says to publish a TXT value that begins adobe-sign-verification=. The rule observes that prefix. It does not prove that the domain claim is complete. The example token was not copied."
+    },
+    {
+      "rule": {
+        "source": "productivity.yaml",
+        "slug": "airtable",
+        "detection_type": "txt",
+        "pattern": "^airtable-verification="
+      },
+      "before": "cb9b234df3bddf8ec238988cca3da48aa18e1bfcd2929c5b4394f6e5602a7832",
+      "after": "53b32511ddcff24d0dbfe3b9784a3f470df4480845673ac673aab72399166b48",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-17",
+      "source_checked_on": "2026-11-17",
+      "reason": "Federation page checked 2026-11-17: https://support.airtable.com/articles/9354970066-airtable-domain-federation-and-verification. It says to publish airtable-verification= as the value of a TXT record on the root domain. The rule observes that prefix. It does not prove that verification succeeded. The example domain was not copied."
+    },
+    {
+      "rule": {
+        "source": "productivity.yaml",
+        "slug": "apple",
+        "detection_type": "txt",
+        "pattern": "^apple-domain-verification="
+      },
+      "before": "a4391831c17159f2109f4211bf78fa49e3dce078caab3b4e14119e065b52b802",
+      "after": "de3b071c8cf0386dc16247a88730810e0f1b05cccdaea67ff13440253b3a474f",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-17",
+      "source_checked_on": "2026-11-17",
+      "reason": "School Manager domains page checked 2026-11-17: https://support.apple.com/en-sg/guide/apple-school-manager-m/axm48c3280c0/web. It prints apple-domain-verification= as the example TXT record added to the domain zone file. The rule observes that prefix. It does not prove that the domain is verified. The example token and the example school name were not copied."
     }
   ]
 }
