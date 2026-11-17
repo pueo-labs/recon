@@ -395,14 +395,14 @@ fingerprints:
   detections:
   - type: ns
     pattern: awsdns
-    reference: https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html
+    reference: https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/SOA-NSrecords.html
+    verified: '2026-11-16'
     description: >-
-      NS records contain `awsdns` (AWS Route 53 nameserver
-      hostnames follow the `ns-*.awsdns-*.{com,net,org,co.uk}`
-      pattern). Indicates the domain uses Route 53 as
-      authoritative DNS. Does not by itself indicate the
-      domain's workloads run on AWS; many domains use Route
-      53 for DNS while hosting elsewhere.
+      NS records contain `awsdns`. The name server record
+      reference prints name servers whose labels start with
+      `awsdns-`. This observes that label. It does not prove
+      that the domain's workloads run on AWS. The specific
+      name servers were not added.
 - name: Azure DNS
   slug: azure-dns
   category: Infrastructure
@@ -410,13 +410,14 @@ fingerprints:
   detections:
   - type: ns
     pattern: azure-dns
-    reference: https://learn.microsoft.com/en-us/azure/dns/dns-overview
+    reference: https://learn.microsoft.com/en-us/azure/dns/dns-delegate-domain-azure-dns
+    verified: '2026-11-16'
     description: >-
-      NS records contain `azure-dns` (Azure DNS nameserver
-      hostnames follow the `ns*.azure-dns.{com,net,org,info}`
-      pattern). Indicates the domain uses Azure DNS as
-      authoritative DNS. Does not by itself indicate Azure
-      hosts the domain's workloads.
+      NS records contain `azure-dns`. The domain delegation
+      tutorial prints name servers whose labels are
+      `azure-dns`. This observes that label. It does not prove
+      that Azure hosts the zone's workloads. The specific
+      name servers were not added.
 - name: Google Cloud DNS
   slug: gcp-dns
   category: Infrastructure
@@ -567,12 +568,13 @@ fingerprints:
   - type: cname
     pattern: azureedge.net
     reference: https://learn.microsoft.com/en-us/azure/cdn/cdn-map-content-to-custom-domain
+    verified: '2026-11-16'
     description: >-
-      CNAME terminating in azureedge.net (Azure CDN edge
-      domain, covering both Azure CDN Standard from Microsoft
-      and the deprecating Akamai and Verizon partner tiers).
-      Indicates the domain delegates traffic to an Azure CDN
-      profile.
+      CNAME terminating in azureedge.net. The custom domain
+      page prints CNAME destinations under that suffix. This
+      observes that suffix. It does not prove that every name
+      under the suffix is a customer endpoint. The example
+      endpoint names were not added.
 - name: Azure App Service
   slug: azure-appservice
   category: Infrastructure
@@ -744,31 +746,35 @@ fingerprints:
   detections:
   - type: cname
     pattern: s3.amazonaws.com
-    reference: https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html
+    reference: https://docs.aws.amazon.com/AmazonS3/latest/userguide/VirtualHosting.html
+    verified: '2026-11-16'
     description: >-
-      CNAME terminating in s3.amazonaws.com (AWS S3 REST API
-      endpoint). Indicates the domain proxies to an S3
-      bucket, typically for object storage or static-asset
-      serving. Note that this does not by itself indicate
-      static-website-hosting mode is enabled; for that, the
-      `s3-website-*` patterns apply.
+      CNAME terminating in s3.amazonaws.com. The virtual
+      hosting page prints a host under that suffix as the
+      legacy global endpoint. This observes that suffix. It
+      does not prove that static website hosting is enabled.
+      The example bucket was not added.
   - type: cname
     pattern: .s3-website-
-    reference: https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html
+    reference: https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteEndpoints.html
+    verified: '2026-11-16'
     description: >-
-      CNAME containing `.s3-website-` (AWS S3 static-website
-      hosting endpoint, regional form like
-      `s3-website-us-east-1.amazonaws.com`). Indicates the
-      bucket is configured for static-website hosting and
-      the domain serves through that endpoint.
+      CNAME containing `.s3-website-`. The website endpoints
+      page prints the dash regional form with a name before
+      that infix. This observes that infix. It does not prove
+      that every name containing the infix is a website
+      endpoint. The example bucket and region placeholder
+      were not added.
   - type: cname
     pattern: .s3-website.
-    reference: https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html
+    reference: https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteEndpoints.html
+    verified: '2026-11-16'
     description: >-
-      CNAME containing `.s3-website.` (newer-style S3
-      static-website endpoint, like
-      `s3-website.us-east-2.amazonaws.com`). Same static-
-      website-hosting semantics as the dash-form pattern.
+      CNAME containing `.s3-website.`. The website endpoints
+      page prints a host containing that infix and says to
+      add a DNS CNAME to that form. This observes that infix.
+      It does not prove that every name containing the infix
+      is a website endpoint. The example bucket was not added.
 - name: AWS Elastic Beanstalk
   slug: aws-eb
   category: Infrastructure

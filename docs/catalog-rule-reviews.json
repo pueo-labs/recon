@@ -1246,6 +1246,90 @@
       "reviewed_on": "2026-11-16",
       "source_checked_on": "2026-11-16",
       "reason": "Classic Load Balancer domain name page checked 2026-11-16: https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/using-domain-names-with-elb.html. It prints a DNS name under elb.amazonaws.com and says to create a CNAME to the load balancer. The rule observes that suffix. It does not prove that the load balancer is the only routing target. The example name was not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "aws-route53",
+        "detection_type": "ns",
+        "pattern": "awsdns"
+      },
+      "before": "bcb795bd3ea5d2f9bcfc89ab9ef3639a423f56af06ff16d0b736d406c53889dd",
+      "after": "71c5088b9b8ab63921514deddfd9f525b29e2009d143d606d4f897d27fbe8d3d",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Name server record reference checked 2026-11-16: https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/SOA-NSrecords.html. It prints name servers whose labels start with awsdns-. The rule observes that label. It does not prove that the domain's workloads run on AWS. The specific name servers were not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "aws-s3",
+        "detection_type": "cname",
+        "pattern": ".s3-website-"
+      },
+      "before": "fda2fe381fa524452df4e55dba917345b2130d55b517debad32f61e575193a58",
+      "after": "3fb3acd1906b3d826a88e0b758ff4c012f941a46948a512b081761307a001af1",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Website endpoints page checked 2026-11-16: https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteEndpoints.html. It prints the dash regional form with a name before .s3-website-. The rule observes that infix. It does not prove that every name containing the infix is a website endpoint. The example bucket and region placeholder were not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "aws-s3",
+        "detection_type": "cname",
+        "pattern": ".s3-website."
+      },
+      "before": "b2e7a735e649c8a1098e287699339840f92cbf7559f929f22558377e8a5c2a94",
+      "after": "d658548cb0010ff145be8f3829553d5e5d7c41212cd3cc6fb92eea9a1d518d9e",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Website endpoints page checked 2026-11-16: https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteEndpoints.html. It prints a host containing .s3-website. and says to add a DNS CNAME to that form. The rule observes that infix. It does not prove that every name containing the infix is a website endpoint. The example bucket was not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "aws-s3",
+        "detection_type": "cname",
+        "pattern": "s3.amazonaws.com"
+      },
+      "before": "4f153857b0bb29b9ece8da02e681e0b33f93e363f4e42e94cabbd885aaf255d1",
+      "after": "bae2f18daee955085937a383a9e11f57f30cc20a7392c3ce6f49ed9bdec729a0",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Virtual hosting page checked 2026-11-16: https://docs.aws.amazon.com/AmazonS3/latest/userguide/VirtualHosting.html. It prints a host under s3.amazonaws.com as the legacy global endpoint. The rule observes that suffix. It does not prove that static website hosting is enabled. The example bucket was not added. The regional endpoint example was not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "azure-cdn",
+        "detection_type": "cname",
+        "pattern": "azureedge.net"
+      },
+      "before": "29fd813a533b9499596a8f4ba5b398857e498ead9b0871eb8de348978003ec66",
+      "after": "5b6120575d68e0c3a0680f74b1a123b1bf3e59965968fd7a0927410b2c50996a",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Custom domain page checked 2026-11-16: https://learn.microsoft.com/en-us/azure/cdn/cdn-map-content-to-custom-domain. It prints CNAME destinations under azureedge.net. The rule observes that suffix. It does not prove that every name under the suffix is a customer endpoint. The example endpoint names were not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "azure-dns",
+        "detection_type": "ns",
+        "pattern": "azure-dns"
+      },
+      "before": "78502828dd530b029931983cde75e7f8d316c8b7f9b82d507a2cc65f07cc06d9",
+      "after": "2f2073bbb0a0f322a6f5577f97fe491de08ae5e5298f959eb063389c70733197",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Domain delegation tutorial checked 2026-11-16: https://learn.microsoft.com/en-us/azure/dns/dns-delegate-domain-azure-dns. It prints name servers whose labels are azure-dns. The rule observes that label. It does not prove that Azure hosts the zone's workloads. The specific name servers were not added."
     }
   ]
 }
