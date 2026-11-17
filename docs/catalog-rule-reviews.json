@@ -994,6 +994,48 @@
       "reviewed_on": "2026-11-16",
       "source_checked_on": "2026-11-16",
       "reason": "Trellix inline-mode article checked 2026-11-16: https://docs.trellix.com/data-and-email/docs/configuring-inline-mode-2. It names mx.us.etp.fireeyegov.com as a preferred USGOV MX next hop. The rule observes an MX host under fireeyegov.com. It does not prove that the domain publishes that next hop or that Trellix is the only exchanger. That specific host was not added. Address values on the page were not copied."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "worldnic",
+        "detection_type": "ns",
+        "pattern": "worldnic.com"
+      },
+      "before": "f85c009a269ef359a71c74777cb76a4f75a638e9d3ddba106778ac0989915623",
+      "after": "5d8c9d955f5483de0bd2b35ce4ddc046ba5a2801dd8ce98e6515ca438bb61c95",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Network Solutions move-nameserver page checked 2026-11-16: https://www.networksolutions.com/manage-it/move-ns-warning.jsp. It names ns1.worldnic.com and ns2.worldnic.com when DNS hosting is moved. The rule observes a nameserver under worldnic.com. It does not prove that Network Solutions is the only DNS provider. Those specific hosts were not added."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "zoho",
+        "detection_type": "cname_target",
+        "pattern": "zohohost.com"
+      },
+      "before": "56223d1c49226be90c0a9a3e5544053f840f41c95501203f2a57da22c2b80e49",
+      "after": "80b1e36bd427f916e5ecc326e15321e7ace6ed152bd76f14b3d41414f5cbfada",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Zoho Forms custom-domain article checked 2026-11-16: https://help.zoho.com/portal/en/kb/forms/form-settings/branding/articles/using-custom-domain-in-forms. It says to point a CNAME at forms.cs.zohohost.com. The rule observes a CNAME target under zohohost.com. It does not prove that the name is delegated only to Zoho Forms. That specific host was not added. The example customer domain was not copied."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "zoho",
+        "detection_type": "spf",
+        "pattern": "zcsend.net"
+      },
+      "before": "7842d03c8d36626ed5eafe514d668519b0df3e06635f27c7f3758f9ccbd72f2e",
+      "after": "4253e0b602eec5f378df2cf98de9e71d695fe924e3bb258cb7f3c09cf02c6d75",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Zoho Campaigns authentication article checked 2026-11-16: https://help.zoho.com/portal/en/kb/campaigns/getting-started-guide/articles/how-to-authenticate-email-domain. It prints include:zcsend.net. The rule observes that include. It does not prove that mail is sent through Zoho Campaigns or that the include is the only sender authorization. Regional includes and the books host were not added."
     }
   ]
 }

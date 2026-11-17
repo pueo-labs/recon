@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "743741dca3db10814897b7dbc860ca1982c2bd15a931854bf034e14f60a36af3",
+  "catalog_digest": "6454a0f2dc0e068883748a7074057046d42bd662902c3845b051b64e330c226a",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -2592,8 +2592,104 @@
       "rule_id": "discovered-signals.yaml/trendmicro/dmarc_rua/trendmicro.eu",
       "source_checked_on": "2026-11-16",
       "source_status": "checked"
+    },
+    {
+      "basis": "Rendered the Validity DMARC tag article on 2026-11-16. It explains rua= with a generic example mailbox. The saved DOM contains 250ok.net zero times. The broad suffix stays undated. The example mailbox was not copied.",
+      "disposition": "deferred",
+      "new_reference": "https://knowledge.validity.com/s/articles/What-are-the-different-tags-of-a-DMARC-record?language=en_US",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "489a1405f8db6f06f67ebfaa69ee842a6e84ccd46c2a09c0b737425f170cf536",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/validity/dmarc_rua/250ok.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Rendered the Validity DMARC tag article on 2026-11-16. It explains rua= with a generic example mailbox. The saved DOM contains everest.email zero times. The Everest product page also contains that name zero times. The broad suffix stays undated. The example mailbox was not copied.",
+      "disposition": "deferred",
+      "new_reference": "https://knowledge.validity.com/s/articles/What-are-the-different-tags-of-a-DMARC-record?language=en_US",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "cf6f23c63c13474c5900f3b67f266540a3deb8e94a93067b28200452d83c2a6e",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/validity/dmarc_rua/everest.email",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Rendered the Network Solutions move-nameserver page on 2026-11-16. It says the new name servers are ns##.worldnic.com and names ns1.worldnic.com and ns2.worldnic.com when DNS hosting is moved. The rule observes a nameserver under worldnic.com. It does not prove that Network Solutions is the only DNS provider. Those specific hosts were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://www.networksolutions.com/manage-it/move-ns-warning.jsp",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "5d8c9d955f5483de0bd2b35ce4ddc046ba5a2801dd8ce98e6515ca438bb61c95",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/worldnic/ns/worldnic.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Rendered the Zoho Forms custom-domain article on 2026-11-16. It says to add a CNAME pointed at forms.cs.zohohost.com. The rule observes a CNAME target under zohohost.com. It does not prove that the name is delegated only to Zoho Forms. That specific host was not added. The example customer domain was not copied.",
+      "disposition": "narrowed",
+      "new_reference": "https://help.zoho.com/portal/en/kb/forms/form-settings/branding/articles/using-custom-domain-in-forms",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "80b1e36bd427f916e5ecc326e15321e7ace6ed152bd76f14b3d41414f5cbfada",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/zoho/cname_target/zohohost.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Rendered the Zoho Campaigns domain-authentication article on 2026-11-16. It prints include:zcsend.net as the SPF include, including in the example v=spf1 include:zcsend.net include:sender.zohobooks.com ~all. The saved DOM contains include:zcsend.net 70 times. The rule observes that include. It does not prove that mail is sent through Zoho Campaigns or that the include is the only sender authorization. The regional includes and the books host were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://help.zoho.com/portal/en/kb/campaigns/getting-started-guide/articles/how-to-authenticate-email-domain",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "4253e0b602eec5f378df2cf98de9e71d695fe924e3bb258cb7f3c09cf02c6d75",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/zoho/spf/zcsend.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Fetched the Zoho Mail SPF article on 2026-11-16. The page says it was last updated on October 1, 2026. It prints include:zohomail.com and include:one.zoho.com. The saved body contains include:zoho.com zero times. The broad include stays undated. Those narrower hosts were not added.",
+      "disposition": "deferred",
+      "new_reference": "https://www.zoho.com/mail/help/adminconsole/spf-configuration.html",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "6d0b0438ff2e8bfd5b420e61cb7b5fc48708785657af15891c13b61fec260886",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/zoho/spf/zoho.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Fetched the existing Fortra Agari product URL on 2026-11-16. The response was an access block and contained agari.com zero times. The follow-on email-security page also contained agari.com zero times and rua= zero times. The broad suffix stays undated. No narrower host was added.",
+      "disposition": "deferred",
+      "new_reference": "https://www.fortra.com/platform/email-security",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://www.fortra.com/products/email-fraud-protection-agari-brand-protection",
+      "review_digest": "9aafd6dc5088f4726b7c96f89ea17b7810d1f253bfdcd1c1935c80e5e51d7741",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/agari/dmarc_rua/agari.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Fetched https://autospf.com/ on 2026-11-16. The saved page prints v=spf1 include:_spf.autospf.com ~all. It contains include:autospf.com zero times. A narrower include does not date the broad suffix. That narrower host was not added.",
+      "disposition": "deferred",
+      "new_reference": "https://autospf.com/",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://autospf.com/",
+      "review_digest": "bd6dc05479bc2f1bb9e74f59a08b75245a10988839bed4a995492bc2810b6fe3",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/autospf/spf/autospf.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, not a complete catalog review"
 }

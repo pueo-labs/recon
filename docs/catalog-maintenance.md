@@ -238,7 +238,8 @@ and a later 2026-11-16 portal verification and mail routing
 reference check, and a later 2026-11-16 SPF, reporting, and
 support-domain reference check, and a later 2026-11-16 mail
 exchanger, SPF, and site-validation reference check, and a later
-2026-11-16 SPF include and mail-exchanger reference check.
+2026-11-16 SPF include and mail-exchanger reference check, and a later
+2026-11-16 nameserver, SPF, and CNAME reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
 bind due rules to their exact claim/catalog digest, prior/new reference, actual
@@ -1667,6 +1668,51 @@ prints a Germany report address at `dmarcrua.tmes.trendmicro.eu`. It
 does not print the literal `rua=` grammar for the broad suffix. The
 narrower mailbox host was not added. The catalog DMARC suffix stays
 undated.
+
+### Documented reference check, later on 2026-11-16, nameserver, SPF, and CNAME
+
+This pass checked eight undated DMARC, NS, CNAME, and SPF rules.
+Three rules received a `verified` date because the fetched page prints
+the catalog grammar or a specific host under the existing suffix. Five
+rules stay undated. No new detection, DNS record type, or collection
+path was added. This note does not cut a release.
+
+The [Validity DMARC tag article](https://knowledge.validity.com/s/articles/What-are-the-different-tags-of-a-DMARC-record?language=en_US)
+explains `rua=` with a generic example mailbox. It does not print
+`250ok.net` or `everest.email`. Both catalog suffixes stay undated.
+The example mailbox was not copied.
+
+The [Network Solutions nameserver page](https://www.networksolutions.com/manage-it/move-ns-warning.jsp)
+names `ns1.worldnic.com` and `ns2.worldnic.com` when DNS hosting is
+moved. The rule observes a nameserver under `worldnic.com`. It does
+not prove that Network Solutions is the only DNS provider. Those
+specific hosts were not added.
+
+The [Zoho Forms custom-domain article](https://help.zoho.com/portal/en/kb/forms/form-settings/branding/articles/using-custom-domain-in-forms)
+says to point a CNAME at `forms.cs.zohohost.com`. The rule observes a
+CNAME target under `zohohost.com`. It does not prove that the name is
+delegated only to Zoho Forms. That specific host was not added. The
+example customer domain was not copied.
+
+The [Zoho Campaigns authentication article](https://help.zoho.com/portal/en/kb/campaigns/getting-started-guide/articles/how-to-authenticate-email-domain)
+prints `include:zcsend.net`. The rule observes that include. It does
+not prove that mail is sent through Zoho Campaigns or that the include
+is the only sender authorization. Regional includes and the books host
+were not added.
+
+The [Zoho Mail SPF article](https://www.zoho.com/mail/help/adminconsole/spf-configuration.html),
+last updated 2026-10-01, prints `include:zohomail.com` and
+`include:one.zoho.com`. It does not print `include:zoho.com`. Those
+narrower hosts were not added. The catalog SPF stays undated.
+
+The Fortra Agari product URL returned an access block. The follow-on
+[email-security page](https://www.fortra.com/platform/email-security)
+does not print `agari.com` or `rua=`. The catalog DMARC suffix stays
+undated.
+
+The [AutoSPF page](https://autospf.com/) prints
+`include:_spf.autospf.com`. It does not print `include:autospf.com`.
+That narrower host was not added. The catalog SPF stays undated.
 
 ## Executable path
 
