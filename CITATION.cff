@@ -18,8 +18,8 @@ authors:
 repository-code: "https://github.com/pueo-labs/recon"
 url: "https://github.com/pueo-labs/recon"
 license: Apache-2.0
-version: 2.27.2
-date-released: "2026-11-16"
+version: 2.27.3
+date-released: "2026-11-17"
 keywords:
   - passive reconnaissance
   - external attack surface management
