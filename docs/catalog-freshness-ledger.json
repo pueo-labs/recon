@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "830a5e8fbf2cd6de037dc11f67a8153e23002e29e7114cb4d7d57145bca4b351",
+  "catalog_digest": "e097d8584c10f88d1bbbc9ac18a8a5b8e036a9c085de56ec7e853b1a3bc841b0",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -3936,8 +3936,104 @@
       "rule_id": "infrastructure.yaml/vmware-cloud/txt/^vmware-cloud-verification-",
       "source_checked_on": "2026-11-17",
       "source_status": "checked"
+    },
+    {
+      "basis": "The cited article checked 2026-11-17 is gone. The current custom-domain page prints one-time-verification= as the value of a TXT record named _webflow. That owner is already a separate dated rule. The apex prefix stays undated. The _webflow owner was not added again.",
+      "disposition": "deferred",
+      "new_reference": "https://help.webflow.com/hc/en-us/articles/33961239562387-Manually-connect-a-custom-domain",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://help.webflow.com/hc/en-us/articles/4427060980499",
+      "review_digest": "5ec7d63d99fc570405c43904d8a2de153499dca0f5e8f9bbc62fd498c2b40149",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/webflow/txt/^webflow-domain-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The about-domains page checked 2026-11-17 does not print wixdns.net. The pointing page, updated 2026-10-05, prints a CNAME target whose label contains wixdns.net. The rule observes that label. It does not prove that Wix is serving the site. The specific target and the address were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://support.wix.com/en/article/pointing-widget",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://support.wix.com/en/article/about-domains",
+      "review_digest": "63b37b09856bc8168fc292b5a571ec66d2902407d51b1b612b11ee340b110028",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/wix/cname/wixdns.net",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited add-domain page redirects to the User Portal guide and does not print wpengine.com as a CNAME target. The network page, updated 2026-08-19, prints a legacy CNAME example whose label contains wpengine.com. The rule observes that label. It does not prove that the legacy network is still in use. The example host, the advanced-network host, and the edge host were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://wpengine.com/support/network/",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://wpengine.com/support/add-domain/",
+      "review_digest": "045739f077216b3137f8c6332251e6a143d536e1007ec8996b154edbaa225fac",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/wpengine/cname/wpengine.com",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The User Portal page checked 2026-11-17 says the verification TXT name is _wpe-verification and the content is a raw token. That is a different record shape from the apex prefix. A dispute line prints wpe-verification= without stating an apex owner. The apex prefix stays undated. The _wpe-verification owner was not added.",
+      "disposition": "deferred",
+      "new_reference": "https://wpengine.com/support/add-domain-in-user-portal/",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://wpengine.com/support/add-domain/",
+      "review_digest": "bbd00e5bf8171f3639a28500ae28efc87fc7992ac8165d57bde87a43b0769a4b",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/wpengine/txt/^wpe-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited claim page returned HTTP 403 on 2026-11-17. The current domain-claiming page says to publish the supplied token as a TXT record, and the example value begins adobe-sign-verification=. The rule observes that prefix. It does not prove that the domain claim is complete. The example token was not copied.",
+      "disposition": "narrowed",
+      "new_reference": "https://helpx.adobe.com/sign/web/using/claim-domain-names.html",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://helpx.adobe.com/sign/using/sign-up-domain-claim.html",
+      "review_digest": "92e0864be6f9185196a699158b664b2a580cebd47c0bc1b05b87f9c765318556",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "productivity.yaml/adobe-sign/txt/^adobe-sign-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The support home checked 2026-11-17 does not print airtable-domain-verification=. The federation article prints airtable-verification= as a root TXT value and does not print the longer prefix. The longer prefix stays undated. No token was added.",
+      "disposition": "deferred",
+      "new_reference": "https://support.airtable.com/articles/9354970066-airtable-domain-federation-and-verification",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://support.airtable.com/",
+      "review_digest": "64f9b52f44795e5b5c514c5e0757ce974a48f262dac0dac7fc8be745c68a360e",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "productivity.yaml/airtable/txt/^airtable-domain-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The federation article checked 2026-11-17 says to publish airtable-verification= as the value of a TXT record on the root domain. The name is @, blank, or the root domain. The rule observes that prefix. It does not prove that verification succeeded. The example domain was not copied.",
+      "disposition": "narrowed",
+      "new_reference": "https://support.airtable.com/articles/9354970066-airtable-domain-federation-and-verification",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://support.airtable.com/",
+      "review_digest": "53b32511ddcff24d0dbfe3b9784a3f470df4480845673ac673aab72399166b48",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "productivity.yaml/airtable/txt/^airtable-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited account page redirects to a sign-in page and does not print apple-domain-verification=. The English Business Essentials article now redirects to a welcome page and does not print the prefix. The Apple School Manager domains page prints apple-domain-verification= as the example TXT record added to the domain zone file. The rule observes that prefix. It does not prove that the domain is verified. The example token and the example school name were not copied.",
+      "disposition": "narrowed",
+      "new_reference": "https://support.apple.com/en-sg/guide/apple-school-manager-m/axm48c3280c0/web",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://developer.apple.com/account/",
+      "review_digest": "de3b071c8cf0386dc16247a88730810e0f1b05cccdaea67ff13440253b3a474f",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "productivity.yaml/apple/txt/^apple-domain-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, and a later 2026-11-16 verification prefix, SPF include, and TLS reporting reference check, and a later 2026-11-16 reporting mailbox, verification prefix, mail exchanger, and nameserver reference check, and a later 2026-11-16 certificate issuer, distribution suffix, environment name, and load balancer hostname reference check, and a later 2026-11-16 nameserver label, website infix, REST suffix, and edge hostname reference check, and a later 2026-11-16 endpoint suffix, routing suffix, token prefix, and issuer host reference check, and a later 2026-11-16 nameserver suffix, edge hostname, edge pattern, and publication hostname reference check, and a later 2026-11-17 verification owner, verification value, and issuer host reference check, and a later 2026-11-17 image suffix, edge suffix, and issuer host reference check, and a later 2026-11-17 traffic edge hostname reference check, and a later 2026-11-17 store suffix, site suffix, and issuer host reference check, and a later 2026-11-17 SSO verification value and nameserver label reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, and a later 2026-11-16 verification prefix, SPF include, and TLS reporting reference check, and a later 2026-11-16 reporting mailbox, verification prefix, mail exchanger, and nameserver reference check, and a later 2026-11-16 certificate issuer, distribution suffix, environment name, and load balancer hostname reference check, and a later 2026-11-16 nameserver label, website infix, REST suffix, and edge hostname reference check, and a later 2026-11-16 endpoint suffix, routing suffix, token prefix, and issuer host reference check, and a later 2026-11-16 nameserver suffix, edge hostname, edge pattern, and publication hostname reference check, and a later 2026-11-17 verification owner, verification value, and issuer host reference check, and a later 2026-11-17 image suffix, edge suffix, and issuer host reference check, and a later 2026-11-17 traffic edge hostname reference check, and a later 2026-11-17 store suffix, site suffix, and issuer host reference check, and a later 2026-11-17 SSO verification value and nameserver label reference check, and a later 2026-11-17 pointing label, legacy label, and verification value reference check, not a complete catalog review"
 }

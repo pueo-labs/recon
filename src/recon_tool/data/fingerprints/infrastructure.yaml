@@ -667,12 +667,14 @@ fingerprints:
   detections:
   - type: cname
     pattern: wixdns.net
-    reference: https://support.wix.com/en/article/about-domains
+    reference: https://support.wix.com/en/article/pointing-widget
+    verified: '2026-11-17'
     description: >-
-      CNAME terminating in wixdns.net (Wix's DNS hosting
-      domain). Indicates the domain is hosted on Wix, the
-      no-code website-builder platform. Common with small
-      business and creator websites.
+      CNAME pointing into wixdns.net (Wix is a website-builder
+      platform). The pointing page prints a CNAME target whose
+      label contains `wixdns.net`. This observes that label. It
+      does not prove that Wix is serving the site. The specific
+      target and the address were not added.
 - name: Squarespace
   slug: squarespace
   category: Infrastructure
@@ -710,12 +712,16 @@ fingerprints:
   detections:
   - type: cname
     pattern: wpengine.com
-    reference: https://wpengine.com/support/add-domain/
+    reference: https://wpengine.com/support/network/
+    verified: '2026-11-17'
     description: >-
       CNAME pointing into wpengine.com (WP Engine is a
-      managed-WordPress hosting platform). Indicates the
-      domain hosts a WordPress site on WP Engine
-      infrastructure.
+      managed-WordPress host). The network page prints a
+      legacy CNAME example whose label contains
+      `wpengine.com`. This observes that label. It does not
+      prove that the legacy network is still in use. The
+      example host, the advanced-network host, and the edge
+      host were not added.
   - type: txt
     pattern: ^wpe-verification=
     reference: https://wpengine.com/support/add-domain/

@@ -263,6 +263,8 @@ reference check, and a later 2026-11-17 store suffix,
 site suffix, and issuer host
 reference check, and a later 2026-11-17 SSO verification
 value and nameserver label
+reference check, and a later 2026-11-17 pointing label,
+legacy label, and verification value
 reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
@@ -2459,6 +2461,69 @@ The federation verify-domains page says to copy a generated TXT
 code and add a TXT record. It does not print that prefix. The
 catalog prefix stays undated. The example name and the generated
 code were not added.
+
+### Documented reference check, later on 2026-11-17, pointing label, legacy label, and verification value
+
+This pass checked eight undated TXT and CNAME rules. Five
+rules received a `verified` date because the fetched page prints
+the catalog grammar. Three rules stay undated. No new
+detection, DNS record type, or collection path was added. This
+note does not cut a release.
+
+The cited Webflow article is gone. The current custom-domain
+page prints `one-time-verification=` as the value of a TXT
+record named `_webflow`. That owner is already a separate dated
+rule. The apex prefix stays undated. The owner was not added
+again.
+
+The cited about-domains page does not print `wixdns.net`. The
+[pointing page](https://support.wix.com/en/article/pointing-widget)
+prints a CNAME target whose label contains `wixdns.net`. The
+rule observes that label. It does not prove that Wix is serving
+the site. The specific target and the address were not added.
+
+The cited add-domain page redirects to the User Portal guide.
+The
+[network page](https://wpengine.com/support/network/)
+prints a legacy CNAME example whose label contains
+`wpengine.com`. The rule observes that label. It does not prove
+that the legacy network is still in use. The example host, the
+advanced-network host, and the edge host were not added.
+
+The User Portal page says the verification TXT name is
+`_wpe-verification` and the content is a raw token. That is a
+different record shape from the apex prefix. A dispute line
+prints `wpe-verification=` without stating an apex owner. The
+apex prefix stays undated. The owner name was not added.
+
+The cited Adobe claim page returned HTTP 403. The
+[domain-claiming page](https://helpx.adobe.com/sign/web/using/claim-domain-names.html)
+says to publish a TXT value that begins
+`adobe-sign-verification=`. The rule observes that prefix. It
+does not prove that the domain claim is complete. The example
+token was not copied.
+
+The support home does not print `airtable-domain-verification=`.
+The federation article prints `airtable-verification=` and does
+not print the longer prefix. The longer prefix stays undated.
+No token was added.
+
+The
+[federation page](https://support.airtable.com/articles/9354970066-airtable-domain-federation-and-verification)
+says to publish `airtable-verification=` as the value of a TXT
+record on the root domain. The name is `@`, blank, or the root
+domain. The rule observes that prefix. It does not prove that
+verification succeeded. The example domain was not copied.
+
+The cited account page redirects to a sign-in page and does not
+print `apple-domain-verification=`. The English Business
+Essentials article now redirects to a welcome page and does not
+print the prefix. The
+[School Manager domains page](https://support.apple.com/en-sg/guide/apple-school-manager-m/axm48c3280c0/web)
+prints that prefix as the example TXT record added to the
+domain zone file. The rule observes that prefix. It does not
+prove that the domain is verified. The example token and the
+example school name were not copied.
 
 ## Executable path
 
