@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "830f8f9a2bb6fcdc72e9ae4add1eb072cc9328d4a4c7cd2a21a12b2ab195a197",
+  "catalog_digest": "4836960607e1dfd7ee864faee7f86ffc057949fd822ca65c3fef254c12d86e22",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -3456,8 +3456,104 @@
       "rule_id": "infrastructure.yaml/github/txt/^_github-pages-challenge",
       "source_checked_on": "2026-11-16",
       "source_status": "checked"
+    },
+    {
+      "basis": "The organization domain page checked 2026-11-17 says to add a DNS TXT record and shows a dig command for a placeholder record name. It does not print github-site-verification= as TXT record content. The catalog prefix stays undated. No placeholder was added.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.github.com/en/organizations/managing-organization-settings/verifying-or-approving-a-domain-for-your-organization",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://docs.github.com/en/organizations/managing-organization-settings/verifying-or-approving-a-domain-for-your-organization",
+      "review_digest": "706ac4fb6851e9d4cfc2eacf94dd80190c0555d57ee8bf4ae0cc9cdd58e21a60",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/github/txt/^github-site-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited Pages URL checked 2026-11-17 redirects to the custom domains page. That page prints the TXT name _gitlab-pages-verification-code for a root domain and says some providers want only that name. The rule queries TXT at that owner and matches any value. It does not prove that Pages is serving the site. The sample code, the example name, and the addresses were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/",
+      "review_digest": "3c4a4d29bc70ab9806488e66a22871e70978619873a4b472516bbfc867a9dcf9",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/gitlab/subdomain_txt/_gitlab-pages-verification-code:.",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The same custom domains page prints a TXT value that begins with gitlab-pages-verification-code=. The rule observes that prefix at the zone apex. It does not prove that Pages is serving the site. The sample code, the example name, and the addresses were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/",
+      "review_digest": "3a9001e12e87d7270df5610802d0b9d33c3881e02e8a056d51c56e2b969822df",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/gitlab/txt/^gitlab-pages-verification-code=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited nameserver article checked 2026-11-17 redirects to a change-nameservers page that does not print domaincontrol.com. The find-my-nameservers page also does not print a host under that suffix. The catalog suffix stays undated. No nameserver hostname was added.",
+      "disposition": "deferred",
+      "new_reference": "https://www.godaddy.com/help/about-godaddy-nameservers-664",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://www.godaddy.com/help/about-godaddy-nameservers-664",
+      "review_digest": "2fccebe6498e9937411a7fb77757deed25cca098af06f35bcd8500b9a6c8266a",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/godaddy/ns/domaincontrol.com",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited homepage checked 2026-11-17 prints pki.goog only as status.pki.goog and does not print a CAA issuer. The FAQ says the remaining questions moved. The CAA configuration page prints a CAA issue record whose issuer is pki.goog. The rule observes that issuer. It does not prove that a certificate was issued. The status host was not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://developers.google.com/public-key-infrastructure/faq/configure-caa",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://pki.goog/",
+      "review_digest": "400acad31c73edbaf5383021c9197ed3ceac5daef2d2933bfc7d0a4ee6748033",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/google-trust/caa/pki.goog",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The Grafana Cloud documentation page checked 2026-11-17 does not print grafana-site-verification= as TXT record content. The catalog prefix stays undated. No token was added.",
+      "disposition": "deferred",
+      "new_reference": "https://grafana.com/docs/grafana-cloud/",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://grafana.com/docs/grafana-cloud/",
+      "review_digest": "8577027645c9ca381314f5d5bb47b3c9ddfdce12a33505a646c782121a7e9df0",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/grafana-cloud/txt/^grafana-site-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited support category checked 2026-11-17 returned HTTP 404 and does not print grammarly-domain-verification=. The enterprise domain controls article describes SSO signup controls and does not print that prefix, a TXT record, or a DNS record. The catalog prefix stays undated. No token was added.",
+      "disposition": "deferred",
+      "new_reference": "https://support.grammarly.com/hc/en-us/categories/115000004391",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://support.grammarly.com/hc/en-us/categories/115000004391",
+      "review_digest": "d4e0fe40b683cf5a4b3de592b95c38f38867c1b42461994f148c69e4d3238392",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/grammarly/txt/^grammarly-domain-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The custom domains page checked 2026-11-17 prints herokuapp.com only as a default application URL. The CNAME targets it prints are under herokudns.com. The catalog suffix stays undated. No application name or DNS target was added.",
+      "disposition": "deferred",
+      "new_reference": "https://devcenter.heroku.com/articles/custom-domains",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://devcenter.heroku.com/articles/custom-domains",
+      "review_digest": "b945147ae5e3910f42d4821c4e72d71f342ca2a2fe54a6ac4dc0c6ceb6b89e61",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/heroku/cname/herokuapp.com",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, and a later 2026-11-16 verification prefix, SPF include, and TLS reporting reference check, and a later 2026-11-16 reporting mailbox, verification prefix, mail exchanger, and nameserver reference check, and a later 2026-11-16 certificate issuer, distribution suffix, environment name, and load balancer hostname reference check, and a later 2026-11-16 nameserver label, website infix, REST suffix, and edge hostname reference check, and a later 2026-11-16 endpoint suffix, routing suffix, token prefix, and issuer host reference check, and a later 2026-11-16 nameserver suffix, edge hostname, edge pattern, and publication hostname reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, and a later 2026-11-16 verification prefix, SPF include, and TLS reporting reference check, and a later 2026-11-16 reporting mailbox, verification prefix, mail exchanger, and nameserver reference check, and a later 2026-11-16 certificate issuer, distribution suffix, environment name, and load balancer hostname reference check, and a later 2026-11-16 nameserver label, website infix, REST suffix, and edge hostname reference check, and a later 2026-11-16 endpoint suffix, routing suffix, token prefix, and issuer host reference check, and a later 2026-11-16 nameserver suffix, edge hostname, edge pattern, and publication hostname reference check, and a later 2026-11-17 verification owner, verification value, and issuer host reference check, not a complete catalog review"
 }

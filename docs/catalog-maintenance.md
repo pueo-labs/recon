@@ -253,6 +253,8 @@ reference check, and a later 2026-11-16 endpoint suffix,
 routing suffix, token prefix, and issuer host
 reference check, and a later 2026-11-16 nameserver suffix,
 edge hostname, edge pattern, and publication hostname
+reference check, and a later 2026-11-17 verification owner,
+verification value, and issuer host
 reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
@@ -2182,6 +2184,61 @@ the owner name in a dig TXT query. The catalog pattern matches the
 TXT value, and the page does not print a TXT value starting with
 that prefix. The catalog prefix stays undated. No owner name was
 added.
+
+### Documented reference check, later on 2026-11-17, verification owner, verification value, and issuer host
+
+This pass checked eight undated TXT, NS, CAA, and CNAME rules.
+Three rules received a `verified` date because the fetched page
+prints the catalog grammar. Five rules stay undated. No new
+detection, DNS record type, or collection path was added. This
+note does not cut a release.
+
+The cited organization domain page says to add a DNS TXT record
+and shows a dig command for a placeholder record name. It does
+not print `github-site-verification=` as TXT record content. The
+catalog prefix stays undated. No placeholder was added.
+
+The cited Pages URL redirects to the
+[custom domains page](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/).
+That page prints the TXT name `_gitlab-pages-verification-code`
+for a root domain and says some providers want only that name.
+The subdomain rule queries TXT at that owner and matches any
+value. It does not prove that Pages is serving the site. The
+sample code, the example name, and the addresses were not added.
+
+The same page prints a TXT value that begins with
+`gitlab-pages-verification-code=`. The apex rule observes that
+prefix. It does not prove that Pages is serving the site. The
+sample code, the example name, and the addresses were not added.
+
+The cited nameserver article redirects to a change-nameservers
+page that does not print `domaincontrol.com`. The
+find-my-nameservers page also does not print a host under that
+suffix. The catalog suffix stays undated. No nameserver hostname
+was added.
+
+The cited homepage prints `pki.goog` only as `status.pki.goog`
+and does not print a CAA issuer. The FAQ says the remaining
+questions moved. The
+[CAA configuration page](https://developers.google.com/public-key-infrastructure/faq/configure-caa)
+prints a CAA issue record whose issuer is `pki.goog`. The rule
+observes that issuer. It does not prove that a certificate was
+issued. The status host was not added.
+
+The Grafana Cloud documentation page does not print
+`grafana-site-verification=` as TXT record content. The catalog
+prefix stays undated. No token was added.
+
+The cited support category returned HTTP 404 and does not print
+`grammarly-domain-verification=`. The enterprise domain controls
+article describes SSO signup controls and does not print that
+prefix, a TXT record, or a DNS record. The catalog prefix stays
+undated. No token was added.
+
+The custom domains page prints `herokuapp.com` only as a default
+application URL. The CNAME targets it prints are under
+`herokudns.com`. The catalog suffix stays undated. No application
+name or DNS target was added.
 
 ## Executable path
 

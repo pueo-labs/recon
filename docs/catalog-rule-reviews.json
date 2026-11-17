@@ -1442,6 +1442,48 @@
       "reviewed_on": "2026-11-16",
       "source_checked_on": "2026-11-16",
       "reason": "Custom domain page checked 2026-11-16: https://ghost.org/help/using-custom-domains/. It prints a CNAME value under ghost.io. The rule observes that suffix. It does not prove that every name under the suffix is a Ghost publication. The placeholder and the address were not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "gitlab",
+        "detection_type": "subdomain_txt",
+        "pattern": "_gitlab-pages-verification-code:."
+      },
+      "before": "7a313b97c5940020ebc263a87c5c834b8b6423c2be2f00f1a68b9874c1c6def0",
+      "after": "3c4a4d29bc70ab9806488e66a22871e70978619873a4b472516bbfc867a9dcf9",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-17",
+      "source_checked_on": "2026-11-17",
+      "reason": "Custom domains page checked 2026-11-17: https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/. It prints the TXT name _gitlab-pages-verification-code for a root domain. The rule queries TXT at that owner and matches any value. It does not prove that Pages is serving the site. The sample code, the example name, and the addresses were not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "gitlab",
+        "detection_type": "txt",
+        "pattern": "^gitlab-pages-verification-code="
+      },
+      "before": "85d3ff69f0e39cfc8775da931c898c4ea70dad4aeceb706edbd59e278e090603",
+      "after": "3a9001e12e87d7270df5610802d0b9d33c3881e02e8a056d51c56e2b969822df",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-17",
+      "source_checked_on": "2026-11-17",
+      "reason": "Custom domains page checked 2026-11-17: https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/. It prints a TXT value that begins with gitlab-pages-verification-code=. The rule observes that prefix at the zone apex. It does not prove that Pages is serving the site. The sample code, the example name, and the addresses were not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "google-trust",
+        "detection_type": "caa",
+        "pattern": "pki.goog"
+      },
+      "before": "214b126a39e77e542a3875175edb577d2fba50e08014e0782aa2fc9a3652f338",
+      "after": "400acad31c73edbaf5383021c9197ed3ceac5daef2d2933bfc7d0a4ee6748033",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-17",
+      "source_checked_on": "2026-11-17",
+      "reason": "CAA configuration page checked 2026-11-17: https://developers.google.com/public-key-infrastructure/faq/configure-caa. It prints a CAA issue record whose issuer is pki.goog. The rule observes that issuer. It does not prove that a certificate was issued. The status host was not added."
     }
   ]
 }

@@ -55,21 +55,26 @@ fingerprints:
   detections:
   - type: txt
     pattern: ^gitlab-pages-verification-code=
-    reference: https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/
+    reference: https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/
+    verified: '2026-11-17'
     description: >-
       GitLab Pages domain-verification TXT at zone apex.
-      Indicates the domain is verified for use as a custom
-      GitLab Pages site. Common on GitLab SaaS
-      (gitlab.com); self-managed GitLab installations can
-      also use this verification.
+      The custom domains page prints a TXT value that begins
+      with gitlab-pages-verification-code=. This observes
+      that prefix. It does not prove that Pages is serving
+      the site. The sample code, the example name, and the
+      addresses were not added.
   - type: subdomain_txt
     pattern: _gitlab-pages-verification-code:.
-    reference: https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/
+    reference: https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/
+    verified: '2026-11-17'
     description: >-
-      GitLab Pages subdomain-verification TXT (found at a
-      designated `_gitlab-pages-verification-code.<subdomain>`
-      record). Same purpose as the apex form; used when the
-      Pages site lives at a subdomain rather than the apex.
+      GitLab Pages TXT at the owner
+      _gitlab-pages-verification-code. The custom domains
+      page prints that owner as the TXT name for a root
+      domain. This observes that owner. It does not prove
+      that Pages is serving the site. The sample code, the
+      example name, and the addresses were not added.
 - name: Postman
   slug: postman
   category: DevTools & Infrastructure
@@ -1128,12 +1133,15 @@ fingerprints:
   detections:
   - type: caa
     pattern: pki.goog
-    reference: https://pki.goog/
+    reference: https://developers.google.com/public-key-infrastructure/faq/configure-caa
+    verified: '2026-11-17'
     description: >-
       CAA record authorizing Google Trust Services to issue
-      certificates for the domain. It does not establish that
-      a certificate was issued or which Google service might
-      use it.
+      certificates for the domain. The CAA configuration page
+      prints an issue value whose issuer is pki.goog. This
+      observes that issuer. It does not establish that a
+      certificate was issued or which Google service might
+      use it. The status host was not added.
 - name: Fly.io
   slug: flyio
   category: Infrastructure
