@@ -97,7 +97,7 @@ def test_development_audit_toolchain_excludes_affected_pip() -> None:
     config = _project_config()
     dev_requirements = config["dependency-groups"]["dev"]
 
-    assert "pip>=26.2.2" in dev_requirements
+    assert "pip>=26.3" in dev_requirements
 
     lock = tomllib.loads(_UV_LOCK.read_text(encoding="utf-8"))
     pip_packages = [package for package in lock["package"] if package["name"] == "pip"]

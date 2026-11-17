@@ -35,8 +35,8 @@ tracked separately from product work.
 > development or release default.
 > The [October review](maintenance-review-2026-10-08.md) records the dependency
 > refresh, synchronized build graph, current bug fixes and local security
-> boundaries. The changelog records its release batch. The pip vendored-transport issue
-> requires an upstream stable fix; package audit workarounds remain in force.
+> boundaries. The changelog records its release batch. The current development lock uses pip 26.3
+> with its patched urllib3 2.8.0. The frozen dependency audit remains in place.
 >
 > `main` is the single integration and release branch. Checked implementation
 > and release-preparation branches are temporary. Publication is complete only
@@ -815,7 +815,8 @@ value, the Miro verification value, and the Qualtrics survey
 include, and it leaves five admitted rules undated.
 The catalog has 293 dated rules and 830 undated rules. Those passes
 ship in 2.27.3. Tag `v2.27.2` remains `071c4356`. 2.27.3 publishes
-the catalog date checks since that tag, the doctor help correction,
+the catalog date checks since that tag, the resolver warning, DKIM role
+labels, DMARC and MTA-STS comparison details, the doctor help correction,
 the lock-drift policy, and the hosted Ubuntu floor. Qualifying CI
 jobs install the project environment with `uv sync --locked` and
 `UV_LOCKED`. A dependency change that `uv.lock` does not contain

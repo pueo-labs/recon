@@ -14,11 +14,8 @@ degraded without needing a full TenantInfo round-trip.
 
 from __future__ import annotations
 
-import contextlib
 import json
 import logging
-import os
-import tempfile
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
@@ -31,7 +28,7 @@ from recon_tool.cache import (
     infrastructure_clusters_from_cache_dict,
     infrastructure_clusters_to_cache_dict,
 )
-from recon_tool.cache_paths import resolve_cache_directory
+from recon_tool.cache_paths import read_cache_json, resolve_cache_directory, unlink_cache_entry, write_cache_json
 from recon_tool.cache_values import (
     CacheClearResult,
     CacheInspection,
@@ -41,7 +38,6 @@ from recon_tool.cache_values import (
     require_cache_policy,
     select_cache_file_stems,
 )
-from recon_tool.json_limits import load_bounded_json_file
 from recon_tool.models import CertSummary, InfrastructureClusterReport
 from recon_tool.sources.cert_issuer import normalize_cert_summary
 from recon_tool.validator import validate_domain
@@ -146,7 +142,7 @@ def ct_cache_get(domain: str, ttl: int = CT_CACHE_TTL) -> CTCacheEntry | None:
     try:
         expected_domain = validate_domain(domain, apex=False)
         path = _safe_path(domain)
-        data, _file_stat, age_seconds = load_bounded_json_file(
+        data, _file_stat, age_seconds = read_cache_json(
             path,
             maximum_bytes=_MAX_CT_CACHE_FILE_BYTES,
             maximum_age_seconds=ttl,
@@ -184,19 +180,7 @@ def ct_cache_put(
             provider_used,
             infrastructure_clusters,
         )
-        # Atomic write, matching cache.py: a concurrent ct_cache_get must never
-        # read a half-written file, and a predictable "<domain>.json" target must
-        # not be followed if it is a pre-planted symlink. mkstemp gives a random
-        # O_EXCL name inside the validated dir, then os.replace swaps it in.
-        fd, tmp_name = tempfile.mkstemp(dir=str(d), prefix=f"{path.stem}.", suffix=".tmp")
-        try:
-            with os.fdopen(fd, "w", encoding="utf-8") as fh:
-                fh.write(json.dumps(data, indent=2))
-            os.replace(tmp_name, path)
-        except BaseException:
-            with contextlib.suppress(OSError):
-                os.unlink(tmp_name)
-            raise
+        write_cache_json(path, data)
         logger.debug("CT cache written for %s (%d subdomains)", domain, len(subdomains))
     except (OSError, TypeError, ValueError, json.JSONDecodeError):
         logger.debug("CT cache write failed for %s", domain, exc_info=True)
@@ -206,13 +190,7 @@ def _ct_cache_clear_detailed(domain: str) -> CacheClearResult:
     """Remove one CT cache entry and distinguish absence from I/O failure."""
     try:
         path = _safe_path(domain)
-        if not path.exists():
-            return CacheClearResult()
-        try:
-            path.unlink()
-        except FileNotFoundError:
-            return CacheClearResult()
-        return CacheClearResult(removed=1)
+        return CacheClearResult(removed=int(unlink_cache_entry(path)))
     except (OSError, ValueError):
         logger.debug("CT cache clear failed for %s", domain, exc_info=True)
         return CacheClearResult(failed=True)
@@ -249,7 +227,7 @@ def _ct_cache_inspect(domain: str) -> CacheInspection[CTCacheInfo]:
     try:
         expected_domain = validate_domain(domain, apex=False)
         path = _safe_path(domain)
-        data, file_stat, age_seconds = load_bounded_json_file(path, maximum_bytes=_MAX_CT_CACHE_FILE_BYTES)
+        data, file_stat, age_seconds = read_cache_json(path, maximum_bytes=_MAX_CT_CACHE_FILE_BYTES)
         if not isinstance(data, dict):
             raise ValueError("CT cache payload must be a JSON object")
         entry = _entry_from_dict(data, age_seconds, expected_domain)

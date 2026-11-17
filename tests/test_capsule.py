@@ -343,10 +343,11 @@ def test_validate_rejects_unknown_fields_and_nonfinite_values() -> None:
     with pytest.raises(ValueError, match="top-level"):
         validate_capsule(unknown)
 
-    nonfinite = _capsule()
-    nonfinite["collection"]["options"]["timeout_seconds"] = float("nan")
-    with pytest.raises(ValueError, match="non-finite"):
-        validate_capsule(nonfinite)
+    for invalid, message in ((float("nan"), "non-finite"), (10**400, "timeout_seconds")):
+        nonfinite = _capsule()
+        nonfinite["collection"]["options"]["timeout_seconds"] = invalid
+        with pytest.raises(ValueError, match=message):
+            validate_capsule(nonfinite)
 
 
 def test_vantage_rejects_control_characters_and_truncation() -> None:

@@ -16,6 +16,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Generic, TypeVar
 
+from recon_tool.cache_paths import bind_cache_directory
 from recon_tool.models import ConfidenceLevel
 
 logger = logging.getLogger("recon")
@@ -114,23 +115,26 @@ def select_cache_file_stems(directory: Path, *, limit: int | None) -> CacheFileS
     stems: list[str] = []
     total = 0
     temporary_files = 0
-    for path in directory.iterdir():
-        name = path.name
-        if _is_cache_temporary_name(name):
-            temporary_files += 1
-            continue
-        if not name.endswith(".json"):
-            continue
-        total += 1
-        stem = name[:-5]
-        if limit is None:
-            stems.append(stem)
-            continue
-        insort(stems, stem)
-        if len(stems) > limit:
-            stems.pop()
-    if limit is None:
-        stems.sort()
+    try:
+        with bind_cache_directory(directory, enumerate_names=True) as bound:
+            for name in bound.names():
+                if _is_cache_temporary_name(name):
+                    temporary_files += 1
+                    continue
+                if not name.endswith(".json"):
+                    continue
+                total += 1
+                stem = name[:-5]
+                if limit is None:
+                    stems.append(stem)
+                    continue
+                insort(stems, stem)
+                if len(stems) > limit:
+                    stems.pop()
+            if limit is None:
+                stems.sort()
+    except FileNotFoundError:
+        return CacheFileSelection()
     return CacheFileSelection(stems=tuple(stems), total=total, temporary_files=temporary_files)
 
 
@@ -140,20 +144,21 @@ def clear_cache_directory(directory: Path, *, layer: str) -> CacheClearResult:
     temporary_removed = 0
     failed = False
     try:
-        for path in directory.iterdir():
-            suffix = path.suffix
-            is_temporary = _is_cache_temporary_name(path.name)
-            if suffix != ".json" and not is_temporary:
-                continue
-            try:
-                path.unlink()
-                removed += int(suffix == ".json")
-                temporary_removed += int(is_temporary)
-            except FileNotFoundError:
-                continue
-            except OSError:
-                failed = True
-                logger.debug("%s cache file unlink failed: %s", layer, path, exc_info=True)
+        with bind_cache_directory(directory, enumerate_names=True, mutate=True) as bound:
+            for name in bound.names():
+                suffix = Path(name).suffix
+                is_temporary = _is_cache_temporary_name(name)
+                if suffix != ".json" and not is_temporary:
+                    continue
+                try:
+                    bound.unlink(name)
+                    removed += int(suffix == ".json")
+                    temporary_removed += int(is_temporary)
+                except FileNotFoundError:
+                    continue
+                except OSError:
+                    failed = True
+                    logger.debug("%s cache file unlink failed: %s", layer, name, exc_info=True)
     except OSError:
         failed = True
         logger.debug("%s cache clear-all enumeration failed", layer, exc_info=True)

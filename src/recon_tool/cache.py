@@ -7,11 +7,7 @@ Entries expire lazily and cache I/O degrades to misses instead of escaping error
 
 from __future__ import annotations
 
-import contextlib
-import json
 import logging
-import os
-import tempfile
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -30,6 +26,8 @@ from recon_tool.cache_insights import (
 )
 from recon_tool.cache_paths import (
     resolve_cache_directory,
+    unlink_cache_entry,
+    write_cache_json,
 )
 from recon_tool.cache_paths import (
     resolve_result_cache_path as _safe_cache_path,
@@ -155,20 +153,7 @@ def cache_put(domain: str, info: TenantInfo) -> None:
         if info.resolution_policy_id is not None and info.resolution_policy_id != policy_id:
             raise ValueError("Cache payload belongs to a different collection policy")
         data["_resolution_policy_id"] = policy_id
-        # Atomic write: a crash or a concurrent reader mid-write must not leave a
-        # truncated JSON file. mkstemp creates the temp inside the validated cache
-        # dir with O_CREAT|O_EXCL and mode 0600 (a random name that never follows a
-        # pre-existing symlink), then os.replace swaps it in atomically. A
-        # predictable "<domain>.json.tmp" name was a symlink-overwrite vector.
-        fd, tmp_name = tempfile.mkstemp(dir=str(d), prefix=f"{path.stem}.", suffix=".tmp")
-        try:
-            with os.fdopen(fd, "w", encoding="utf-8") as fh:
-                fh.write(json.dumps(data, indent=2))
-            os.replace(tmp_name, path)
-        except BaseException:
-            with contextlib.suppress(OSError):
-                os.unlink(tmp_name)
-            raise
+        write_cache_json(path, data)
     except Exception:
         # Cache persistence must never turn a successful lookup into a caller
         # failure. The debug record preserves the exception for maintainers.
@@ -182,13 +167,7 @@ def _cache_clear_detailed(domain: str) -> CacheClearResult:
         if path is None:
             logger.debug("Cache clear rejected invalid domain or cache directory: %r", domain)
             return CacheClearResult(failed=True)
-        if not path.exists():
-            return CacheClearResult()
-        try:
-            path.unlink()
-        except FileNotFoundError:
-            return CacheClearResult()
-        return CacheClearResult(removed=1)
+        return CacheClearResult(removed=int(unlink_cache_entry(path)))
     except OSError:
         logger.debug("Cache clear failed for %s", domain, exc_info=True)
         return CacheClearResult(failed=True)

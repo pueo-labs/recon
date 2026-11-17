@@ -14,9 +14,9 @@ from typing import Literal
 from recon_tool.cache import tenant_info_from_dict
 from recon_tool.cache_contract import DEFAULT_TTL, MAX_RESULT_CACHE_FILE_BYTES, RESULT_CACHE_VERSION
 from recon_tool.cache_insights import validate_insight_claim_coverage
-from recon_tool.cache_paths import resolve_result_cache_path
+from recon_tool.cache_paths import read_cache_json, resolve_result_cache_path
 from recon_tool.cache_values import require_cache_policy
-from recon_tool.json_limits import is_json_object, load_bounded_json_file
+from recon_tool.json_limits import is_json_object
 from recon_tool.models import TenantInfo
 from recon_tool.source_status import collection_incomplete
 from recon_tool.sources.cert_issuer import normalize_cert_summary
@@ -101,7 +101,7 @@ def read_result_cache_entry(
     path = resolve_result_cache_path(expected_domain)
     if path is None:
         raise ValueError("Result cache path is outside its configured boundary")
-    data, file_stat, age_seconds = load_bounded_json_file(
+    data, file_stat, age_seconds = read_cache_json(
         path,
         maximum_bytes=MAX_RESULT_CACHE_FILE_BYTES,
         maximum_age_seconds=ttl if skip_expired else None,

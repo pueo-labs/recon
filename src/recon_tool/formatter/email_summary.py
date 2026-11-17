@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 from recon_tool.collection_view import collection_observable_evidence
+from recon_tool.constants import SVC_DKIM, SVC_DKIM_EXCHANGE, SVC_DKIM_GOOGLE
+from recon_tool.email_security import observed_email_control_services
 from recon_tool.formatter.classify import evidence_role_service_label
 from recon_tool.merger_tables import GATEWAY_SLUG_NAMES, GATEWAY_SLUGS
 from recon_tool.models import EvidenceRecord, TenantInfo
@@ -78,6 +80,7 @@ def _email_summary_controls(
     info: TenantInfo,
     service_set: set[str],
     email_services: list[str],
+    evidence: tuple[EvidenceRecord, ...],
     summary: list[str],
 ) -> None:
     """Append compact observations for the primary email controls."""
@@ -86,8 +89,12 @@ def _email_summary_controls(
     elif "DMARC" in service_set:
         _append_unique(summary, "DMARC")
 
-    if any(service.startswith("DKIM") for service in email_services):
-        _append_unique(summary, "DKIM")
+    observed = observed_email_control_services(evidence)
+    qualified = [label for label in (SVC_DKIM_EXCHANGE, SVC_DKIM_GOOGLE) if label in observed]
+    if qualified:
+        summary.extend(qualified)
+    elif SVC_DKIM in observed or SVC_DKIM in service_set:
+        _append_unique(summary, SVC_DKIM)
 
     if any(service.startswith("SPF: strict") for service in email_services):
         _append_unique(summary, "SPF strict")
@@ -119,7 +126,7 @@ def _compact_email_summary(
     service_set = set(email_services)
     summary: list[str] = []
     _email_summary_providers(info, service_set, evidence, summary)
-    _email_summary_controls(info, service_set, email_services, summary)
+    _email_summary_controls(info, service_set, email_services, evidence, summary)
     return summary
 
 

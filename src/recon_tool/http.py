@@ -18,14 +18,16 @@ import ipaddress
 import logging
 import math
 import socket
-from collections.abc import AsyncGenerator
-from contextlib import asynccontextmanager
+from collections.abc import AsyncGenerator, Generator
+from contextlib import asynccontextmanager, contextmanager
+from contextvars import ContextVar
 from dataclasses import dataclass
 from typing import Any, Literal
 
 import httpx
 
 from recon_tool.http_backend import CoreHTTPTransport
+from recon_tool.source_status import PUBLIC_ENDPOINT_PRIVATE_ADDRESS
 
 logger = logging.getLogger("recon")
 
@@ -143,8 +145,30 @@ class DestinationRefusal:
         return f"{self.host} skipped: resolves to a private address ({self.address})"
 
 
+# Only fixed public collection endpoints can qualify the resolver view. A
+# private target-owned address is a normal destination refusal.
+_PUBLIC_COLLECTION_HOSTS = frozenset(
+    {"login.microsoftonline.com", "accounts.google.com", "crt.sh", "api.certspotter.com"}
+)
+_REFUSAL_MARKERS: ContextVar[set[str] | None] = ContextVar("recon_refusal_markers", default=None)
+
+
+@contextmanager
+def collect_refusal_markers() -> Generator[set[str]]:
+    """Collect transport observations from a single source and its child tasks."""
+    markers: set[str] = set()
+    token = _REFUSAL_MARKERS.set(markers)
+    try:
+        yield markers
+    finally:
+        _REFUSAL_MARKERS.reset(token)
+
+
 def _log_refusal(refusal: DestinationRefusal) -> None:
     """Log a refusal once, with structured fields the CLI summary groups on."""
+    markers = _REFUSAL_MARKERS.get()
+    if markers is not None and refusal.condition == "private_address" and refusal.host in _PUBLIC_COLLECTION_HOSTS:
+        markers.add(PUBLIC_ENDPOINT_PRIVATE_ADDRESS)
     logger.warning(
         "%s",
         refusal.describe(),

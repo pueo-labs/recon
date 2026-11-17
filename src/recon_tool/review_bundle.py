@@ -38,7 +38,7 @@ from recon_tool.collection_view import (
 from recon_tool.exposure import find_gaps_from_info
 from recon_tool.exposure_models import HardeningGap
 from recon_tool.formatter import format_tenant_dict
-from recon_tool.json_limits import load_bounded_json_file
+from recon_tool.json_limits import is_positive_timeout, load_bounded_json_file
 from recon_tool.models import EvidenceRecord, SourceResult, TenantInfo
 from recon_tool.validator import strip_control_chars, validate_domain
 
@@ -174,11 +174,7 @@ def _collection_times(collection: ReviewCollectionContext) -> tuple[str, str]:
     ended = utc_text(collection.ended_at)
     if collection.ended_at < collection.started_at:
         raise ValueError("review collection end must not precede its start")
-    if (
-        isinstance(collection.timeout_seconds, bool)
-        or not math.isfinite(collection.timeout_seconds)
-        or collection.timeout_seconds <= 0
-    ):
+    if not is_positive_timeout(collection.timeout_seconds):
         raise ValueError("review timeout must be finite and positive")
     validate_collection_vantage(collection.vantage, label="review")
     if collection.result_cache != "bypassed":
@@ -629,7 +625,7 @@ def _validate_collection(bundle: Mapping[str, Any]) -> tuple[datetime, datetime]
     if type(options.get("ct_enabled")) is not bool or options.get("direct_probes") is not False:
         raise ValueError("collection options require boolean ct_enabled and direct_probes fixed false")
     timeout = options.get("timeout_seconds")
-    if isinstance(timeout, bool) or not isinstance(timeout, (int, float)) or not math.isfinite(timeout) or timeout <= 0:
+    if not is_positive_timeout(timeout):
         raise ValueError("collection.options.timeout_seconds must be finite and positive")
     cache = _require_mapping(collection.get("cache"), "collection.cache")
     _require_keys(

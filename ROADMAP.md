@@ -37,7 +37,13 @@ absent.
 
 ## Resume here
 
-State at 2026-11-17: tag `v2.27.2` is `071c4356`. That tag's PyPI
+The November maintenance batch is [v2.27.3](CHANGELOG.md#2273---2026-11-17).
+It covers the resolver warning, DKIM vendor display, policy comparisons,
+cache directory handling, and a compatible dependency refresh. Continue with
+the monthly catalog review and check fresh operator reports before expanding
+the detection engine.
+
+Previous baseline: tag `v2.27.2` is `071c4356`. That tag's PyPI
 release, GitHub Release, and MCP Registry entry
 `io.github.pueo-labs/recon` report 2.27.2. 2.27.2 raised the dnspython
 floor to 2.9.2 (CVE-2026-128089) and the opentelemetry-api floor to
@@ -46,8 +52,8 @@ and corrected three output defects: doctor reports both
 certificate-transparency providers, DMARC `p=none` is not a present
 hardening control, and `--verbose` uses the source-health ladder.
 Issues 356, 357, and 358 are closed. The four Dependabot alerts are
-fixed. The agentic-validation pins are Anthropic 2.9.0 and OpenAI
-3.51.0, and the draft Cloud Run Google provider constraint is
+fixed. The agentic-validation pins are Anthropic 2.10.0 and OpenAI
+3.53.0, and the draft Cloud Run Google provider constraint is
 `>= 8.0, < 9.0`. That maintainer-harness and draft-module bump ships
 inside 2.27.3 and does not justify a further release by itself. The
 public Scorecard API reports SAST as an internal error for this
@@ -104,18 +110,15 @@ What is next, and why:
    The closed 5,199-row drift round remains a measurement contract. It does
    not promote rules. Start at [catalog maintenance](docs/catalog-maintenance.md).
 
-2. Two upstream dependency blockers, and only when upstream ships the fix.
-   PyYAML 6.0.3 has no cp315 wheel, so Python 3.15 builds it from source.
-   Stable pip still vendors an urllib3 without the proxy TLS and chunk-size
-   fixes, so the mitigation recorded on closed issue 187 stays. Do not add a
-   local pin or drop the audit to make the refresh look finished. See
-   [the October review](docs/maintenance-review-2026-10-08.md).
+2. Watch for a PyYAML cp315 wheel. Python 3.15 currently builds PyYAML
+   6.0.3 from source. The development lock now uses pip 26.3, which
+   bundles urllib3 2.8.0 with the proxy TLS and chunk-size fixes.
 
 3. Black-box defects before any new surface. Issues 356, 357, and 358
    shipped in 2.27.2. `recon doctor --help` now names both
    certificate-transparency probes, crt.sh and CertSpotter. The
-   agentic-validation provider SDKs are Anthropic 2.9.0 and OpenAI
-   3.51.0, and the draft Cloud Run Google provider constraint is
+   agentic-validation provider SDKs are Anthropic 2.10.0 and OpenAI
+   3.53.0, and the draft Cloud Run Google provider constraint is
    `>= 8.0, < 9.0`. That bump ships inside 2.27.3 and does not justify
    a further release by itself. A new collector, score, inference path,
    or set-level review bundle needs a named operator handoff that the
@@ -164,7 +167,7 @@ or ignore errors. GitHub moves that label to Ubuntu 26.04 through
 2026-11-19, and the required CI lint job on 2026-11-17 already ran on
 that image. Issue 402 is that recorded floor.
 Continue the freshness loop on rules that are still due, or wait for
-the upstream blockers above. A later documentation or catalog date
+the PyYAML wheel above. A later documentation or catalog date
 pass does not by itself cut another release. Batch user-visible
 behavior through the [release process](docs/release-process.md).
 
@@ -278,8 +281,7 @@ The [October maintenance review](docs/maintenance-review-2026-10-08.md) records
 the 2026-10-08 dependency refresh and its synchronized build constraints, plus
 SPF record selection, TXT byte fidelity and bounded local MCP inputs. Those
 changes shipped through the checked PR and release workflow; see the changelog.
-The upstream pip vendored-transport refresh still awaits a stable upstream
-release; the audit mitigation stays in force.
+The dependency audit still uses the frozen export with pip resolution disabled.
 
 For correlation, prioritize the accuracy of the public observation and the
 honesty of its explanation: documented vendor patterns, synthetic positive and

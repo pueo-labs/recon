@@ -24,6 +24,7 @@ from typing import Any
 import httpx
 
 from recon_tool import collection_progress
+from recon_tool.http import collect_refusal_markers
 from recon_tool.merger import merge_results
 from recon_tool.models import InsightClaim, ReconLookupError, SourceResult, TenantInfo
 from recon_tool.sources.base import LookupSource
@@ -187,14 +188,17 @@ async def _safe_lookup(
     listener (``collection_progress``); with no listener this is a no-op.
     """
     collection_progress.emit(source.name, "start")
-    try:
-        result = await source.lookup(domain, **kwargs)
-    except Exception as exc:
-        result = SourceResult(
-            source_name=source.name,
-            error=f"Unexpected error: {exc}",
-            source_unavailable=True,
-        )
+    with collect_refusal_markers() as markers:
+        try:
+            result = await source.lookup(domain, **kwargs)
+        except Exception as exc:
+            result = SourceResult(
+                source_name=source.name,
+                error=f"Unexpected error: {exc}",
+                source_unavailable=True,
+            )
+    if markers:
+        result = replace(result, degraded_sources=tuple(sorted(markers.union(result.degraded_sources))))
     collection_progress.emit(source.name, "done", result=result)
     return result
 

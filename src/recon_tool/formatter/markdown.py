@@ -318,6 +318,8 @@ def _md_footer(info: TenantInfo) -> list[str]:
         age = status.ct_cache_age_days
         age_str = "today" if age == 0 else f"{age} day{'s' if age != 1 else ''} old"
         note_parts.append(f"CT data came from local cache, {age_str} ({status.ct_subdomain_count} subdomains).")
+    if status.resolver_note:
+        note_parts.append(f"{status.resolver_note}.")
     if note_parts:
         lines.append(f"*Note: {' '.join(note_parts)}*{MARKDOWN_HARD_BREAK}")
     reuse_note = cache_reuse_note(info)

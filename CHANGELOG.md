@@ -43,11 +43,25 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Fixed
 
+- Bind result and CT cache reads, writes, listing, and cleanup to the admitted
+  cache directory for the duration of each operation.
+- Reject oversized integer timeouts in observation capsules and review bundles
+  through the usual validation error.
+- A lookup warns when a fixed public collection endpoint resolves to a
+  private or reserved address. The panel and JSON flag the resolver condition
+  because related domains may be artifacts. Run `recon doctor` to check.
+- The Email row keeps the vendor on observed provider-specific DKIM selectors.
+- Posture comparisons show the published and effective DMARC policy or
+  MTA-STS mode when a control is present on only one side.
 - `recon doctor --help` names both certificate-transparency probes.
   The command contacts crt.sh and CertSpotter. The help text named
   only crt.sh.
 
 ### Changed
+
+- Refresh the compatible dependency lock, including the Public Suffix List,
+  runtime transports, and the separate development and validation groups.
+  Development requires pip 26.3, which vendors urllib3 2.8.0.
 
 - Check eight undated TXT, SPF, and CNAME rules against
   current vendor pages. Date the Freshdesk mail include and
