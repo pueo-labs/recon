@@ -32,6 +32,11 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Check eight undated NS, CNAME, and TXT rules against current
+  vendor pages. Four rules received a `verified` date because the
+  fetched page prints the catalog grammar. Four rules stay undated
+  because the fetched page does not print the catalog grammar. No
+  new detection was added. This does not cut a release.
 - Check eight undated CNAME, TXT, and CAA rules against current
   vendor pages. Four rules received a `verified` date because the
   fetched page prints the catalog grammar. Four rules stay undated

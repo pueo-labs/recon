@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "d0d6049b50de73748fab5adf2e019df82917b2a9895359b9cc3d0b3a4799b52a",
+  "catalog_digest": "830f8f9a2bb6fcdc72e9ae4add1eb072cc9328d4a4c7cd2a21a12b2ab195a197",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -3360,8 +3360,104 @@
       "rule_id": "infrastructure.yaml/digicert/caa/digicert.com",
       "source_checked_on": "2026-11-16",
       "source_status": "checked"
+    },
+    {
+      "basis": "The cited managed DNS page checked 2026-11-16 returned HTTP 404 and does not print dynect.net. The zone file page prints NS records for hosts under dynect.net. The rule observes that suffix. It does not prove that every name under the suffix is a customer delegation. The example name servers were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://help.dyn.com/how-to-format-a-zone-file.html",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://help.dyn.com/managed-dns/",
+      "review_digest": "7e721bd39594ce3f04d0c76140c04de726a9ae5ff3cdf44c7518a26860589c86",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/dyn/ns/dynect.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited domains page checked 2026-11-16 does not print fastly.net. The DNS provider page prints CNAME record values under fastly.net, including a zone-file CNAME to a host under that suffix. The rule observes that suffix. It does not prove that every name under the suffix is a Fastly service. The example hostnames were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://www.fastly.com/documentation/guides/getting-started/domains/working-with-domains/working-with-cname-records-and-your-dns-provider/",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://docs.fastly.com/en/guides/working-with-domains",
+      "review_digest": "a2c5cf9d336706395eab3f26c2377a2e1af5e0cfcca1b321c400796b705ed958",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/fastly/cname/fastly.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited domains page checked 2026-11-16 does not print fastly.net or fastlylb.net. The DNS provider page prints CNAME record values ending in fastly.net. The regex observes that ending. It does not prove that every matching name is a Fastly service. fastlylb.net was not printed and was not added. The example hostnames were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://www.fastly.com/documentation/guides/getting-started/domains/working-with-domains/working-with-cname-records-and-your-dns-provider/",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://docs.fastly.com/en/guides/working-with-domains",
+      "review_digest": "5d37fd10dbae9428375c41f1de54a5b8f04285a1ce9db0f1cc6fea7039ad233d",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/fastly/cname/fastly\\.net$|fastlylb\\.net$",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited mapping page checked 2026-11-16 does not print appspot.com in its DNS instructions. The record data for a CNAME is a domain name shown in the console. The routing page prints appspot.com only as default HTTPS URLs and does not print a DNS CNAME target. The catalog suffix stays undated. No hostname was added.",
+      "disposition": "deferred",
+      "new_reference": "https://cloud.google.com/appengine/docs/standard/mapping-custom-domains",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://cloud.google.com/appengine/docs/standard/mapping-custom-domains",
+      "review_digest": "09033846c14e02a9dedb916c9d94d04beb54ea2ebcd85e19cdd3d47425460cf3",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/gcp-app/cname/appspot.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited mapping page checked 2026-11-16 says the default Cloud Run URL ends in run.app and does not print a CNAME target under run.app. The custom URLs page prints run.app only as a default URL form and says those URLs do not require DNS records. The catalog suffix stays undated. No hostname was added.",
+      "disposition": "deferred",
+      "new_reference": "https://cloud.google.com/run/docs/mapping-custom-domains",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://cloud.google.com/run/docs/mapping-custom-domains",
+      "review_digest": "5d0e89aa3ba1921c7faa99468e4c656d17ed6ff2ed4679f4d6beea17c9fc8d24",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/gcp-app/cname/run.app",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited overview checked 2026-11-16 does not print a Cloud DNS name server hostname. The update name servers page prints name servers under googledomains.com. That suffix does not match the google.com rule. The catalog suffix stays undated. No name server was added.",
+      "disposition": "deferred",
+      "new_reference": "https://cloud.google.com/dns/docs/overview",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://cloud.google.com/dns/docs/overview",
+      "review_digest": "e6f6dc2fb9ca9c7eaa4e237da47faa60f8cf382b3fbc800f6cd266c175b4bbac",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/gcp-dns/ns/google.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited docs home checked 2026-11-16 does not print ghost.io. The custom domain page prints a CNAME value under ghost.io. The rule observes that suffix. It does not prove that every name under the suffix is a Ghost publication. The placeholder and the address were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://ghost.org/help/using-custom-domains/",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://ghost.org/docs/",
+      "review_digest": "bd7f33a3dca41cb86c71e80cbd5926ebb11c1bc4c6b978e71a3f5f2377a3f213",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/ghost/cname/ghost.io",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited verification page checked 2026-11-16 prints _github-pages-challenge as the owner name in a dig TXT query. The catalog pattern matches the TXT value, and the page does not print a TXT value starting with that prefix. The catalog prefix stays undated. No owner name was added.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages",
+      "review_digest": "78ca2eb6eaea2f80c9f2f13ecd906dfcc49f7b47b681292ca06562d4a281c9b8",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/github/txt/^_github-pages-challenge",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, and a later 2026-11-16 verification prefix, SPF include, and TLS reporting reference check, and a later 2026-11-16 reporting mailbox, verification prefix, mail exchanger, and nameserver reference check, and a later 2026-11-16 certificate issuer, distribution suffix, environment name, and load balancer hostname reference check, and a later 2026-11-16 nameserver label, website infix, REST suffix, and edge hostname reference check, and a later 2026-11-16 endpoint suffix, routing suffix, token prefix, and issuer host reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, and a later 2026-11-16 verification prefix, SPF include, and TLS reporting reference check, and a later 2026-11-16 reporting mailbox, verification prefix, mail exchanger, and nameserver reference check, and a later 2026-11-16 certificate issuer, distribution suffix, environment name, and load balancer hostname reference check, and a later 2026-11-16 nameserver label, website infix, REST suffix, and edge hostname reference check, and a later 2026-11-16 endpoint suffix, routing suffix, token prefix, and issuer host reference check, and a later 2026-11-16 nameserver suffix, edge hostname, edge pattern, and publication hostname reference check, not a complete catalog review"
 }
