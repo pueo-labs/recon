@@ -1233,10 +1233,14 @@ fingerprints:
   detections:
   - type: txt
     pattern: ^pexip-portal-domain-verification=
+    reference: https://docs.pexip.com/partner/service/domain-hosting-dns.htm
+    verified: '2026-11-16'
     description: >-
       Pexip portal domain-verification TXT
-      (`pexip-portal-domain-verification=`). Indicates the org uses
-      Pexip's customer portal.
+      (`pexip-portal-domain-verification=`). The partner
+      domain-hosting page says the value is the one in the
+      New calling domain email. This observes that prefix.
+      It does not prove that the portal is in use.
 - name: Alibaba Cloud (compute / generic)
   slug: alibaba-cloud
   category: Cloud
@@ -1743,9 +1747,15 @@ fingerprints:
   detections:
   - type: mx
     pattern: protonmail.ch
+    reference: https://proton.me/support/custom-domain-cloudflare
+    verified: '2026-11-16'
     description: >-
-      ProtonMail MX target (`protonmail.ch`). Variant of the
-      `mail.protonmail.ch` series.
+      MX host under the documented Proton Mail exchangers
+      `mail.protonmail.ch` and `mailsec.protonmail.ch`. The
+      Cloudflare custom-domain guide prints those hosts at
+      priorities 10 and 20. This observes an MX host under
+      `protonmail.ch`. It does not prove that mail is delivered
+      or that Proton Mail is the only exchanger.
 - name: CSC
   slug: csc
   category: Infrastructure
