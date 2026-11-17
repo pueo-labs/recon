@@ -249,6 +249,8 @@ reference check, and a later 2026-11-16 certificate issuer,
 distribution suffix, environment name, and load balancer hostname
 reference check, and a later 2026-11-16 nameserver label,
 website infix, REST suffix, and edge hostname
+reference check, and a later 2026-11-16 endpoint suffix,
+routing suffix, token prefix, and issuer host
 reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
@@ -2055,6 +2057,68 @@ domain, endpoint, and create pages print hosts under `azurefd.net`
 and do not print `afd.ms`. The separate `azurefd.net` rule is outside
 this pass and stays unchanged. The `afd.ms` suffix stays undated. No
 example endpoint was added.
+
+### Documented reference check, later on 2026-11-16, endpoint suffix, routing suffix, token prefix, and issuer host
+
+This pass checked eight undated CNAME, TXT, and CAA rules. Four
+rules received a `verified` date because the fetched page prints
+the catalog grammar. Four rules stay undated. No new detection,
+DNS record type, or collection path was added. This note does not
+cut a release.
+
+The cited Front Door overview does not print `azurefd.net`. The
+[custom domain page](https://learn.microsoft.com/en-us/azure/frontdoor/standard-premium/how-to-add-custom-domain)
+prints an endpoint host under `azurefd.net` and says to create a
+CNAME record to the Front Door endpoint. The rule observes that
+suffix. It does not prove that every name under the suffix is a
+customer endpoint. The example endpoint was not added. The sibling
+`afd.ms` rule stays unchanged.
+
+The cited Traffic Manager overview names `trafficmanager.net` only
+while saying clients do not perform a CNAME lookup to that name.
+The
+[how-it-works page](https://learn.microsoft.com/en-us/azure/traffic-manager/traffic-manager-how-it-works)
+prints a DNS CNAME from a vanity domain to a host under
+`trafficmanager.net`. The rule observes that suffix. It does not
+prove that every name under the suffix is a customer profile. The
+example profile and vanity names were not added.
+
+The cited docs home does not print `citrix-verification-code=`.
+The email-based discovery page says to copy a DNS token and add a
+TXT record. It does not print that prefix. The catalog prefix stays
+undated. No token was added.
+
+The cited VMware index redirects to a Broadcom index that does not
+print `cloudhealth=`. The
+[AuthHub SAML page](https://techdocs.broadcom.com/us/en/ca-enterprise-software/it-operations-management/cloudhealth/saas/index/using-and-managing-tanzu-cloudhealth-using-and-managing-index/using-and-managing-tanzu-cloudhealth-managing-sso/using-and-managing-tanzu-cloudhealth-authhub-saml-configuration.html)
+says to prepend `cloudhealth=` to a DNS token and add the result
+as a TXT record. The rule observes that prefix. It does not prove
+that SSO is active. The token value was not copied.
+
+The cited documentation index prints `cloudinary.com` only in its
+own documentation URL. The delivery options page prints delivery
+hosts under `cloudinary.com` as HTTPS URLs and calls the customer's
+own hostname a CNAME. It does not print a DNS CNAME target under
+`cloudinary.com`. The catalog suffix stays undated. Those delivery
+hosts were not added.
+
+The cited help page returned HTTP 429. The custom-domains page, the
+asset-domain article, and the images API page also returned HTTP
+429 checkpoint pages that do not print a host under
+`contentful.com`. The catalog suffix stays undated. No hostname was
+added.
+
+The cited support page returned HTTP 403. The Domain Management PDF
+says to copy a TXT verification code and create a TXT record. It
+does not print `dell-technologies-domain-verification=`. The catalog
+prefix stays undated. No verification code was copied.
+
+The cited FAQ returned HTTP 404. The
+[knowledge base tutorial](https://knowledge.digicert.com/tutorials/edit-domain-dns-caa-rr-to-get-digicert-certificate-brand)
+prints a CAA issue value whose issuer is `digicert.com`. The rule
+observes that issuer. It does not prove that a certificate was
+issued. The example domain and the other issuer hosts were not
+added.
 
 ## Executable path
 

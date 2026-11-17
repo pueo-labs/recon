@@ -260,13 +260,14 @@ fingerprints:
   detections:
   - type: txt
     pattern: ^cloudhealth=
-    reference: https://docs.vmware.com/en/VMware-Aria-Cost-powered-by-CloudHealth/index.html
+    reference: https://techdocs.broadcom.com/us/en/ca-enterprise-software/it-operations-management/cloudhealth/saas/index/using-and-managing-tanzu-cloudhealth-using-and-managing-index/using-and-managing-tanzu-cloudhealth-managing-sso/using-and-managing-tanzu-cloudhealth-authhub-saml-configuration.html
+    verified: '2026-11-16'
     description: >-
-      CloudHealth domain-verification TXT (CloudHealth is a
-      cloud cost-management platform, originally a VMware
-      acquisition, now part of Broadcom after the 2023
-      VMware acquisition). Indicates the domain is
-      registered with a CloudHealth tenant.
+      CloudHealth domain-verification TXT. The AuthHub SAML
+      page says to prepend `cloudhealth=` to a DNS token
+      and add that text as a TXT record. This observes that
+      prefix. It does not prove that SSO is active. The
+      token value was not copied.
 - name: Unity
   slug: unity
   category: DevTools & Infrastructure
@@ -598,13 +599,15 @@ fingerprints:
   detections:
   - type: cname
     pattern: trafficmanager.net
-    reference: https://learn.microsoft.com/en-us/azure/traffic-manager/traffic-manager-overview
+    reference: https://learn.microsoft.com/en-us/azure/traffic-manager/traffic-manager-how-it-works
+    verified: '2026-11-16'
     description: >-
-      CNAME terminating in trafficmanager.net (Azure Traffic
-      Manager DNS-based traffic routing). Indicates the
-      domain uses Traffic Manager for DNS-level failover or
-      geographic routing, typically in front of multi-region
-      Azure deployments.
+      CNAME terminating in trafficmanager.net. The
+      how-it-works page prints a DNS CNAME to a host under
+      that suffix. This observes that suffix. It does not
+      prove that every name under the suffix is a customer
+      profile. The example profile and vanity names were
+      not added.
 - name: Fastly
   slug: fastly
   category: Infrastructure
@@ -822,13 +825,16 @@ fingerprints:
   detections:
   - type: cname
     pattern: azurefd.net
-    reference: https://learn.microsoft.com/en-us/azure/frontdoor/front-door-overview
+    reference: https://learn.microsoft.com/en-us/azure/frontdoor/standard-premium/how-to-add-custom-domain
+    verified: '2026-11-16'
     description: >-
-      CNAME terminating in azurefd.net (Azure Front Door
-      classic and Standard / Premium endpoint domain).
-      Indicates the domain proxies through Azure Front
-      Door, Microsoft's global load balancer and edge
-      acceleration product.
+      CNAME terminating in azurefd.net. The custom domain
+      page prints an endpoint host under that suffix and
+      says to create a CNAME to the Front Door endpoint.
+      This observes that suffix. It does not prove that
+      every name under the suffix is a customer endpoint.
+      The example endpoint was not added. The sibling
+      afd.ms rule stays undated.
   - type: cname
     pattern: afd.ms
     reference: https://learn.microsoft.com/en-us/azure/frontdoor/front-door-overview
@@ -981,11 +987,15 @@ fingerprints:
   detections:
   - type: caa
     pattern: digicert.com
-    reference: https://www.digicert.com/faq/dns/what-is-a-caa-record
+    reference: https://knowledge.digicert.com/tutorials/edit-domain-dns-caa-rr-to-get-digicert-certificate-brand
+    verified: '2026-11-16'
     description: >-
       CAA record authorizing DigiCert to issue certificates
-      for the domain. It does not establish that a certificate
-      was issued or is currently deployed.
+      for the domain. The knowledge base tutorial prints a
+      CAA issue value of `digicert.com`. This observes that
+      issuer. It does not prove that a certificate was
+      issued. The example domain and the other issuer hosts
+      were not added.
 - name: 'CAA: Sectigo'
   slug: sectigo
   category: Infrastructure

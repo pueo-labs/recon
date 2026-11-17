@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "8f92f0e31cfcbf76c1ed93a9c61fa39ed3a7642d1bcde51b3c0e9071a79680e4",
+  "catalog_digest": "d0d6049b50de73748fab5adf2e019df82917b2a9895359b9cc3d0b3a4799b52a",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -3264,8 +3264,104 @@
       "rule_id": "infrastructure.yaml/azure-fd/cname/afd.ms",
       "source_checked_on": "2026-11-16",
       "source_status": "checked"
+    },
+    {
+      "basis": "The cited Front Door overview checked 2026-11-16 does not print azurefd.net. The custom domain page prints an endpoint host under azurefd.net and says to create a CNAME record to the Front Door endpoint. The rule observes that suffix. It does not prove that every name under the suffix is a customer endpoint. The example endpoint was not added. The sibling afd.ms rule stays undated.",
+      "disposition": "narrowed",
+      "new_reference": "https://learn.microsoft.com/en-us/azure/frontdoor/standard-premium/how-to-add-custom-domain",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://learn.microsoft.com/en-us/azure/frontdoor/front-door-overview",
+      "review_digest": "5bdd1429f4d0c16c1514b43d67c87f29e3f38f20c6d73c58b492574a21110273",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/azure-fd/cname/azurefd.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited overview checked 2026-11-16 names trafficmanager.net only while saying clients do not perform a CNAME lookup to that name. The how-it-works page prints a DNS CNAME from a vanity domain to a host under trafficmanager.net. The rule observes that suffix. It does not prove that every name under the suffix is a customer profile. The example profile and vanity names were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://learn.microsoft.com/en-us/azure/traffic-manager/traffic-manager-how-it-works",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://learn.microsoft.com/en-us/azure/traffic-manager/traffic-manager-overview",
+      "review_digest": "898ed38ad16666a769dce5896825e1c240146807eaecf35458f372a153aa5605",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/azure-tm/cname/trafficmanager.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited docs home checked 2026-11-16 does not print citrix-verification-code=. The email-based discovery page says to copy a DNS token and add a TXT record. It does not print that prefix. The catalog prefix stays undated. No token was added.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.citrix.com/",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://docs.citrix.com/",
+      "review_digest": "18c83045c8352a930040775e40d0327dc4daeed6a86ba0f8a5dd41326eb1c5d1",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/citrix/txt/^citrix-verification-code=",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited VMware index checked 2026-11-16 redirects to a Broadcom index that does not print cloudhealth=. The AuthHub SAML page says to prepend cloudhealth= to a DNS token and add the result as a TXT record. The rule observes that prefix. It does not prove that SSO is active. The token value was not copied.",
+      "disposition": "narrowed",
+      "new_reference": "https://techdocs.broadcom.com/us/en/ca-enterprise-software/it-operations-management/cloudhealth/saas/index/using-and-managing-tanzu-cloudhealth-using-and-managing-index/using-and-managing-tanzu-cloudhealth-managing-sso/using-and-managing-tanzu-cloudhealth-authhub-saml-configuration.html",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://docs.vmware.com/en/VMware-Aria-Cost-powered-by-CloudHealth/index.html",
+      "review_digest": "90c11036fff6e9a24ff242ab91a6a017a796bab97a4aaf24d141ed0bed612d19",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/cloudhealth/txt/^cloudhealth=",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited documentation index checked 2026-11-16 prints cloudinary.com only in its own documentation URL. The delivery options page prints delivery hosts under cloudinary.com as HTTPS URLs and calls the customer's own hostname a CNAME. It does not print a DNS CNAME target under cloudinary.com. The catalog suffix stays undated. Those delivery hosts were not added.",
+      "disposition": "deferred",
+      "new_reference": "https://cloudinary.com/documentation/",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://cloudinary.com/documentation/",
+      "review_digest": "1716c5ca6feada5412235aa37e33a646e0d16f17ff2deedade3fc562fa08831a",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/cloudinary/cname/cloudinary.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited help page checked 2026-11-16 returned HTTP 429. The custom-domains page, the asset-domain article, and the images API page also returned HTTP 429 checkpoint pages that do not print a host under contentful.com. The catalog suffix stays undated. No hostname was added.",
+      "disposition": "deferred",
+      "new_reference": "https://www.contentful.com/help/",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://www.contentful.com/help/",
+      "review_digest": "a7834ee6f294e874031046b10f7271318ccb375c389baa7a9b2b9127d2d73065",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/contentful/cname/contentful.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited support page checked 2026-11-16 returned HTTP 403. The Domain Management PDF says to copy a TXT verification code and create a TXT record. It does not print dell-technologies-domain-verification=. The catalog prefix stays undated. No verification code was copied.",
+      "disposition": "deferred",
+      "new_reference": "https://www.dell.com/support/",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://www.dell.com/support/",
+      "review_digest": "b9fcc7289d8210a8c4e8ebe218044c1c9279be894bcd6b6e9d1277bc71285b53",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/dell/txt/^dell-technologies-domain-verification=",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited FAQ checked 2026-11-16 returned HTTP 404. The knowledge base tutorial prints a CAA issue value whose issuer is digicert.com. The rule observes that issuer. It does not prove that a certificate was issued. The example domain and the other issuer hosts were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://knowledge.digicert.com/tutorials/edit-domain-dns-caa-rr-to-get-digicert-certificate-brand",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://www.digicert.com/faq/dns/what-is-a-caa-record",
+      "review_digest": "ba616c8751e52c4784fbf337757a703771611fcd92c706052210fa629bff2c92",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/digicert/caa/digicert.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, and a later 2026-11-16 verification prefix, SPF include, and TLS reporting reference check, and a later 2026-11-16 reporting mailbox, verification prefix, mail exchanger, and nameserver reference check, and a later 2026-11-16 certificate issuer, distribution suffix, environment name, and load balancer hostname reference check, and a later 2026-11-16 nameserver label, website infix, REST suffix, and edge hostname reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, and a later 2026-11-16 verification prefix, SPF include, and TLS reporting reference check, and a later 2026-11-16 reporting mailbox, verification prefix, mail exchanger, and nameserver reference check, and a later 2026-11-16 certificate issuer, distribution suffix, environment name, and load balancer hostname reference check, and a later 2026-11-16 nameserver label, website infix, REST suffix, and edge hostname reference check, and a later 2026-11-16 endpoint suffix, routing suffix, token prefix, and issuer host reference check, not a complete catalog review"
 }
