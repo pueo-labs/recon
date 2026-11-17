@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "2d835dafcd0f6d7f990d7b94ca5991bac94913b1f56722fcfca6903e4b438293",
+  "catalog_digest": "76495c2b2756c2986713bd4837723d452e99adc934566bb8082d6f1e84fd15a8",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -3744,8 +3744,104 @@
       "rule_id": "infrastructure.yaml/sanity/cname/sanity.io",
       "source_checked_on": "2026-11-17",
       "source_status": "checked"
+    },
+    {
+      "basis": "The cited resource-library URL was requested on 2026-11-17 and returned no body. The Sectigo CAA knowledge-base article does not print comodoca.com. The catalog issuer stays undated. No issuer host was added.",
+      "disposition": "deferred",
+      "new_reference": "https://www.sectigo.com/knowledge-base/detail/CAA-Record-Certification-Authority-Authorization-1527076091491",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://sectigo.com/resource-library/what-is-caa-record",
+      "review_digest": "6349a079197809ae70cfe62ba0a6e0d39eefbc031ad888e2864a2a1a14bca13b",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/sectigo/caa/comodoca.com",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited resource-library URL was requested on 2026-11-17 and returned no body. The CAA knowledge-base article prints a CAA issue record whose issuer is sectigo.com. The same article also prints issuewild and issuemail records with that issuer. The rule observes that issuer. It does not prove that a certificate was issued. The example name and the other issuer hosts were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://www.sectigo.com/knowledge-base/detail/CAA-Record-Certification-Authority-Authorization-1527076091491",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://sectigo.com/resource-library/what-is-caa-record",
+      "review_digest": "45e862adbf1b6d5197b7801ba31b22f597cdf8c922a9a4947ef14f1b7b5c936d",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/sectigo/caa/sectigo.com",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited docs host was requested on 2026-11-17. Name resolution returned no usable address, so no article body was available. This is not a source check. A search index is not a vendor basis. The catalog prefix stays undated. No token was added.",
+      "disposition": "deferred",
+      "new_reference": null,
+      "next_review": "2026-12-17",
+      "prior_reference": "https://docs.sentry.io/",
+      "review_digest": "ca3cbb7ebd5f746cfaf78c0c17a480f6c58218d9fc881677e91e98e9e8621f29",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/sentry/txt/^sentry-verification=",
+      "source_checked_on": null,
+      "source_status": "unreachable"
+    },
+    {
+      "basis": "The cited domains URL checked 2026-11-17 redirects to the domains overview. That page prints myshopify.com as the default store URL and does not print a CNAME target. The manual connection page says the www CNAME points to shops.myshopify.com. The rule observes that suffix. It does not establish completed setup, a currently published storefront, account ownership, or a product plan. The specific target, the example name, and the address values were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://help.shopify.com/en/manual/domains/add-a-domain/connecting-domains/connect-domain-manual",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://help.shopify.com/en/manual/online-store/domains",
+      "review_digest": "2ed860c48193f3bc1f9e7eebc32101de054c55ddf5851f1d2332361159968845",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/shopify/cname/myshopify.com",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited help URL checked 2026-11-17 redirects to the Harness documentation home. That page does not print split-domain-verification= as TXT record content. The catalog prefix stays undated. No token was added.",
+      "disposition": "deferred",
+      "new_reference": "https://help.split.io/",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://help.split.io/",
+      "review_digest": "4bcaea7b5d8f8dc4f36e1aa1aa04533719e6f88da2d166c535c1ff0c165c2194",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/splitio/txt/^split-domain-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited docs URL checked 2026-11-17 redirects to the Splunk help home. That page does not print signalfx.com. The domain transition guide prints signalfx.com as product and ingest URLs and does not print a CNAME target. The catalog suffix stays undated. No endpoint hostname was added.",
+      "disposition": "deferred",
+      "new_reference": "https://help.splunk.com/en/splunk-observability-cloud/reference/splunk-observability-cloud-domain-transition-guide",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://docs.splunk.com/observability/en/",
+      "review_digest": "7399ab5f146b98386ced0fd66a44b35084fd517bdec7c81acf469aaf7f735751",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/splunk/cname/signalfx\\.com$",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited product page checked 2026-11-17 does not print splunk-verification= as TXT record content. The catalog prefix stays undated. No token was added.",
+      "disposition": "deferred",
+      "new_reference": "https://www.splunk.com/en_us/products/observability.html",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://www.splunk.com/en_us/products/observability.html",
+      "review_digest": "574b36a30f4f4cc75d7978ef225010103626ba1cf70438dee08e2d95904950b6",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/splunk/txt/^splunk-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited section URL checked 2026-11-17 returns HTTP 404 and does not print a CNAME target. The third-party domain article prints CNAME targets under squarespace.com, including verify.squarespace.com and ext-cust.squarespace.com. The rule observes that suffix. It does not prove that Squarespace is serving the site. The specific targets and the verification code were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://support.squarespace.com/hc/en-us/articles/205812378-Connect-a-third-party-domain-to-your-Squarespace-site",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://support.squarespace.com/hc/en-us/sections/206537167",
+      "review_digest": "737540c01b5a826434900845e59603848130334d922c5f61f622d327bc13b03b",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/squarespace/cname/squarespace.com",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, and a later 2026-11-16 verification prefix, SPF include, and TLS reporting reference check, and a later 2026-11-16 reporting mailbox, verification prefix, mail exchanger, and nameserver reference check, and a later 2026-11-16 certificate issuer, distribution suffix, environment name, and load balancer hostname reference check, and a later 2026-11-16 nameserver label, website infix, REST suffix, and edge hostname reference check, and a later 2026-11-16 endpoint suffix, routing suffix, token prefix, and issuer host reference check, and a later 2026-11-16 nameserver suffix, edge hostname, edge pattern, and publication hostname reference check, and a later 2026-11-17 verification owner, verification value, and issuer host reference check, and a later 2026-11-17 image suffix, edge suffix, and issuer host reference check, and a later 2026-11-17 traffic edge hostname reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, and a later 2026-11-16 verification prefix, SPF include, and TLS reporting reference check, and a later 2026-11-16 reporting mailbox, verification prefix, mail exchanger, and nameserver reference check, and a later 2026-11-16 certificate issuer, distribution suffix, environment name, and load balancer hostname reference check, and a later 2026-11-16 nameserver label, website infix, REST suffix, and edge hostname reference check, and a later 2026-11-16 endpoint suffix, routing suffix, token prefix, and issuer host reference check, and a later 2026-11-16 nameserver suffix, edge hostname, edge pattern, and publication hostname reference check, and a later 2026-11-17 verification owner, verification value, and issuer host reference check, and a later 2026-11-17 image suffix, edge suffix, and issuer host reference check, and a later 2026-11-17 traffic edge hostname reference check, and a later 2026-11-17 store suffix, site suffix, and issuer host reference check, not a complete catalog review"
 }

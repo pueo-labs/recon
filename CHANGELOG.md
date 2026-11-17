@@ -32,6 +32,12 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Check eight undated CAA, TXT, and CNAME rules against current
+  vendor pages. Date the Sectigo issuer, the Shopify store
+  suffix, and the Squarespace site suffix. Five rules stay
+  undated because the fetched page does not print the catalog
+  grammar. No new detection was added. This does not cut a
+  release.
 - Check eight undated TXT, NS, and CNAME rules against current
   vendor pages. Date the Pantheon CNAME suffix. Seven rules
   stay undated because the fetched page does not print the

@@ -649,11 +649,16 @@ fingerprints:
   detections:
   - type: cname
     pattern: myshopify.com
-    reference: https://help.shopify.com/en/manual/online-store/domains
+    reference: https://help.shopify.com/en/manual/domains/add-a-domain/connecting-domains/connect-domain-manual
+    verified: '2026-11-17'
     description: >-
-      CNAME terminating under `myshopify.com`. This observes a DNS route
-      into Shopify's namespace; it does not establish completed setup,
-      a currently published storefront, account ownership, or a product plan.
+      CNAME pointing into myshopify.com (Shopify is an online
+      store platform). The manual connection page says the www
+      CNAME points to a name under that suffix. This observes
+      that suffix. It does not establish completed setup,
+      a currently published storefront, account ownership, or a
+      product plan. The specific target, the example name, and
+      the address values were not added.
 - name: Wix
   slug: wix
   category: Infrastructure
@@ -674,12 +679,16 @@ fingerprints:
   detections:
   - type: cname
     pattern: squarespace.com
-    reference: https://support.squarespace.com/hc/en-us/sections/206537167
+    reference: https://support.squarespace.com/hc/en-us/articles/205812378-Connect-a-third-party-domain-to-your-Squarespace-site
+    verified: '2026-11-17'
     description: >-
       CNAME pointing into squarespace.com (Squarespace is a
-      website-builder and e-commerce platform). Indicates
-      the domain hosts at least one site or page on
-      Squarespace.
+      website-builder and e-commerce platform). The
+      third-party domain article prints CNAME targets under
+      that suffix. This observes that suffix. It does not
+      prove that Squarespace is serving the site. The
+      specific targets and the verification code were not
+      added.
 - name: Heroku
   slug: heroku
   category: Infrastructure
@@ -1031,11 +1040,15 @@ fingerprints:
   detections:
   - type: caa
     pattern: sectigo.com
-    reference: https://sectigo.com/resource-library/what-is-caa-record
+    reference: https://www.sectigo.com/knowledge-base/detail/CAA-Record-Certification-Authority-Authorization-1527076091491
+    verified: '2026-11-17'
     description: >-
       CAA record authorizing Sectigo to issue certificates
-      for the domain. It does not establish that a certificate
-      was issued or is currently deployed.
+      for the domain. The knowledge-base article prints a
+      CAA issue record whose issuer is sectigo.com. This
+      observes that issuer. It does not prove that a
+      certificate was issued. The example name and the other
+      issuer hosts were not added.
   - type: caa
     pattern: comodoca.com
     reference: https://sectigo.com/resource-library/what-is-caa-record
