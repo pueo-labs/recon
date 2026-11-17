@@ -240,7 +240,9 @@ support-domain reference check, and a later 2026-11-16 mail
 exchanger, SPF, and site-validation reference check, and a later
 2026-11-16 SPF include and mail-exchanger reference check, and a later
 2026-11-16 nameserver, SPF, and CNAME reference check, and a later
-2026-11-16 verification prefix and reporting reference check.
+2026-11-16 verification prefix and reporting reference check, and a
+later 2026-11-16 sender include and aggregate reporting reference
+check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
 bind due rules to their exact claim/catalog digest, prior/new reference, actual
@@ -1763,6 +1765,57 @@ lists `rua.easydmarc.com` and `rua.easydmarc.eu` as aggregate
 reporting hostnames. A narrower host does not date the broad suffix.
 Those hosts were not added. Regional hosts on the same page were not
 added. Both catalog DMARC suffixes stay undated.
+
+### Documented reference check, later on 2026-11-16, sender includes and aggregate reporting
+
+This pass checked eight undated SPF and DMARC rules. Two rules
+received a `verified` date because the fetched page prints the catalog
+grammar. Six rules stay undated. No new detection, DNS record type, or
+collection path was added. This note does not cut a release.
+
+The EasyDMARC homepage does not print `easydmarc.us` or `rua=`. The
+[data-residency article](https://support.easydmarc.com/knowledge-base/data-hosting-locations)
+lists `rua.easydmarc.us` as an aggregate reporting hostname. A narrower
+host does not date the broad suffix. That host was not added. Regional
+hosts on the same page were not added. The catalog DMARC suffix stays
+undated.
+
+The [EasyDMARC resources index](https://easydmarc.com/blog/) does not
+print `include:easydmarc.com` or `v=spf1`. The data-residency article
+also does not print that include. The catalog SPF stays undated.
+
+The [Mailchimp domain-authentication article](https://mailchimp.com/help/set-up-email-domain-authentication/)
+does not print `servers.mcsv.net`. The
+[SPF explainer](https://mailchimp.com/resources/what-is-sender-policy-framework/)
+prints `include:mandrillapp.com` and `include:_spf.google.com`. It does not
+print `include:servers.mcsv.net` or `include:spf.mandrillapp.com`. The
+other include was not added. Both catalog SPF rules stay undated.
+
+The cited Mailgun quickstart URL returns a 404. The
+[domain verification guide](https://documentation.mailgun.com/docs/mailgun/user-manual/domains/domains-verify)
+prints `v=spf1 include:mailgun.org ~all`. The rule observes that
+include. It does not prove that Mailgun is the only sender. The MX
+hosts on the same page belong to an already dated rule and were not
+added again.
+
+The Mimecast product page does not print `rua=`. The
+[DMARC setup guide](https://www.mimecast.com/content/how-to-create-a-dmarc-record/)
+prints a reporting host under `dmarcanalyzer.com`, without the catalog
+hyphen. The saved page contains `dmarc-analyzer.com` zero times. That
+other host was not added. The catalog DMARC suffix stays undated.
+
+The OnDMARC product page does not print `rua=`. The
+[Red Sift DMARC guide](https://redsift.com/guides/email-protocol-configuration-guide/learn-more-about-dmarc)
+prints aggregate report targets at `ondmarc.com`. The rule observes
+that reporting domain. It does not prove that reports go only there.
+The narrower host `inbox.ondmarc.com` was not added. Example domains
+and local-parts were not copied.
+
+The same product page does not print `v=spf1`. The
+[Dynamic SPF article](https://knowledge.ondmarc.redsift.com/en/articles/3328695-how-to-configure-dynamic-spf)
+prints a smart include under `smart.ondmarc.com`. It does not print
+`include:ondmarc.com`. That narrower host was not added. The catalog
+SPF stays undated.
 
 ## Executable path
 

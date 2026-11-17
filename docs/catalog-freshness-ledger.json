@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "6454a0f2dc0e068883748a7074057046d42bd662902c3845b051b64e330c226a",
+  "catalog_digest": "83a0f78d6c5d0b61c4c8af3c49f33ebfef1a97512213ae35c5d6720cbe0e8e0e",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -2784,8 +2784,104 @@
       "rule_id": "email.yaml/easydmarc/dmarc_rua/easydmarc.eu",
       "source_checked_on": "2026-11-16",
       "source_status": "checked"
+    },
+    {
+      "basis": "The EasyDMARC homepage does not print easydmarc.us or rua=. The data-residency article checked 2026-11-16 lists rua.easydmarc.us as an aggregate reporting hostname. A narrower host does not date the broad suffix. That host was not added. Regional hosts on the same page were not added.",
+      "disposition": "deferred",
+      "new_reference": "https://support.easydmarc.com/knowledge-base/data-hosting-locations",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://easydmarc.com/",
+      "review_digest": "da53d6cd47af830df859aa1330655d77adde73a9313ad81328aeec3d328529e3",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/easydmarc/dmarc_rua/easydmarc.us",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The EasyDMARC resources index checked 2026-11-16 does not print include:easydmarc.com or v=spf1. The data-residency article also does not print that include. The catalog SPF stays undated.",
+      "disposition": "deferred",
+      "new_reference": "https://easydmarc.com/blog/",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://easydmarc.com/blog/",
+      "review_digest": "fb24376ba924bea11267912c602e61de56779669feb456033ce827cfd5354fa9",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/easydmarc/spf/easydmarc.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The Mailchimp domain-authentication article does not print servers.mcsv.net. The SPF explainer checked 2026-11-16 prints include:mandrillapp.com and include:_spf.google.com. It does not print include:servers.mcsv.net. The other include was not added. The catalog SPF stays undated.",
+      "disposition": "deferred",
+      "new_reference": "https://mailchimp.com/resources/what-is-sender-policy-framework/",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://mailchimp.com/help/set-up-email-domain-authentication/",
+      "review_digest": "004dae7d615e022324066dc4547caa3fcd59baf9858aacb6f8cf31de89475ca7",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/mailchimp/spf/servers.mcsv.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The same SPF explainer prints include:mandrillapp.com. It does not print include:spf.mandrillapp.com. The parent host was not added. The catalog SPF stays undated.",
+      "disposition": "deferred",
+      "new_reference": "https://mailchimp.com/resources/what-is-sender-policy-framework/",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://mailchimp.com/help/set-up-email-domain-authentication/",
+      "review_digest": "facce276b46b2314fb9e76e479defc173972882466793eea2bcb3874a3d21aba",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/mailchimp/spf/spf.mandrillapp.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited quickstart URL returns a 404. The domain verification guide checked 2026-11-16 prints v=spf1 include:mailgun.org ~all as the SPF value. The rule observes that include. It does not prove Mailgun is the only sender. The MX hosts mxa.mailgun.org and mxb.mailgun.org were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://documentation.mailgun.com/docs/mailgun/user-manual/domains/domains-verify",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://documentation.mailgun.com/en/latest/quickstart-sending.html",
+      "review_digest": "3aee5f8abb907c53ebc84a55bc2a1a725e7d29e403d46063f38cad56a57fd5d9",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/mailgun/spf/mailgun.org",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The product page does not print rua=. The DMARC setup guide checked 2026-11-16 prints a reporting host under dmarcanalyzer.com, without the catalog hyphen. dmarc-analyzer.com count is 0. That other host was not added. The catalog DMARC suffix stays undated.",
+      "disposition": "deferred",
+      "new_reference": "https://www.mimecast.com/content/how-to-create-a-dmarc-record/",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://www.mimecast.com/products/dmarc-analyzer/",
+      "review_digest": "9e520b1a96173fa208a2c575a24e80ed644640032552ebc9d0cbb4ee94055c6d",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/mimecast-dmarc-analyzer/dmarc_rua/dmarc-analyzer.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The product page does not print rua=. The Red Sift DMARC guide checked 2026-11-16 prints aggregate report targets at ondmarc.com. The rule observes that reporting domain. It does not prove reports go only there. The narrower host inbox.ondmarc.com was not added. Example domains and local-parts were not copied.",
+      "disposition": "narrowed",
+      "new_reference": "https://redsift.com/guides/email-protocol-configuration-guide/learn-more-about-dmarc",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://www.redsift.com/ondmarc",
+      "review_digest": "5d2b2a94643ebe336e64aebc7d0e867c47b832bda1b778d7e7df0fb487249425",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/ondmarc/dmarc_rua/ondmarc.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The product page does not print v=spf1. The Dynamic SPF article checked 2026-11-16 prints a smart include under smart.ondmarc.com. It does not print include:ondmarc.com. That narrower host was not added. The catalog SPF stays undated.",
+      "disposition": "deferred",
+      "new_reference": "https://knowledge.ondmarc.redsift.com/en/articles/3328695-how-to-configure-dynamic-spf",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://www.redsift.com/ondmarc",
+      "review_digest": "f428dc52d683eb466f8d6be22ee12adf0142f3f239b650199bf34b3372ca8b9d",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/ondmarc/spf/ondmarc.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, not a complete catalog review"
 }
