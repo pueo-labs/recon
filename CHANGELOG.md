@@ -32,6 +32,12 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Check eight undated NS, TXT, CAA, and CNAME rules against
+  current vendor pages. Six rules received a `verified` date
+  because the fetched page prints the catalog grammar. Two
+  rules stay undated because the fetched page does not print
+  the catalog grammar. No new detection was added. This does
+  not cut a release.
 - Check eight undated DMARC, SPF, MX, TXT, and NS rules against
   current vendor pages. Four rules received a `verified` date
   because the fetched page prints the catalog grammar. Four rules

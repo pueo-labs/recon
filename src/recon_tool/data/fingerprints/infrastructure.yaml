@@ -550,13 +550,15 @@ fingerprints:
   detections:
   - type: cname
     pattern: cloudfront.net
-    reference: https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/
+    reference: https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CreatingCNAME.html
+    verified: '2026-11-16'
     description: >-
-      CNAME terminating in cloudfront.net (AWS CloudFront
-      CDN distribution domain). Indicates the domain has at
-      least one subdomain delegating to a CloudFront
-      distribution. CloudFront is commonly used in front of
-      S3, API Gateway, ELB, or custom origins.
+      CNAME terminating in cloudfront.net. The alternate
+      domain name procedure prints a CNAME target under
+      `cloudfront.net`. This observes that suffix. It does
+      not prove that every name under the suffix is a
+      customer alternate domain. The example distribution
+      hostname was not added.
 - name: Azure CDN
   slug: azure-cdn
   category: Infrastructure
@@ -715,22 +717,26 @@ fingerprints:
   detections:
   - type: cname
     pattern: elb.amazonaws.com
-    reference: https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html
+    reference: https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/using-domain-names-with-elb.html
+    verified: '2026-11-16'
     description: >-
-      CNAME terminating in elb.amazonaws.com (AWS
-      Application Load Balancer or Network Load Balancer
-      classic endpoint). Indicates the domain delegates
-      traffic to an AWS load balancer, typically fronting
-      EC2, ECS, or EKS workloads.
+      CNAME terminating in elb.amazonaws.com. The Classic
+      Load Balancer domain name page prints a DNS name under
+      that suffix and says to create a CNAME to the load
+      balancer. This observes that suffix. It does not prove
+      that the load balancer is the only routing target. The
+      example name was not added.
   - type: cname
     pattern: .elb.
-    reference: https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html
+    reference: https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/using-domain-names-with-elb.html
+    verified: '2026-11-16'
     description: >-
-      CNAME containing `.elb.` (regional AWS ELB hostname
-      patterns like `*.us-east-1.elb.amazonaws.com`).
-      Catch-all for ALB / NLB / CLB endpoints across
-      regions. Same workload-fronting semantics as the
-      bare `elb.amazonaws.com` pattern.
+      CNAME containing `.elb.`. The Classic Load Balancer
+      domain name page prints a DNS name containing that
+      infix and says to create a CNAME to the load balancer.
+      This observes that infix. It does not prove that every
+      hostname containing the infix is an AWS load balancer.
+      The example name was not added.
 - name: AWS S3
   slug: aws-s3
   category: Infrastructure
@@ -770,12 +776,15 @@ fingerprints:
   detections:
   - type: cname
     pattern: elasticbeanstalk.com
-    reference: https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/customdomains.html
+    reference: https://docs.aws.amazon.com/cli/latest/reference/elasticbeanstalk/check-dns-availability.html
+    verified: '2026-11-16'
     description: >-
-      CNAME terminating in elasticbeanstalk.com (AWS Elastic
-      Beanstalk PaaS endpoint). Indicates the domain
-      delegates to a Beanstalk environment, typically a
-      multi-tier application managed by Beanstalk.
+      CNAME terminating in elasticbeanstalk.com. The DNS
+      availability reference prints that suffix as the fully
+      qualified CNAME of an environment. This observes that
+      suffix. It does not prove that every name under the
+      suffix is a customer delegation. The example prefix
+      was not added.
 - name: Google Cloud (App Engine / Cloud Run)
   slug: gcp-app
   category: Infrastructure
@@ -1002,17 +1011,24 @@ fingerprints:
   - type: caa
     pattern: amazon.com
     reference: https://docs.aws.amazon.com/acm/latest/userguide/setup.html
+    verified: '2026-11-16'
     description: >-
-      CAA record authorizing an Amazon CA accepted by AWS
-      Certificate Manager. It does not establish that ACM
-      issued a certificate or which AWS service might use it.
+      CAA record authorizing the `amazon.com` Amazon CA
+      identifier accepted by AWS Certificate Manager. The
+      setup page prints that issuer in a CAA issue value.
+      This observes that issuer. It does not prove that ACM
+      issued a certificate. The example domain was not added.
   - type: caa
     pattern: amazontrust.com
     reference: https://docs.aws.amazon.com/acm/latest/userguide/setup.html
+    verified: '2026-11-16'
     description: >-
-      CAA record authorizing an Amazon Trust Services issuer
-      accepted by AWS Certificate Manager. It does not
-      establish that a certificate was issued.
+      CAA record authorizing the `amazontrust.com` Amazon
+      Trust Services issuer accepted by AWS Certificate
+      Manager. The setup page prints that issuer in a CAA
+      issue value. This observes that issuer. It does not
+      prove that a certificate was issued. The example domain
+      was not added.
   - type: caa
     pattern: awstrust.com
     reference: https://docs.aws.amazon.com/acm/latest/userguide/setup.html

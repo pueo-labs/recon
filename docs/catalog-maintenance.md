@@ -245,6 +245,8 @@ later 2026-11-16 sender include and aggregate reporting reference
 check, and a later 2026-11-16 verification prefix, SPF include, and
 TLS reporting reference check, and a later 2026-11-16 reporting
 mailbox, verification prefix, mail exchanger, and nameserver
+reference check, and a later 2026-11-16 certificate issuer,
+distribution suffix, environment name, and load balancer hostname
 reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
@@ -1930,6 +1932,67 @@ prints name servers under `akam.net` and says to use them as NS
 records. The rule observes that suffix. It does not prove that every
 zone uses one example host. The specific hosts were not added. Example
 contract identifiers were not copied.
+
+### Documented reference check, later on 2026-11-16, certificate issuer, distribution suffix, environment name, and load balancer hostname
+
+This pass checked eight undated NS, TXT, CAA, and CNAME rules.
+Six rules received a `verified` date because the fetched page prints
+the catalog grammar. Two rules stay undated. No new detection, DNS
+record type, or collection path was added. This note does not cut a
+release.
+
+The cited Edge DNS welcome URL returns a 404 shell and does not print
+`akamai.net`. The
+[authoritative name server reference](https://techdocs.akamai.com/edge-dns/reference/get-data-authorities)
+prints name servers under `akam.net` and does not print `akamai.net`.
+The already dated `akam.net` rule is unchanged. The specific hosts
+were not added. Example contract identifiers were not copied. The
+`akamai.net` suffix stays undated.
+
+The cited Autodesk account page returns access denied and does not
+print `autodesk-domain-verification=`. The fetched
+[SSO help document](https://help.autodesk.com/view/SSOGUIDE/ENU/?guid=SSOGUIDE_Okta_Guide_About_Single_Sign_on_SSO_Add_and_Verify_Domain_html)
+is an application shell that also does not print that prefix. A
+support article URL returned access denied. The TXT prefix stays
+undated. No token value was copied.
+
+The
+[ACM setup page](https://docs.aws.amazon.com/acm/latest/userguide/setup.html)
+prints `amazon.com` as a CAA issue value. The rule observes that
+issuer. It does not prove that ACM issued a certificate. The example
+domain was not added. The sibling issuer rules that were already dated
+were left unchanged.
+
+The same page prints `amazontrust.com` as a CAA issue value. The rule
+observes that issuer. It does not prove that a certificate was issued.
+The example domain was not added.
+
+The cited CloudFront Developer Guide index is a refresh shell and does
+not print a hostname under `cloudfront.net`. The
+[alternate domain name procedure](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CreatingCNAME.html)
+prints a CNAME whose target is a host under `cloudfront.net`. The rule
+observes that suffix. It does not prove that every name under the
+suffix is a customer alternate domain. The example distribution
+hostname was not added.
+
+The Elastic Beanstalk environment domain page prints a hostname under
+`elasticbeanstalk.com`. The
+[DNS availability reference](https://docs.aws.amazon.com/cli/latest/reference/elasticbeanstalk/check-dns-availability.html)
+prints that suffix as the fully qualified CNAME. The rule observes
+that suffix. It does not prove that every name under the suffix is a
+customer delegation. The example prefix was not added.
+
+The cited load balancing overview does not print `.elb.` or
+`elb.amazonaws.com`. The
+[Classic Load Balancer domain name page](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/using-domain-names-with-elb.html)
+prints a DNS name containing `.elb.` and says to create a CNAME record
+to the load balancer. The infix rule observes that infix. It does not
+prove that every hostname containing the infix is an AWS load balancer.
+The example name was not added.
+
+The same page prints a DNS name under `elb.amazonaws.com`. The suffix
+rule observes that suffix. It does not prove that the load balancer is
+the only routing target. The example name was not added.
 
 ## Executable path
 
