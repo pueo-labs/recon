@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "b799c3d067bb66e53657c4c2d8ca288da1951ca19a4cca7868bd2dfc6cf13a51",
+  "catalog_digest": "cd96cfc4e11b15f53b009c43b1fc5445e4809eec8b2241b062263186ea9daf27",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -4224,8 +4224,104 @@
       "rule_id": "productivity.yaml/loom/txt/^loom-site-verification=",
       "source_checked_on": "2026-11-17",
       "source_status": "checked"
+    },
+    {
+      "basis": "The cited help home checked 2026-11-17 does not print lucidlink-verification=. The email-domain page, updated 2026-05-05, prints lucidlink-verification= as the example TXT value. The rule observes that prefix. It does not prove that LucidLink SSO is enabled. The example value was not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://support.lucidlink.com/hc/en-us/articles/35486996676365-New-LucidLink-Single-Sign-On-SSO-SAML-2-0-Configure-one-or-more-Email-Domain-for-your-Workspace",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://support.lucidlink.com/hc/en-us",
+      "review_digest": "2c57fd2a92e4e146c919e2755c258e734836582f362749e5e0b471c85df012c2",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "productivity.yaml/lucidlink/txt/^lucidlink-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited help home checked 2026-11-17 does not print miro-verification=. The TXT record page prints miro-verification= as the TXT value. The name is left blank for a domain, or set to @ for a subdomain. The rule observes that prefix. It does not prove that domain control is enabled. The placeholder value was not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://help.miro.com/hc/en-us/articles/21918939001234-TXT-record-for-Domain-Control",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://help.miro.com/hc/en-us",
+      "review_digest": "945935fd41dc6ac5483f4b427a3fdda2e733ff8d256f7c7a89df7e429e95739b",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "productivity.yaml/miro/txt/^miro-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited help home checked 2026-11-17 does not print monday-domain-verification=. The claim-domain page, modified 2025-02-11, says to copy a unique TXT record from the product window. It does not print the catalog prefix. The apex prefix stays undated. No token was added.",
+      "disposition": "deferred",
+      "new_reference": "https://support.monday.com/hc/en-us/articles/18705654232466-Claim-your-business-domain-on-monday-com",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://support.monday.com/hc/en-us",
+      "review_digest": "881d44b942257db0d2bf8125319a2c4d51172139564e2d91d182d6dabd698fbb",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "productivity.yaml/monday/txt/^monday-domain-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited help home checked 2026-11-17 does not print monday-verification. The claim-domain page, modified 2025-02-11, says to copy a unique TXT record from the product window. It does not print this prefix. The shorter prefix stays undated. No token was added.",
+      "disposition": "deferred",
+      "new_reference": "https://support.monday.com/hc/en-us/articles/18705654232466-Claim-your-business-domain-on-monday-com",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://support.monday.com/hc/en-us",
+      "review_digest": "3e9ee42bc5dee347db0a0905d3ea85d3b975a7f76b88a05e5d9f9a12290e7c03",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "productivity.yaml/monday/txt/^monday-verification",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited help home checked 2026-11-17 does not print notion-domain-verification=. The domain-management page says to follow the prompts and update a DNS record. It does not print the catalog prefix. The custom-domain page prints a different TXT name and a CNAME target. Those record shapes were not added. The apex prefix stays undated.",
+      "disposition": "deferred",
+      "new_reference": "https://www.notion.com/help/domain-management",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://www.notion.so/help",
+      "review_digest": "f3efd4fad9e3dac3eabd5bb7785f885b4ad4df48a10890fd25ef59251ba3201d",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "productivity.yaml/notion/txt/^notion-domain-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited help home checked 2026-11-17 does not print notion-verification-code. The domain-management page says to follow the prompts and update a DNS record. It does not print this prefix. The custom-domain page prints a different TXT name. That name was not added. The catalog prefix stays undated.",
+      "disposition": "deferred",
+      "new_reference": "https://www.notion.com/help/domain-management",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://www.notion.so/help",
+      "review_digest": "ee1375b8a57bbc68c6809b211f85c8bfdd216814ec7ee6fc1db95df345910e00",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "productivity.yaml/notion/txt/^notion-verification-code",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited support home checked 2026-11-17 does not print _spf.qualtrics.com. The custom-from page prints v=spf1 include:_spf.qualtrics.com ~all as an optional SPF record. That include matches the catalog suffix. The rule observes that include. It does not prove that Qualtrics is sending mail. The envelope sender on another host was not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://www.qualtrics.com/support/survey-platform/distributions-module/email-distribution/using-a-custom-from-address/",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://www.qualtrics.com/support/",
+      "review_digest": "cbab3002e8390c24ceaa4ca473c90213341c6615be2e1814acb25b76183de282",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "productivity.yaml/qualtrics/spf/_spf.qualtrics.com",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited support URL checked 2026-11-17 redirects and the final status is 404. The help center home does not print rippling-domain-verification=. The apex prefix stays undated. No token was added. A third-party DNS dump is not a date basis.",
+      "disposition": "deferred",
+      "new_reference": "https://help.rippling.com/",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://support.rippling.com/",
+      "review_digest": "a1eaa9289dfd1e64789a0fd4865088c53b65a34606ff56d28b170e1faa60d421",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "productivity.yaml/rippling/txt/^rippling-domain-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, and a later 2026-11-16 verification prefix, SPF include, and TLS reporting reference check, and a later 2026-11-16 reporting mailbox, verification prefix, mail exchanger, and nameserver reference check, and a later 2026-11-16 certificate issuer, distribution suffix, environment name, and load balancer hostname reference check, and a later 2026-11-16 nameserver label, website infix, REST suffix, and edge hostname reference check, and a later 2026-11-16 endpoint suffix, routing suffix, token prefix, and issuer host reference check, and a later 2026-11-16 nameserver suffix, edge hostname, edge pattern, and publication hostname reference check, and a later 2026-11-17 verification owner, verification value, and issuer host reference check, and a later 2026-11-17 image suffix, edge suffix, and issuer host reference check, and a later 2026-11-17 traffic edge hostname reference check, and a later 2026-11-17 store suffix, site suffix, and issuer host reference check, and a later 2026-11-17 SSO verification value and nameserver label reference check, and a later 2026-11-17 pointing label, legacy label, and verification value reference check, and a later 2026-11-17 community CNAME label reference check, and a later 2026-11-17 mail include and verification value reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, and a later 2026-11-16 verification prefix, SPF include, and TLS reporting reference check, and a later 2026-11-16 reporting mailbox, verification prefix, mail exchanger, and nameserver reference check, and a later 2026-11-16 certificate issuer, distribution suffix, environment name, and load balancer hostname reference check, and a later 2026-11-16 nameserver label, website infix, REST suffix, and edge hostname reference check, and a later 2026-11-16 endpoint suffix, routing suffix, token prefix, and issuer host reference check, and a later 2026-11-16 nameserver suffix, edge hostname, edge pattern, and publication hostname reference check, and a later 2026-11-17 verification owner, verification value, and issuer host reference check, and a later 2026-11-17 image suffix, edge suffix, and issuer host reference check, and a later 2026-11-17 traffic edge hostname reference check, and a later 2026-11-17 store suffix, site suffix, and issuer host reference check, and a later 2026-11-17 SSO verification value and nameserver label reference check, and a later 2026-11-17 pointing label, legacy label, and verification value reference check, and a later 2026-11-17 community CNAME label reference check, and a later 2026-11-17 mail include and verification value reference check, and a later 2026-11-17 verification value and survey include reference check, not a complete catalog review"
 }

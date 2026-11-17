@@ -38,6 +38,12 @@ Tool surface changes: no CLI command or flag changes.
   the fetched page does not print the catalog grammar at the
   matching record shape. No new detection was added. This
   does not cut a release.
+- Check eight undated TXT and SPF rules against current
+  vendor pages. Date the LucidLink verification value, the
+  Miro verification value, and the Qualtrics survey include.
+  Five rules stay undated because the fetched page does not
+  print the catalog grammar at the matching record shape.
+  No new detection was added. This does not cut a release.
 - Check eight undated TXT and CNAME rules against current
   vendor pages. Date the Disciple CNAME label. Seven rules stay
   undated because the fetched page does not print the catalog

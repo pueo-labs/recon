@@ -2654,6 +2654,72 @@ TXT value for the root name, left blank or set to `@`. The
 rule observes that prefix. It does not prove that Loom SSO is
 enabled. The example value was not added.
 
+### Documented reference check, later on 2026-11-17, verification value and survey include
+
+This pass checked eight undated TXT and SPF rules. Three
+rules received a `verified` date because the fetched page prints
+the catalog grammar. Five rules stay undated. No new
+detection, DNS record type, or collection path was added. This
+note does not cut a release.
+
+The cited LucidLink help home does not print
+`lucidlink-verification=`. The
+[email-domain page](https://support.lucidlink.com/hc/en-us/articles/35486996676365-New-LucidLink-Single-Sign-On-SSO-SAML-2-0-Configure-one-or-more-Email-Domain-for-your-Workspace),
+updated 2026-05-05, prints `lucidlink-verification=` as the
+TXT value. The rule observes that prefix. It does not prove
+that LucidLink SSO is enabled. The example value was not
+added.
+
+The cited Miro help home does not print
+`miro-verification=`. The
+[TXT record page](https://help.miro.com/hc/en-us/articles/21918939001234-TXT-record-for-Domain-Control)
+prints `miro-verification=` as the TXT value. The name is
+left blank for a domain, or set to `@` for a subdomain. The
+rule observes that prefix. It does not prove that domain
+control is enabled. The placeholder value was not added.
+
+The cited monday.com help home does not print
+`monday-domain-verification=`. The
+[claim-domain page](https://support.monday.com/hc/en-us/articles/18705654232466-Claim-your-business-domain-on-monday-com),
+modified 2025-02-11, says to copy a unique TXT record from
+the product window. It does not print the catalog prefix.
+The apex prefix stays undated. No token was added.
+
+The cited monday.com help home does not print
+`monday-verification`. The claim-domain page says to copy a
+unique TXT record from the product window. It does not print
+this prefix. The shorter prefix stays undated. No token was
+added.
+
+The cited Notion help home does not print
+`notion-domain-verification=`. The
+[domain-management page](https://www.notion.com/help/domain-management)
+says to follow the prompts and update a DNS record. It does
+not print the catalog prefix. The custom-domain page prints
+a different TXT name and a CNAME target. Those record shapes
+were not added. The apex prefix stays undated.
+
+The cited Notion help home does not print
+`notion-verification-code`. The domain-management page says
+to follow the prompts and update a DNS record. It does not
+print this prefix. The custom-domain page prints a different
+TXT name. That name was not added. The catalog prefix stays
+undated.
+
+The cited Qualtrics support home does not print
+`_spf.qualtrics.com`. The
+[custom-from page](https://www.qualtrics.com/support/survey-platform/distributions-module/email-distribution/using-a-custom-from-address/)
+prints `include:_spf.qualtrics.com`. That host matches the
+catalog suffix. The rule observes that include. It does not
+prove that Qualtrics is sending mail. The envelope sender on
+another host was not added.
+
+The cited Rippling support URL redirects and the final
+status is 404. The
+[help center home](https://help.rippling.com/)
+does not print `rippling-domain-verification=`. The apex
+prefix stays undated. No token was added.
+
 ## Executable path
 
 Run from the checkout root. The strict plan schemas and specialized rank,
