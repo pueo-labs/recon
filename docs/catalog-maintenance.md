@@ -247,6 +247,8 @@ TLS reporting reference check, and a later 2026-11-16 reporting
 mailbox, verification prefix, mail exchanger, and nameserver
 reference check, and a later 2026-11-16 certificate issuer,
 distribution suffix, environment name, and load balancer hostname
+reference check, and a later 2026-11-16 nameserver label,
+website infix, REST suffix, and edge hostname
 reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
@@ -1993,6 +1995,66 @@ The example name was not added.
 The same page prints a DNS name under `elb.amazonaws.com`. The suffix
 rule observes that suffix. It does not prove that the load balancer is
 the only routing target. The example name was not added.
+
+### Documented reference check, later on 2026-11-16, nameserver label, website infix, REST suffix, and edge hostname
+
+This pass checked eight undated NS and CNAME rules. Six rules
+received a `verified` date because the fetched page prints the
+catalog grammar. Two rules stay undated. No new detection, DNS
+record type, or collection path was added. This note does not cut a
+release.
+
+The cited Route 53 welcome page does not print `awsdns`. The
+[name server record reference](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/SOA-NSrecords.html)
+prints name servers whose labels start with `awsdns-`. The rule
+observes that label. It does not prove that the domain's workloads
+run on AWS. The specific name servers were not added.
+
+The cited static website hosting page does not print `.s3-website-`.
+The
+[website endpoints page](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteEndpoints.html)
+prints the dash regional form with a name before `.s3-website-`. The
+rule observes that infix. It does not prove that every name
+containing the infix is a website endpoint. The example bucket and
+region placeholder were not added.
+
+The same page prints a host containing `.s3-website.` and says to add
+a DNS CNAME to that form. The rule observes that infix. It does not
+prove that every name containing the infix is a website endpoint.
+The example bucket was not added.
+
+The cited static website hosting page does not print
+`s3.amazonaws.com`. The
+[virtual hosting page](https://docs.aws.amazon.com/AmazonS3/latest/userguide/VirtualHosting.html)
+prints a host under `s3.amazonaws.com` as the legacy global endpoint.
+The rule observes that suffix. It does not prove that static website
+hosting is enabled. The example bucket was not added. The regional
+endpoint example was not added.
+
+The cited custom domain tutorial discusses a CNAME to the app default
+hostname and does not print `azurewebsites.net`. The App Service
+overview, hosting plans page, and common configuration page also do
+not print that suffix. The catalog suffix stays undated. No hostname
+was added.
+
+The
+[custom domain page](https://learn.microsoft.com/en-us/azure/cdn/cdn-map-content-to-custom-domain)
+prints CNAME destinations under `azureedge.net`. The rule observes
+that suffix. It does not prove that every name under the suffix is a
+customer endpoint. The example endpoint names were not added.
+
+The cited Azure DNS overview does not print an `azure-dns` name
+server label. The
+[domain delegation tutorial](https://learn.microsoft.com/en-us/azure/dns/dns-delegate-domain-azure-dns)
+prints name servers whose labels are `azure-dns`. The rule observes
+that label. It does not prove that Azure hosts the zone's workloads.
+The specific name servers were not added.
+
+The cited Front Door overview does not print `afd.ms`. The custom
+domain, endpoint, and create pages print hosts under `azurefd.net`
+and do not print `afd.ms`. The separate `azurefd.net` rule is outside
+this pass and stays unchanged. The `afd.ms` suffix stays undated. No
+example endpoint was added.
 
 ## Executable path
 

@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "e1d12d72cd621e1a74a1043bab790a49b68365898fab137e7ee080f66843e8a8",
+  "catalog_digest": "8f92f0e31cfcbf76c1ed93a9c61fa39ed3a7642d1bcde51b3c0e9071a79680e4",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -3168,8 +3168,104 @@
       "rule_id": "infrastructure.yaml/aws-elb/cname/elb.amazonaws.com",
       "source_checked_on": "2026-11-16",
       "source_status": "checked"
+    },
+    {
+      "basis": "The cited Route 53 welcome page checked 2026-11-16 does not print awsdns. The name server record reference prints name servers whose labels start with awsdns-. The rule observes that label. It does not prove that the domain's workloads run on AWS. The specific name servers were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/SOA-NSrecords.html",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html",
+      "review_digest": "71c5088b9b8ab63921514deddfd9f525b29e2009d143d606d4f897d27fbe8d3d",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/aws-route53/ns/awsdns",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited static website hosting page checked 2026-11-16 does not print .s3-website-. The website endpoints page prints the dash regional form with a name before .s3-website-. The rule observes that infix. It does not prove that every name containing the infix is a website endpoint. The example bucket and region placeholder were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteEndpoints.html",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html",
+      "review_digest": "3fb3acd1906b3d826a88e0b758ff4c012f941a46948a512b081761307a001af1",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/aws-s3/cname/.s3-website-",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited static website hosting page checked 2026-11-16 does not print .s3-website. The website endpoints page prints a host containing .s3-website. and says to add a DNS CNAME to that form. The rule observes that infix. It does not prove that every name containing the infix is a website endpoint. The example bucket was not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteEndpoints.html",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html",
+      "review_digest": "d658548cb0010ff145be8f3829553d5e5d7c41212cd3cc6fb92eea9a1d518d9e",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/aws-s3/cname/.s3-website.",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited static website hosting page checked 2026-11-16 does not print s3.amazonaws.com. The virtual hosting page prints a host under s3.amazonaws.com as the legacy global endpoint. The rule observes that suffix. It does not prove that static website hosting is enabled. The example bucket was not added. The regional endpoint example was not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/VirtualHosting.html",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html",
+      "review_digest": "bae2f18daee955085937a383a9e11f57f30cc20a7392c3ce6f49ed9bdec729a0",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/aws-s3/cname/s3.amazonaws.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited custom domain tutorial checked 2026-11-16 discusses a CNAME to the app default hostname and does not print azurewebsites.net. The App Service overview, hosting plans page, and common configuration page also do not print that suffix. The catalog suffix stays undated. No hostname was added.",
+      "disposition": "deferred",
+      "new_reference": "https://learn.microsoft.com/en-us/azure/app-service/app-service-web-tutorial-custom-domain",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://learn.microsoft.com/en-us/azure/app-service/app-service-web-tutorial-custom-domain",
+      "review_digest": "aafc42846bdace701038914128f6b57ab45e053282c2f9399b33992fd6e459b9",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/azure-appservice/cname/azurewebsites.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The custom domain page checked 2026-11-16 prints CNAME destinations under azureedge.net. The rule observes that suffix. It does not prove that every name under the suffix is a customer endpoint. The example endpoint names were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://learn.microsoft.com/en-us/azure/cdn/cdn-map-content-to-custom-domain",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://learn.microsoft.com/en-us/azure/cdn/cdn-map-content-to-custom-domain",
+      "review_digest": "5b6120575d68e0c3a0680f74b1a123b1bf3e59965968fd7a0927410b2c50996a",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/azure-cdn/cname/azureedge.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited Azure DNS overview checked 2026-11-16 does not print an azure-dns name server label. The domain delegation tutorial prints name servers whose labels are azure-dns. The rule observes that label. It does not prove that Azure hosts the zone's workloads. The specific name servers were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://learn.microsoft.com/en-us/azure/dns/dns-delegate-domain-azure-dns",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://learn.microsoft.com/en-us/azure/dns/dns-overview",
+      "review_digest": "2f2073bbb0a0f322a6f5577f97fe491de08ae5e5298f959eb063389c70733197",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/azure-dns/ns/azure-dns",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited Front Door overview checked 2026-11-16 does not print afd.ms. The custom domain, endpoint, and create pages print hosts under azurefd.net and do not print afd.ms. The separate azurefd.net rule is outside this pass and stays unchanged. The afd.ms suffix stays undated. No example endpoint was added.",
+      "disposition": "deferred",
+      "new_reference": "https://learn.microsoft.com/en-us/azure/frontdoor/front-door-overview",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://learn.microsoft.com/en-us/azure/frontdoor/front-door-overview",
+      "review_digest": "af3f5b49b3454921dc4f950cc7fc966392decfb8cdb27686c22fc0134c8b6cc3",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/azure-fd/cname/afd.ms",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, and a later 2026-11-16 verification prefix, SPF include, and TLS reporting reference check, and a later 2026-11-16 reporting mailbox, verification prefix, mail exchanger, and nameserver reference check, and a later 2026-11-16 certificate issuer, distribution suffix, environment name, and load balancer hostname reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, and a later 2026-11-16 verification prefix, SPF include, and TLS reporting reference check, and a later 2026-11-16 reporting mailbox, verification prefix, mail exchanger, and nameserver reference check, and a later 2026-11-16 certificate issuer, distribution suffix, environment name, and load balancer hostname reference check, and a later 2026-11-16 nameserver label, website infix, REST suffix, and edge hostname reference check, not a complete catalog review"
 }
