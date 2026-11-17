@@ -90,13 +90,14 @@ What is next, and why:
    organization uses a service, and it does not receive an apex, a tenant
    identifier, an opaque token, or a per-domain row. Those stay in the
    gitignored private roots when an operator supplies them. The passes
-   from 2026-10-28 through the 2026-11-17 store-suffix check are the
+   from 2026-10-28 through the 2026-11-17 nameserver-label check are the
    record in [catalog maintenance](docs/catalog-maintenance.md) and the
    [public freshness ledger](docs/catalog-freshness-ledger.json). Main
-   `e43d5fc9fc247f1c6f4b6a7df402ab348249222e` carries that check. It
-   dates the Sectigo issuer, the Shopify store suffix, and the
-   Squarespace site suffix, and it leaves five admitted rules undated.
-   The catalog has 280 dated rules and 843 undated rules. Those passes
+   `e43d5fc9fc247f1c6f4b6a7df402ab348249222e` carries the store-suffix
+   check. This nameserver-label check dates the Unity SSO verification
+   value and the UltraDNS nameserver label, and it leaves six admitted
+   rules undated.
+   The catalog has 282 dated rules and 841 undated rules. Those passes
    do not cut a release. Tag `v2.27.2` stays `071c4356`.
    The next round uses a new question list and the rules that are still due.
    The closed 5,199-row drift round remains a measurement contract. It does

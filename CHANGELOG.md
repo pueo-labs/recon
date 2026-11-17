@@ -32,6 +32,12 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Check eight undated TXT, NS, and CNAME rules against current
+  vendor pages. Date the Unity SSO verification value and the
+  UltraDNS nameserver label. Six rules stay undated because the
+  fetched page does not print the catalog grammar at the
+  matching record shape. No new detection was added. This does
+  not cut a release.
 - Keep hosted Ubuntu jobs on `ubuntu-latest`. actionlint v1.7.12
   does not recognize `ubuntu-26.04`, and its configuration can only
   add self-hosted labels or ignore errors. GitHub moves that label
