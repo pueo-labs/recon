@@ -32,6 +32,14 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Date the Pexip portal verification prefix and the Proton Mail
+  MX suffix from fetched vendor pages. The Pexip rule observes
+  the TXT prefix `pexip-portal-domain-verification=`. The Proton
+  Mail rule observes an MX host under `protonmail.ch`. Six other
+  undated rules in this pass stay undated because the fetched
+  page is an application shell, prints a narrower include or
+  reporting host, or is behind a help-center sign-in page. No
+  new detection was added. This does not cut a release.
 - Date the NameBright nameserver suffix from the NameBright help
   page. The rule observes an NS host under `namebrightdns.com`.
   Seven other undated rules in this pass stay undated because the

@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "062cf8aeb8519352435ca697fdd5e5622d5b05b8460300cebeb919b1980557e4",
+  "catalog_digest": "762a3c381dc67ee3b1eb62a23e18217bc5b837fb88b5803dfc3ce6bdb878dca5",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -2208,8 +2208,104 @@
       "rule_id": "discovered-signals.yaml/oracle-email-delivery/spf/oracleemaildelivery.com",
       "source_checked_on": "2026-11-16",
       "source_status": "checked"
+    },
+    {
+      "basis": "English Account Engagement DNS article 000381907 and the email authentication article, checked 2026-11-16, are returned as the Salesforce Help application shell. The fetched bytes do not print include:pardot.com. No narrower include was added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://help.salesforce.com/s/articleView?id=000381907&language=en_US&type=1",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "b6403d1e40607fcc859a6afaf2e69ed7864193c5ba43be71a8a446d3117f35b0",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/pardot/spf/pardot.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Pexip partner domain-hosting page, last modified 2026-10-29, checked 2026-11-16 says to add a DNS TXT record whose value is the one in the New calling domain email, and it prints the prefix pexip-portal-domain-verification=. An example value was not copied. The rule observes that prefix. It does not prove that the portal is in use.",
+      "disposition": "narrowed",
+      "new_reference": "https://docs.pexip.com/partner/service/domain-hosting-dns.htm",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "ec5e21428d56d9580f974b7831f3d8b6861cd686d0346f187e51139fb7a48099",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/pexip/txt/^pexip-portal-domain-verification=",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Postmark DMARC reporting FAQ checked 2026-11-16 prints aggregate report mailboxes at dmarc.postmarkapp.com. It does not print a mailbox at postmarkapp.com. The narrower host was not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://postmarkapp.com/support/article/1088-dmarc-reporting-tool-faq",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "ee8d65fa8a29f2b77f11ec498eea861e4e1db9bcb5099801a2994990514a29cd",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/postmark/dmarc_rua/postmarkapp.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Postmark SPF article and the SPF guide, checked 2026-11-16, print include:spf.mtasv.net. Neither prints include:mtasv.net. The narrower include was not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://postmarkapp.com/support/article/what-is-spf-and-why-is-it-important",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "e605c9994a1a7869c3c3e730d5334e63890ec8e6602ddae32a403335dc266db1",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/postmark/spf/mtasv.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "PowerDMARC SPF lookup counter page checked 2026-11-16 builds a sample include whose host ends in _spf.powerspf.com. The fetched Hosted SPF support articles do not print powerspf.com. No fetched page prints include:powerspf.com. The narrower host was not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://powerdmarc.com/spf-lookup-counter/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "bf354eaed64c885af628455dfeb4dbaf4946abb2c025a093d32c740846c4064f",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/powerspf/spf/powerspf.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Proofpoint Essentials connection-details article and the email-spoofing article, checked 2026-11-16, redirect to the help-center sign-in page. The fetched sign-in bytes do not print ppe-hosted.com. The public email-protection product page also does not print ppe-hosted.com. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://help.proofpoint.com/Proofpoint_Essentials/Email_Security/Administrator_Topics/000_gettingstarted/020_connectiondetails",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "0a494ae6087f8433e2b11f73d8f97bb796ffc5ee8738eb801da3d7981c025e42",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/proofpoint/mx/ppe-hosted.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Public Proofpoint email-protection product page checked 2026-11-16 does not print include:pphosted.com or pphosted.com. The fetched Essentials help articles redirect to sign-in and do not print that include either. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://www.proofpoint.com/us/products/email-protection",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "727bcc662deb6f8114a69474711e5bfb93158cf20af8b6f3ccdd5ed0d0917f93",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/proofpoint/spf/pphosted.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Proton Mail Cloudflare custom-domain guide, last modified 2026-11-16, checked 2026-11-16 says to publish MX mail.protonmail.ch at priority 10 and mailsec.protonmail.ch at priority 20. The rule observes an MX host under protonmail.ch. It does not prove that mail is delivered or that Proton Mail is the only exchanger. Those specific hosts were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://proton.me/support/custom-domain-cloudflare",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "f16402ad3d4a272f703fff23abebf0365fef687da063ebed36f4102eb4622189",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/protonmail/mx/protonmail.ch",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, not a complete catalog review"
 }

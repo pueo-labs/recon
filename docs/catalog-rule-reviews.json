@@ -938,6 +938,34 @@
       "reviewed_on": "2026-11-16",
       "source_checked_on": "2026-11-16",
       "reason": "NameBright help page What is a nameserver, updated September 2026, checked 2026-11-16: https://help.namebright.com/knowledgebase/dns-nameservers-explained/nameservers-explained/. It says the default nameservers are ns1.namebrightdns.com and ns2.namebrightdns.com. The change-nameservers guide prints the same two hosts. The rule observes an NS host under namebrightdns.com. It does not prove that the zone is delegated or that NameBright is the only DNS provider. Those specific hosts were not added."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "pexip",
+        "detection_type": "txt",
+        "pattern": "^pexip-portal-domain-verification="
+      },
+      "before": "ed19f48d9efc4f428d5a2183c05acd1f0aabca2f01937dbfc0d95fd1cab3cdb2",
+      "after": "ec5e21428d56d9580f974b7831f3d8b6861cd686d0346f187e51139fb7a48099",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Pexip partner domain-hosting page, last modified 2026-10-29, checked 2026-11-16: https://docs.pexip.com/partner/service/domain-hosting-dns.htm. It says to add a DNS TXT record whose value is the one in the New calling domain email, and it prints the prefix pexip-portal-domain-verification=. An example value was not copied. The rule observes that prefix. It does not prove that the portal is in use."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "protonmail",
+        "detection_type": "mx",
+        "pattern": "protonmail.ch"
+      },
+      "before": "527b74502de3a181c92b89bed32f4eccaaf504577341e9f6bd3e71c1a9488a81",
+      "after": "f16402ad3d4a272f703fff23abebf0365fef687da063ebed36f4102eb4622189",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Proton Mail Cloudflare custom-domain guide, last modified 2026-11-16, checked 2026-11-16: https://proton.me/support/custom-domain-cloudflare. It says to publish MX mail.protonmail.ch at priority 10 and mailsec.protonmail.ch at priority 20. The rule observes an MX host under protonmail.ch. It does not prove that mail is delivered or that Proton Mail is the only exchanger. Those specific hosts were not added."
     }
   ]
 }

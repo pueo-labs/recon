@@ -233,7 +233,9 @@ check, and a later 2026-11-16 mail, SPF, and custom-DNS reference
 check, and a later 2026-11-16 mail and verification reference check,
 and a later 2026-11-16 mail exchanger and reporting reference check,
 and a later 2026-11-16 CloudHub and mail exchanger reference check,
-and a later 2026-11-16 nameserver and sender-policy reference check.
+and a later 2026-11-16 nameserver and sender-policy reference check,
+and a later 2026-11-16 portal verification and mail routing
+reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
 bind due rules to their exact claim/catalog digest, prior/new reference, actual
@@ -1424,6 +1426,58 @@ updated March 17, 2026, prints `include:rp.oracleemaildelivery.com`,
 page prints the same narrower includes. Neither prints
 `include:oracleemaildelivery.com`. Those narrower includes were not
 added. The catalog SPF stays undated.
+
+### Documented reference check, later on 2026-11-16, portal verification and mail routing
+
+This pass checked eight undated SPF, TXT, DMARC, and MX rules.
+Two received a `verified` date because the fetched vendor page
+prints the catalog grammar. Six stayed undated. No new detection,
+DNS record type, or collection path was added. This note does not
+cut a release.
+
+The [Pexip partner domain-hosting page](https://docs.pexip.com/partner/service/domain-hosting-dns.htm),
+last modified October 29, 2026, says to add a DNS TXT record whose
+value is the one in the New calling domain email, and it prints
+the prefix `pexip-portal-domain-verification=`. An example value
+was not copied. The rule observes that prefix. It does not prove
+that the portal is in use.
+
+The [Proton Mail Cloudflare custom-domain guide](https://proton.me/support/custom-domain-cloudflare),
+last modified November 16, 2026, says to publish MX
+`mail.protonmail.ch` at priority 10 and `mailsec.protonmail.ch`
+at priority 20. The rule observes an MX host under
+`protonmail.ch`. It does not prove that mail is delivered or that
+Proton Mail is the only exchanger. Those specific hosts were not
+added.
+
+The English Account Engagement DNS article 000381907 and the email
+authentication article were fetched on 2026-11-16. Both responses
+are the Salesforce Help application shell. The fetched bytes do
+not print `include:pardot.com`. No narrower include was added. The
+catalog SPF stays undated.
+
+The [Postmark DMARC reporting FAQ](https://postmarkapp.com/support/article/1088-dmarc-reporting-tool-faq)
+prints aggregate report mailboxes at `dmarc.postmarkapp.com`. It
+does not print a mailbox at `postmarkapp.com`. The narrower host
+was not added. The catalog DMARC suffix stays undated.
+
+The [Postmark SPF article](https://postmarkapp.com/support/article/what-is-spf-and-why-is-it-important)
+and the SPF guide print `include:spf.mtasv.net`. Neither prints
+`include:mtasv.net`. The narrower include was not added. The
+catalog SPF stays undated.
+
+The [PowerDMARC SPF lookup counter](https://powerdmarc.com/spf-lookup-counter/)
+builds a sample include whose host ends in `_spf.powerspf.com`.
+The fetched Hosted SPF support articles do not print
+`powerspf.com`. No fetched page prints `include:powerspf.com`.
+The narrower host was not added. The catalog SPF stays undated.
+
+The Proofpoint Essentials connection-details article and the
+email-spoofing article redirect to the help-center sign-in page.
+The fetched sign-in bytes do not print `ppe-hosted.com`. The
+public email-protection product page also does not print
+`ppe-hosted.com` or `include:pphosted.com`. The catalog MX and
+SPF suffixes stay undated.
 
 ## Executable path
 
