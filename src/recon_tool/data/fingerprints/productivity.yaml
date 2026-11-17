@@ -71,12 +71,16 @@ fingerprints:
   detections:
   - type: txt
     pattern: ^miro-verification=
-    reference: https://help.miro.com/hc/en-us
+    reference: https://help.miro.com/hc/en-us/articles/21918939001234-TXT-record-for-Domain-Control
+    verified: '2026-11-17'
     description: >-
       Miro domain-verification TXT (Miro is a collaborative
-      whiteboarding platform). Indicates the domain is
-      registered with a Miro team account, typically for SSO
-      federation. Does not indicate active board volume.
+      whiteboarding platform). The TXT record page prints
+      `miro-verification=` as the TXT value. The name is
+      left blank for a domain, or set to `@` for a
+      subdomain. The rule observes that prefix. It does not
+      prove that domain control is enabled. The placeholder
+      value was not added.
 - name: Asana
   slug: asana
   category: Productivity & Collaboration
@@ -285,13 +289,15 @@ fingerprints:
   detections:
   - type: txt
     pattern: ^lucidlink-verification=
-    reference: https://support.lucidlink.com/hc/en-us
+    reference: https://support.lucidlink.com/hc/en-us/articles/35486996676365-New-LucidLink-Single-Sign-On-SSO-SAML-2-0-Configure-one-or-more-Email-Domain-for-your-Workspace
+    verified: '2026-11-17'
     description: >-
       LucidLink domain-verification TXT (LucidLink is a
-      cloud-native distributed file-system platform popular
-      in media and entertainment production workflows).
-      Indicates the domain is registered with a LucidLink
-      organization.
+      cloud-native distributed file-system platform). The
+      email-domain page, updated 2026-05-05, prints
+      `lucidlink-verification=` as the TXT value. The rule
+      observes that prefix. It does not prove that LucidLink
+      SSO is enabled. The example value was not added.
 - name: Adobe Admin Console
   slug: adobe-idp
   category: Productivity & Collaboration
@@ -535,13 +541,15 @@ fingerprints:
   detections:
   - type: spf
     pattern: _spf.qualtrics.com
-    reference: https://www.qualtrics.com/support/
+    reference: https://www.qualtrics.com/support/survey-platform/distributions-module/email-distribution/using-a-custom-from-address/
+    verified: '2026-11-17'
     description: >-
       SPF include matching `_spf.qualtrics.com` (Qualtrics is
-      an experience-management platform offering employee,
-      customer, and product surveys; originally an SAP
-      acquisition, spun out in 2023). Authorizes Qualtrics
-      to send survey invitations on behalf of the domain.
+      an experience-management platform). The custom-from
+      page prints `include:_spf.qualtrics.com` in an
+      optional SPF record. The rule observes that include.
+      It does not prove that Qualtrics is sending mail. The
+      envelope sender on another host was not added.
 - name: Rippling
   slug: rippling
   category: HR & Operations

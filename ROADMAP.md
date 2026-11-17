@@ -90,14 +90,14 @@ What is next, and why:
    organization uses a service, and it does not receive an apex, a tenant
    identifier, an opaque token, or a per-domain row. Those stay in the
    gitignored private roots when an operator supplies them. The passes
-   from 2026-10-28 through the 2026-11-17 mail-include check are the
+   from 2026-10-28 through the 2026-11-17 survey-include check are the
    record in [catalog maintenance](docs/catalog-maintenance.md) and the
    [public freshness ledger](docs/catalog-freshness-ledger.json). Main
-   `b2a38dc9e46617d2f75a5d273ce94a25f602abd8` carries the community-label
-   check. This mail-include check dates the Freshdesk mail include
-   and the Loom verification value, and it leaves six admitted rules
-   undated.
-   The catalog has 290 dated rules and 833 undated rules. Those passes
+   `c4c952941badd689e0478e657194a1c7ca8025d1` carries the mail-include
+   check. This survey-include check dates the LucidLink verification
+   value, the Miro verification value, and the Qualtrics survey
+   include, and it leaves five admitted rules undated.
+   The catalog has 293 dated rules and 830 undated rules. Those passes
    do not cut a release. Tag `v2.27.2` stays `071c4356`.
    The next round uses a new question list and the rules that are still due.
    The closed 5,199-row drift round remains a measurement contract. It does

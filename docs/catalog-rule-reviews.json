@@ -1722,6 +1722,48 @@
       "reviewed_on": "2026-11-17",
       "source_checked_on": "2026-11-17",
       "reason": "DNS text-record page checked 2026-11-17: https://support.atlassian.com/loom/kb/add-a-dns-text-record/. It prints loom-site-verification= as the TXT value for the root name, left blank or set to @. The rule observes that prefix. It does not prove that Loom SSO is enabled. The example value was not added."
+    },
+    {
+      "rule": {
+        "source": "productivity.yaml",
+        "slug": "lucidlink",
+        "detection_type": "txt",
+        "pattern": "^lucidlink-verification="
+      },
+      "before": "36aa11daa0c3da26abb8135930a7657a7aab5bb74887e107df3e3acbc0940476",
+      "after": "2c57fd2a92e4e146c919e2755c258e734836582f362749e5e0b471c85df012c2",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-17",
+      "source_checked_on": "2026-11-17",
+      "reason": "Email-domain page checked 2026-11-17: https://support.lucidlink.com/hc/en-us/articles/35486996676365-New-LucidLink-Single-Sign-On-SSO-SAML-2-0-Configure-one-or-more-Email-Domain-for-your-Workspace. It prints lucidlink-verification= as the TXT value. The rule observes that prefix. It does not prove that LucidLink SSO is enabled. The example value was not added."
+    },
+    {
+      "rule": {
+        "source": "productivity.yaml",
+        "slug": "miro",
+        "detection_type": "txt",
+        "pattern": "^miro-verification="
+      },
+      "before": "f5765196e699f1d35d36b2af587079b8a849cc9ebef94d043c570b10f6129c7a",
+      "after": "945935fd41dc6ac5483f4b427a3fdda2e733ff8d256f7c7a89df7e429e95739b",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-17",
+      "source_checked_on": "2026-11-17",
+      "reason": "TXT record page checked 2026-11-17: https://help.miro.com/hc/en-us/articles/21918939001234-TXT-record-for-Domain-Control. It prints miro-verification= as the TXT value. The name is left blank for a domain, or set to @ for a subdomain. The rule observes that prefix. It does not prove that domain control is enabled. The placeholder value was not added."
+    },
+    {
+      "rule": {
+        "source": "productivity.yaml",
+        "slug": "qualtrics",
+        "detection_type": "spf",
+        "pattern": "_spf.qualtrics.com"
+      },
+      "before": "c85181640431eb5942e41bfbbb31e18af72040a4eb713fc3405e0315497d9489",
+      "after": "cbab3002e8390c24ceaa4ca473c90213341c6615be2e1814acb25b76183de282",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-17",
+      "source_checked_on": "2026-11-17",
+      "reason": "Custom-from page checked 2026-11-17: https://www.qualtrics.com/support/survey-platform/distributions-module/email-distribution/using-a-custom-from-address/. It prints include:_spf.qualtrics.com. That host matches the catalog suffix. The rule observes that include. It does not prove that Qualtrics is sending mail. The envelope sender on another host was not added."
     }
   ]
 }
