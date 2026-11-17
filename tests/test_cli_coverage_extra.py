@@ -576,5 +576,6 @@ class TestHelpOutput:
         assert "Microsoft identity endpoints" in normalized
         assert "DNS for example.com" in normalized
         assert "crt.sh" in normalized
+        assert "CertSpotter" in normalized
         assert "No user-supplied target is queried" in normalized
         assert "local-only" in normalized

@@ -770,8 +770,10 @@ def doctor(
     ),
 ) -> None:
     """Check installation health and online source connectivity.
-    Synthetic checks: Microsoft identity endpoints, DNS for example.com and one reserved .invalid name, and crt.sh.
-    No user-supplied target is queried. --fix, --mcp, and --client are local-only modes."""
+    Synthetic checks: Microsoft identity endpoints, DNS for example.com
+    and one reserved .invalid name, plus crt.sh and CertSpotter.
+    No user-supplied target is queried. --fix, --mcp, and --client are
+    local-only modes."""
     cli_doctor.validate_doctor_mode(fix=fix, mcp=mcp, client=client, config_path=config_path, json_output=json_output)
     if fix:
         if not _doctor_fix():

@@ -807,23 +807,25 @@ disclosure-safe pattern with synthetic fixtures. It does not publish a claim
 that a named organization uses a service. The passes from 2026-10-28
 through the 2026-11-17 survey-include check are the record in
 [catalog maintenance](catalog-maintenance.md) and the
-[public freshness ledger](catalog-freshness-ledger.json). Main
+[public freshness ledger](catalog-freshness-ledger.json).
 `c4c952941badd689e0478e657194a1c7ca8025d1` carries the mail-include
-check. This survey-include check dates the LucidLink verification
+check. `3218c8aa269c5b328ecd04e7a03167b08a1f60c0` carries the
+survey-include check. That check dates the LucidLink verification
 value, the Miro verification value, and the Qualtrics survey
 include, and it leaves five admitted rules undated.
 The catalog has 293 dated rules and 830 undated rules. Those passes
-do not cut a release. Tag `v2.27.2` stays `071c4356`. Qualifying CI
+ship in 2.27.3. Tag `v2.27.2` remains `071c4356`. 2.27.3 publishes
+the catalog date checks since that tag, the doctor help correction,
+the lock-drift policy, and the hosted Ubuntu floor. Qualifying CI
 jobs install the project environment with `uv sync --locked` and
 `UV_LOCKED`. A dependency change that `uv.lock` does not contain
 fails those jobs and leaves the lock unchanged. Issue 399 is that
-policy, and it does not cut a release. Hosted Ubuntu jobs stay on
-`ubuntu-latest`. actionlint v1.7.12 does not recognize
-`ubuntu-26.04`, and its configuration can only add self-hosted
-labels or ignore errors. GitHub moves that label to Ubuntu 26.04
-through 2026-11-19, and the required CI lint job on 2026-11-17
-already ran on that image. Issue 402 is that recorded floor, and
-it does not cut a release. The next round uses a new
+policy. Hosted Ubuntu jobs stay on `ubuntu-latest`. actionlint
+v1.7.12 does not recognize `ubuntu-26.04`, and its configuration
+can only add self-hosted labels or ignore errors. GitHub moves that
+label to Ubuntu 26.04 through 2026-11-19, and the required CI lint
+job on 2026-11-17 already ran on that image. Issue 402 is that
+recorded floor. The next round uses a new
 question list and the rules that are still due. The 2026-10 documentation
 pass read the IANA DNS parameter update and left collection on the existing
 record types. Agent portability remains a separate maintainer track and does

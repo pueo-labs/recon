@@ -30,45 +30,58 @@ operator, corporate group, ownership, or control.
 
 Tool surface changes: no CLI command or flag changes.
 
+## [2.27.3] - 2026-11-17
+
+Publish the catalog date checks since 2.27.2, correct `recon doctor
+--help` so it names both certificate-transparency probes, and record
+the dependency-lock CI policy and the hosted Ubuntu floor. No CLI
+command or flag changed. No new collector or detection was added.
+
+### Tool Surface Changes
+
+Tool surface changes: no CLI command or flag changes.
+
+### Fixed
+
+- `recon doctor --help` names both certificate-transparency probes.
+  The command contacts crt.sh and CertSpotter. The help text named
+  only crt.sh.
+
 ### Changed
 
 - Check eight undated TXT, SPF, and CNAME rules against
   current vendor pages. Date the Freshdesk mail include and
   the Loom verification value. Six rules stay undated because
   the fetched page does not print the catalog grammar at the
-  matching record shape. No new detection was added. This
-  does not cut a release.
+  matching record shape. No new detection was added.
 - Check eight undated TXT and SPF rules against current
   vendor pages. Date the LucidLink verification value, the
   Miro verification value, and the Qualtrics survey include.
   Five rules stay undated because the fetched page does not
   print the catalog grammar at the matching record shape.
-  No new detection was added. This does not cut a release.
+  No new detection was added.
 - Check eight undated TXT and CNAME rules against current
   vendor pages. Date the Disciple CNAME label. Seven rules stay
   undated because the fetched page does not print the catalog
   grammar at the matching record shape. No new detection was
-  added. This does not cut a release.
+  added.
 - Check eight undated TXT and CNAME rules against current
   vendor pages. Date the Wix pointing label, the WP Engine
   legacy label, and the Adobe Sign, Airtable, and Apple
   verification values. Three rules stay undated because the
   fetched page does not print the catalog grammar at the
-  matching record shape. No new detection was added. This does
-  not cut a release.
+  matching record shape. No new detection was added.
 - Check eight undated TXT, NS, and CNAME rules against current
   vendor pages. Date the Unity SSO verification value and the
   UltraDNS nameserver label. Six rules stay undated because the
   fetched page does not print the catalog grammar at the
-  matching record shape. No new detection was added. This does
-  not cut a release.
+  matching record shape. No new detection was added.
 - Keep hosted Ubuntu jobs on `ubuntu-latest`. actionlint v1.7.12
   does not recognize `ubuntu-26.04`, and its configuration can only
   add self-hosted labels or ignore errors. GitHub moves that label
   to Ubuntu 26.04 through 2026-11-19. The required CI lint job on
   2026-11-17 already ran on that image. Windows and macOS jobs stay
-  on their latest labels. This addresses issue 402 and does not cut
-  a release.
+  on their latest labels. This addresses issue 402.
 - Reject dependency lock drift in CI. Jobs that sync or run the
   project environment set `UV_LOCKED` and pass `--locked` to
   `uv sync`. A constraint change that `uv.lock` does not contain
@@ -76,97 +89,88 @@ Tool surface changes: no CLI command or flag changes.
   smoke, the reproducible build, and the release build stay outside
   that project sync. The free-threaded 3.15t leg stays advisory.
   Contributor and reviewer install commands use `uv sync --locked`.
-  This addresses issue 399 and does not cut a release.
+  This addresses issue 399.
 - Point the short and canonical roadmaps at the catalog maintenance
   record through the 2026-11-17 store-suffix check. The pass list
-  stays in that guide and the public ledger. This does not cut a release.
+  stays in that guide and the public ledger.
 - Check eight undated CAA, TXT, and CNAME rules against current
   vendor pages. Date the Sectigo issuer, the Shopify store
   suffix, and the Squarespace site suffix. Five rules stay
   undated because the fetched page does not print the catalog
-  grammar. No new detection was added. This does not cut a
-  release.
+  grammar. No new detection was added.
 - Check eight undated TXT, NS, and CNAME rules against current
   vendor pages. Date the Pantheon CNAME suffix. Seven rules
   stay undated because the fetched page does not print the
-  catalog grammar. No new detection was added. This does not
-  cut a release.
+  catalog grammar. No new detection was added.
 - Check eight undated TXT, CAA, and CNAME rules against
   current vendor pages. Date the Imgix CNAME suffix, the
   KeyCDN edge suffix, and the Let's Encrypt issuer. Five
   rules stay undated because the fetched page does not print
-  the catalog grammar. No new detection was added. This does
-  not cut a release.
+  the catalog grammar. No new detection was added.
 - Check eight undated TXT, NS, CAA, and CNAME rules against
   current vendor pages. Three rules received a `verified` date
   because the fetched page prints the catalog grammar. Five
   rules stay undated because the fetched page does not print
-  the catalog grammar. No new detection was added. This does
-  not cut a release.
+  the catalog grammar. No new detection was added.
 - Check eight undated NS, CNAME, and TXT rules against current
   vendor pages. Four rules received a `verified` date because the
   fetched page prints the catalog grammar. Four rules stay undated
   because the fetched page does not print the catalog grammar. No
-  new detection was added. This does not cut a release.
+  new detection was added.
 - Check eight undated CNAME, TXT, and CAA rules against current
   vendor pages. Four rules received a `verified` date because the
   fetched page prints the catalog grammar. Four rules stay undated
   because the fetched page does not print the catalog grammar. No
-  new detection was added. This does not cut a release.
+  new detection was added.
 - Check eight undated NS and CNAME rules against current vendor
   pages. Six rules received a `verified` date because the fetched
   page prints the catalog grammar. Two rules stay undated because
   the fetched page does not print the catalog grammar. No new
-  detection was added. This does not cut a release.
+  detection was added.
 - Check eight undated NS, TXT, CAA, and CNAME rules against
   current vendor pages. Six rules received a `verified` date
   because the fetched page prints the catalog grammar. Two
   rules stay undated because the fetched page does not print
-  the catalog grammar. No new detection was added. This does
-  not cut a release.
+  the catalog grammar. No new detection was added.
 - Check eight undated DMARC, SPF, MX, TXT, and NS rules against
   current vendor pages. Four rules received a `verified` date
   because the fetched page prints the catalog grammar. Four rules
   stay undated because the fetched page prints a narrower host, or
   does not print the catalog grammar. No new detection was added.
-  This does not cut a release.
 - Check eight undated TXT, DMARC, and SPF rules against current
   vendor pages and RFC 8460. Three rules received a `verified` date
   because the fetched page prints the catalog grammar. Five rules
   stay undated because the fetched page prints a narrower or
   different host, or does not print the catalog grammar. No new
-  detection was added. This does not cut a release.
+  detection was added.
 - Check eight undated SPF and DMARC rules against current vendor
   pages. Two rules received a `verified` date because the fetched
   page prints the catalog grammar. Six rules stay undated because
   the fetched page prints a narrower or different host, or does not
-  print the catalog include. No new detection was added. This does
-  not cut a release.
+  print the catalog include. No new detection was added.
 - Check eight undated TXT, DMARC, and SPF rules against current
   vendor pages. None received a `verified` date. A fetched page does
   not print the catalog grammar, prints a narrower reporting host, or
-  only a country-block statement. No new detection was added. This
-  does not cut a release.
+  only a country-block statement. No new detection was added.
 - Check eight undated DMARC, NS, CNAME, and SPF rules against current
   vendor pages. Three rules received a `verified` date because the
   fetched page prints the catalog grammar or a specific host under
   the existing suffix. Five rules stay undated. No new detection was
-  added. This does not cut a release.
+  added.
 - Check eight undated CNAME, SPF, MX, and DMARC rules against current
   vendor pages. Two MX suffixes received a `verified` date because the
   fetched page prints a specific exchanger under the existing suffix.
-  Six rules stay undated. No new detection was added. This does not
-  cut a release.
+  Six rules stay undated. No new detection was added.
 - Check eight undated DMARC, MX, SPF, TXT, and CNAME rules against
   current vendor pages. None received a `verified` date. A fetched
   page does not print the catalog grammar, prints a narrower include
   or exchanger host, or could not be retrieved. No new detection was
-  added. This does not cut a release.
+  added.
 - Check eight undated SPF, DMARC, and CNAME rules against current
   vendor pages. None received a `verified` date. A fetched page does
   not print the catalog grammar, prints a narrower or different
   include or reporting host, or could not be retrieved. No new
-  detection was added. This does not cut a release.
+  detection was added.
 - Date the Pexip portal verification prefix and the Proton Mail
   MX suffix from fetched vendor pages. The Pexip rule observes
   the TXT prefix `pexip-portal-domain-verification=`. The Proton
@@ -174,13 +178,13 @@ Tool surface changes: no CLI command or flag changes.
   undated rules in this pass stay undated because the fetched
   page is an application shell, prints a narrower include or
   reporting host, or is behind a help-center sign-in page. No
-  new detection was added. This does not cut a release.
+  new detection was added.
 - Date the NameBright nameserver suffix from the NameBright help
   page. The rule observes an NS host under `namebrightdns.com`.
   Seven other undated rules in this pass stay undated because the
   fetched page does not print the catalog grammar, prints a
   narrower include, or prints a different nameserver suffix. No
-  new detection was added. This does not cut a release.
+  new detection was added.
 - Date the CloudHub CNAME suffix and the Cloudflare Email Security
   MX suffix from fetched vendor pages. The CloudHub rule observes a
   CNAME target under `cloudhub.io`. The Cloudflare rule observes an
@@ -188,26 +192,25 @@ Tool surface changes: no CLI command or flag changes.
   stay undated because the fetched page uses the suffix only as an
   illustration, does not print it, does not resolve, prints a
   different include, or prints a narrower reporting host. No new
-  detection was added. This does not cut a release.
+  detection was added.
 - Date the Mailgun MX suffix and the Mailhardener reporting host
   from fetched vendor pages. The Mailgun rule observes an MX host
   under `mailgun.org`. The Mailhardener rule observes the
   documented aggregate reporting host. Six other undated rules in
   this pass stay undated because the fetched page prints a
   narrower include, a different suffix, or a different TXT
-  prefix. No new detection was added. This does not cut a release.
+  prefix. No new detection was added.
 - Date the iCloud Mail MX suffix from the Apple custom-domain
   article. The rule observes an MX host under `icloud.com`. Seven
   other undated rules in this pass stay undated because a fetched
   page does not print the catalog grammar, or prints a different TXT
-  prefix or an incomplete MX host. No new detection was added. This
-  does not cut a release.
+  prefix or an incomplete MX host. No new detection was added.
 - Date the Help Scout SPF include, the Heroku Private Space DNS
   suffix, and the Hornetsecurity MX suffix from current vendor pages.
   Each record observes the documented suffix. Five other undated rules
   in this pass stay undated because a fetched page prints a different
   MX or TXT value, or only a narrower SPF host. No new detection was
-  added. This does not cut a release.
+  added.
 - Date the Gandi nameserver suffix, the GoDaddy Professional Email MX
   suffix, the GoDaddy SPF include, the GoDaddy DMARC reporting suffix,
   and the Squarespace-documented Google Domains nameserver suffix from
@@ -215,66 +218,63 @@ Tool surface changes: no CLI command or flag changes.
   Three other undated rules in this pass stay undated because a fetched
   page does not print the catalog grammar, prints only a narrower host,
   or uses a mailbox at the suffix only as a syntax example. No new
-  detection was added. This does not cut a release.
+  detection was added.
 - Date the F5 Distributed Cloud nameserver suffix, the Fastmail MX
   suffix, the FortiMail Cloud MX suffix, and the Cloudflare Foundation
   DNS nameserver suffixes from current vendor pages. Each record
   observes the documented suffix. Two other undated rules in this pass
   stay undated because a fetched page prints only a narrower host. No
-  new detection was added. This does not cut a release.
+  new detection was added.
 - Date the easyDNS `easydns.net` nameserver suffix from the current
   vendor page. The record observes an NS host under `easydns.net`.
   Seven other undated rules in this pass stay undated because a
   fetched page prints only a narrower host, does not print the catalog
   grammar, did not return an article body, or the host did not resolve.
-  No new detection was added. This does not cut a release.
+  No new detection was added.
 - Date the remaining DNSimple nameserver suffixes, the DNS Made Easy
   nameserver suffix, the DNSPod nameserver suffix, the Docebo SPF
   include, and the easyDNS nameserver suffixes from current vendor
   pages. Each record observes the documented suffix. No new detection
-  was added. This does not cut a release.
+  was added.
 - Date the DMARCLY aggregate mailbox domain and the DNSimple
   nameserver suffix from current vendor pages. The DMARCLY record
   observes a rua mailbox domain of `dmarcly.com`. The DNSimple record
   observes an NS host under `dnsimple-edge.com`. Six other undated
   rules in this pass stay undated because a fetched page prints only
   a narrower host, does not print the catalog grammar, or the host
-  did not resolve. No new detection was added. This does not cut a
-  release.
+  did not resolve. No new detection was added.
 - Check eight undated DNS and email rules against current vendor
   pages. None received a `verified` date. A fetched page does not
   print the catalog grammar, the page did not return an article body,
-  or the host did not resolve. No new detection was added. This does
-  not cut a release.
+  or the host did not resolve. No new detection was added.
 - Check eight undated email, DNS, and event rules against current
   vendor pages. None received a `verified` date. A fetched page does
   not print the catalog grammar, prints only a narrower host than the
   existing suffix, or did not return an article body. No new detection
-  was added. This does not cut a release.
+  was added.
 - Date the Brevo DMARC aggregate reporting destination from the current
   vendor page, and point the rule at that page. The record observes a
   rua mailbox domain of `dmarc.brevo.com`. It does not prove that
   reports are collected or that mail is sent through Brevo. Seven other
   undated rules in this pass stay undated because their cited pages do
   not print the exact grammar, or the help page did not return an
-  article body. This does not cut a release.
+  article body.
 - Move the maintainer-only `agentic-validation` pins from Anthropic 0.125.0
   to 2.9.0 and from OpenAI 2.54.0 to 3.51.0, and refresh the lock. The
   harness still calls `messages.create` and `chat.completions.create` with
   `max_tokens` and without `temperature`. Both current SDKs accept that
   shape. The new SDK requirements stay inside packages the runtime graph
-  already uses. This does not cut a release.
+  already uses.
 - Move the draft Cloud Run Google provider constraint from `>= 7.0, < 8.0`
   to `>= 8.0, < 9.0` and refresh the provider lock. The 8.0 upgrade guide
   does not change `google_cloud_run_v2_service` or the other resources in
-  that module. This does not cut a release.
+  that module.
 - Date the Atlassian sending-domain verification TXT from the current
   vendor page, and point the rule at that page. The record observes a
   TXT value that begins with `atlassian-sending-domain-verification=`.
   It does not prove that the DNS check succeeded or that mail is being
   sent. Seven other undated rules in this pass stay undated because
-  their cited pages do not print the exact grammar. This does not cut
-  a release.
+  their cited pages do not print the exact grammar.
 
 ## [2.27.2] - 2026-11-16
 
