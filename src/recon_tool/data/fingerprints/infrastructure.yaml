@@ -479,11 +479,15 @@ fingerprints:
       products.
   - type: ns
     pattern: akam.net
-    reference: https://techdocs.akamai.com/edge-dns/docs/welcome-to-edge-dns
+    reference: https://techdocs.akamai.com/edge-dns/reference/get-data-authorities
+    verified: '2026-11-16'
     description: >-
-      NS records terminating in akam.net (alternative Akamai
-      authoritative-DNS domain). Same authoritative-DNS
-      semantics as the akamai.net form.
+      NS suffix documented for Akamai Edge DNS. The
+      authoritative name server reference prints name servers
+      under `akam.net` and says to use them as NS records.
+      This observes that suffix. It does not prove that every
+      zone uses one example host. The specific hosts were not
+      added.
   - type: cname
     pattern: akamaiedge.net
     reference: https://techdocs.akamai.com/property-mgr/reference/modify-property-hostnames

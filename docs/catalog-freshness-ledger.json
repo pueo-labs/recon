@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "31cb2e14256e8e52c6a0b310df4755c09fae57dbce383268d9065bc45dc09d95",
+  "catalog_digest": "d498011adb77c4d30c50b0501bc3aa757489b7a9de04ede23794a946252fb8fe",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -2976,8 +2976,104 @@
       "rule_id": "email.yaml/tls-rpt/txt/^v=TLSRPTv1",
       "source_checked_on": "2026-11-16",
       "source_status": "checked"
+    },
+    {
+      "basis": "The cited DMARC page returns a 404. The getting-started article checked 2026-11-16 prints an aggregate mailbox at a customer subdomain of uriports.com. A narrower host does not date the broad suffix. That host was not added. The local-part was not copied. The catalog DMARC suffix stays undated.",
+      "disposition": "deferred",
+      "new_reference": "https://www.uriports.com/getting-started-with-email-monitoring",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://www.uriports.com/dmarc/",
+      "review_digest": "e242f50586b599ecdba85fbd9b5e32dbca1ac5e348d3bf6e3c2bb92becbfb3d8",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/uriports/dmarc_rua/uriports.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited help.valimail.com host does not resolve. The Valimail Monitor article checked 2026-11-16 prints an aggregate mailbox at vali.email. The rule observes that reporting domain. It does not prove that Valimail is the only report destination. The local-part was not copied. The nameserver host was not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://support.valimail.com/en/articles/8466256-getting-started-with-valimail-monitor",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://help.valimail.com/",
+      "review_digest": "989b58f28cc05ca205d36a7e1d2f3f674beca12464f0d8bce81a49b6365993a4",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/valimail/dmarc_rua/vali.email",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "No prior reference is recorded. The ValiGov announcement checked 2026-11-16 does not print valigov.email or rua=. The fetched Valimail support articles also do not print that domain. The catalog DMARC suffix stays undated. No narrower host was added.",
+      "disposition": "deferred",
+      "new_reference": "https://www.valimail.com/newsroom/valimail-announces-valigov-the-first-and-only-automated-email-authentication-product-for-u-s-government",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "4c048a9c850c0f7795b7c6f9b8d24feb0fc2961d1b58e8d1bd15501016e9def6",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/valimail/dmarc_rua/valigov.email",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited help.valimail.com host does not resolve. The Valimail Monitor article checked 2026-11-16 prints an aggregate mailbox at vali.email. It does not print a reporting mailbox at valimail.com. A footer contact address is not an aggregate destination. The catalog DMARC suffix stays undated.",
+      "disposition": "deferred",
+      "new_reference": "https://support.valimail.com/en/articles/8466256-getting-started-with-valimail-monitor",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://help.valimail.com/",
+      "review_digest": "52600bcbb5273e6b2f9dcba45263c6d4f72c72242a4d4d978c11e223a9eebea9",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/valimail/dmarc_rua/valimail.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited help.valimail.com host does not resolve. The DNS setup article checked 2026-11-16 prints a macro include under _spf.vali.email. It does not print include:valimail.com. That narrower include was not added. The catalog SPF stays undated.",
+      "disposition": "deferred",
+      "new_reference": "https://support.valimail.com/en/articles/9142775-setup-your-dns-records-to-use-valimail",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://help.valimail.com/",
+      "review_digest": "f64fc2bcb5f80bff3807e58972c74e7965aa87cfd59137aa460d474b2700501b",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/valimail/spf/valimail.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited domain-verification article does not print an MX host under zoho.com. The email-delivery article checked 2026-11-16 prints MX hosts under zoho.com. The rule observes that suffix. It does not prove that Zoho Mail is the only inbound provider. The specific hosts were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://www.zoho.com/mail/help/adminconsole/configure-email-delivery.html",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://www.zoho.com/mail/help/adminconsole/domain-verification.html",
+      "review_digest": "292f69a54d53fec8a28c821e5897ca48be53eb66b18e98f30078cb45aa160b89",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/zoho/mx/zoho.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The Zoho domain-verification article checked 2026-11-16 says to publish a TXT value that begins with zoho-verification=. The rule observes that prefix. It does not prove that Zoho Mail is the only Zoho product or the only mail provider. The placeholder value was not added as a pattern.",
+      "disposition": "narrowed",
+      "new_reference": "https://www.zoho.com/mail/help/adminconsole/domain-verification.html",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://www.zoho.com/mail/help/adminconsole/domain-verification.html",
+      "review_digest": "91eb16aed1a67f1ff930962de87869656d5808e9989de5919ab0946a2d764f19",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/zoho/txt/^zoho-verification=",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited Edge DNS welcome page returns a 404 and does not print akam.net. The authoritative name server reference checked 2026-11-16 prints name servers under akam.net and says to use them as NS records. The rule observes that suffix. It does not prove that every zone uses one example host. The specific hosts were not added. Example contract identifiers were not copied.",
+      "disposition": "narrowed",
+      "new_reference": "https://techdocs.akamai.com/edge-dns/reference/get-data-authorities",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://techdocs.akamai.com/edge-dns/docs/welcome-to-edge-dns",
+      "review_digest": "529949e21237e5a01e577d376ba4b14fa0ae7a3bec3322160a901e9a70d4b82f",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/akamai/ns/akam.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, and a later 2026-11-16 verification prefix, SPF include, and TLS reporting reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, and a later 2026-11-16 verification prefix, SPF include, and TLS reporting reference check, and a later 2026-11-16 reporting mailbox, verification prefix, mail exchanger, and nameserver reference check, not a complete catalog review"
 }

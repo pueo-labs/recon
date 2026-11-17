@@ -1106,6 +1106,62 @@
       "reviewed_on": "2026-11-16",
       "source_checked_on": "2026-11-16",
       "reason": "RFC 8460 checked 2026-11-16: https://datatracker.ietf.org/doc/html/rfc8460. It defines the SMTP TLS reporting TXT record and prints v=TLSRPTv1. The rule observes that prefix. It does not prove that reports are delivered or that TLS is enforced. The example reporting hosts were not added."
+    },
+    {
+      "rule": {
+        "source": "email.yaml",
+        "slug": "valimail",
+        "detection_type": "dmarc_rua",
+        "pattern": "vali.email"
+      },
+      "before": "75f8d70cdca8a09535082ac14451933093cfb3db9c387d8fc316487c820d3b53",
+      "after": "989b58f28cc05ca205d36a7e1d2f3f674beca12464f0d8bce81a49b6365993a4",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Valimail Monitor article checked 2026-11-16: https://support.valimail.com/en/articles/8466256-getting-started-with-valimail-monitor. It prints an aggregate mailbox at vali.email. The rule observes that reporting domain. It does not prove that Valimail is the only report destination. The local-part was not copied. The nameserver host was not added."
+    },
+    {
+      "rule": {
+        "source": "email.yaml",
+        "slug": "zoho",
+        "detection_type": "mx",
+        "pattern": "zoho.com"
+      },
+      "before": "194c6ae0eab0531bd25cc89ccbabd126c253b27d048f8b1805bba941ec27e888",
+      "after": "292f69a54d53fec8a28c821e5897ca48be53eb66b18e98f30078cb45aa160b89",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Zoho email-delivery article checked 2026-11-16: https://www.zoho.com/mail/help/adminconsole/configure-email-delivery.html. It prints mail exchangers under zoho.com. The rule observes that suffix. It does not prove that Zoho Mail is the only inbound provider. The specific hosts were not added."
+    },
+    {
+      "rule": {
+        "source": "email.yaml",
+        "slug": "zoho",
+        "detection_type": "txt",
+        "pattern": "^zoho-verification="
+      },
+      "before": "ecac07d8211f076d26cde251a6c07a6f68e332ddffff7bcee3be4ca88144406f",
+      "after": "91eb16aed1a67f1ff930962de87869656d5808e9989de5919ab0946a2d764f19",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Zoho domain-verification article checked 2026-11-16: https://www.zoho.com/mail/help/adminconsole/domain-verification.html. It says to publish a TXT value that begins with zoho-verification=. The rule observes that prefix. It does not prove that Zoho Mail is the only Zoho product or the only mail provider. The placeholder value was not added as a pattern."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "akamai",
+        "detection_type": "ns",
+        "pattern": "akam.net"
+      },
+      "before": "3f62a3b0eaef7b3bbca0b10538e488455201454619f0abaa67f7d72a352ffc55",
+      "after": "529949e21237e5a01e577d376ba4b14fa0ae7a3bec3322160a901e9a70d4b82f",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Akamai authoritative name server reference checked 2026-11-16: https://techdocs.akamai.com/edge-dns/reference/get-data-authorities. It prints name servers under akam.net and says to use them as NS records. The rule observes that suffix. It does not prove that every zone uses one example host. The specific hosts were not added. Example contract identifiers were not copied."
     }
   ]
 }
