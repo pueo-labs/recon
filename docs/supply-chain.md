@@ -678,11 +678,11 @@ The repository also runs supply-chain posture checks outside the release flow:
 - `.github/CODEOWNERS` routes all repository paths to the maintainer account so
   external pull requests have a clear review owner.
 
-The 2026-10-20 Scorecard recheck for the exact current-release `HEAD` reports
-score `8.4`. All required measured code-owned controls, including SAST, are at
-`10`. The public API reports successful supported SAST checks for every merged
-pull request in its sampled window. Remote release readiness requires an
-overall score of at least `8.0` and enforces the current SAST floor of `10`.
+Remote release readiness requires an overall score of at least `8.0` and
+enforces the current SAST floor of `10`. For v2.27.3 the public result
+reported 8.3 overall. A third-party access restriction prevented OpenSSF
+from scoring SAST and CI-Tests. An unavailable required check fails remote
+readiness. See the [dated Scorecard snapshot](openssf-posture.md#current-snapshot).
 Current pull requests and pushes to `main` run CodeQL, and weekly and manual
 default-branch scans remain. The sample size and dated score are snapshots,
 not permanent promises.

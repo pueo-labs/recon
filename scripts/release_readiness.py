@@ -923,29 +923,42 @@ def _scorecard_problem(payload: dict[str, object], sha: str) -> str | None:
     if reported_commit != sha:
         return f"Scorecard commit is {reported_commit!r}, expected {sha}"
     score = payload.get("score")
-    if not isinstance(score, int | float):
-        return "Scorecard score is missing or not numeric"
+    if isinstance(score, bool) or not isinstance(score, int | float) or not 0 <= score <= 10:
+        return "Scorecard score must be a number from 0 to 10"
     if score < _MIN_SCORECARD_SCORE:
         return f"Scorecard score is {score}, below {_MIN_SCORECARD_SCORE}"
     checks = payload.get("checks")
     if not isinstance(checks, list):
         return "Scorecard checks were not a list"
-    scores: dict[str, object] = {}
-    for check in checks:
-        if isinstance(check, dict) and isinstance(check.get("name"), str):
-            scores[check["name"]] = check.get("score")
+    return _scorecard_checks_problem(checks)
+
+
+def _scorecard_checks_problem(checks: list[object]) -> str | None:
+    scores: dict[str, int] = {}
     required_names = set(_REQUIRED_SCORECARD_TENS) | set(_REQUIRED_SCORECARD_MINIMUMS)
-    missing = [name for name in sorted(required_names) if name not in scores]
+    for check in checks:
+        if not isinstance(check, dict):
+            continue
+        name = check.get("name")
+        if not isinstance(name, str) or name not in required_names:
+            continue
+        if name in scores:
+            return f"duplicate required Scorecard check: {name}"
+        value = check.get("score")
+        if value == -1:
+            return f"Scorecard could not evaluate {name} (score -1); inspect the public result for this commit"
+        if isinstance(value, bool) or not isinstance(value, int) or not 0 <= value <= 10:
+            return f"Scorecard {name} score must be an integer from 0 to 10"
+        scores[name] = value
+    missing = sorted(required_names.difference(scores))
     if missing:
         return "missing Scorecard check(s): " + ", ".join(missing)
     weak = [f"{name}={scores[name]!r}" for name in _REQUIRED_SCORECARD_TENS if scores[name] != 10]
     if weak:
         return "code-owned Scorecard check(s) regressed: " + ", ".join(weak)
-    below_floor: list[str] = []
-    for name, minimum in _REQUIRED_SCORECARD_MINIMUMS.items():
-        score_value = scores[name]
-        if not isinstance(score_value, int | float) or score_value < minimum:
-            below_floor.append(f"{name}={score_value!r}")
+    below_floor = [
+        f"{name}={scores[name]}" for name, minimum in _REQUIRED_SCORECARD_MINIMUMS.items() if scores[name] < minimum
+    ]
     if below_floor:
         return "Scorecard check(s) below expected floor: " + ", ".join(below_floor)
     return None

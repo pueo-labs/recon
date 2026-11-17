@@ -26,6 +26,10 @@ operator, corporate group, ownership, or control.
 
 ## [Unreleased]
 
+Maintainer tooling rejects invalid or duplicated required OpenSSF Scorecard
+scores and identifies checks the provider could not evaluate. The optional
+validation harness now pins OpenAI 3.54.0.
+
 ### Tool Surface Changes
 
 Tool surface changes: no CLI command or flag changes.

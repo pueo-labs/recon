@@ -37,11 +37,13 @@ absent.
 
 ## Resume here
 
-The November maintenance batch is [v2.27.3](CHANGELOG.md#2273---2026-11-17).
+GitHub, PyPI, and the MCP Registry published [v2.27.3](CHANGELOG.md#2273---2026-11-17) from commit `c5482aad`.
 It covers the resolver warning, DKIM vendor display, policy comparisons,
 cache directory handling, and a compatible dependency refresh. Continue with
 the monthly catalog review and check fresh operator reports before expanding
-the detection engine.
+the detection engine. The public Scorecard result for that commit reports
+SAST as unavailable because GitHub denied access to third-party check data.
+CodeQL and the Scorecard workflow passed. Keep the public SAST floor at 10.
 
 Previous baseline: tag `v2.27.2` is `071c4356`. That tag's PyPI
 release, GitHub Release, and MCP Registry entry
