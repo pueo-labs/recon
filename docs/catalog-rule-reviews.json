@@ -1526,6 +1526,20 @@
       "reviewed_on": "2026-11-17",
       "source_checked_on": "2026-11-17",
       "reason": "CAA documentation page checked 2026-11-17: https://letsencrypt.org/docs/caa/. It prints a CAA issue record whose issuer is letsencrypt.org. The rule observes that issuer. It does not prove that a certificate was issued. The example name was not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "pantheon",
+        "detection_type": "cname",
+        "pattern": "pantheon.io"
+      },
+      "before": "4bd3d71252de4064398141937ddf3d6b9e22b37e5059b5e26cce82f0b5c3073d",
+      "after": "a268db090323b0cfe67a95cf8163835ba71f21f93db892a83fc350f2f91a5dea",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-17",
+      "source_checked_on": "2026-11-17",
+      "reason": "GCDN cutover page checked 2026-11-17: https://docs.pantheon.io/guides/nextgen-gcdn/o2o. It says the hostname CNAME points to a name under pantheon.io. The rule observes that suffix. It does not prove that Pantheon is serving the site. The placeholder and the platform domain were not added."
     }
   ]
 }

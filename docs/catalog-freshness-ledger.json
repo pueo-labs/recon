@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "4ee8835111ed5e70e377a660571febb6ae86af2cee82f0e603651fa6c6362723",
+  "catalog_digest": "2d835dafcd0f6d7f990d7b94ca5991bac94913b1f56722fcfca6903e4b438293",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -3648,8 +3648,104 @@
       "rule_id": "infrastructure.yaml/netlify/txt/^netlify=",
       "source_checked_on": "2026-11-17",
       "source_status": "checked"
+    },
+    {
+      "basis": "The cited custom domains URL checked 2026-11-17 redirects to the domain setup page. That page does not print verified-for-netlify= as TXT record content. The catalog prefix stays undated. No token or site host was added.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.netlify.com/domains-https/custom-domains/",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://docs.netlify.com/domains-https/custom-domains/",
+      "review_digest": "89903f70ef02d3df0cd8917547d4fcb5ba3ceb712051234be0f56f886ecf58f8",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/netlify/txt/^verified-for-netlify=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited product page checked 2026-11-17 redirects to an IBM product page that does not print nsone.net. The nameserver assignment article returned HTTP 403 and does not print a nameserver host. The catalog suffix stays undated. No nameserver hostname was added.",
+      "disposition": "deferred",
+      "new_reference": "https://www.ns1.com/products/managed-dns/",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://www.ns1.com/products/managed-dns/",
+      "review_digest": "03597a5fe10b0b13e6f3b4c6e8eabc289ca5a8713eda0572139102c9e8886c78",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/ns1/ns/nsone.net",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited support URL checked 2026-11-17 redirects to the getting-started page. That page does not print pagerduty-domain-verification= as TXT record content. The catalog prefix stays undated. No token was added.",
+      "disposition": "deferred",
+      "new_reference": "https://support.pagerduty.com/",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://support.pagerduty.com/",
+      "review_digest": "0a5cb7e6b9b82bcf85f8b1e9833169137b2b2c786fed01e8925b5b9d21b9eee6",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/pagerduty/txt/^pagerduty-domain-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited domains URL checked 2026-11-17 returns HTTP 404. The platform domains page prints pantheon.io only as a robots.txt pattern. The GCDN cutover page says the hostname CNAME points to a name under edge.pantheon.io. The rule observes that suffix. It does not prove that Pantheon is serving the site. The placeholder and the platform domain were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://docs.pantheon.io/guides/nextgen-gcdn/o2o",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://docs.pantheon.io/domains",
+      "review_digest": "a268db090323b0cfe67a95cf8163835ba71f21f93db892a83fc350f2f91a5dea",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/pantheon/cname/pantheon.io",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited domain capture URL checked 2026-11-17 redirects to the domain capture overview. The add-and-verify page says to copy a TXT record from Postman and does not print postman-domain-verification=. The catalog prefix stays undated. No token was added.",
+      "disposition": "deferred",
+      "new_reference": "https://learning.postman.com/docs/administration/managing-your-team/configuring-domain-capture/",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://learning.postman.com/docs/administration/managing-your-team/configuring-domain-capture/",
+      "review_digest": "ea0749bac13449c3a3620819cdc547537273588e6f97729d7db24e741b7c0030",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/postman/txt/^postman-domain-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited docs page checked 2026-11-17 prints prismic.io as a documentation link and does not print a CNAME target. The catalog suffix stays undated. No repository hostname was added.",
+      "disposition": "deferred",
+      "new_reference": "https://prismic.io/docs",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://prismic.io/docs",
+      "review_digest": "961ce0af4b1887e9318accd26227f85a395de2f9b74dbc2dfbd09410b4c51b7a",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/prismic/cname/prismic.io",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited custom domains page checked 2026-11-17 redirects to the Render custom domains article. That page does not print render-domain-verification=. It prints CNAME targets under onrender.com, which is a different rule. The catalog prefix stays undated. No service hostname was added.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.render.com/custom-domains",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://docs.render.com/custom-domains",
+      "review_digest": "91920cb3b0368838aff9c6b66e9b3f88f798484d45f9d2b8bc780d006562fe7d",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/render/txt/^render-domain-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited docs page checked 2026-11-17 prints sanity.io as the documentation site and does not print a CNAME target. The catalog suffix stays undated. No asset hostname was added.",
+      "disposition": "deferred",
+      "new_reference": "https://www.sanity.io/docs",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://www.sanity.io/docs",
+      "review_digest": "b86f61c1087fc544a9a2df7fd2c9dbcbd6bbfcc657739ec88a6e2aa5ea3a3c82",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/sanity/cname/sanity.io",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, and a later 2026-11-16 verification prefix, SPF include, and TLS reporting reference check, and a later 2026-11-16 reporting mailbox, verification prefix, mail exchanger, and nameserver reference check, and a later 2026-11-16 certificate issuer, distribution suffix, environment name, and load balancer hostname reference check, and a later 2026-11-16 nameserver label, website infix, REST suffix, and edge hostname reference check, and a later 2026-11-16 endpoint suffix, routing suffix, token prefix, and issuer host reference check, and a later 2026-11-16 nameserver suffix, edge hostname, edge pattern, and publication hostname reference check, and a later 2026-11-17 verification owner, verification value, and issuer host reference check, and a later 2026-11-17 image suffix, edge suffix, and issuer host reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, and a later 2026-11-16 verification prefix, SPF include, and TLS reporting reference check, and a later 2026-11-16 reporting mailbox, verification prefix, mail exchanger, and nameserver reference check, and a later 2026-11-16 certificate issuer, distribution suffix, environment name, and load balancer hostname reference check, and a later 2026-11-16 nameserver label, website infix, REST suffix, and edge hostname reference check, and a later 2026-11-16 endpoint suffix, routing suffix, token prefix, and issuer host reference check, and a later 2026-11-16 nameserver suffix, edge hostname, edge pattern, and publication hostname reference check, and a later 2026-11-17 verification owner, verification value, and issuer host reference check, and a later 2026-11-17 image suffix, edge suffix, and issuer host reference check, and a later 2026-11-17 traffic edge hostname reference check, not a complete catalog review"
 }
