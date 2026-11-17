@@ -299,13 +299,13 @@ fingerprints:
   - type: txt
     pattern: ^protonmail-verification=
     reference: https://proton.me/support/custom-domain
+    verified: '2026-11-16'
     description: >-
-      Proton Mail custom-domain verification TXT. Indicates the
-      domain is administratively bound to a Proton account for
-      use as a Proton Mail custom-domain alias. Does not prove
-      Proton Mail is the exclusive mail provider for the
-      domain; corroborate with Proton MX records
-      (`*.protonmail.ch`).
+      TXT prefix documented for Proton Mail custom-domain
+      verification (`protonmail-verification=`). The custom-domain
+      article says to publish that prefix. This observes the
+      prefix. It does not prove that Proton Mail is the only mail
+      provider. The placeholder value was not added as a pattern.
 - name: AWS SES
   slug: aws-ses
   category: Email & Communication
@@ -340,13 +340,14 @@ fingerprints:
   detections:
   - type: spf
     pattern: sendgrid.net
-    reference: https://docs.sendgrid.com/ui/account-and-settings/how-to-set-up-domain-authentication
+    reference: https://www.twilio.com/docs/sendgrid/ui/account-and-settings/how-to-set-up-domain-authentication
+    verified: '2026-11-16'
     description: >-
-      SPF `include:sendgrid.net` authorizes SendGrid (a Twilio
-      property) to send mail on behalf of the domain. SendGrid
-      is a transactional and bulk-mail sender; this is an
-      outbound-authorization signal, not an indication that
-      SendGrid receives mail for the domain.
+      SPF include documented for SendGrid (`include:sendgrid.net`).
+      The domain authentication guide prints that include. This
+      observes the include. It does not prove that mail is sent
+      through SendGrid or that the include is the only sender
+      authorization.
 - name: Mailgun
   slug: mailgun
   category: Email & Communication
@@ -455,13 +456,13 @@ fingerprints:
   - type: txt
     pattern: ^v=TLSRPTv1
     reference: https://datatracker.ietf.org/doc/html/rfc8460
+    verified: '2026-11-16'
     description: >-
-      SMTP TLS Reporting (RFC 8460) policy TXT, found at
-      `_smtp._tls.<domain>`. Indicates the domain has opted in
-      to receive aggregated TLS failure reports for inbound
-      SMTP connections. Implies a baseline of email-security
-      tooling investment; does not by itself prove DMARC
-      enforcement.
+      SMTP TLS reporting policy prefix documented by RFC 8460
+      (`v=TLSRPTv1`). The RFC prints that prefix on the
+      `_smtp._tls` TXT record. This observes the prefix. It
+      does not prove that reports are delivered or that TLS is
+      enforced.
 - name: AutoSPF
   slug: autospf
   category: Email & Communication

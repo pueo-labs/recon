@@ -1064,6 +1064,48 @@
       "reviewed_on": "2026-11-16",
       "source_checked_on": "2026-11-16",
       "reason": "Red Sift DMARC guide checked 2026-11-16: https://redsift.com/guides/email-protocol-configuration-guide/learn-more-about-dmarc. It prints aggregate report targets at ondmarc.com. The rule observes that reporting domain. It does not prove that reports go only there. The narrower host inbox.ondmarc.com was not added. Example domains and local-parts were not copied."
+    },
+    {
+      "rule": {
+        "source": "email.yaml",
+        "slug": "protonmail",
+        "detection_type": "txt",
+        "pattern": "^protonmail-verification="
+      },
+      "before": "a58fb5196593908259f822a084fa587cbfd390ce4847338211d3513ac2dccafe",
+      "after": "a6c91b55020bbf109861009c6fa9fa6bdd61f9031623c6b93988a18a369940c6",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Proton Mail custom-domain article checked 2026-11-16: https://proton.me/support/custom-domain. It says to publish a TXT value that begins with protonmail-verification=. The rule observes that prefix. It does not prove that Proton Mail is the only mail provider. The placeholder value was not added as a pattern. The MX hosts were not added."
+    },
+    {
+      "rule": {
+        "source": "email.yaml",
+        "slug": "sendgrid",
+        "detection_type": "spf",
+        "pattern": "sendgrid.net"
+      },
+      "before": "3d28c8eafb3a14a1ccb7834ac0bb000b756c157074ebbe4010fab27edcb56d14",
+      "after": "664e5af0230704b8f1cb6fc5a186da5d9a66a4b9acb051e50574c3c7f8190a01",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Twilio SendGrid domain-authentication guide checked 2026-11-16: https://www.twilio.com/docs/sendgrid/ui/account-and-settings/how-to-set-up-domain-authentication. It prints v=spf1 include:sendgrid.net ~all. The rule observes that include. It does not prove that SendGrid is the only sender. The example MX host and example domain were not added."
+    },
+    {
+      "rule": {
+        "source": "email.yaml",
+        "slug": "tls-rpt",
+        "detection_type": "txt",
+        "pattern": "^v=TLSRPTv1"
+      },
+      "before": "fe3bf4b42a4f0e85c972f955d26fc3f8c5ee87e62f5457cb87721aaf5511ca99",
+      "after": "91f36f64e4759f0c1d102a537961197c9fba36bbbb1f0a4a0de9e5b86ad0de91",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "RFC 8460 checked 2026-11-16: https://datatracker.ietf.org/doc/html/rfc8460. It defines the SMTP TLS reporting TXT record and prints v=TLSRPTv1. The rule observes that prefix. It does not prove that reports are delivered or that TLS is enforced. The example reporting hosts were not added."
     }
   ]
 }
