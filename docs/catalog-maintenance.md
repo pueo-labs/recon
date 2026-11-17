@@ -231,7 +231,8 @@ and a later 2026-11-16 nameserver and mail reference check,
 and a later 2026-11-16 nameserver, mail, and reporting reference
 check, and a later 2026-11-16 mail, SPF, and custom-DNS reference
 check, and a later 2026-11-16 mail and verification reference check,
-and a later 2026-11-16 mail exchanger and reporting reference check.
+and a later 2026-11-16 mail exchanger and reporting reference check,
+and a later 2026-11-16 CloudHub and mail exchanger reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
 bind due rules to their exact claim/catalog digest, prior/new reference, actual
@@ -1298,6 +1299,69 @@ updated August 28, 2025, prints hostnames under `inbound.emailservice.io`,
 `inbound.emailservice.cc`, and `inbound.emailservice.co`. It does not
 print `mxrecord.io`. Those other suffixes were not added. The catalog
 MX stays undated.
+
+### Documented reference check, later on 2026-11-16, CloudHub and mail exchanger
+
+This pass checked eight undated NS, SPF, MX, CNAME, and DMARC rules.
+Two received a `verified` date because the fetched vendor page prints
+the catalog grammar. Six stayed undated. No new detection, DNS record
+type, or collection path was added. This note does not cut a release.
+
+The [CloudHub 2.0 networking guide](https://docs.mulesoft.com/cloudhub-2/ch2-networking-guide)
+says to point a custom-domain CNAME at a host under `cloudhub.io` and
+prints application DNS names under that suffix. The rule observes a
+CNAME target under `cloudhub.io`. It does not prove that an
+application is deployed or that CloudHub is the only target. The
+example space label was not copied. The classic load-balancer article
+prints a CNAME to `anypointdns.net`. That other suffix was not added.
+
+The [Cloudflare Email Security Google Workspace guide](https://developers.cloudflare.com/email-security/deployment/inline/setup/gsuite-area1-mx/),
+last updated April 21, 2026, prints `mailstream-central.mxrecord.mx`
+as an MX host. The rule observes an MX host under `mxrecord.mx`. It
+does not prove that mail is delivered or that Cloudflare Email
+Security is the only exchanger. That specific host was not added.
+Hosts under `mxrecord.io` on the same page were not added.
+
+The [MarkMonitor DNS API PDF](https://api-public-doc-mm.s3.us-west-2.amazonaws.com/MarkmonitorDnsAPI.pdf)
+uses `ns.markmonitor.com` as a hypothetical substring-search
+illustration beside a TXT example on the same domain. It does not say
+customer zones are delegated to nameservers under `markmonitor.com`.
+The premium DNS page and datasheet do not print a nameserver
+hostname. WHOIS and DNS-directory pages are not a vendor basis. No
+nameserver host was added. The catalog NS stays undated.
+
+The [MarkMonitor premium DNS page](https://www.markmonitor.com/secure-global-dns-services/)
+and the same DNS API PDF and datasheet do not print
+`markmonitor.zone`. WHOIS listings of hosts under that suffix are not
+a vendor basis. No nameserver host was added. The catalog NS stays
+undated.
+
+`messageprovider.com` and `www.messageprovider.com` did not resolve
+on 2026-11-16, so no vendor page could be fetched. No first-party
+page printing `include:messageprovider.com` was found. Third-party
+DNS tools are not a vendor basis. A narrower host seen only there
+was not added. The catalog SPF stays undated.
+
+Three Microsoft 365 product pages do not print `msv1.invalid`:
+[Add a custom domain](https://learn.microsoft.com/en-us/microsoft-365/admin/setup/add-domain),
+updated May 8, 2026;
+[Create DNS records at any DNS host](https://learn.microsoft.com/en-us/microsoft-365/admin/get-help-with-domains/create-dns-records-at-any-dns-hosting-provider),
+updated April 23, 2026; and
+[Gather the information you need to create DNS records](https://learn.microsoft.com/en-us/microsoft-365/admin/get-help-with-domains/information-for-dns-records),
+updated June 16, 2026. Community Q&A is not a product page. No
+verification token was copied. The catalog MX stays undated.
+
+The [Mimecast SPF article](https://mimecastsupport.zendesk.com/hc/en-us/articles/34000792642963-Connect-Application-Implementing-SPF-for-Outbound-Email),
+updated September 23, 2026, prints `include:eu._netblocks.mimecast.com`
+and `include:_netblocks.mimecast.com`. It does not print
+`include:mim.ec`. Those other includes were not added. The catalog
+SPF stays undated.
+
+The [MxToolbox DMARC integration article](https://knowledgebase.mxtoolbox.com/home/dmarc-integration)
+prints an aggregate rua mailbox at `mxtoolbox.dmarc-report.com`. That
+host is narrower than the existing `dmarc-report.com` suffix, and the
+local-part is a placeholder. The broader suffix stays undated. The
+narrower host and the local-part were not copied.
 
 ## Executable path
 

@@ -896,6 +896,34 @@
       "reviewed_on": "2026-11-16",
       "source_checked_on": "2026-11-16",
       "reason": "Mailhardener DMARC article checked 2026-11-16: https://www.mailhardener.com/kb/dmarc. It prints rua=mailto:dmarc-reports@mailhardener.com. A second example uses a mailbox at in.mailhardener.com. The rule observes the mailhardener.com reporting host. It does not prove that reports are delivered or that Mailhardener is the only destination. The mailbox local-parts were not added as patterns. The in.mailhardener.com host was not added."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "mulesoft",
+        "detection_type": "cname_target",
+        "pattern": "cloudhub.io"
+      },
+      "before": "bd34984f84a03f1248baa2148107b6682cd5dde84a8abc307ede2aff8bb6e1d9",
+      "after": "15b5795a3f714939051f414dff9d2ddf363be5b7e689f04de2c88f1374dd52d5",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "CloudHub 2.0 networking guide checked 2026-11-16: https://docs.mulesoft.com/cloudhub-2/ch2-networking-guide. It says to point a custom-domain CNAME at a host under cloudhub.io and prints application DNS names under that suffix. The rule observes a CNAME target under cloudhub.io. It does not prove that an application is deployed or that CloudHub is the only target. The example space label was not copied. A CNAME to anypointdns.net was not added."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "mxrecord",
+        "detection_type": "mx",
+        "pattern": "mxrecord.mx"
+      },
+      "before": "3186d6b7b413d0e80486ec0ab16d510f45ebb87a9a5de4fb1489d1f0e20ddb23",
+      "after": "899c841d705f71d6377d6c1fe1fabfa53cf29044da669667afff865660c83970",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Cloudflare Email Security guide for Google Workspace, last updated 2026-04-21, checked 2026-11-16: https://developers.cloudflare.com/email-security/deployment/inline/setup/gsuite-area1-mx/. It prints mailstream-central.mxrecord.mx as an MX host. The rule observes an MX host under mxrecord.mx. It does not prove that mail is delivered or that Cloudflare Email Security is the only exchanger. That specific host was not added. Hosts under mxrecord.io on the same page were not added."
     }
   ]
 }

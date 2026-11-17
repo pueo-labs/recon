@@ -32,6 +32,14 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Date the CloudHub CNAME suffix and the Cloudflare Email Security
+  MX suffix from fetched vendor pages. The CloudHub rule observes a
+  CNAME target under `cloudhub.io`. The Cloudflare rule observes an
+  MX host under `mxrecord.mx`. Six other undated rules in this pass
+  stay undated because the fetched page uses the suffix only as an
+  illustration, does not print it, does not resolve, prints a
+  different include, or prints a narrower reporting host. No new
+  detection was added. This does not cut a release.
 - Date the Mailgun MX suffix and the Mailhardener reporting host
   from fetched vendor pages. The Mailgun rule observes an MX host
   under `mailgun.org`. The Mailhardener rule observes the
