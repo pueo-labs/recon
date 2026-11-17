@@ -48,8 +48,8 @@ hardening control, and `--verbose` uses the source-health ladder.
 Issues 356, 357, and 358 are closed. The four Dependabot alerts are
 fixed. The agentic-validation pins are Anthropic 2.9.0 and OpenAI
 3.51.0, and the draft Cloud Run Google provider constraint is
-`>= 8.0, < 9.0`. That maintainer-harness and draft-module bump does not
-cut a release. The
+`>= 8.0, < 9.0`. That maintainer-harness and draft-module bump ships
+inside 2.27.3 and does not justify a further release by itself. The
 public Scorecard API reports SAST as an internal error for this
 commit, the same result it reports for tag `v2.27.1`. The repository
 Scorecard workflow succeeded. Do not lower the SAST floor.
@@ -92,13 +92,14 @@ What is next, and why:
    gitignored private roots when an operator supplies them. The passes
    from 2026-10-28 through the 2026-11-17 survey-include check are the
    record in [catalog maintenance](docs/catalog-maintenance.md) and the
-   [public freshness ledger](docs/catalog-freshness-ledger.json). Main
+   [public freshness ledger](docs/catalog-freshness-ledger.json).
    `c4c952941badd689e0478e657194a1c7ca8025d1` carries the mail-include
-   check. This survey-include check dates the LucidLink verification
+   check. `3218c8aa269c5b328ecd04e7a03167b08a1f60c0` carries the
+   survey-include check. That check dates the LucidLink verification
    value, the Miro verification value, and the Qualtrics survey
    include, and it leaves five admitted rules undated.
    The catalog has 293 dated rules and 830 undated rules. Those passes
-   do not cut a release. Tag `v2.27.2` stays `071c4356`.
+   ship in 2.27.3. Tag `v2.27.2` remains `071c4356`.
    The next round uses a new question list and the rules that are still due.
    The closed 5,199-row drift round remains a measurement contract. It does
    not promote rules. Start at [catalog maintenance](docs/catalog-maintenance.md).
@@ -115,18 +116,21 @@ What is next, and why:
    certificate-transparency probes, crt.sh and CertSpotter. The
    agentic-validation provider SDKs are Anthropic 2.9.0 and OpenAI
    3.51.0, and the draft Cloud Run Google provider constraint is
-   `>= 8.0, < 9.0`. That bump does not cut a release. A new collector,
-   score, inference path, or set-level review bundle needs a named
-   operator handoff that the existing surfaces cannot solve. Output
-   truthfulness outranks another feature release.
+   `>= 8.0, < 9.0`. That bump ships inside 2.27.3 and does not justify
+   a further release by itself. A new collector, score, inference path,
+   or set-level review bundle needs a named operator handoff that the
+   existing surfaces cannot solve. Output truthfulness outranks another
+   feature release.
 
 Not next, and why:
 
-- Another package release. 2.27.2 shipped the security floors, the
-  CPython 3.15.2 pin, and the three output corrections. The next package
+- A further package release. 2.27.2 shipped the security floors, the
+  CPython 3.15.2 pin, and the three output corrections. 2.27.3 publishes
+  the catalog date checks since that tag, the doctor help correction,
+  the lock-drift policy, and the hosted Ubuntu floor. A later package
   waits for a new user-visible defect or a catalog change that should
   ship on its own. The provider-SDK and Terraform constraint bump does
-  not by itself cut a release.
+  not by itself justify a further release.
 - A new DNS record-type collector. IANA's parameter table, last updated
   2026-10-16, added temporary `DELEG` and `DELEGPARAM` registrations.
   `HTTPS`, `SVCB`, `DSYNC`, `RESINFO`, `HHIT`, and `BRID` were already
@@ -147,17 +151,18 @@ Not next, and why:
 
 When picking work back up, sync `main` and run
 `uv run python scripts/check.py` before starting anything else. 2.27.2 is
-published. Qualifying CI jobs install the project environment with
-`uv sync --locked` and `UV_LOCKED`. A dependency change that `uv.lock`
-does not contain fails those jobs and leaves the lock unchanged.
-Installed-wheel smoke and the reproducible build stay separate from
-that sync. Issue 399 is that policy, and it does not cut a release.
-Hosted Ubuntu jobs stay on `ubuntu-latest`. actionlint v1.7.12 does
-not recognize `ubuntu-26.04`, and its configuration can only add
-self-hosted labels or ignore errors. GitHub moves that label to
-Ubuntu 26.04 through 2026-11-19, and the required CI lint job on
-2026-11-17 already ran on that image. Issue 402 is that recorded
-floor, and it does not cut a release.
+published at `071c4356`. 2.27.3 publishes the catalog date checks since
+that tag, the doctor help correction, the lock-drift policy, and the
+hosted Ubuntu floor. Qualifying CI jobs install the project environment
+with `uv sync --locked` and `UV_LOCKED`. A dependency change that
+`uv.lock` does not contain fails those jobs and leaves the lock
+unchanged. Installed-wheel smoke and the reproducible build stay
+separate from that sync. Issue 399 is that policy. Hosted Ubuntu jobs
+stay on `ubuntu-latest`. actionlint v1.7.12 does not recognize
+`ubuntu-26.04`, and its configuration can only add self-hosted labels
+or ignore errors. GitHub moves that label to Ubuntu 26.04 through
+2026-11-19, and the required CI lint job on 2026-11-17 already ran on
+that image. Issue 402 is that recorded floor.
 Continue the freshness loop on rules that are still due, or wait for
 the upstream blockers above. A later documentation or catalog date
 pass does not by itself cut another release. Batch user-visible
