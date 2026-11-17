@@ -149,6 +149,12 @@ published. Qualifying CI jobs install the project environment with
 does not contain fails those jobs and leaves the lock unchanged.
 Installed-wheel smoke and the reproducible build stay separate from
 that sync. Issue 399 is that policy, and it does not cut a release.
+Hosted Ubuntu jobs stay on `ubuntu-latest`. actionlint v1.7.12 does
+not recognize `ubuntu-26.04`, and its configuration can only add
+self-hosted labels or ignore errors. GitHub moves that label to
+Ubuntu 26.04 through 2026-11-19, and the required CI lint job on
+2026-11-17 already ran on that image. Issue 402 is that recorded
+floor, and it does not cut a release.
 Continue the freshness loop on rules that are still due, or wait for
 the upstream blockers above. A later documentation or catalog date
 pass does not by itself cut another release. Batch user-visible

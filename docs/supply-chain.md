@@ -495,8 +495,14 @@ two commands before immediately sealing `dist/`.
 This fixes uv-version and backend-resolver drift in the tested build path. It
 does not prove byte identity across different Python versions, operating
 systems, runner images, archive implementations, or other host environment
-details. The release and CI paths use Python 3.15 on Ubuntu; a consumer seeking
-an exact hash match should reproduce those inputs as closely as practical.
+details. The release and CI paths use Python 3.15 on Ubuntu. Hosted Ubuntu
+jobs keep the `ubuntu-latest` label. actionlint v1.7.12 does not recognize
+`ubuntu-26.04`, and its configuration can only add self-hosted labels or
+ignore errors. GitHub moves `ubuntu-latest` to Ubuntu 26.04 through
+2026-11-19. The required CI lint job on 2026-11-17 already ran on that
+image. Windows and macOS jobs stay on `windows-latest` and `macos-latest`.
+Each job still installs its own uv and Python. A consumer seeking an exact
+hash match should reproduce those inputs as closely as practical.
 
 To verify a published release yourself:
 

@@ -32,6 +32,13 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Keep hosted Ubuntu jobs on `ubuntu-latest`. actionlint v1.7.12
+  does not recognize `ubuntu-26.04`, and its configuration can only
+  add self-hosted labels or ignore errors. GitHub moves that label
+  to Ubuntu 26.04 through 2026-11-19. The required CI lint job on
+  2026-11-17 already ran on that image. Windows and macOS jobs stay
+  on their latest labels. This addresses issue 402 and does not cut
+  a release.
 - Reject dependency lock drift in CI. Jobs that sync or run the
   project environment set `UV_LOCKED` and pass `--locked` to
   `uv sync`. A constraint change that `uv.lock` does not contain
