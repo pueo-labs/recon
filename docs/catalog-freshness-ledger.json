@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "d498011adb77c4d30c50b0501bc3aa757489b7a9de04ede23794a946252fb8fe",
+  "catalog_digest": "e1d12d72cd621e1a74a1043bab790a49b68365898fab137e7ee080f66843e8a8",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -3072,8 +3072,104 @@
       "rule_id": "infrastructure.yaml/akamai/ns/akam.net",
       "source_checked_on": "2026-11-16",
       "source_status": "checked"
+    },
+    {
+      "basis": "The cited Edge DNS welcome URL returns a 404 shell and does not print akamai.net. The authoritative name server reference checked 2026-11-16 prints name servers under akam.net and does not print akamai.net. The already dated akam.net rule is unchanged. The specific hosts were not added. Example contract identifiers were not copied. The akamai.net suffix stays undated.",
+      "disposition": "deferred",
+      "new_reference": "https://techdocs.akamai.com/edge-dns/reference/get-data-authorities",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://techdocs.akamai.com/edge-dns/docs/welcome-to-edge-dns",
+      "review_digest": "d1bd691d388785fa5d58c18318dd900af6cfc760f146eba83524b539981f5e1b",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/akamai/ns/akamai.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited account page returns access denied and does not print autodesk-domain-verification=. The fetched SSO help document is an application shell that also does not print that prefix. A support article URL returned access denied. The TXT prefix stays undated. No token value was copied.",
+      "disposition": "deferred",
+      "new_reference": "https://help.autodesk.com/view/SSOGUIDE/ENU/?guid=SSOGUIDE_Okta_Guide_About_Single_Sign_on_SSO_Add_and_Verify_Domain_html",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://www.autodesk.com/support/account/",
+      "review_digest": "3ee69a97d17b07187ba41b2db6b358d0822ecca104a5bfdd4bdc7961f2004170",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/autodesk/txt/^autodesk-domain-verification=",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The ACM setup page checked 2026-11-16 lists amazon.com as a CAA issuer value and prints a CAA issue record for amazon.com. The rule observes that issuer. It does not prove that ACM issued a certificate. The example domain was not added. The sibling issuer rules that were already dated were left unchanged.",
+      "disposition": "narrowed",
+      "new_reference": "https://docs.aws.amazon.com/acm/latest/userguide/setup.html",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://docs.aws.amazon.com/acm/latest/userguide/setup.html",
+      "review_digest": "31f01a18b8fad06a4f5a73a147acb356a13093a241a90e7ede33d60c149aa489",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/aws-acm/caa/amazon.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The ACM setup page checked 2026-11-16 lists amazontrust.com as a CAA issuer value and prints a CAA issue record for amazontrust.com. The rule observes that issuer. It does not prove that ACM issued a certificate. The example domain was not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://docs.aws.amazon.com/acm/latest/userguide/setup.html",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://docs.aws.amazon.com/acm/latest/userguide/setup.html",
+      "review_digest": "a14fb43a8c8b43091d3efd2034f4ff2a9e54a796dfbfccc7152b934f001b99e7",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/aws-acm/caa/amazontrust.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited Developer Guide index is a refresh shell and does not print a hostname under cloudfront.net. The alternate domain name procedure checked 2026-11-16 prints a CNAME whose target is a host under cloudfront.net. The rule observes that suffix. It does not prove that every name under the suffix is a customer alternate domain. The example distribution hostname was not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CreatingCNAME.html",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/",
+      "review_digest": "72e485e214e0c502f719350ccdf86d100d8557ea7ad92e0f7bd2d6185b90aff5",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/aws-cloudfront/cname/cloudfront.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The environment domain page prints a hostname under elasticbeanstalk.com. The DNS availability reference checked 2026-11-16 prints that suffix as the fully qualified CNAME. The rule observes that suffix. It does not prove that every name under the suffix is a customer delegation. The example prefix was not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://docs.aws.amazon.com/cli/latest/reference/elasticbeanstalk/check-dns-availability.html",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/customdomains.html",
+      "review_digest": "54469ea5b87563880d7950bf5e46a300502ba214d216ac44235442d2bc577383",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/aws-eb/cname/elasticbeanstalk.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited load balancing overview does not print .elb. or elb.amazonaws.com. The Classic Load Balancer domain name page checked 2026-11-16 prints a DNS name containing .elb. and says to create a CNAME record to the load balancer. The rule observes that infix. It does not prove that every hostname containing the infix is an AWS load balancer. The example name was not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/using-domain-names-with-elb.html",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html",
+      "review_digest": "ba8ad3b37ea9df9f6ef26787c4b28a5eb2085419697efc8ba2b7d4c13d7b4565",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/aws-elb/cname/.elb.",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited load balancing overview does not print elb.amazonaws.com. The Classic Load Balancer domain name page checked 2026-11-16 prints a DNS name under elb.amazonaws.com and says to create a CNAME record to the load balancer. The rule observes that suffix. It does not prove that the load balancer is the only routing target. The example name was not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/using-domain-names-with-elb.html",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html",
+      "review_digest": "a6794391feafc16310d25c75578f4e53bcc6657524a82b61f845edf23e53673e",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "infrastructure.yaml/aws-elb/cname/elb.amazonaws.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, and a later 2026-11-16 verification prefix, SPF include, and TLS reporting reference check, and a later 2026-11-16 reporting mailbox, verification prefix, mail exchanger, and nameserver reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, and a later 2026-11-16 verification prefix, SPF include, and TLS reporting reference check, and a later 2026-11-16 reporting mailbox, verification prefix, mail exchanger, and nameserver reference check, and a later 2026-11-16 certificate issuer, distribution suffix, environment name, and load balancer hostname reference check, not a complete catalog review"
 }

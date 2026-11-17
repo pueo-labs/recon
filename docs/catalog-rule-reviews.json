@@ -1162,6 +1162,90 @@
       "reviewed_on": "2026-11-16",
       "source_checked_on": "2026-11-16",
       "reason": "Akamai authoritative name server reference checked 2026-11-16: https://techdocs.akamai.com/edge-dns/reference/get-data-authorities. It prints name servers under akam.net and says to use them as NS records. The rule observes that suffix. It does not prove that every zone uses one example host. The specific hosts were not added. Example contract identifiers were not copied."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "aws-acm",
+        "detection_type": "caa",
+        "pattern": "amazon.com"
+      },
+      "before": "f40bfe1c4d81bc67be34925aa7db1a0a87a9288c6011679e731966b7077022f3",
+      "after": "31f01a18b8fad06a4f5a73a147acb356a13093a241a90e7ede33d60c149aa489",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "ACM setup page checked 2026-11-16: https://docs.aws.amazon.com/acm/latest/userguide/setup.html. It prints amazon.com as a CAA issue value. The rule observes that issuer. It does not prove that ACM issued a certificate. The example domain was not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "aws-acm",
+        "detection_type": "caa",
+        "pattern": "amazontrust.com"
+      },
+      "before": "112e1046e94cec01a89e3b7509f1021a5cf20ee6f371689fdd18abd851f00ff5",
+      "after": "a14fb43a8c8b43091d3efd2034f4ff2a9e54a796dfbfccc7152b934f001b99e7",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "ACM setup page checked 2026-11-16: https://docs.aws.amazon.com/acm/latest/userguide/setup.html. It prints amazontrust.com as a CAA issue value. The rule observes that issuer. It does not prove that a certificate was issued. The example domain was not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "aws-cloudfront",
+        "detection_type": "cname",
+        "pattern": "cloudfront.net"
+      },
+      "before": "a4ead540856ddb925501e5e824a14e20551dd2bbaaeb817a534e4f723f85900d",
+      "after": "72e485e214e0c502f719350ccdf86d100d8557ea7ad92e0f7bd2d6185b90aff5",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "CloudFront alternate domain name procedure checked 2026-11-16: https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CreatingCNAME.html. It prints a CNAME whose target is a host under cloudfront.net. The rule observes that suffix. It does not prove that every name under the suffix is a customer alternate domain. The example distribution hostname was not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "aws-eb",
+        "detection_type": "cname",
+        "pattern": "elasticbeanstalk.com"
+      },
+      "before": "f6f4b62fbd56d04b9629c14cbe315c134aa6972c7c41a97612e067da92317abd",
+      "after": "54469ea5b87563880d7950bf5e46a300502ba214d216ac44235442d2bc577383",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Elastic Beanstalk DNS availability reference checked 2026-11-16: https://docs.aws.amazon.com/cli/latest/reference/elasticbeanstalk/check-dns-availability.html. It prints elasticbeanstalk.com as the fully qualified CNAME suffix. The rule observes that suffix. It does not prove that every name under the suffix is a customer delegation. The example prefix was not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "aws-elb",
+        "detection_type": "cname",
+        "pattern": ".elb."
+      },
+      "before": "fc62ccb7447ebc3e3abf0a98eb55b87530fbbc0a90eaae3dcd658d9e563518d7",
+      "after": "ba8ad3b37ea9df9f6ef26787c4b28a5eb2085419697efc8ba2b7d4c13d7b4565",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Classic Load Balancer domain name page checked 2026-11-16: https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/using-domain-names-with-elb.html. It prints a DNS name containing .elb. and says to create a CNAME to the load balancer. The rule observes that infix. It does not prove that every hostname containing the infix is an AWS load balancer. The example name was not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "aws-elb",
+        "detection_type": "cname",
+        "pattern": "elb.amazonaws.com"
+      },
+      "before": "10e96348b69856908e7db58ceab3b253c152774a4358a4e6a389437f479fa338",
+      "after": "a6794391feafc16310d25c75578f4e53bcc6657524a82b61f845edf23e53673e",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Classic Load Balancer domain name page checked 2026-11-16: https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/using-domain-names-with-elb.html. It prints a DNS name under elb.amazonaws.com and says to create a CNAME to the load balancer. The rule observes that suffix. It does not prove that the load balancer is the only routing target. The example name was not added."
     }
   ]
 }
