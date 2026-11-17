@@ -32,6 +32,11 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Check eight undated SPF, DMARC, and CNAME rules against current
+  vendor pages. None received a `verified` date. A fetched page does
+  not print the catalog grammar, prints a narrower or different
+  include or reporting host, or could not be retrieved. No new
+  detection was added. This does not cut a release.
 - Date the Pexip portal verification prefix and the Proton Mail
   MX suffix from fetched vendor pages. The Pexip rule observes
   the TXT prefix `pexip-portal-domain-verification=`. The Proton

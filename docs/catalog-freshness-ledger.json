@@ -2304,8 +2304,104 @@
       "rule_id": "discovered-signals.yaml/protonmail/mx/protonmail.ch",
       "source_checked_on": "2026-11-16",
       "source_status": "checked"
+    },
+    {
+      "basis": "The Q4 email-security resource page was fetched on 2026-11-16. It names SendGrid as the delivery partner and discusses SPF in general. The fetched bytes do not print q4press.com or an SPF include. No narrower include was added. The catalog suffix stays undated. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://activation.q4inc.com/resource-library-section/email-security/default.aspx",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "8c770324087259fe019870ef4689ba9d1223c2b3501098ada86615d80682f4cc",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/q4-ir/spf/q4press.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The Qualtrics custom-from-address article was fetched on 2026-11-16. It names addresses at qemailserver.com, including a bounce host, and prints one optional SPF include, include:_spf.qualtrics.com. It does not print include:qemailserver.com. The different include and the bounce host were not added. The catalog suffix stays undated. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://www.qualtrics.com/support/survey-platform/distributions-module/email-distribution/using-a-custom-from-address/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "6f69f1256d427dfc0b8572c5938f5b87aceff6f1033f66e4a759a87bb4367680",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/qualtrics/spf/qemailserver.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The Red Sift DMARC guide, which says it was last modified on 2026-11-15, was fetched on 2026-11-16. Its aggregate-report examples use other mailboxes, including a host under ondmarc.com. The redsift.cloud strings in the fetched page are login, signup, application, and status URLs, not aggregate mailboxes. The OnDMARC Route 53 article prints nameserver and CNAME hosts under ondmarc.com and does not print redsift.cloud. Those hosts were not added. Example local-parts were not copied. The catalog suffix stays undated. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://redsift.com/guides/email-protocol-configuration-guide/learn-more-about-dmarc",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "f64c6ef2e612075a67ef98998b4ac9a24eaad6266c25ab0e76e8ffa6f31a1d69",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/redsift/dmarc_rua/redsift.cloud",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The Report URI DMARC setup docs, last modified 2026-11-16, were fetched on 2026-11-16. They print an aggregate mailbox at dmarc.report-uri.com. They do not print a mailbox at report-uri.com. The feature page prints the same narrower host and an organization contact at report-uri.com, which is not an aggregate mailbox. The narrower host was not added. Example local-parts were not copied. The catalog suffix stays undated. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.report-uri.com/setup/dmarc/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "d76e31778c6a79954cde38571f1c67a3116e516290f134eabca0d9d995ee344c",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/report-uri/dmarc_rua/report-uri.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The Sage Intacct email-sender domain settings page and the DNS validation page were fetched on 2026-11-16. They tell the reader to publish the CNAME or TXT values shown in the product. The validation page says the SPF key is a generated host under the customer's own domain. Neither page prints include:intacct.com. Example sender domains and tokens were not copied. The catalog suffix stays undated. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://www.intacct.com/ia/docs/en_US/help_action/Company/Company_setup/Company_Information/Security/company-DKIM-email-sender-domain-settings.htm",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "04ad045902c2fcb146910816c9d71e488578d162de1964008e55725d2fe4c718",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/sage-intacct/spf/intacct.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The Sailthru DNS configuration page at getstarted.sailthru.com was requested on 2026-11-16. The TLS handshake failed, and a headless browser reported a cipher mismatch, so the article body was not available. This is not a source check. A search index is not a vendor basis. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": null,
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "3d563af82714e362b3a80d1675977dbd52f0ff197613d448bb83fcdbf2201acb",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/sailthru/spf/sailthru.com",
+      "source_checked_on": null,
+      "source_status": "unreachable"
+    },
+    {
+      "basis": "The Marketing Cloud SPF FAQ URL was requested on 2026-11-16 and the live page redirects to Salesforce Help article 000382664, titled Sender Policy Framework and Salesforce SPF Records, published 2026-10-05. That article prints include:_spf.salesforce.com and says Marketing Cloud SPF content should be searched separately. It does not print include:exacttarget.com. The different include was not added. Sample address ranges were not copied. The catalog suffix stays undated. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://help.salesforce.com/s/articleView?id=000382664&language=en_US&type=1",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "9a2d66512368cc3138172162ed8fc35bece16a611d49e51f7bd7110b5090ed2b",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/salesforce-mc/spf/exacttarget.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The Salesforce custom-domain article was fetched on 2026-11-16. It says to publish a CNAME whose target is an internal host under live.siteforce.com. The fetched rendered page does not print a CNAME target under desk.com. The siteforce host was not added. Example names were not copied. The catalog suffix stays undated. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://help.salesforce.com/s/articleView?id=platform.domain_mgmt_update_dns.htm&language=en_US&type=5",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "b2c0965c54e19b69b998f8e10508c23752cb70a9cb1fa42b34ce5a8e63b99535",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/salesforce/cname_target/.desk.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, not a complete catalog review"
 }

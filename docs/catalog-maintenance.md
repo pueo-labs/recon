@@ -235,7 +235,8 @@ and a later 2026-11-16 mail exchanger and reporting reference check,
 and a later 2026-11-16 CloudHub and mail exchanger reference check,
 and a later 2026-11-16 nameserver and sender-policy reference check,
 and a later 2026-11-16 portal verification and mail routing
-reference check.
+reference check, and a later 2026-11-16 SPF, reporting, and
+support-domain reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
 bind due rules to their exact claim/catalog digest, prior/new reference, actual
@@ -1478,6 +1479,76 @@ The fetched sign-in bytes do not print `ppe-hosted.com`. The
 public email-protection product page also does not print
 `ppe-hosted.com` or `include:pphosted.com`. The catalog MX and
 SPF suffixes stay undated.
+
+### Documented reference check, later on 2026-11-16, SPF, reporting, and support domains
+
+This pass checked eight undated SPF, DMARC, and CNAME rules.
+None received a `verified` date. Fetched pages do not print the
+catalog grammar, print a narrower or different include or
+reporting host, or could not be retrieved. No new detection,
+DNS record type, or collection path was added. This note does not
+cut a release.
+
+The [Q4 email-security resource page](https://activation.q4inc.com/resource-library-section/email-security/default.aspx)
+names SendGrid as the delivery partner and discusses SPF in
+general. The fetched bytes do not print `q4press.com` or an SPF
+include. No narrower include was added. The catalog SPF stays
+undated.
+
+The [Qualtrics custom-from-address article](https://www.qualtrics.com/support/survey-platform/distributions-module/email-distribution/using-a-custom-from-address/)
+names addresses at `qemailserver.com`, including a bounce host,
+and prints one optional SPF include,
+`include:_spf.qualtrics.com`. It does not print
+`include:qemailserver.com`. The different include and the bounce
+host were not added. The catalog SPF stays undated.
+
+The [Red Sift DMARC guide](https://redsift.com/guides/email-protocol-configuration-guide/learn-more-about-dmarc),
+which says it was last modified on 2026-11-15, uses other
+mailboxes for aggregate-report examples, including a host under
+`ondmarc.com`. The `redsift.cloud` strings on that page are login,
+signup, application, and status URLs, not aggregate mailboxes.
+The OnDMARC Route 53 article prints nameserver and CNAME hosts
+under `ondmarc.com` and does not print `redsift.cloud`. Those
+hosts were not added. Example local-parts were not copied. The
+catalog DMARC suffix stays undated.
+
+The [Report URI DMARC setup docs](https://docs.report-uri.com/setup/dmarc/),
+last modified 2026-11-16, print an aggregate mailbox at
+`dmarc.report-uri.com`. They do not print a mailbox at
+`report-uri.com`. The feature page prints the same narrower host
+and an organization contact at `report-uri.com`, which is not an
+aggregate mailbox. The narrower host was not added. Example
+local-parts were not copied. The catalog DMARC suffix stays
+undated.
+
+The [Sage Intacct email-sender domain settings page](https://www.intacct.com/ia/docs/en_US/help_action/Company/Company_setup/Company_Information/Security/company-DKIM-email-sender-domain-settings.htm)
+and the DNS validation page tell the reader to publish the CNAME
+or TXT values shown in the product. The validation page says the
+SPF key is a generated host under the customer's own domain.
+Neither page prints `include:intacct.com`. Example sender domains
+and tokens were not copied. The catalog SPF stays undated.
+
+The Sailthru DNS configuration page at `getstarted.sailthru.com`
+was requested on 2026-11-16. The TLS handshake failed, and a
+headless browser reported a cipher mismatch, so the article body
+was not available. This is not a source check. A search index is
+not a vendor basis. The catalog SPF stays undated.
+
+The Marketing Cloud SPF FAQ URL redirects to Salesforce Help
+article [000382664](https://help.salesforce.com/s/articleView?id=000382664&language=en_US&type=1),
+titled Sender Policy Framework and Salesforce SPF Records,
+published 2026-10-05. That article prints
+`include:_spf.salesforce.com` and says Marketing Cloud SPF
+content should be searched separately. It does not print
+`include:exacttarget.com`. The different include was not added.
+Sample address ranges were not copied. The catalog SPF stays
+undated.
+
+The [Salesforce custom-domain article](https://help.salesforce.com/s/articleView?id=platform.domain_mgmt_update_dns.htm&language=en_US&type=5)
+says to publish a CNAME whose target is an internal host under
+`live.siteforce.com`. The fetched rendered page does not print a
+CNAME target under `desk.com`. The siteforce host was not added.
+Example names were not copied. The catalog CNAME stays undated.
 
 ## Executable path
 
