@@ -805,13 +805,14 @@ Registry metadata. That release did not change this slice. A round makes a
 new temporary question list, keeps that list private, and publishes only a
 disclosure-safe pattern with synthetic fixtures. It does not publish a claim
 that a named organization uses a service. The passes from 2026-10-28
-through the 2026-11-17 community-label check are the record in
+through the 2026-11-17 mail-include check are the record in
 [catalog maintenance](catalog-maintenance.md) and the
 [public freshness ledger](catalog-freshness-ledger.json). Main
-`d5c44f0425ba71b2fe81c0453c2ff083580463d7` carries the pointing-label
-check. This community-label check dates the Disciple CNAME label,
-and it leaves seven admitted rules undated.
-The catalog has 288 dated rules and 835 undated rules. Those passes
+`b2a38dc9e46617d2f75a5d273ce94a25f602abd8` carries the community-label
+check. This mail-include check dates the Freshdesk mail include
+and the Loom verification value, and it leaves six admitted rules
+undated.
+The catalog has 290 dated rules and 833 undated rules. Those passes
 do not cut a release. Tag `v2.27.2` stays `071c4356`. Qualifying CI
 jobs install the project environment with `uv sync --locked` and
 `UV_LOCKED`. A dependency change that `uv.lock` does not contain
