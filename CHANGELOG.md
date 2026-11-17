@@ -30,6 +30,12 @@ operator, corporate group, ownership, or control.
 
 Tool surface changes: no CLI command or flag changes.
 
+### Fixed
+
+- `recon doctor --help` names both certificate-transparency probes.
+  The command contacts crt.sh and CertSpotter. The help text named
+  only crt.sh.
+
 ### Changed
 
 - Check eight undated TXT, SPF, and CNAME rules against

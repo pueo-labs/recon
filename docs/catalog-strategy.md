@@ -55,7 +55,8 @@ complete. Its [aggregate result](../validation/2026-08-14-catalog-drift-round.md
 reports complete measurement, no decline beyond the frozen review threshold,
 no catalog promotion, and the exact catalog-driven `subdomain_txt`
 measurement-surface change. Most legacy detections still lack a freshness
-date: 188 of 1,123 detections currently carry a `verified` date (16.7 percent).
+date: 293 of 1,123 detections carry a `verified` date (26.1 percent)
+after the 2026-11-17 survey-include check.
 That share is the dated floor, not a reason to stamp today's date on the
 undated backlog.
 

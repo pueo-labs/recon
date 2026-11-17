@@ -111,10 +111,12 @@ What is next, and why:
    [the October review](docs/maintenance-review-2026-10-08.md).
 
 3. Black-box defects before any new surface. Issues 356, 357, and 358
-   shipped in 2.27.2. The agentic-validation provider SDKs are Anthropic
-   2.9.0 and OpenAI 3.51.0, and the draft Cloud Run Google provider
-   constraint is `>= 8.0, < 9.0`. That bump does not cut a release. A new
-   collector, score, inference path, or set-level review bundle needs a named
+   shipped in 2.27.2. `recon doctor --help` now names both
+   certificate-transparency probes, crt.sh and CertSpotter. The
+   agentic-validation provider SDKs are Anthropic 2.9.0 and OpenAI
+   3.51.0, and the draft Cloud Run Google provider constraint is
+   `>= 8.0, < 9.0`. That bump does not cut a release. A new collector,
+   score, inference path, or set-level review bundle needs a named
    operator handoff that the existing surfaces cannot solve. Output
    truthfulness outranks another feature release.
 
