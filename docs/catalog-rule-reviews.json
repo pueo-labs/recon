@@ -1330,6 +1330,62 @@
       "reviewed_on": "2026-11-16",
       "source_checked_on": "2026-11-16",
       "reason": "Domain delegation tutorial checked 2026-11-16: https://learn.microsoft.com/en-us/azure/dns/dns-delegate-domain-azure-dns. It prints name servers whose labels are azure-dns. The rule observes that label. It does not prove that Azure hosts the zone's workloads. The specific name servers were not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "azure-fd",
+        "detection_type": "cname",
+        "pattern": "azurefd.net"
+      },
+      "before": "e04d18b3fb571b71e54a37e15fcc6a0157716e062711db94fb49d87ec6de8447",
+      "after": "5bdd1429f4d0c16c1514b43d67c87f29e3f38f20c6d73c58b492574a21110273",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Custom domain page checked 2026-11-16: https://learn.microsoft.com/en-us/azure/frontdoor/standard-premium/how-to-add-custom-domain. It prints an endpoint host under azurefd.net and says to create a CNAME record to the Front Door endpoint. The rule observes that suffix. It does not prove that every name under the suffix is a customer endpoint. The example endpoint was not added. The sibling afd.ms rule stays undated."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "azure-tm",
+        "detection_type": "cname",
+        "pattern": "trafficmanager.net"
+      },
+      "before": "b986cc03964000db0e1ebac7681b7b8c444c4fd331d882ee4f431a2ccd0fa3de",
+      "after": "898ed38ad16666a769dce5896825e1c240146807eaecf35458f372a153aa5605",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "How-it-works page checked 2026-11-16: https://learn.microsoft.com/en-us/azure/traffic-manager/traffic-manager-how-it-works. It prints a DNS CNAME from a vanity domain to a host under trafficmanager.net. The rule observes that suffix. It does not prove that every name under the suffix is a customer profile. The example profile and vanity names were not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "cloudhealth",
+        "detection_type": "txt",
+        "pattern": "^cloudhealth="
+      },
+      "before": "b13bb3913bcfe7db225b271325188c659339ce352c3042d14863c3564fb1db37",
+      "after": "90c11036fff6e9a24ff242ab91a6a017a796bab97a4aaf24d141ed0bed612d19",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "AuthHub SAML page checked 2026-11-16: https://techdocs.broadcom.com/us/en/ca-enterprise-software/it-operations-management/cloudhealth/saas/index/using-and-managing-tanzu-cloudhealth-using-and-managing-index/using-and-managing-tanzu-cloudhealth-managing-sso/using-and-managing-tanzu-cloudhealth-authhub-saml-configuration.html. It says to prepend cloudhealth= to a DNS token and add the result as a TXT record. The rule observes that prefix. It does not prove that SSO is active. The token value was not copied."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "digicert",
+        "detection_type": "caa",
+        "pattern": "digicert.com"
+      },
+      "before": "f6bc6bdb4b248d86d9985f4be17bb0afbdb3eeca34b5a623a73b437ba4b21164",
+      "after": "ba616c8751e52c4784fbf337757a703771611fcd92c706052210fa629bff2c92",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Knowledge base tutorial checked 2026-11-16: https://knowledge.digicert.com/tutorials/edit-domain-dns-caa-rr-to-get-digicert-certificate-brand. It prints a CAA issue value whose issuer is digicert.com. The rule observes that issuer. It does not prove that a certificate was issued. The example domain and the other issuer hosts were not added."
     }
   ]
 }
