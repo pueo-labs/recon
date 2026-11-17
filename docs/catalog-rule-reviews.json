@@ -1582,6 +1582,34 @@
       "reviewed_on": "2026-11-17",
       "source_checked_on": "2026-11-17",
       "reason": "Third-party domain article checked 2026-11-17: https://support.squarespace.com/hc/en-us/articles/205812378-Connect-a-third-party-domain-to-your-Squarespace-site. It prints CNAME targets under squarespace.com. The rule observes that suffix. It does not prove that Squarespace is serving the site. The specific targets and the verification code were not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "ultradns",
+        "detection_type": "ns",
+        "pattern": "ultradns"
+      },
+      "before": "f69cfa74f56f093f118f7e3cc12e45ca3edf794304a314c433523e70ed4502e3",
+      "after": "6ba74deb936c3e1b524e349a62c8824368c4188ddcb04d797602a895b691008c",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-17",
+      "source_checked_on": "2026-11-17",
+      "reason": "NS records page checked 2026-11-17: https://docs.ultradns.com/Content/MSP_User_Guide/Content/User%20Guides/MSP_User_Guide/Records/NS%20Records.htm. It says UltraDNS creates name servers whose labels contain ultradns. The rule observes that label. It does not prove that UltraDNS hosts the zone workloads. The specific name servers were not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "unity",
+        "detection_type": "txt",
+        "pattern": "^unity-sso-verification="
+      },
+      "before": "8510db58392420eaee610aead04c27770ca21f2a19d83385a04a71f150e8a86d",
+      "after": "d19daf9f648fb32e5ed035850a7a84d77118f177ceb222f8c8c772387eb17791",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-17",
+      "source_checked_on": "2026-11-17",
+      "reason": "Domains page checked 2026-11-17: https://docs.unity.com/en-us/cloud/organizations/domains. It says to publish unity-sso-verification= as the value of a TXT record on the root domain. The rule observes that prefix. It does not prove that SSO is active. The token placeholder was not copied."
     }
   ]
 }

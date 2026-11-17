@@ -280,13 +280,14 @@ fingerprints:
   detections:
   - type: txt
     pattern: ^unity-sso-verification=
-    reference: https://docs.unity.com/
+    reference: https://docs.unity.com/en-us/cloud/organizations/domains
+    verified: '2026-11-17'
     description: >-
-      Unity SSO domain-verification TXT (Unity Technologies
-      publishes the Unity game engine and developer tools).
-      Indicates the domain is registered with a Unity
-      organization for SSO federation, common at game studios
-      and digital-twin teams.
+      Unity SSO domain-verification TXT. The domains page
+      says to publish `unity-sso-verification=` as the value
+      of a TXT record on the root domain. This observes that
+      prefix. It does not prove that SSO is active. The token
+      placeholder was not copied.
 - name: PagerDuty
   slug: pagerduty
   category: DevTools & Infrastructure
@@ -448,14 +449,14 @@ fingerprints:
   detections:
   - type: ns
     pattern: ultradns
-    reference: https://docs.ultradns.com/
+    reference: https://docs.ultradns.com/Content/MSP_User_Guide/Content/User%20Guides/MSP_User_Guide/Records/NS%20Records.htm
+    verified: '2026-11-17'
     description: >-
-      NS records contain `ultradns` (UltraDNS is a managed-
-      DNS service originally part of Neustar, now part of
-      Vercara after the 2024 Neustar Security Services
-      acquisition). Indicates the domain uses UltraDNS as
-      authoritative DNS, common in enterprise and
-      financial-services configurations.
+      NS records contain `ultradns`. The NS records page says
+      UltraDNS creates name servers whose labels contain
+      `ultradns`. This observes that label. It does not prove
+      that UltraDNS hosts the zone workloads. The specific
+      name servers were not added.
 - name: Dyn (Oracle)
   slug: dyn
   parent_vendor: Oracle

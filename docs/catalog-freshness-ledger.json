@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "76495c2b2756c2986713bd4837723d452e99adc934566bb8082d6f1e84fd15a8",
+  "catalog_digest": "830a5e8fbf2cd6de037dc11f67a8153e23002e29e7114cb4d7d57145bca4b351",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -3840,8 +3840,104 @@
       "rule_id": "infrastructure.yaml/squarespace/cname/squarespace.com",
       "source_checked_on": "2026-11-17",
       "source_status": "checked"
+    },
+    {
+      "basis": "The cited homepage checked 2026-11-17 returns a short page and does not print stackpathdns.com. The catalog suffix stays undated. No edge hostname was added.",
+      "disposition": "deferred",
+      "new_reference": "https://www.stackpath.com/",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://www.stackpath.com/",
+      "review_digest": "11f08a9c2d767d98eaeb29bef5ef10533eb032dc240379a01b839cbdf85c5136",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/stackpath/cname/stackpathdns.com",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited docs page checked 2026-11-17 does not print statsig-domain-verification=. The domains page lists service hostnames and does not print that prefix. The SSO page does not print it either. The catalog prefix stays undated. No token or service host was added.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.statsig.com/infrastructure/statsig_domains",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://docs.statsig.com/",
+      "review_digest": "b19e5d01125f048b1d779f8accc68ab586319f63ca8a26700db0365331c265a7",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/statsig/txt/^statsig-domain-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited help host checked 2026-11-17 redirects to the documentation home. That page does not print sumologic-site-verification=. The SAML guide lists identity-provider setup and does not print that prefix. The catalog prefix stays undated. No token was added.",
+      "disposition": "deferred",
+      "new_reference": "https://www.sumologic.com/help/",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://help.sumologic.com/",
+      "review_digest": "84a6ee884e501bd382663d5a1d29db4771af2b047b90b20aac9d12f6f89eff83",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/sumologic/txt/^sumologic-site-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited API overview checked 2026-11-17 does not print twilio-domain-verification=. The organization domains page prints that value prefix on a TXT record named _twilio. That owner is a different record shape from this apex rule. The catalog prefix stays undated. The owner name was not added.",
+      "disposition": "deferred",
+      "new_reference": "https://www.twilio.com/docs/iam/organizations/domains",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://www.twilio.com/docs/usage/api",
+      "review_digest": "8137f1305f8a1faf348d78c221f41d83673280ac642688064d66971ef9f918e4",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/twilio/txt/^twilio-domain-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited docs host checked 2026-11-17 does not print an NS record. The NS records page says UltraDNS creates name servers whose labels contain ultradns. The rule observes that label. It does not prove that UltraDNS hosts the zone workloads. The specific name servers were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://docs.ultradns.com/Content/MSP_User_Guide/Content/User%20Guides/MSP_User_Guide/Records/NS%20Records.htm",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://docs.ultradns.com/",
+      "review_digest": "6ba74deb936c3e1b524e349a62c8824368c4188ddcb04d797602a895b691008c",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/ultradns/ns/ultradns",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited docs host checked 2026-11-17 does not print unity-sso-verification=. The domains page says to publish that prefix as the value of a TXT record on the root domain. The rule observes that prefix. It does not prove that SSO is active. The token placeholder was not copied.",
+      "disposition": "narrowed",
+      "new_reference": "https://docs.unity.com/en-us/cloud/organizations/domains",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://docs.unity.com/",
+      "review_digest": "d19daf9f648fb32e5ed035850a7a84d77118f177ceb222f8c8c772387eb17791",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/unity/txt/^unity-sso-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited projects domains URL checked 2026-11-17 redirects to the domains overview. That page does not print vercel-domain-verification= as TXT record content. The catalog prefix stays undated. No token was added.",
+      "disposition": "deferred",
+      "new_reference": "https://vercel.com/docs/domains",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://vercel.com/docs/projects/domains",
+      "review_digest": "fe9774ef0305bc1751b3f9324e885ee659ecca3905b6cc3972b5ab607adeed5c",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/vercel/txt/^vercel-domain-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited docs host checked 2026-11-17 redirects to the Broadcom documentation home. That page does not print vmware-cloud-verification-. The federation verify-domains page says to copy a generated TXT code and add a TXT record. It does not print that prefix. The catalog prefix stays undated. The example name and the generated code were not added.",
+      "disposition": "deferred",
+      "new_reference": "https://techdocs.broadcom.com/tw/zh-tw/vmware-cis/other/vmware-cloud-services/GA/setting-up-enterprise-federation-with-vmware-cloud-services-guide/overview-of-the-steps-for-direct-federation-setup/step-1-verify-domains.html",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://docs.vmware.com/",
+      "review_digest": "e715029e68eed7bfaedac75c1a2cc35e36e380653a796bf64a7d7ff58032a271",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "infrastructure.yaml/vmware-cloud/txt/^vmware-cloud-verification-",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, and a later 2026-11-16 verification prefix, SPF include, and TLS reporting reference check, and a later 2026-11-16 reporting mailbox, verification prefix, mail exchanger, and nameserver reference check, and a later 2026-11-16 certificate issuer, distribution suffix, environment name, and load balancer hostname reference check, and a later 2026-11-16 nameserver label, website infix, REST suffix, and edge hostname reference check, and a later 2026-11-16 endpoint suffix, routing suffix, token prefix, and issuer host reference check, and a later 2026-11-16 nameserver suffix, edge hostname, edge pattern, and publication hostname reference check, and a later 2026-11-17 verification owner, verification value, and issuer host reference check, and a later 2026-11-17 image suffix, edge suffix, and issuer host reference check, and a later 2026-11-17 traffic edge hostname reference check, and a later 2026-11-17 store suffix, site suffix, and issuer host reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, and a later 2026-11-16 verification prefix, SPF include, and TLS reporting reference check, and a later 2026-11-16 reporting mailbox, verification prefix, mail exchanger, and nameserver reference check, and a later 2026-11-16 certificate issuer, distribution suffix, environment name, and load balancer hostname reference check, and a later 2026-11-16 nameserver label, website infix, REST suffix, and edge hostname reference check, and a later 2026-11-16 endpoint suffix, routing suffix, token prefix, and issuer host reference check, and a later 2026-11-16 nameserver suffix, edge hostname, edge pattern, and publication hostname reference check, and a later 2026-11-17 verification owner, verification value, and issuer host reference check, and a later 2026-11-17 image suffix, edge suffix, and issuer host reference check, and a later 2026-11-17 traffic edge hostname reference check, and a later 2026-11-17 store suffix, site suffix, and issuer host reference check, and a later 2026-11-17 SSO verification value and nameserver label reference check, not a complete catalog review"
 }

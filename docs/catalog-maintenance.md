@@ -261,6 +261,8 @@ reference check, and a later 2026-11-17 traffic edge
 hostname
 reference check, and a later 2026-11-17 store suffix,
 site suffix, and issuer host
+reference check, and a later 2026-11-17 SSO verification
+value and nameserver label
 reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
@@ -2403,6 +2405,60 @@ prints CNAME targets under `squarespace.com`. The rule observes
 that suffix. It does not prove that Squarespace is serving the
 site. The specific targets and the verification code were not
 added.
+
+### Documented reference check, later on 2026-11-17, SSO verification value and nameserver label
+
+This pass checked eight undated TXT, NS, and CNAME rules. Two
+rules received a `verified` date because the fetched page prints
+the catalog grammar. Six rules stay undated. No new
+detection, DNS record type, or collection path was added. This
+note does not cut a release.
+
+The cited homepage returns a short page and does not print
+`stackpathdns.com`. The catalog suffix stays undated. No edge
+hostname was added.
+
+The cited docs page does not print `statsig-domain-verification=`.
+The domains page lists service hostnames and does not print that
+prefix. The SSO page does not print it either. The catalog
+prefix stays undated. No token or service host was added.
+
+The cited help host redirects to the documentation home. That
+page does not print `sumologic-site-verification=`. The SAML
+guide lists identity-provider setup and does not print that
+prefix. The catalog prefix stays undated. No token was added.
+
+The cited API overview does not print
+`twilio-domain-verification=`. The organization domains page
+prints that value prefix on a TXT record named `_twilio`. That
+owner is a different record shape from this apex rule. The
+catalog prefix stays undated. The owner name was not added.
+
+The cited docs host does not print an NS record. The
+[NS records page](https://docs.ultradns.com/Content/MSP_User_Guide/Content/User%20Guides/MSP_User_Guide/Records/NS%20Records.htm)
+says UltraDNS creates name servers whose labels contain
+`ultradns`. The rule observes that label. It does not prove
+that UltraDNS hosts the zone workloads. The specific name
+servers were not added.
+
+The cited docs host does not print `unity-sso-verification=`.
+The
+[domains page](https://docs.unity.com/en-us/cloud/organizations/domains)
+says to publish that prefix as the value of a TXT record on the
+root domain. The rule observes that prefix. It does not prove
+that SSO is active. The token placeholder was not copied.
+
+The cited projects domains URL redirects to the domains
+overview. That page does not print `vercel-domain-verification=`
+as TXT record content. The catalog prefix stays undated. No
+token was added.
+
+The cited docs host redirects to the Broadcom documentation
+home. That page does not print `vmware-cloud-verification-`.
+The federation verify-domains page says to copy a generated TXT
+code and add a TXT record. It does not print that prefix. The
+catalog prefix stays undated. The example name and the generated
+code were not added.
 
 ## Executable path
 
