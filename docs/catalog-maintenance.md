@@ -265,6 +265,8 @@ reference check, and a later 2026-11-17 SSO verification
 value and nameserver label
 reference check, and a later 2026-11-17 pointing label,
 legacy label, and verification value
+reference check, and a later 2026-11-17 community
+CNAME label
 reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
@@ -2524,6 +2526,61 @@ prints that prefix as the example TXT record added to the
 domain zone file. The rule observes that prefix. It does not
 prove that the domain is verified. The example token and the
 example school name were not copied.
+
+### Documented reference check, later on 2026-11-17, community CNAME label
+
+This pass checked eight undated TXT and CNAME rules. One
+rule received a `verified` date because the fetched page prints
+the catalog grammar. Seven rules stay undated. No new
+detection, DNS record type, or collection path was added. This
+note does not cut a release.
+
+The cited Asana guide redirects to the Help Center. The fetched
+help shell does not print `asana-domain-verification=`. The
+catalog prefix stays undated. No token was added.
+
+The cited Atlassian account page does not print
+`atlassian-domain-verification=`. The
+[domain page](https://support.atlassian.com/user-management/docs/verify-a-domain-to-manage-accounts/)
+says to paste a copied TXT value at the name `@` or blank. It
+prints `atlassian-domain-verification.html` as an HTTPS file
+name, which is a different record shape. The apex prefix stays
+undated. The file name was not added as a TXT value.
+
+The cited Beautiful.ai support URL is not found. The
+[SSO page](https://support.beautiful.ai/hc/en-us/articles/360047718092-SSO-Overview-and-Enablement)
+says to verify the domain and does not print
+`beautifulai-site-verification=`. The catalog prefix stays
+undated. No token was added.
+
+The cited Box support home does not print
+`box-domain-verification=`. The
+[domain-management page](https://support.box.com/hc/en-us/articles/4408619650579-Domain-Management-Verification-and-Auto-Enrollment)
+says to add a TXT record at host `@` whose value is a copied
+code. It does not print the catalog prefix. The apex prefix
+stays undated. The code was not copied.
+
+The cited Canva help home does not print
+`canva-site-verification=`. The fetched website SSO page also
+does not print that prefix. The catalog prefix stays undated.
+No token was added.
+
+The cited ClickUp help home does not print
+`clickup-domain-verification=`. No fetched ClickUp help page
+prints that prefix. The catalog prefix stays undated. No token
+was added.
+
+The cited Deel help home does not print
+`deel-domain-verification=`. No fetched Deel help page prints
+that prefix. The catalog prefix stays undated. No token was
+added.
+
+The cited Disciple site redirects to a product page and does
+not print `disciplemedia.com` as a CNAME target. The
+[custom-domain page](https://help.disciple.community/hc/en-gb/articles/6399472688273-How-to-Create-a-Custom-Domain)
+prints a CNAME target whose label contains `disciplemedia.com`.
+The rule observes that label. It does not prove that Disciple
+is serving the community. The example host was not added.
 
 ## Executable path
 

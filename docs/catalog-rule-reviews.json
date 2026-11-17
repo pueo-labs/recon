@@ -1680,6 +1680,20 @@
       "reviewed_on": "2026-11-17",
       "source_checked_on": "2026-11-17",
       "reason": "School Manager domains page checked 2026-11-17: https://support.apple.com/en-sg/guide/apple-school-manager-m/axm48c3280c0/web. It prints apple-domain-verification= as the example TXT record added to the domain zone file. The rule observes that prefix. It does not prove that the domain is verified. The example token and the example school name were not copied."
+    },
+    {
+      "rule": {
+        "source": "productivity.yaml",
+        "slug": "disciple-media",
+        "detection_type": "cname",
+        "pattern": "disciplemedia.com"
+      },
+      "before": "8ac58898048ae64137ba09b33621a8d5042128c47a97317fbe819995fb450ecb",
+      "after": "dab9def4d11b2d8f399700b5222f62a357ad56a7e4584fc25cf17e166970aa6d",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-17",
+      "source_checked_on": "2026-11-17",
+      "reason": "Custom-domain page checked 2026-11-17: https://help.disciple.community/hc/en-gb/articles/6399472688273-How-to-Create-a-Custom-Domain. It prints a CNAME target whose label contains disciplemedia.com. The rule observes that label. It does not prove that Disciple is serving the community. The example host was not added."
     }
   ]
 }

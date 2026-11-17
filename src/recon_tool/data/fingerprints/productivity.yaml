@@ -221,12 +221,15 @@ fingerprints:
   detections:
   - type: cname
     pattern: disciplemedia.com
-    reference: https://www.disciplemedia.com/
+    reference: https://help.disciple.community/hc/en-gb/articles/6399472688273-How-to-Create-a-Custom-Domain
+    verified: '2026-11-17'
     description: >-
-      CNAME pointing into disciplemedia.com (Disciple Media is
-      a branded community platform for membership sites and
-      private communities). Indicates the domain hosts a
-      Disciple-served community under a branded subdomain.
+      CNAME pointing into disciplemedia.com (Disciple is a
+      branded community platform). The custom-domain page
+      prints a CNAME target whose label contains
+      `disciplemedia.com`. This observes that label. It does
+      not prove that Disciple is serving the community. The
+      example host was not added.
 - name: Zoom
   slug: zoom
   category: Productivity & Collaboration
