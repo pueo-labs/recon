@@ -208,9 +208,11 @@ pip install -e .
 For development work in this repository, prefer:
 
 ```bash
-uv sync
+uv sync --locked
 uv run python scripts/check.py
 ```
+
+`uv sync --locked` installs the development environment from `uv.lock`. When `pyproject.toml` and the lock disagree, the command fails and leaves `uv.lock` unchanged.
 
 After an editable or environment install, either the `recon` console script or
 the package module entry works:

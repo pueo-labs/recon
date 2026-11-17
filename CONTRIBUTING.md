@@ -93,12 +93,14 @@ git clone https://github.com/pueo-labs/recon.git
 cd recon
 uv self update 0.13.5      # select the repository's reproducible uv release
 uv --version                # must report uv 0.13.5
-uv sync                    # installs the dev group (pip: pip install -e . --group dev, pip 25.1+)
+uv sync --locked            # dev group from uv.lock (pip: pip install -e . --group dev, pip 25.1+)
 uv run pre-commit install              # activate pre-commit hooks
 uv run pre-commit install --hook-type commit-msg
 uv run python scripts/release_readiness.py --allow-dirty
 uv run python scripts/check.py         # canonical local gate (--fast skips tests)
 ```
+
+`uv sync --locked` installs the dev group from `uv.lock`. When `pyproject.toml` and the lock disagree, the command fails and leaves `uv.lock` unchanged.
 
 The `commit-msg` hook is required separately: file-content hooks cannot check
 commit trailers. Read the [authorship rule](AGENTS.md#attribution-and-authorship)

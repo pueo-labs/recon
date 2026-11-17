@@ -32,10 +32,17 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Reject dependency lock drift in CI. Jobs that sync or run the
+  project environment set `UV_LOCKED` and pass `--locked` to
+  `uv sync`. A constraint change that `uv.lock` does not contain
+  fails those jobs and leaves the lock unchanged. Installed-wheel
+  smoke, the reproducible build, and the release build stay outside
+  that project sync. The free-threaded 3.15t leg stays advisory.
+  Contributor and reviewer install commands use `uv sync --locked`.
+  This addresses issue 399 and does not cut a release.
 - Point the short and canonical roadmaps at the catalog maintenance
   record through the 2026-11-17 store-suffix check. The pass list
-  stays in that guide and the public ledger. Issue 399 remains the
-  open CI lock-consistency defect. This does not cut a release.
+  stays in that guide and the public ledger. This does not cut a release.
 - Check eight undated CAA, TXT, and CNAME rules against current
   vendor pages. Date the Sectigo issuer, the Shopify store
   suffix, and the Squarespace site suffix. Five rules stay

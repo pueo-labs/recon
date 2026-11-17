@@ -459,7 +459,7 @@ uv lock --check
 uv run python scripts/check.py
 ```
 
-These commands describe environment verification; source-manifest compliance
+CI jobs that sync or run the project environment set `UV_LOCKED` and pass `--locked` to `uv sync`. The reproducible build and the installed-wheel smoke do not sync that environment. These commands describe environment verification; source-manifest compliance
 alone is not evidence they ran. The installers' bootstrap pin does not upgrade
 an existing user-owned uv or pipx environment. Upgrade pip in existing user
 virtual environments separately, following the Python guidance above. Rebuild

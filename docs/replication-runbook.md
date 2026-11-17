@@ -65,7 +65,7 @@ Send a short, bounded request. The packet should contain only these fields:
 | Artifact pointer | Repository URL plus exact commit SHA or release tag. |
 | Scope | Public-artifact functional replication only. No private corpus, target list, real-domain row, or credential is part of the request. |
 | Commands | The six commands in [Reviewer Commands](#reviewer-commands), run from a fresh clone. |
-| Environment note | OS family, shell family, Python version, and whether `uv sync` resolved from `uv.lock`. |
+| Environment note | OS family, shell family, Python version, and whether `uv sync --locked` resolved from `uv.lock`. |
 | Outcome note | Pass or fail for each command, final local gate test count, skipped count, and coverage percentage. |
 | Redaction check | Keep raw logs local until personal paths, credentials, terminal profiles, package-cache paths, and private target identifiers are reviewed out. |
 | Return channel | Aggregate outcome note only. Raw logs, screenshots, and machine-local paths are not requested by default. |
@@ -80,7 +80,7 @@ Run these from a fresh clone of the target commit:
 
 | Goal | Command | Outcome to record |
 |---|---|---|
-| Environment resolve | `uv sync` | Pass or fail, Python version, OS, and any resolver error. |
+| Environment resolve | `uv sync --locked` | Pass or fail, Python version, OS, and any resolver error. |
 | Public proof smoke | `uv run python -m validation.reproduce_paper_numbers --profile smoke --stamp outside-replication-smoke` | Pass or fail; confirm the summary says no private corpora and no default network requirement. |
 | Full public proof | `uv run python -m validation.reproduce_paper_numbers --profile paper --stamp outside-replication-paper` | Pass or fail; record the five public step statuses only. |
 | Paper figure drift | `uv run python scripts/generate_paper_figures.py --check` | Pass or fail. |
