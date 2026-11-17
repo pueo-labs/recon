@@ -276,20 +276,24 @@ fingerprints:
   - type: txt
     pattern: ^zoho-verification=
     reference: https://www.zoho.com/mail/help/adminconsole/domain-verification.html
+    verified: '2026-11-16'
     description: >-
-      Zoho domain-verification TXT. Indicates the domain is
-      claimed by a Zoho account (Zoho Mail, CRM, and other Zoho
-      One services share the same verification mechanism). Does
-      not distinguish Zoho Mail from other Zoho products on its
-      own; corroborate with Zoho MX for the email claim
-      specifically.
+      TXT prefix documented for Zoho domain verification
+      (`zoho-verification=`). The domain-verification article
+      says to publish that prefix. This observes the prefix.
+      It does not prove that Zoho Mail is the only Zoho product
+      or the only mail provider. The placeholder value was not
+      added as a pattern.
   - type: mx
     pattern: zoho.com
-    reference: https://www.zoho.com/mail/help/adminconsole/domain-verification.html
+    reference: https://www.zoho.com/mail/help/adminconsole/configure-email-delivery.html
+    verified: '2026-11-16'
     description: >-
-      MX terminating at Zoho Mail (`mx*.zoho.com` and regional
-      variants like `mx*.zohomail.eu`). Indicates Zoho Mail is
-      the active mail provider for the domain.
+      MX suffix documented for Zoho Mail. The email-delivery
+      article prints mail exchangers under `zoho.com`. This
+      observes that suffix. It does not prove that Zoho Mail is
+      the only inbound provider. The specific hosts were not
+      added.
 - name: ProtonMail
   slug: protonmail
   category: Email & Communication
@@ -584,11 +588,14 @@ fingerprints:
       Valimail for analysis.
   - type: dmarc_rua
     pattern: vali.email
-    reference: https://help.valimail.com/
+    reference: https://support.valimail.com/en/articles/8466256-getting-started-with-valimail-monitor
+    verified: '2026-11-16'
     description: >-
-      DMARC `rua=` aggregate-report target at Valimail's
-      shortened reporting domain (`*.vali.email`). Same vendor
-      as the valimail.com pattern.
+      DMARC `rua=` aggregate-report target at `vali.email`.
+      The Valimail Monitor article prints a mailbox at that
+      domain. This observes the reporting domain. It does not
+      prove that reports go only there. The local-part was not
+      copied. The nameserver host was not added.
   - type: dmarc_rua
     pattern: valigov.email
     description: >-

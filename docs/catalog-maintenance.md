@@ -243,7 +243,9 @@ exchanger, SPF, and site-validation reference check, and a later
 2026-11-16 verification prefix and reporting reference check, and a
 later 2026-11-16 sender include and aggregate reporting reference
 check, and a later 2026-11-16 verification prefix, SPF include, and
-TLS reporting reference check.
+TLS reporting reference check, and a later 2026-11-16 reporting
+mailbox, verification prefix, mail exchanger, and nameserver
+reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
 bind due rules to their exact claim/catalog digest, prior/new reference, actual
@@ -1868,6 +1870,66 @@ The catalog SPF stays undated.
 SMTP TLS reporting TXT record and prints `v=TLSRPTv1`. The rule
 observes that prefix. It does not prove that reports are delivered or
 that TLS is enforced. The example reporting hosts were not added.
+
+### Documented reference check, later on 2026-11-16, reporting mailbox, verification prefix, mail exchanger, and nameserver
+
+This pass checked eight undated DMARC, SPF, MX, TXT, and NS rules.
+Four rules received a `verified` date because the fetched page prints
+the catalog grammar. Four rules stay undated. No new detection, DNS
+record type, or collection path was added. This note does not cut a
+release.
+
+The cited URIports DMARC page returns a 404. The
+[getting-started article](https://www.uriports.com/getting-started-with-email-monitoring)
+prints an aggregate mailbox at a customer subdomain of `uriports.com`.
+A narrower host does not date the broad suffix. That host was not
+added. The local-part was not copied. The catalog DMARC suffix stays
+undated.
+
+The cited `help.valimail.com` host does not resolve. The
+[Valimail Monitor article](https://support.valimail.com/en/articles/8466256-getting-started-with-valimail-monitor)
+prints an aggregate mailbox at `vali.email`. The rule observes that
+reporting domain. It does not prove that Valimail is the only report
+destination. The local-part was not copied. The nameserver host was
+not added.
+
+The same article does not print a reporting mailbox at `valimail.com`.
+A footer contact address is not an aggregate destination. The catalog
+DMARC suffix stays undated.
+
+No prior reference is recorded for `valigov.email`. The
+[ValiGov announcement](https://www.valimail.com/newsroom/valimail-announces-valigov-the-first-and-only-automated-email-authentication-product-for-u-s-government)
+does not print `valigov.email` or `rua=`. The fetched Valimail support
+articles also do not print that domain. No narrower host was added.
+The catalog DMARC suffix stays undated.
+
+The
+[DNS setup article](https://support.valimail.com/en/articles/9142775-setup-your-dns-records-to-use-valimail)
+prints a macro include under `_spf.vali.email`. It does not print
+`include:valimail.com`. That narrower include was not added. The
+catalog SPF stays undated.
+
+The cited Zoho domain-verification article does not print an MX host
+under `zoho.com`. The
+[email-delivery article](https://www.zoho.com/mail/help/adminconsole/configure-email-delivery.html)
+prints mail exchangers under `zoho.com`. The rule observes that
+suffix. It does not prove that Zoho Mail is the only inbound provider.
+The specific hosts were not added.
+
+The
+[domain-verification article](https://www.zoho.com/mail/help/adminconsole/domain-verification.html)
+says to publish a TXT value that begins with `zoho-verification=`.
+The rule observes that prefix. It does not prove that Zoho Mail is the
+only Zoho product or the only mail provider. The placeholder value was
+not added as a pattern.
+
+The cited Edge DNS welcome page returns a 404 and does not print
+`akam.net`. The
+[authoritative name server reference](https://techdocs.akamai.com/edge-dns/reference/get-data-authorities)
+prints name servers under `akam.net` and says to use them as NS
+records. The rule observes that suffix. It does not prove that every
+zone uses one example host. The specific hosts were not added. Example
+contract identifiers were not copied.
 
 ## Executable path
 
