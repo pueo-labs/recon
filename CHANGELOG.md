@@ -32,6 +32,12 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Date the NameBright nameserver suffix from the NameBright help
+  page. The rule observes an NS host under `namebrightdns.com`.
+  Seven other undated rules in this pass stay undated because the
+  fetched page does not print the catalog grammar, prints a
+  narrower include, or prints a different nameserver suffix. No
+  new detection was added. This does not cut a release.
 - Date the CloudHub CNAME suffix and the Cloudflare Email Security
   MX suffix from fetched vendor pages. The CloudHub rule observes a
   CNAME target under `cloudhub.io`. The Cloudflare rule observes an
