@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "762a3c381dc67ee3b1eb62a23e18217bc5b837fb88b5803dfc3ce6bdb878dca5",
+  "catalog_digest": "743741dca3db10814897b7dbc860ca1982c2bd15a931854bf034e14f60a36af3",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -2496,8 +2496,104 @@
       "rule_id": "discovered-signals.yaml/stibee/spf/stibee.com",
       "source_checked_on": "2026-11-16",
       "source_status": "checked"
+    },
+    {
+      "basis": "Fetched https://www.etouches.com/ on 2026-11-16. It redirects to https://stova.io/. The saved Stova page prints etouches.com zero times and CNAME zero times. help.etouches.com and developer.etouches.com presented an expired certificate and were not used as a document. help.stova.io, support.stova.io, and docs.stova.io did not resolve. The current brand page is not a CNAME document, so the suffix stays undated. No narrower host was added.",
+      "disposition": "deferred",
+      "new_reference": "https://stova.io/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "c51fb3205109845150c546e64a94dbd418d7ff539882630fd96102756bc39869",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/stova-aventri/cname_target/etouches.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Rendered the SAP Help SPF listing article on 2026-11-16. The visible text says to add include:_spf-dc and a data-center number under sapsf.com, and it prints an example include for data center 60 under sapsf.com. The saved DOM contains include:sapsf.com zero times. A rendered onboarding allowlist also prints data-center includes under sapsf.com and contains include:sapsf.com zero times. The broad suffix stays undated. Those narrower hosts were not added.",
+      "disposition": "deferred",
+      "new_reference": "https://help.sap.com/docs/successfactors-platform/it-landscape-requirements-for-sap-successfactors/adding-listings-for-sender-policy-framework",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "aa57f3ed157dd4ec662c57933d7f553d88ebeb6d62705e4d6fe2c9b204f966f9",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/successfactors/spf/sapsf.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Rendered the SAP SuccessFactors Onboarding allowlist article on 2026-11-16. Its data-center table prints include:_spf-dc26.sapsf.eu and other data-center includes. The saved DOM contains include:sapsf.eu zero times. The broad suffix stays undated. Those narrower hosts were not added.",
+      "disposition": "deferred",
+      "new_reference": "https://help.sap.com/docs/successfactors-onboarding/implementing-onboarding/allowlist-methods-for-emails-from-sap-successfactors-onboarding",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "066f22157e9815f86355066cf5b6357fe186794245cfb46261eded378d09c076",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/successfactors/spf/sapsf.eu",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Rendered the SAP SuccessFactors Onboarding allowlist article on 2026-11-16. Its data-center table prints include:_spf-dc2.successfactors.com and include:_spf-dc12.successfactors.com. The saved DOM contains include:successfactors.com zero times. The broad suffix stays undated. Those narrower hosts were not added.",
+      "disposition": "deferred",
+      "new_reference": "https://help.sap.com/docs/successfactors-onboarding/implementing-onboarding/allowlist-methods-for-emails-from-sap-successfactors-onboarding",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "03bde63a365d0f62781c316057ea8d35180000598b3a9395ef8da8b77ccd8ff5",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/successfactors/spf/successfactors.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Fetched the Tipalti email domain setup article on 2026-11-16. It describes a temporary TXT ownership record and a later CNAME registration record. The saved body contains include:tipalti.com zero times and v=spf1 zero times. The help search for SPF points at that same explanation. The broad include stays undated. No narrower host was added.",
+      "disposition": "deferred",
+      "new_reference": "https://help.tipalti.com/hc/en-us/articles/36111535514775-Email-domain-setup",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "78eae000cf053e671190cd21880cde2ede8e6eb6ef3a13a8ca2c2a36a8b55d4a",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/tipalti/spf/tipalti.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Fetched the TitanHQ change-MX article on 2026-11-16. Last-Modified is Mon, 18 May 2026. The article says the MX value is the SpamTitan MX record and prints us1-smtp-mx1.titanhq.com as an example. The rule observes an MX host under titanhq.com. It does not prove that mail is delivered or that SpamTitan is the only exchanger. That specific host was not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://docs.titanhq.com/en/540-change-your-mx-records.html",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "757c04fafb147a7aafb5e93b8cdb5dd13a24efa838ddacc50d17876d2b7566c6",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/titanhq/mx/titanhq.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Fetched the Trellix inline-mode article on 2026-11-16. It says to set the gateway next hop to an MX record and prints mx.us.etp.fireeyegov.com as the preferred USGOV MX. The rule observes an MX host under fireeyegov.com. It does not prove that the domain publishes that next hop or that Trellix is the only exchanger. That specific host was not added. Address values on the page were not copied.",
+      "disposition": "narrowed",
+      "new_reference": "https://docs.trellix.com/data-and-email/docs/configuring-inline-mode-2",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "2f93be5af7b85f1747fcb0d2bd587eb5caf62695c94f12bd44e70a9840149459",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/trellix/mx/fireeyegov.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Fetched the Trend Micro DMARC report article on 2026-11-16. It prints a Germany report address at dmarcrua.tmes.trendmicro.eu. The saved body contains the literal rua= zero times. A narrower mailbox host does not date the broad trendmicro.eu suffix. That host was not added.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.trendmicro.com/en-us/documentation/article/trend-micro-email-security-online-help-analyzing-dmarc-repo",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "95dbf17ed7e1db5f025e2a903bfba8dae329af21144fbc3ca7a404ce1018aa09",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/trendmicro/dmarc_rua/trendmicro.eu",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, not a complete catalog review"
 }
