@@ -1694,6 +1694,34 @@
       "reviewed_on": "2026-11-17",
       "source_checked_on": "2026-11-17",
       "reason": "Custom-domain page checked 2026-11-17: https://help.disciple.community/hc/en-gb/articles/6399472688273-How-to-Create-a-Custom-Domain. It prints a CNAME target whose label contains disciplemedia.com. The rule observes that label. It does not prove that Disciple is serving the community. The example host was not added."
+    },
+    {
+      "rule": {
+        "source": "productivity.yaml",
+        "slug": "freshdesk",
+        "detection_type": "spf",
+        "pattern": "freshdesk.com"
+      },
+      "before": "7c363d6fbf8e802cadb8599963334b3a07a4cbafe99e977c8098d3e521742d83",
+      "after": "bb6e62c31acc86a6b1901e38dee42a6489f258708e11ca322265e7dd4279d4e5",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-17",
+      "source_checked_on": "2026-11-17",
+      "reason": "SPF page checked 2026-11-17: https://support.freshdesk.com/support/solutions/articles/43170-create-an-spf-record-to-ensure-proper-email-delivery. It prints include:email.freshdesk.com. That host has the suffix freshdesk.com. The rule observes that include. It does not prove that Freshdesk is sending mail. Narrower includes on another suffix were not added."
+    },
+    {
+      "rule": {
+        "source": "productivity.yaml",
+        "slug": "loom",
+        "detection_type": "txt",
+        "pattern": "^loom-site-verification="
+      },
+      "before": "cc79a925eaa8e64228271ef27c9672842b5fb87ee08be61216dbb2573edaa32e",
+      "after": "68033f6472febb3e201710e9269208361fc2fdd739bc3a2b684606ffcc12d0dd",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-17",
+      "source_checked_on": "2026-11-17",
+      "reason": "DNS text-record page checked 2026-11-17: https://support.atlassian.com/loom/kb/add-a-dns-text-record/. It prints loom-site-verification= as the TXT value for the root name, left blank or set to @. The rule observes that prefix. It does not prove that Loom SSO is enabled. The example value was not added."
     }
   ]
 }

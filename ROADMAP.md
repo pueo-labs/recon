@@ -90,13 +90,14 @@ What is next, and why:
    organization uses a service, and it does not receive an apex, a tenant
    identifier, an opaque token, or a per-domain row. Those stay in the
    gitignored private roots when an operator supplies them. The passes
-   from 2026-10-28 through the 2026-11-17 community-label check are the
+   from 2026-10-28 through the 2026-11-17 mail-include check are the
    record in [catalog maintenance](docs/catalog-maintenance.md) and the
    [public freshness ledger](docs/catalog-freshness-ledger.json). Main
-   `d5c44f0425ba71b2fe81c0453c2ff083580463d7` carries the pointing-label
-   check. This community-label check dates the Disciple CNAME label,
-   and it leaves seven admitted rules undated.
-   The catalog has 288 dated rules and 835 undated rules. Those passes
+   `b2a38dc9e46617d2f75a5d273ce94a25f602abd8` carries the community-label
+   check. This mail-include check dates the Freshdesk mail include
+   and the Loom verification value, and it leaves six admitted rules
+   undated.
+   The catalog has 290 dated rules and 833 undated rules. Those passes
    do not cut a release. Tag `v2.27.2` stays `071c4356`.
    The next round uses a new question list and the rules that are still due.
    The closed 5,199-row drift round remains a measurement contract. It does

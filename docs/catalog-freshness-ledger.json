@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "55945dae0938e539dceaed54beb4b45911afe990e28fc946b959ede04afc74d9",
+  "catalog_digest": "b799c3d067bb66e53657c4c2d8ca288da1951ca19a4cca7868bd2dfc6cf13a51",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -4128,8 +4128,104 @@
       "rule_id": "productivity.yaml/disciple-media/cname/disciplemedia.com",
       "source_checked_on": "2026-11-17",
       "source_status": "checked"
+    },
+    {
+      "basis": "The cited help home checked 2026-11-17 does not print dropbox-domain-verification=. The domain page, updated 2025-07-09, says to verify by a meta tag, an HTML file, or a TXT record and to follow the on-screen instructions. It does not print the catalog prefix. The apex prefix stays undated. No token was added.",
+      "disposition": "deferred",
+      "new_reference": "https://help.dropbox.com/account-access/domain-verification-invite-enforcement",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://help.dropbox.com/",
+      "review_digest": "642c2727e7da49e1ed8df5f8e70ce11661d552d007edcf8b352e506223c63d58",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "productivity.yaml/dropbox/txt/^dropbox-domain-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited help home checked 2026-11-17 does not print egnyte-domain-verification=. The custom access page says to create a CNAME pointing at the address shown on the settings page. That CNAME is a different record shape from the apex TXT prefix. The prefix stays undated. The CNAME target was not added.",
+      "disposition": "deferred",
+      "new_reference": "https://helpdesk.egnyte.com/hc/en-us/articles/47624870447373-Custom-Access-URL-Frequently-Asked-Questions-FAQs",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://helpdesk.egnyte.com/hc/en-us",
+      "review_digest": "822ea024b6938a4b42d99d59cfba18385eb981f6ea0c51801d14247fb84690ec",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "productivity.yaml/egnyte/txt/^egnyte-domain-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited help home checked 2026-11-17 does not print figma-domain-verification=. The domain-capture page says to copy a text snippet and create a TXT record. The snippet is not printed. The custom-domain page says to add the TXT and CNAME that Figma provides and does not print this prefix. The catalog prefix stays undated. No token was added.",
+      "disposition": "deferred",
+      "new_reference": "https://help.figma.com/hc/en-us/articles/360045953273-Manage-domain-capture-for-an-organization",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://help.figma.com/hc/en-us",
+      "review_digest": "03a616949edbd8a3b554f9316633672135a7a156672d95f9ead5bff98babd52d",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "productivity.yaml/figma/txt/^figma-domain-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited help home checked 2026-11-17 does not print figma-verification. The domain-capture page says to copy a text snippet and create a TXT record. The snippet is not printed. The custom-domain page says to add the TXT and CNAME that Figma provides and does not print this prefix. The catalog prefix stays undated. No token was added.",
+      "disposition": "deferred",
+      "new_reference": "https://help.figma.com/hc/en-us/articles/360045953273-Manage-domain-capture-for-an-organization",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://help.figma.com/hc/en-us",
+      "review_digest": "2b1b0fd90b8ff210794915ebabc4b6f1b9d199802a9903a99b43dab5ef4516c0",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "productivity.yaml/figma/txt/^figma-verification",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited article checked 2026-11-17 is not found. The custom portal page, modified 2025-02-11, says the default portal hostname is an account name under freshdesk.com and that a CNAME value is generated in portal settings. It does not print a CNAME target whose label contains freshdesk.com. The CNAME rule stays undated. The example portal host was not added.",
+      "disposition": "deferred",
+      "new_reference": "https://support.freshdesk.com/support/solutions/articles/37590-set-up-a-custom-portal-url-and-verify-dns",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://support.freshdesk.com/en/support/solutions/articles/216671",
+      "review_digest": "c3b615e2737db9e41bdef2c40cfa69fe777807cd0636d395d55fdab67b389ec1",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "productivity.yaml/freshdesk/cname/freshdesk.com",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited article checked 2026-11-17 is not found. The SPF page, modified 2024-11-19, prints v=spf1 include:email.freshdesk.com ~all. That include has the suffix freshdesk.com, so the existing SPF rule matches it. The rule observes that include. It does not prove that Freshdesk is sending mail. Narrower includes on another suffix, and the example placeholders, were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://support.freshdesk.com/support/solutions/articles/43170-create-an-spf-record-to-ensure-proper-email-delivery",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://support.freshdesk.com/en/support/solutions/articles/216671",
+      "review_digest": "bb6e62c31acc86a6b1901e38dee42a6489f258708e11ca322265e7dd4279d4e5",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "productivity.yaml/freshdesk/spf/freshdesk.com",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited help URL checked 2026-11-17 redirects to the Glean docs home and does not print glean-domain-verification=. The SSO page says an email domain must match the expected customer domain. It does not print the catalog prefix. The apex prefix stays undated. No token was added.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.glean.com/administration/identity/sso/about",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://help.glean.com/",
+      "review_digest": "863b531c3afce903702f62ecd58ef99d701b8d87a301f8059a45c96737c6eb51",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "productivity.yaml/glean/txt/^glean-domain-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited help URL checked 2026-11-17 redirects to the Loom support home and does not print loom-site-verification=. The DNS text-record page, updated 2025-10-16, prints loom-site-verification= as the TXT value for the root name, left blank or set to @. The rule observes that prefix. It does not prove that Loom SSO is enabled. The example value was not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://support.atlassian.com/loom/kb/add-a-dns-text-record/",
+      "next_review": "2026-12-17",
+      "prior_reference": "https://support.loom.com/hc/en-us",
+      "review_digest": "68033f6472febb3e201710e9269208361fc2fdd739bc3a2b684606ffcc12d0dd",
+      "reviewed_on": "2026-11-17",
+      "rule_id": "productivity.yaml/loom/txt/^loom-site-verification=",
+      "source_checked_on": "2026-11-17",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, and a later 2026-11-16 verification prefix, SPF include, and TLS reporting reference check, and a later 2026-11-16 reporting mailbox, verification prefix, mail exchanger, and nameserver reference check, and a later 2026-11-16 certificate issuer, distribution suffix, environment name, and load balancer hostname reference check, and a later 2026-11-16 nameserver label, website infix, REST suffix, and edge hostname reference check, and a later 2026-11-16 endpoint suffix, routing suffix, token prefix, and issuer host reference check, and a later 2026-11-16 nameserver suffix, edge hostname, edge pattern, and publication hostname reference check, and a later 2026-11-17 verification owner, verification value, and issuer host reference check, and a later 2026-11-17 image suffix, edge suffix, and issuer host reference check, and a later 2026-11-17 traffic edge hostname reference check, and a later 2026-11-17 store suffix, site suffix, and issuer host reference check, and a later 2026-11-17 SSO verification value and nameserver label reference check, and a later 2026-11-17 pointing label, legacy label, and verification value reference check, and a later 2026-11-17 community CNAME label reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, and a later 2026-11-16 verification prefix, SPF include, and TLS reporting reference check, and a later 2026-11-16 reporting mailbox, verification prefix, mail exchanger, and nameserver reference check, and a later 2026-11-16 certificate issuer, distribution suffix, environment name, and load balancer hostname reference check, and a later 2026-11-16 nameserver label, website infix, REST suffix, and edge hostname reference check, and a later 2026-11-16 endpoint suffix, routing suffix, token prefix, and issuer host reference check, and a later 2026-11-16 nameserver suffix, edge hostname, edge pattern, and publication hostname reference check, and a later 2026-11-17 verification owner, verification value, and issuer host reference check, and a later 2026-11-17 image suffix, edge suffix, and issuer host reference check, and a later 2026-11-17 traffic edge hostname reference check, and a later 2026-11-17 store suffix, site suffix, and issuer host reference check, and a later 2026-11-17 SSO verification value and nameserver label reference check, and a later 2026-11-17 pointing label, legacy label, and verification value reference check, and a later 2026-11-17 community CNAME label reference check, and a later 2026-11-17 mail include and verification value reference check, not a complete catalog review"
 }

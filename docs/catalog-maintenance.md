@@ -267,6 +267,8 @@ reference check, and a later 2026-11-17 pointing label,
 legacy label, and verification value
 reference check, and a later 2026-11-17 community
 CNAME label
+reference check, and a later 2026-11-17 mail
+include and verification value
 reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
@@ -2581,6 +2583,76 @@ not print `disciplemedia.com` as a CNAME target. The
 prints a CNAME target whose label contains `disciplemedia.com`.
 The rule observes that label. It does not prove that Disciple
 is serving the community. The example host was not added.
+
+### Documented reference check, later on 2026-11-17, mail include and verification value
+
+This pass checked eight undated TXT, SPF, and CNAME rules. Two
+rules received a `verified` date because the fetched page prints
+the catalog grammar. Six rules stay undated. No new
+detection, DNS record type, or collection path was added. This
+note does not cut a release.
+
+The cited Dropbox help home does not print
+`dropbox-domain-verification=`. The
+[domain page](https://help.dropbox.com/account-access/domain-verification-invite-enforcement),
+updated 2025-07-09, says to verify by a meta tag, an HTML file,
+or a TXT record and to follow the on-screen instructions. It
+does not print the catalog prefix. The apex prefix stays
+undated. No token was added.
+
+The cited Egnyte help home does not print
+`egnyte-domain-verification=`. The
+[custom access page](https://helpdesk.egnyte.com/hc/en-us/articles/47624870447373-Custom-Access-URL-Frequently-Asked-Questions-FAQs)
+says to create a CNAME pointing at the address shown on the
+settings page. That CNAME is a different record shape from the
+apex TXT prefix. The prefix stays undated. The CNAME target
+was not added.
+
+The cited Figma help home does not print
+`figma-domain-verification=`. The
+[domain-capture page](https://help.figma.com/hc/en-us/articles/360045953273-Manage-domain-capture-for-an-organization)
+says to copy a text snippet and create a TXT record. The
+snippet is not printed. The custom-domain page says to add the
+TXT and CNAME that Figma provides and does not print this
+prefix. The catalog prefix stays undated. No token was added.
+
+The cited Figma help home does not print `figma-verification`.
+The domain-capture page says to copy a text snippet and create
+a TXT record. The snippet is not printed. The custom-domain
+page says to add the TXT and CNAME that Figma provides and
+does not print this prefix. The catalog prefix stays undated.
+No token was added.
+
+The cited Freshdesk article is not found. The
+[custom portal page](https://support.freshdesk.com/support/solutions/articles/37590-set-up-a-custom-portal-url-and-verify-dns),
+modified 2025-02-11, says the default portal hostname is an
+account name under freshdesk.com and that a CNAME value is
+generated in portal settings. It does not print a CNAME target
+whose label contains `freshdesk.com`. The CNAME rule stays
+undated. The example portal host was not added.
+
+The
+[SPF page](https://support.freshdesk.com/support/solutions/articles/43170-create-an-spf-record-to-ensure-proper-email-delivery),
+modified 2024-11-19, prints `include:email.freshdesk.com`.
+That host has the suffix `freshdesk.com`. The rule observes
+that include. It does not prove that Freshdesk is sending
+mail. Narrower includes on another suffix, and the example
+placeholders, were not added.
+
+The cited Glean help URL redirects to the docs home and does
+not print `glean-domain-verification=`. The
+[SSO page](https://docs.glean.com/administration/identity/sso/about)
+says an email domain must match the expected customer domain.
+It does not print the catalog prefix. The apex prefix stays
+undated. No token was added.
+
+The cited Loom help URL redirects to the support home and does
+not print `loom-site-verification=`. The
+[DNS text-record page](https://support.atlassian.com/loom/kb/add-a-dns-text-record/),
+updated 2025-10-16, prints `loom-site-verification=` as the
+TXT value for the root name, left blank or set to `@`. The
+rule observes that prefix. It does not prove that Loom SSO is
+enabled. The example value was not added.
 
 ## Executable path
 

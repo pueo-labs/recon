@@ -181,13 +181,15 @@ fingerprints:
   detections:
   - type: txt
     pattern: ^loom-site-verification=
-    reference: https://support.loom.com/hc/en-us
+    reference: https://support.atlassian.com/loom/kb/add-a-dns-text-record/
+    verified: '2026-11-17'
     description: >-
-      Loom site-verification TXT (Loom is an asynchronous-
-      video messaging platform, acquired by Atlassian in
-      2023). Indicates the domain is registered with a Loom
-      account, typically for SSO federation in the
-      Loom Business and Enterprise plans.
+      Loom site-verification TXT (Loom is an asynchronous
+      video platform). The DNS text-record page prints
+      `loom-site-verification=` as the TXT value for the
+      root name, left blank or set to `@`. This observes
+      that prefix. It does not prove that Loom SSO is
+      enabled. The example value was not added.
 - name: Canva
   slug: canva
   category: Productivity & Collaboration
@@ -429,12 +431,15 @@ fingerprints:
   detections:
   - type: spf
     pattern: freshdesk.com
-    reference: https://support.freshdesk.com/en/support/solutions/articles/216671
+    reference: https://support.freshdesk.com/support/solutions/articles/43170-create-an-spf-record-to-ensure-proper-email-delivery
+    verified: '2026-11-17'
     description: >-
       SPF include matching freshdesk.com (Freshdesk is a
-      Freshworks helpdesk product, comparable to Zendesk).
-      Authorizes Freshdesk to send support emails on behalf
-      of the domain.
+      Freshworks helpdesk product). The SPF page prints
+      `include:email.freshdesk.com`, and that host has the
+      suffix `freshdesk.com`. This observes that include.
+      It does not prove that Freshdesk is sending mail.
+      Narrower includes on another suffix were not added.
   - type: cname
     pattern: freshdesk.com
     reference: https://support.freshdesk.com/en/support/solutions/articles/216671

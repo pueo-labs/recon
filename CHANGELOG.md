@@ -32,6 +32,12 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Check eight undated TXT, SPF, and CNAME rules against
+  current vendor pages. Date the Freshdesk mail include and
+  the Loom verification value. Six rules stay undated because
+  the fetched page does not print the catalog grammar at the
+  matching record shape. No new detection was added. This
+  does not cut a release.
 - Check eight undated TXT and CNAME rules against current
   vendor pages. Date the Disciple CNAME label. Seven rules stay
   undated because the fetched page does not print the catalog
