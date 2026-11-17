@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "83a0f78d6c5d0b61c4c8af3c49f33ebfef1a97512213ae35c5d6720cbe0e8e0e",
+  "catalog_digest": "31cb2e14256e8e52c6a0b310df4755c09fae57dbce383268d9065bc45dc09d95",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -2880,8 +2880,104 @@
       "rule_id": "email.yaml/ondmarc/spf/ondmarc.com",
       "source_checked_on": "2026-11-16",
       "source_status": "checked"
+    },
+    {
+      "basis": "The cited DMARC record guide checked 2026-11-16 prints generic example mailboxes. It does not print a mailbox at powerdmarc.com. The forensic-report article prints a mailbox at rua.powerdmarc.com. A narrower host does not date the broad suffix. That host was not added. The local-part was not copied.",
+      "disposition": "deferred",
+      "new_reference": "https://support.powerdmarc.com/support/solutions/articles/60000672810-what-are-dmarc-ruf-forensic-reports-",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://powerdmarc.com/dmarc-record/",
+      "review_digest": "fca4c982f148744ef81fbb827fda65e1b58acf000f76e08e1187f01a96f8c8c6",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/powerdmarc/dmarc_rua/powerdmarc.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The Email Fraud Defense product page checked 2026-11-16 does not print rua=. The saved page contains emaildefense.proofpoint.com once, as a login link at app.emaildefense.proofpoint.com. A narrower host is not an aggregate reporting destination. That host was not added. The catalog suffix stays undated.",
+      "disposition": "deferred",
+      "new_reference": "https://www.proofpoint.com/us/products/email-protection/email-fraud-defense",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://www.proofpoint.com/us/products/email-protection/email-fraud-defense",
+      "review_digest": "c2e4a37493d45912610fab364dff106ca71dc3374395b480156bb0e0d9945554",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/proofpoint-efd/dmarc_rua/emaildefense.proofpoint.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The Proton Mail custom-domain article checked 2026-11-16 says to create a TXT record and paste a value that begins with protonmail-verification=. The rule observes that TXT prefix. It does not prove Proton Mail is the only mail provider. The placeholder value was not added as a pattern. The MX hosts were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://proton.me/support/custom-domain",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://proton.me/support/custom-domain",
+      "review_digest": "a6c91b55020bbf109861009c6fa9fa6bdd61f9031623c6b93988a18a369940c6",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/protonmail/txt/^protonmail-verification=",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited help center returns a 404. The SendCloud blog checked 2026-11-16 prints v=spf1 include:spf.sendcloud.org -all. It does not print include:spf1.sendcloud.org. That other include was not added. The catalog SPF stays undated.",
+      "disposition": "deferred",
+      "new_reference": "https://blog.sendcloud.net/2022/03/31/20220331/",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://www.sendcloud.com/help-center/",
+      "review_digest": "3dc6a3783a0637e30c3949157f43c8886be179473e0da7de7aad441a150284ec",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/sendcloud/spf/spf1.sendcloud.org",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The same SendCloud blog prints include:spf.sendcloud.org. It does not print include:spf2.sendcloud.org. That other include was not added. The catalog SPF stays undated.",
+      "disposition": "deferred",
+      "new_reference": "https://blog.sendcloud.net/2022/03/31/20220331/",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://www.sendcloud.com/help-center/",
+      "review_digest": "3704209264552733ff77dd71d297907b0bae456a5e60110a8d780c917efdb5c6",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/sendcloud/spf/spf2.sendcloud.org",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited SendGrid article redirects to the Twilio domain-authentication guide. That guide checked 2026-11-16 prints v=spf1 include:sendgrid.net ~all. The rule observes that include. It does not prove SendGrid is the only sender. The example MX host and example domain were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://www.twilio.com/docs/sendgrid/ui/account-and-settings/how-to-set-up-domain-authentication",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://docs.sendgrid.com/ui/account-and-settings/how-to-set-up-domain-authentication",
+      "review_digest": "664e5af0230704b8f1cb6fc5a186da5d9a66a4b9acb051e50574c3c7f8190a01",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/sendgrid/spf/sendgrid.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The cited docs URL redirects to a Bird page that does not print sparkpostmail.com. The Bird SPF guide checked 2026-11-16 prints v=spf1 include:spf.example.com ~all. It does not print include:sparkpostmail.com. The generic example include was not added. The catalog SPF stays undated.",
+      "disposition": "deferred",
+      "new_reference": "https://bird.com/guides/what-is-spf",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://www.sparkpost.com/docs/",
+      "review_digest": "5bc42c13e37216ebadf807bf7b9279501ff5adf3989b321d18c337bc72d25f5f",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/sparkpost/spf/sparkpostmail.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "RFC 8460 checked 2026-11-16 defines the SMTP TLS reporting TXT record and prints v=TLSRPTv1. The rule observes that prefix. It does not prove that reports are delivered or that TLS is enforced. The example reporting hosts were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://datatracker.ietf.org/doc/html/rfc8460",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://datatracker.ietf.org/doc/html/rfc8460",
+      "review_digest": "91f36f64e4759f0c1d102a537961197c9fba36bbbb1f0a4a0de9e5b86ad0de91",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/tls-rpt/txt/^v=TLSRPTv1",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, and a later 2026-11-16 sender include and aggregate reporting reference check, and a later 2026-11-16 verification prefix, SPF include, and TLS reporting reference check, not a complete catalog review"
 }

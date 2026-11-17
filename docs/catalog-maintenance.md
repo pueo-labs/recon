@@ -242,7 +242,8 @@ exchanger, SPF, and site-validation reference check, and a later
 2026-11-16 nameserver, SPF, and CNAME reference check, and a later
 2026-11-16 verification prefix and reporting reference check, and a
 later 2026-11-16 sender include and aggregate reporting reference
-check.
+check, and a later 2026-11-16 verification prefix, SPF include, and
+TLS reporting reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
 bind due rules to their exact claim/catalog digest, prior/new reference, actual
@@ -1816,6 +1817,57 @@ The same product page does not print `v=spf1`. The
 prints a smart include under `smart.ondmarc.com`. It does not print
 `include:ondmarc.com`. That narrower host was not added. The catalog
 SPF stays undated.
+
+### Documented reference check, later on 2026-11-16, verification prefix, SPF includes, and TLS reporting
+
+This pass checked eight undated TXT, DMARC, and SPF rules. Three rules
+received a `verified` date because the fetched page prints the catalog
+grammar. Five rules stay undated. No new detection, DNS record type, or
+collection path was added. This note does not cut a release.
+
+The [PowerDMARC record guide](https://powerdmarc.com/dmarc-record/)
+prints generic example mailboxes. It does not print a mailbox at
+`powerdmarc.com`. The
+[forensic-report article](https://support.powerdmarc.com/support/solutions/articles/60000672810-what-are-dmarc-ruf-forensic-reports-)
+prints a mailbox at `rua.powerdmarc.com`. A narrower host does not date
+the broad suffix. That host was not added. The local-part was not
+copied. The catalog DMARC suffix stays undated.
+
+The [Email Fraud Defense page](https://www.proofpoint.com/us/products/email-protection/email-fraud-defense)
+does not print `rua=`. Its only `emaildefense.proofpoint.com` mention
+is a login link at `app.emaildefense.proofpoint.com`. A narrower host
+is not an aggregate reporting destination. That host was not added. The
+catalog DMARC suffix stays undated.
+
+The [Proton Mail custom-domain article](https://proton.me/support/custom-domain)
+says to publish a TXT value that begins with
+`protonmail-verification=`. The rule observes that prefix. It does not
+prove that Proton Mail is the only mail provider. The placeholder value
+was not added as a pattern. The MX hosts were not added.
+
+The cited SendCloud help center returns a 404. The
+[SendCloud blog](https://blog.sendcloud.net/2022/03/31/20220331/) prints
+`v=spf1 include:spf.sendcloud.org -all`. It does not print
+`include:spf1.sendcloud.org` or `include:spf2.sendcloud.org`. That other
+include was not added. Both catalog SPF rules stay undated.
+
+The cited SendGrid article redirects to the
+[Twilio domain-authentication guide](https://www.twilio.com/docs/sendgrid/ui/account-and-settings/how-to-set-up-domain-authentication).
+That guide prints `v=spf1 include:sendgrid.net ~all`. The rule observes
+that include. It does not prove that SendGrid is the only sender. The
+example MX host and example domain were not added.
+
+The cited SparkPost docs URL redirects to a Bird page that does not
+print `sparkpostmail.com`. The
+[Bird SPF guide](https://bird.com/guides/what-is-spf) prints
+`v=spf1 include:spf.example.com ~all`. It does not print
+`include:sparkpostmail.com`. The generic example include was not added.
+The catalog SPF stays undated.
+
+[RFC 8460](https://datatracker.ietf.org/doc/html/rfc8460) defines the
+SMTP TLS reporting TXT record and prints `v=TLSRPTv1`. The rule
+observes that prefix. It does not prove that reports are delivered or
+that TLS is enforced. The example reporting hosts were not added.
 
 ## Executable path
 
