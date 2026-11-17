@@ -804,67 +804,18 @@ the Claude Code marketplace, Codex and Gemini CLI install targets, and MCP
 Registry metadata. That release did not change this slice. A round makes a
 new temporary question list, keeps that list private, and publishes only a
 disclosure-safe pattern with synthetic fixtures. It does not publish a claim
-that a named organization uses a service. The 2026-10-28 pass dated two AI
-verification rules whose current vendor pages state the token grammar and
-left six undated because the cited pages do not. A later pass the same day
-checked eight undated CRM and marketing rules and left them undated for the
-same reason. The older Dynamics authenticate-domains article now redirects,
-and a search-index copy of it is not a current basis. A later pass the same
-day dated the Emma account-validation TXT and the Eloqua tracking-domain
-CNAME from pages that print the grammar, and left six other CRM rules
-undated. The 2026-10-29 pass dated the Klaviyo branded-sending TXT, the
-Kartra custom-domain CNAME, and the Iterable tracking-domain CNAME from
-pages that print the grammar, and left five other marketing rules
-undated. The cited Intercom article now serves a different article, so
-that URL is not a current basis for either Intercom rule. The 2026-10-30
-pass dated the Account Engagement tracker-domain CNAME and the Salesforce
-`_spf.salesforce.com` include from pages that print the grammar, and left
-six other rules undated. The 2026-11-02 pass dated the Yandex Webmaster
-rights-verification TXT from the page that prints the grammar, and left
-seven other rules undated. A later pass the same day dated the MongoDB
-Atlas federated-authentication domain-mapping TXT from the page that
-prints the grammar, and left seven other data and analytics rules
-undated. A later pass the same day dated the Pendo organization
-CNAME and the Afternic parking nameservers from pages that print
-the grammar, and left six other data, analytics, and infrastructure
-rules undated. The 2026-11-16 pass dated the Atlassian sending-domain
-verification TXT from the page that prints the grammar, and left
-seven other email and cloud rules undated. A later pass the same day
-dated the Brevo DMARC aggregate rua host from the page that prints
-the grammar, and left seven other email rules undated. A later pass
-the same day checked eight undated email, DNS, and event rules and
-left them undated, because a fetched page does not print the
-catalog grammar, prints only a narrower host than the existing
-suffix, or did not return an article body. A later pass the same
-day checked eight undated DNS and email rules and left them
-undated, because a fetched page does not print the catalog
-grammar, the page did not return an article body, or the host did
-not resolve. A later pass the same day dated the DMARCLY aggregate
-mailbox domain and the DNSimple nameserver suffix from pages that
-print the grammar, and left six other DMARC reporting and DNS rules
-undated. A later pass the same day dated the remaining DNSimple
-nameserver suffixes, the DNS Made Easy nameserver suffix, the
-DNSPod nameserver suffix, the Docebo SPF include, and the easyDNS
-nameserver suffixes from pages that print the grammar. That work
-does not cut a release. A later pass the same day dated the easyDNS
-`easydns.net` nameserver suffix from the page that prints the
-grammar, and left seven other email and DNS rules undated, because
-a fetched page prints only a narrower host, does not print the
-catalog grammar, did not return an article body, or the host did
-not resolve. That work does not cut a release. A later pass the
-same day dated the F5 Distributed Cloud nameserver suffix, the
-Fastmail MX suffix, the FortiMail Cloud MX suffix, and the
-Cloudflare Foundation DNS nameserver suffixes from pages that
-print the grammar, and left two other email rules undated because
-a fetched page prints only a narrower host. That work does not cut
-a release. A later pass the same day dated the Gandi nameserver
-suffix, the GoDaddy Professional Email MX suffix, the GoDaddy SPF
-include, the GoDaddy DMARC reporting suffix, and the
-Squarespace-documented Google Domains nameserver suffix from pages
-that print the grammar, and left three other rules undated because
-a fetched page does not print the catalog grammar, prints only a
-narrower host, or uses a mailbox at the suffix only as a syntax
-example. That work does not cut a release. The 2026-10 documentation
+that a named organization uses a service. The passes from 2026-10-28
+through the 2026-11-17 store-suffix check are the record in
+[catalog maintenance](catalog-maintenance.md) and the
+[public freshness ledger](catalog-freshness-ledger.json). Main
+`e43d5fc9fc247f1c6f4b6a7df402ab348249222e` carries that check. It
+dates the Sectigo issuer, the Shopify store suffix, and the
+Squarespace site suffix, and it leaves five admitted rules undated.
+The catalog has 280 dated rules and 843 undated rules. Those passes
+do not cut a release. Tag `v2.27.2` stays `071c4356`. Issue 399 is
+the open CI lock-consistency defect, and that fix is its own change.
+The next round uses a new question list and the rules that are still
+due. The 2026-10 documentation
 pass read the IANA DNS parameter update and left collection on the existing
 record types. Agent portability remains a separate maintainer track and does
 not appear here as a product milestone:

@@ -32,6 +32,10 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Point the short and canonical roadmaps at the catalog maintenance
+  record through the 2026-11-17 store-suffix check. The pass list
+  stays in that guide and the public ledger. Issue 399 remains the
+  open CI lock-consistency defect. This does not cut a release.
 - Check eight undated CAA, TXT, and CNAME rules against current
   vendor pages. Date the Sectigo issuer, the Shopify store
   suffix, and the Squarespace site suffix. Five rules stay
