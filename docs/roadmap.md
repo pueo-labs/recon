@@ -812,10 +812,12 @@ through the 2026-11-17 store-suffix check are the record in
 dates the Sectigo issuer, the Shopify store suffix, and the
 Squarespace site suffix, and it leaves five admitted rules undated.
 The catalog has 280 dated rules and 843 undated rules. Those passes
-do not cut a release. Tag `v2.27.2` stays `071c4356`. Issue 399 is
-the open CI lock-consistency defect, and that fix is its own change.
-The next round uses a new question list and the rules that are still
-due. The 2026-10 documentation
+do not cut a release. Tag `v2.27.2` stays `071c4356`. Qualifying CI
+jobs install the project environment with `uv sync --locked` and
+`UV_LOCKED`. A dependency change that `uv.lock` does not contain
+fails those jobs and leaves the lock unchanged. Issue 399 is that
+policy, and it does not cut a release. The next round uses a new
+question list and the rules that are still due. The 2026-10 documentation
 pass read the IANA DNS parameter update and left collection on the existing
 record types. Agent portability remains a separate maintainer track and does
 not appear here as a product milestone:

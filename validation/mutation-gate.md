@@ -237,13 +237,14 @@ module.
 ## Running it locally (Windows notes earned the hard way)
 
 ```powershell
-# A non-OneDrive clone with the locked venv; uv sync works there.
+# A non-OneDrive clone with the locked venv; uv sync --locked works there.
 git clone . $env:TEMP\recon-mutation; cd $env:TEMP\recon-mutation
 $env:UV_PYTHON = "3.11"; $env:UV_LINK_MODE = "copy"
+$env:UV_LOCKED = "1"
 $env:PYTHONUTF8 = "1"              # cosmic-ray decodes worker output as UTF-8;
                                    # Windows pytest otherwise may emit cp1252
                                    # and misrecord a killed mutant as incompetent
-uv sync --group mutation
+uv sync --locked --group mutation
 uv run --group mutation cosmic-ray baseline mutation.toml   # mandatory
 uv run --group mutation cosmic-ray init mutation.toml mutation.sqlite
 uv run --group mutation cr-filter-operators mutation.sqlite mutation.toml

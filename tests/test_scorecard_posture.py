@@ -198,7 +198,7 @@ def test_provider_drift_workflow_runs_scheduled_live_integration_smoke() -> None
     assert set(triggers) == {"schedule", "workflow_dispatch"}
     assert workflow["permissions"] == _READ_ONLY_PERMISSIONS
     assert job["timeout-minutes"] == 20
-    assert job["env"] == {"UV_PYTHON": "3.15"}
+    assert job["env"] == {"UV_PYTHON": "3.15", "UV_LOCKED": "1"}
     assert commands.count("uv run pytest") == 1
     assert "uv run pytest tests/test_integration.py -m integration -q" in commands
 

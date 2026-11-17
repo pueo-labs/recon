@@ -144,13 +144,15 @@ Not next, and why:
 
 When picking work back up, sync `main` and run
 `uv run python scripts/check.py` before starting anything else. 2.27.2 is
-published. Issue 399 is the open CI lock-consistency defect: qualifying
-jobs should refuse a dependency metadata change that is not in
-`uv.lock`. That fix is its own change. Continue the freshness loop
-after it, on rules that are still due, or wait for the upstream
-blockers above. A later documentation or catalog date pass does not by
-itself cut another release. Batch user-visible behavior through the
-[release process](docs/release-process.md).
+published. Qualifying CI jobs install the project environment with
+`uv sync --locked` and `UV_LOCKED`. A dependency change that `uv.lock`
+does not contain fails those jobs and leaves the lock unchanged.
+Installed-wheel smoke and the reproducible build stay separate from
+that sync. Issue 399 is that policy, and it does not cut a release.
+Continue the freshness loop on rules that are still due, or wait for
+the upstream blockers above. A later documentation or catalog date
+pass does not by itself cut another release. Batch user-visible
+behavior through the [release process](docs/release-process.md).
 
 ## Current release and next steps
 

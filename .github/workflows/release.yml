@@ -15,8 +15,8 @@ on:
 #
 # Supply-chain isolation contract (v1.9.3.3+):
 #
-#   * ``test`` job installs dev deps and runs the complete local gate plus
-#     dependency audit. Dev deps execute here. No dist/
+#   * ``test`` job installs the locked dev environment and runs the complete
+#     local gate plus dependency audit. Dev deps execute here. No dist/
 #     exists, so a compromised dev dep cannot tamper with release
 #     artifacts from this job.
 #   * ``build`` job is PURE: it does not create or sync a project
@@ -60,6 +60,8 @@ permissions:
 # future dev-pin change would make uv sync / export / pip-audit resolve and
 # audit against a different interpreter than the one installed. The supported
 # floor (3.11) is covered by the blocking CI test matrix.
+# UV_LOCKED stays on the test job. Build, package smoke, SBOM, attest, and
+# publish do not sync the project environment, so they do not inherit it.
 env:
   UV_PYTHON: "3.15"
 
@@ -91,6 +93,8 @@ jobs:
     timeout-minutes: 30
     permissions:
       contents: read
+    env:
+      UV_LOCKED: "1"
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -115,7 +119,7 @@ jobs:
           python-version: "3.15"
 
       - name: Install dependencies
-        run: uv sync
+        run: uv sync --locked
 
       - name: Require full Git history
         shell: bash

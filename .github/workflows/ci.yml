@@ -11,6 +11,9 @@ permissions:
 
 # Match setup-python's maintained patch release instead of the exact local pin.
 # Matrix jobs override this with their selected interpreter.
+# UV_LOCKED is set on each job that syncs or runs the project environment.
+# It is not a workflow variable: reproducible-build and installed-wheel-smoke
+# do not sync that environment, and a workflow setting would reach them.
 env:
   UV_PYTHON: "3.15"
 
@@ -38,6 +41,8 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      UV_LOCKED: "1"
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -54,7 +59,7 @@ jobs:
           python-version: "3.15"
 
       - name: Install dependencies
-        run: uv sync
+        run: uv sync --locked
 
       - name: Lint
         run: uv run ruff check --no-cache .
@@ -112,6 +117,8 @@ jobs:
   typecheck:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    env:
+      UV_LOCKED: "1"
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -134,7 +141,7 @@ jobs:
           python-version: "3.15"
 
       - name: Install dependencies
-        run: uv sync
+        run: uv sync --locked
 
       - name: Type check
         # pyproject.toml is the single source of truth for the checked scope.
@@ -155,6 +162,7 @@ jobs:
         mcp-version: ["1.28.1", "2.0.0", "2.3.0"]
     env:
       UV_PYTHON: "3.15"
+      UV_LOCKED: "1"
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -208,6 +216,7 @@ jobs:
     # would silently defeat the 3.11 / 3.12 / 3.13 / 3.14 coverage.
     env:
       UV_PYTHON: ${{ matrix.python-version }}
+      UV_LOCKED: "1"
     # Non-blocking only for the experimental free-threaded probe above;
     # every other matrix job fails CI as normal.
     continue-on-error: ${{ matrix.experimental || false }}
@@ -228,7 +237,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
-        run: uv sync
+        run: uv sync --locked
 
       - name: Test parallel suite with coverage
         run: >-
@@ -251,7 +260,10 @@ jobs:
       # interpreter setup-python installs below, so a future dev-pin change
       # cannot silently audit a different environment. Mirror the test
       # matrix, which sets UV_PYTHON for the same reason.
+      # The export below is --frozen, which ignores UV_LOCKED. This setting
+      # and the locked sync are what reject a stale lock before that export.
       UV_PYTHON: "3.15"
+      UV_LOCKED: "1"
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -268,7 +280,7 @@ jobs:
           python-version: "3.15"
 
       - name: Install dependencies
-        run: uv sync
+        run: uv sync --locked
 
       - name: Export all locked requirements
         # Hash-pinned (no --no-hashes): per-package sha256 hashes are
@@ -285,6 +297,8 @@ jobs:
   validate-fingerprints:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    env:
+      UV_LOCKED: "1"
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -304,7 +318,7 @@ jobs:
           python-version: "3.15"
 
       - name: Install dependencies
-        run: uv sync
+        run: uv sync --locked
 
       - name: Validate documentation commit receipts
         shell: bash
@@ -519,6 +533,7 @@ jobs:
     env:
       # Pin the interpreter explicitly rather than inheriting .python-version.
       UV_PYTHON: "3.15"
+      UV_LOCKED: "1"
       # Load the higher-budget Hypothesis profile (conftest.py) for this job.
       RECON_FUZZ: "1"
     steps:
@@ -537,7 +552,7 @@ jobs:
           python-version: "3.15"
 
       - name: Install dependencies
-        run: uv sync
+        run: uv sync --locked
 
       - name: Run hostile-input fuzz gate
         run: uv run pytest tests/ -m "hostile_input and not integration"

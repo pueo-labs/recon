@@ -35,7 +35,7 @@ Run from the repository root after installing the development environment:
 
 | Goal | Command | Expected result |
 |---|---|---|
-| Install dependencies | `uv sync` | Development environment resolves from `uv.lock`. |
+| Install dependencies | `uv sync --locked` | Development environment resolves from `uv.lock`. A metadata change the lock does not contain fails and leaves `uv.lock` unchanged. |
 | Quick public proof smoke | `uv run python -m validation.reproduce_paper_numbers --profile smoke --stamp artifact-review-smoke` | Writes a manifest and summary under `validation/local/paper-numbers/artifact-review-smoke/`; reports no private corpora and no default network requirement. |
 | Full public proof bundle | `uv run python -m validation.reproduce_paper_numbers --profile paper --stamp artifact-review-paper` | Runs suppression monotonicity, planted-evidence movement, differential verification, interval coverage, likelihood sensitivity, and layer ablation. |
 | Paper figure drift check | `uv run python scripts/generate_paper_figures.py --check` | Verifies the committed SVG figures match the deterministic aggregate-safe generator. |

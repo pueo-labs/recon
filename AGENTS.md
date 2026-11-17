@@ -60,7 +60,7 @@ Consult manifests, CI and existing verification scripts before documenting comma
 
 **Converge.** Proceed with authorized research, reversible local edits, and verification without a separate human signoff. Reproduce meaningful failures, fix the canonical implementation, run focused tests and the full gate, inspect failures, and self-review the diff. For fingerprints and inference, cover lookalikes, sparse or failed sources, duplicate evidence, and claim provenance. Synthetic invariants prove behavior; they do not establish real-world precision or calibrated probabilities. Follow [the maintainer loop](docs/maintainer-loop-runbook.md) and update tests, current docs, and changelog when their claims change.
 
-**Verify.** Repository tasks use uv `0.13.5` (`pyproject.toml` allows `>=0.13.4,<0.14` for lock-update tooling). Review a newer uv minor before changing this pin. Canonical local gate:
+**Verify.** Repository tasks use uv `0.13.5` (`pyproject.toml` allows `>=0.13.4,<0.14` for lock-update tooling). Review a newer uv minor before changing this pin. Install the project environment with `uv sync --locked`. CI sets `UV_LOCKED` on each job that syncs or runs that environment and passes `--locked` to `uv sync`. A dependency change that `uv.lock` does not contain fails those jobs and leaves the lock unchanged. The reproducible build and installed-wheel smoke do not sync the project environment. Canonical local gate:
 
 ```bash
 uv run python scripts/check.py          # lint, strict pyright, coverage-gated tests, catalog and docs gates
