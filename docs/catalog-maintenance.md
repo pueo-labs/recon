@@ -257,6 +257,8 @@ reference check, and a later 2026-11-17 verification owner,
 verification value, and issuer host
 reference check, and a later 2026-11-17 image suffix,
 edge suffix, and issuer host
+reference check, and a later 2026-11-17 traffic edge
+hostname
 reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
@@ -2295,6 +2297,56 @@ The cited custom domains URL redirects to the domain setup
 page. That page does not print `netlify=` as TXT record
 content. The catalog prefix stays undated. No site host or
 challenge name was added.
+
+### Documented reference check, later on 2026-11-17, traffic edge hostname
+
+This pass checked eight undated TXT, NS, and CNAME rules. One
+rule received a `verified` date because the fetched page prints
+the catalog grammar. Seven rules stay undated. No new
+detection, DNS record type, or collection path was added. This
+note does not cut a release.
+
+The cited custom domains URL redirects to the domain setup
+page. That page does not print `verified-for-netlify=` as TXT
+record content. The catalog prefix stays undated. No token or
+site host was added.
+
+The cited product page redirects to an IBM product page that
+does not print `nsone.net`. The nameserver assignment article
+returned HTTP 403 and does not print a nameserver host. The
+catalog suffix stays undated. No nameserver hostname was added.
+
+The cited support URL redirects to the getting-started page.
+That page does not print `pagerduty-domain-verification=` as
+TXT record content. The catalog prefix stays undated. No token
+was added.
+
+The cited domains URL returns HTTP 404. The platform domains
+page prints `pantheon.io` only as a robots.txt pattern. The
+[GCDN cutover page](https://docs.pantheon.io/guides/nextgen-gcdn/o2o)
+says the hostname CNAME points to a name under that suffix. The
+rule observes that suffix. It does not prove that Pantheon is
+serving the site. The placeholder and the platform domain were
+not added.
+
+The cited domain capture URL redirects to the domain capture
+overview. The add-and-verify page says to copy a TXT record
+from Postman and does not print `postman-domain-verification=`.
+The catalog prefix stays undated. No token was added.
+
+The cited docs page prints `prismic.io` as a documentation link
+and does not print a CNAME target. The catalog suffix stays
+undated. No repository hostname was added.
+
+The cited custom domains page redirects to the Render custom
+domains article. That page does not print
+`render-domain-verification=`. It prints CNAME targets under
+`onrender.com`, which is a different rule. The catalog prefix
+stays undated. No service hostname was added.
+
+The cited docs page prints `sanity.io` as the documentation
+site and does not print a CNAME target. The catalog suffix
+stays undated. No asset hostname was added.
 
 ## Executable path
 

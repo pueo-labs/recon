@@ -32,6 +32,11 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Check eight undated TXT, NS, and CNAME rules against current
+  vendor pages. Date the Pantheon CNAME suffix. Seven rules
+  stay undated because the fetched page does not print the
+  catalog grammar. No new detection was added. This does not
+  cut a release.
 - Check eight undated TXT, CAA, and CNAME rules against
   current vendor pages. Date the Imgix CNAME suffix, the
   KeyCDN edge suffix, and the Let's Encrypt issuer. Five

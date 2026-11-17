@@ -721,11 +721,15 @@ fingerprints:
   detections:
   - type: cname
     pattern: pantheon.io
-    reference: https://docs.pantheon.io/domains
+    reference: https://docs.pantheon.io/guides/nextgen-gcdn/o2o
+    verified: '2026-11-17'
     description: >-
       CNAME pointing into pantheon.io (Pantheon is a
       managed-WordPress and managed-Drupal hosting platform).
-      Indicates the domain hosts a Pantheon-managed site.
+      The cutover page says the hostname CNAME points to a
+      name under that suffix. This observes that suffix. It
+      does not prove that Pantheon is serving the site. The
+      placeholder and the platform domain were not added.
 - name: AWS Elastic Load Balancer
   slug: aws-elb
   category: Infrastructure
