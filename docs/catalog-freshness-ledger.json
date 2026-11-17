@@ -2688,8 +2688,104 @@
       "rule_id": "email.yaml/autospf/spf/autospf.com",
       "source_checked_on": "2026-11-16",
       "source_status": "checked"
+    },
+    {
+      "basis": "The AWS SES getting-started URL redirects to the developer guide hub and does not print amazonses:. The creating-identities page checked 2026-11-16 prints amazonses.com as a MAIL FROM and DKIM suffix. It does not print the apex TXT prefix amazonses:. The owner-qualified name _amazonses was not added.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://docs.aws.amazon.com/ses/latest/dg/send-email-getting-started.html",
+      "review_digest": "481b7a04e026b3cc05fdc8d5f53bd4b370bbd4ea7072d064e855a1b7f5137443",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/aws-ses/txt/^amazonses:",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The Brevo help center root returned an access check. The domain authentication article checked 2026-11-16 names a TXT record called Brevo code. Sendinblue-code count is 0. The article also prints a mailbox at dmarc.brevo.com for a different already dated rule. That mailbox was not copied. The legacy prefix stays undated.",
+      "disposition": "deferred",
+      "new_reference": "https://help.brevo.com/hc/en-us/articles/12163873383186-Authenticate-your-domain-with-Brevo-Brevo-code-DKIM-DMARC",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://help.brevo.com/hc/en-us",
+      "review_digest": "7294b8779dc4a081e2bdb66ccb1c00d903075e8510194e8ad8b2c755be14233c",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/brevo/txt/^Sendinblue-code",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The same authentication article uses Brevo code as the record name. The hyphenated token brevo-code appears in image file names, not as a TXT value. It does not print the catalog prefix as a DNS value. The prefix stays undated.",
+      "disposition": "deferred",
+      "new_reference": "https://help.brevo.com/hc/en-us/articles/12163873383186-Authenticate-your-domain-with-Brevo-Brevo-code-DKIM-DMARC",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://help.brevo.com/hc/en-us",
+      "review_digest": "554891bac0ad98bd254f39aa78910246169eb6535752d23b48b4373bbe49624f",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/brevo/txt/^brevo-code",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "www.dmarcadvisor.com and the record articles redirect to a country block. The reachable geo statement checked 2026-11-16 does not print rua=. A support contact at dmarcadvisor.com is not an aggregate reporting destination. The contact mailbox and phone number were not copied. The catalog DMARC suffix stays undated.",
+      "disposition": "deferred",
+      "new_reference": "https://dmarcadvisor.com/geo-statement/",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://www.dmarcadvisor.com/",
+      "review_digest": "e4f99e823e2366e489868d4272aa4bccc0530bd3372decc0cc820e12bf3eeb61",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/dmarc-advisor/dmarc_rua/dmarcadvisor.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The DMARC record wizard does not print rua= or v=spf1. The broken-report article checked 2026-11-16 says a dmarcian reporting address is on a subdomain and the example host is ag.dmarcian.com. A narrower host does not date the broad suffix. That host was not added. The local-part was not copied.",
+      "disposition": "deferred",
+      "new_reference": "https://dmarcian.com/broken-dmarc-security-risks/",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://dmarcian.com/dmarc-record-wizard/",
+      "review_digest": "4b7b2a16b321635a18e57b54e83e3980a588c04112dc4c7ef5b4152b6bebc61d",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/dmarcian/dmarc_rua/dmarcian.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The SPF syntax article checked 2026-11-16 prints v=spf1 include:example.com. include:dmarcian.com count is 0. The generic example domain was not added. The catalog SPF stays undated.",
+      "disposition": "deferred",
+      "new_reference": "https://dmarcian.com/spf-syntax-table/",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://dmarcian.com/dmarc-record-wizard/",
+      "review_digest": "59c18e3205ce44186f764d9df31f20782050c50c6e4513f12bf5f871cc321ea8",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/dmarcian/spf/dmarcian.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The EasyDMARC blog index does not print rua=. The data-residency article checked 2026-11-16 lists rua.easydmarc.com as an aggregate reporting hostname. A narrower host does not date the broad suffix. That host was not added. Regional hosts on the same page were not added.",
+      "disposition": "deferred",
+      "new_reference": "https://support.easydmarc.com/knowledge-base/data-hosting-locations",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://easydmarc.com/blog/",
+      "review_digest": "ce7e7438ca334dccf0bf4248aa51a0236ed9276495e434a601cd8839ada8a727",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/easydmarc/dmarc_rua/easydmarc.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "The EasyDMARC homepage does not print easydmarc.eu or rua=. The same data-residency article lists rua.easydmarc.eu. A narrower host does not date the broad suffix. That host was not added.",
+      "disposition": "deferred",
+      "new_reference": "https://support.easydmarc.com/knowledge-base/data-hosting-locations",
+      "next_review": "2026-12-16",
+      "prior_reference": "https://easydmarc.com/",
+      "review_digest": "23b728e12eb573cd963fb59157f2d0aee999b6a98bf43bfefa970afe8205d983",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "email.yaml/easydmarc/dmarc_rua/easydmarc.eu",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, and a later 2026-11-16 portal verification and mail routing reference check, and a later 2026-11-16 SPF, reporting, and support-domain reference check, and a later 2026-11-16 mail exchanger, SPF, and site-validation reference check, and a later 2026-11-16 SPF include and mail-exchanger reference check, and a later 2026-11-16 nameserver, SPF, and CNAME reference check, and a later 2026-11-16 verification prefix and reporting reference check, not a complete catalog review"
 }

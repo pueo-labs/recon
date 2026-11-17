@@ -239,7 +239,8 @@ reference check, and a later 2026-11-16 SPF, reporting, and
 support-domain reference check, and a later 2026-11-16 mail
 exchanger, SPF, and site-validation reference check, and a later
 2026-11-16 SPF include and mail-exchanger reference check, and a later
-2026-11-16 nameserver, SPF, and CNAME reference check.
+2026-11-16 nameserver, SPF, and CNAME reference check, and a later
+2026-11-16 verification prefix and reporting reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
 bind due rules to their exact claim/catalog digest, prior/new reference, actual
@@ -1713,6 +1714,55 @@ undated.
 The [AutoSPF page](https://autospf.com/) prints
 `include:_spf.autospf.com`. It does not print `include:autospf.com`.
 That narrower host was not added. The catalog SPF stays undated.
+
+### Documented reference check, later on 2026-11-16, verification prefixes and reporting
+
+This pass checked eight undated TXT, DMARC, and SPF rules. None
+received a `verified` date. Fetched pages do not print the catalog
+grammar, print a narrower reporting host, or only a country-block
+statement. No new detection, DNS record type, or collection path was
+added. This note does not cut a release.
+
+The AWS SES getting-started URL redirects to the developer guide hub.
+The [creating-identities page](https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html)
+prints `amazonses.com` as a MAIL FROM and DKIM suffix. It does not
+print the apex TXT prefix `amazonses:`. The owner-qualified name
+`_amazonses` was not added. The catalog TXT prefix stays undated.
+
+The Brevo help center root returned an access check. The
+[domain authentication article](https://help.brevo.com/hc/en-us/articles/12163873383186-Authenticate-your-domain-with-Brevo-Brevo-code-DKIM-DMARC)
+names a TXT record called Brevo code. `Sendinblue-code` count is 0.
+The hyphenated token `brevo-code` appears in image file names, not as
+a TXT value. A mailbox at `dmarc.brevo.com` belongs to a different
+already dated rule and was not copied. Both catalog prefixes stay
+undated.
+
+`www.dmarcadvisor.com` and the record articles redirect to a country
+block. The reachable
+[geo statement](https://dmarcadvisor.com/geo-statement/) does not
+print `rua=`. A support contact at `dmarcadvisor.com` is not an
+aggregate reporting destination. The contact mailbox and phone number
+were not copied. The catalog DMARC suffix stays undated.
+
+The dmarcian record wizard does not print `rua=` or `v=spf1`. The
+[broken-report article](https://dmarcian.com/broken-dmarc-security-risks/)
+says a reporting address is on a subdomain and the example host is
+`ag.dmarcian.com`. A narrower host does not date the broad suffix.
+That host was not added. The local-part was not copied. The catalog
+DMARC suffix stays undated.
+
+The [SPF syntax article](https://dmarcian.com/spf-syntax-table/) prints
+`v=spf1 include:example.com`. It does not print `include:dmarcian.com`.
+The generic example domain was not added. The catalog SPF stays
+undated.
+
+The EasyDMARC blog index and homepage do not print `rua=` for these
+suffixes. The
+[data-residency article](https://support.easydmarc.com/knowledge-base/data-hosting-locations)
+lists `rua.easydmarc.com` and `rua.easydmarc.eu` as aggregate
+reporting hostnames. A narrower host does not date the broad suffix.
+Those hosts were not added. Regional hosts on the same page were not
+added. Both catalog DMARC suffixes stay undated.
 
 ## Executable path
 
