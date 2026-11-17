@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "5dfc24378623d62474c99b58cfd8f94402610e4a1073f54e900a215353c00338",
+  "catalog_digest": "a41e7137d4df580ae237fdb3b89b7ff4fcee51550ba114194d57b69e3138270f",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -2016,8 +2016,104 @@
       "rule_id": "discovered-signals.yaml/mailprotector/mx/mxrecord.io",
       "source_checked_on": "2026-11-16",
       "source_status": "checked"
+    },
+    {
+      "basis": "MarkMonitor DNS API PDF checked 2026-11-16 uses ns.markmonitor.com only as a hypothetical substring-search illustration beside a TXT example on the same domain. It does not say customer zones are delegated to nameservers under markmonitor.com. The premium DNS page and datasheet do not print a nameserver hostname. WHOIS and DNS-directory pages are not a vendor basis. Verification date not advanced. No nameserver host was added.",
+      "disposition": "deferred",
+      "new_reference": "https://api-public-doc-mm.s3.us-west-2.amazonaws.com/MarkmonitorDnsAPI.pdf",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "23456c5ffaade95bfae433333346aab0bead6e8af79686f84a9a210083df62e8",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/markmonitor/ns/markmonitor.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "MarkMonitor DNS API PDF, premium DNS page, and premium DNS datasheet checked 2026-11-16 do not print markmonitor.zone or a nameserver hostname under that suffix. WHOIS listings are not a vendor basis. Verification date not advanced. No nameserver host was added.",
+      "disposition": "deferred",
+      "new_reference": "https://www.markmonitor.com/secure-global-dns-services/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "54c5d30dfa9fe7eff6ea38e9e1e7620fc06d974524cc6bed40af08e3720aeb1c",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/markmonitor/ns/markmonitor.zone",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "messageprovider.com and www.messageprovider.com did not resolve on 2026-11-16, so no vendor page could be fetched. No first-party page printing include:messageprovider.com was found. Third-party DNS tools are not a vendor basis. A narrower host seen only there was not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": null,
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "74f645132a90ca7167c025792befa3dfa2668cb7255b07a175c13adb829b67b6",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/messageprovider/spf/messageprovider.com",
+      "source_checked_on": null,
+      "source_status": "unreachable"
+    },
+    {
+      "basis": "Three Microsoft 365 product pages checked 2026-11-16 do not print msv1.invalid: Add a custom domain, updated 2026-05-08; Create DNS records at any DNS host, updated 2026-04-23; and Gather the information you need to create DNS records, updated 2026-06-16. Community Q&A is not a product page. Verification date not advanced. No verification token was copied.",
+      "disposition": "deferred",
+      "new_reference": "https://learn.microsoft.com/en-us/microsoft-365/admin/setup/add-domain",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "8daf3d5813e7e0be99283d19c8d7028a227549f5cd89d8422d2622bac1e988e5",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/microsoft365/mx/msv1.invalid",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Mimecast SPF article, updated September 23, 2026, checked 2026-11-16 prints include:eu._netblocks.mimecast.com and include:_netblocks.mimecast.com. It does not print include:mim.ec. Those other includes were not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://mimecastsupport.zendesk.com/hc/en-us/articles/34000792642963-Connect-Application-Implementing-SPF-for-Outbound-Email",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "93a3aa1a64384fd0b48c6e64bb318702800d3a8fb5cd69a295bfb6a653e1f866",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/mimecast/spf/mim.ec",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "CloudHub 2.0 networking guide checked 2026-11-16 says to point a custom-domain CNAME at a host under cloudhub.io and prints application DNS names under that suffix. The rule observes a CNAME target under cloudhub.io. It does not prove that an application is deployed or that CloudHub is the only target. The example space label was not copied. A CNAME to anypointdns.net on the classic load-balancer article was not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://docs.mulesoft.com/cloudhub-2/ch2-networking-guide",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "15b5795a3f714939051f414dff9d2ddf363be5b7e689f04de2c88f1374dd52d5",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/mulesoft/cname_target/cloudhub.io",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Cloudflare Email Security guide for Google Workspace, last updated 2026-04-21, checked 2026-11-16 prints mailstream-central.mxrecord.mx as an MX host. The rule observes an MX host under mxrecord.mx. It does not prove that mail is delivered or that Cloudflare Email Security is the only exchanger. That specific host was not added. Hosts under mxrecord.io on the same page were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://developers.cloudflare.com/email-security/deployment/inline/setup/gsuite-area1-mx/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "899c841d705f71d6377d6c1fe1fabfa53cf29044da669667afff865660c83970",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/mxrecord/mx/mxrecord.mx",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "MxToolbox DMARC integration article checked 2026-11-16 prints an aggregate rua mailbox at mxtoolbox.dmarc-report.com. That host is narrower than the existing dmarc-report.com suffix, and the local-part is a placeholder. Verification date not advanced. The narrower host and the local-part were not copied.",
+      "disposition": "deferred",
+      "new_reference": "https://knowledgebase.mxtoolbox.com/home/dmarc-integration",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "9a002adfff8d1891fb64e3202e14a338e1c439b1f2c95c45b1c85249f95c9526",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/mxtoolbox-dmarc/dmarc_rua/dmarc-report.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, not a complete catalog review"
 }

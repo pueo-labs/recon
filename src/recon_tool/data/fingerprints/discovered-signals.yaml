@@ -746,9 +746,15 @@ fingerprints:
   detections:
   - type: mx
     pattern: mxrecord.mx
+    reference: https://developers.cloudflare.com/email-security/deployment/inline/setup/gsuite-area1-mx/
+    verified: '2026-11-16'
     description: >-
-      Mxrecord email-delivery MX target (`mxrecord.mx`). Indicates the
-      org routes inbound mail through Mxrecord.
+      MX host under the documented Cloudflare Email Security
+      exchanger `mailstream-central.mxrecord.mx`. The Google
+      Workspace deployment guide prints that host as an MX
+      record. This observes an MX host under `mxrecord.mx`. It
+      does not prove that mail is delivered or that Cloudflare
+      Email Security is the only exchanger.
 - name: Fastmail
   slug: fastmail
   category: Email
@@ -2007,9 +2013,14 @@ fingerprints:
   detections:
   - type: cname_target
     pattern: cloudhub.io
+    reference: https://docs.mulesoft.com/cloudhub-2/ch2-networking-guide
+    verified: '2026-11-16'
     description: >-
-      MuleSoft CloudHub iPaaS-hosted endpoint CNAME target
-      (`cloudhub.io`).
+      CNAME target under the documented CloudHub hosts. The
+      CloudHub 2.0 networking guide says to point a custom-domain
+      CNAME at a host under `cloudhub.io`. This observes that
+      CNAME target. It does not prove that an application is
+      deployed or that CloudHub is the only target.
 - name: StackPath / MaxCDN
   slug: stackpath
   category: Infrastructure
