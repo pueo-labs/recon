@@ -32,6 +32,12 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Check eight undated TXT, CAA, and CNAME rules against
+  current vendor pages. Date the Imgix CNAME suffix, the
+  KeyCDN edge suffix, and the Let's Encrypt issuer. Five
+  rules stay undated because the fetched page does not print
+  the catalog grammar. No new detection was added. This does
+  not cut a release.
 - Check eight undated TXT, NS, CAA, and CNAME rules against
   current vendor pages. Three rules received a `verified` date
   because the fetched page prints the catalog grammar. Five

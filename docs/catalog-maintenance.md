@@ -255,6 +255,8 @@ reference check, and a later 2026-11-16 nameserver suffix,
 edge hostname, edge pattern, and publication hostname
 reference check, and a later 2026-11-17 verification owner,
 verification value, and issuer host
+reference check, and a later 2026-11-17 image suffix,
+edge suffix, and issuer host
 reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
@@ -2239,6 +2241,60 @@ The custom domains page prints `herokuapp.com` only as a default
 application URL. The CNAME targets it prints are under
 `herokudns.com`. The catalog suffix stays undated. No application
 name or DNS target was added.
+
+### Documented reference check, later on 2026-11-17, image suffix, edge suffix, and issuer host
+
+This pass checked eight undated TXT, CAA, and CNAME rules.
+Three rules received a `verified` date because the fetched page
+prints the catalog grammar. Five rules stay undated. No new
+detection, DNS record type, or collection path was added. This
+note does not cut a release.
+
+The Honeycomb documentation index does not print
+`honeycomb-io-site-verification=` as TXT record content. The
+catalog prefix stays undated. No token was added.
+
+The cited custom-domains URL redirects and then returns HTTP
+404. The
+[advanced settings page](https://docs.imgix.com/en-US/getting-started/setup/creating-sources/advanced-settings)
+says to configure DNS so the CNAME points to a hostname under
+`imgix.net`. The rule observes that suffix. It does not prove
+that Imgix is serving the site. The example base URL was not
+added.
+
+The cited zonealias URL redirects to the zone alias article.
+Visible text does not print `keycdn.com` as a CNAME target. The
+printed CNAME target is under `kxcdn.com`. The `keycdn.com`
+suffix stays undated. No site host was added.
+
+The
+[zone alias article](https://www.keycdn.com/support/create-a-zone-alias)
+says the CNAME points the zone alias to a zone URL under
+`kxcdn.com`. The rule observes that suffix. It does not prove
+that KeyCDN is serving the site. The example alias and the
+example zone URL were not added.
+
+The cited docs URL redirects to the documentation home. That
+page does not print a CNAME record. The catalog suffix stays
+undated. No streaming host was added.
+
+The
+[CAA documentation page](https://letsencrypt.org/docs/caa/)
+says the identifying domain name for CAA is `letsencrypt.org`
+and prints a CAA issue record with that issuer. The rule
+observes that issuer. It does not prove that a certificate was
+issued. The example name was not added.
+
+The cited docs index does not print
+`linear-domain-verification=`. The SAML and access control page
+says to add a TXT code to claim a domain and does not print
+that prefix. The catalog prefix stays undated. No token was
+added.
+
+The cited custom domains URL redirects to the domain setup
+page. That page does not print `netlify=` as TXT record
+content. The catalog prefix stays undated. No site host or
+challenge name was added.
 
 ## Executable path
 

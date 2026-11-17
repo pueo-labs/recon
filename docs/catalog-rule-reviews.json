@@ -1484,6 +1484,48 @@
       "reviewed_on": "2026-11-17",
       "source_checked_on": "2026-11-17",
       "reason": "CAA configuration page checked 2026-11-17: https://developers.google.com/public-key-infrastructure/faq/configure-caa. It prints a CAA issue record whose issuer is pki.goog. The rule observes that issuer. It does not prove that a certificate was issued. The status host was not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "imgix",
+        "detection_type": "cname",
+        "pattern": "imgix.net"
+      },
+      "before": "c25811ee4eaa65c83fd2cbdfca65db392fe9bed4962f4174ef2adae6c2893ad2",
+      "after": "8501d3c293ecb274dbe0484b0b62db8210df5ec830009955754eb5aece6d278b",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-17",
+      "source_checked_on": "2026-11-17",
+      "reason": "Advanced settings page checked 2026-11-17: https://docs.imgix.com/en-US/getting-started/setup/creating-sources/advanced-settings. It says the CNAME points to a hostname under imgix.net. The rule observes that suffix. It does not prove that Imgix is serving the site. The example base URL was not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "keycdn",
+        "detection_type": "cname",
+        "pattern": "kxcdn.com"
+      },
+      "before": "272bd5814492f41237e31dcf8217666501f19b933fe3af58566591607db54c4a",
+      "after": "4be1f9772af0753cbdbf84ab8bec259a7b90a234ce5d616dcea0a250cce97d7a",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-17",
+      "source_checked_on": "2026-11-17",
+      "reason": "Zone alias page checked 2026-11-17: https://www.keycdn.com/support/create-a-zone-alias. It says the CNAME points to a zone URL under kxcdn.com. The rule observes that suffix. It does not prove that KeyCDN is serving the site. The example alias and the example zone URL were not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "letsencrypt",
+        "detection_type": "caa",
+        "pattern": "letsencrypt.org"
+      },
+      "before": "c25bb41eee5e5b525ef004491301417c462d31ae8c90b6d9ece623457ac59c5f",
+      "after": "af7f424c06820253adf68740e5df1bc9874dce141e5306b90d5b2573b81ed9a6",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-17",
+      "source_checked_on": "2026-11-17",
+      "reason": "CAA documentation page checked 2026-11-17: https://letsencrypt.org/docs/caa/. It prints a CAA issue record whose issuer is letsencrypt.org. The rule observes that issuer. It does not prove that a certificate was issued. The example name was not added."
     }
   ]
 }
