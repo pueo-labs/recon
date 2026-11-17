@@ -1059,10 +1059,14 @@ fingerprints:
   detections:
   - type: ns
     pattern: namebrightdns.com
+    reference: https://help.namebright.com/knowledgebase/dns-nameservers-explained/nameservers-explained/
+    verified: '2026-11-16'
     description: >-
-      NameBright DNS NS target (`namebrightdns.com`). Registrar /
-      managed DNS provider, common on domains registered through
-      NameBright (Turn Commerce).
+      Authoritative nameserver under the documented NameBright
+      default nameservers `ns1.namebrightdns.com` and
+      `ns2.namebrightdns.com`. This observes an NS host under
+      `namebrightdns.com`. It does not prove that the zone is
+      delegated or that NameBright is the only DNS provider.
 - name: Etisalat Domains
   slug: etisalat-dns
   category: Cloud

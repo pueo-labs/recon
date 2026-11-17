@@ -232,7 +232,8 @@ and a later 2026-11-16 nameserver, mail, and reporting reference
 check, and a later 2026-11-16 mail, SPF, and custom-DNS reference
 check, and a later 2026-11-16 mail and verification reference check,
 and a later 2026-11-16 mail exchanger and reporting reference check,
-and a later 2026-11-16 CloudHub and mail exchanger reference check.
+and a later 2026-11-16 CloudHub and mail exchanger reference check,
+and a later 2026-11-16 nameserver and sender-policy reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
 bind due rules to their exact claim/catalog digest, prior/new reference, actual
@@ -1362,6 +1363,67 @@ prints an aggregate rua mailbox at `mxtoolbox.dmarc-report.com`. That
 host is narrower than the existing `dmarc-report.com` suffix, and the
 local-part is a placeholder. The broader suffix stays undated. The
 narrower host and the local-part were not copied.
+
+### Documented reference check, later on 2026-11-16, nameserver and sender-policy
+
+This pass checked eight undated NS, SPF, DMARC, and TXT rules.
+One received a `verified` date because the fetched vendor page prints
+the catalog grammar. Seven stayed undated. No new detection, DNS record
+type, or collection path was added. This note does not cut a release.
+
+The [NameBright nameserver page](https://help.namebright.com/knowledgebase/dns-nameservers-explained/nameservers-explained/),
+updated September 2026, says the default nameservers assigned at
+registration are `ns1.namebrightdns.com` and `ns2.namebrightdns.com`.
+The change-nameservers guide prints the same two hosts. The rule
+observes an NS host under `namebrightdns.com`. It does not prove that
+the zone is delegated or that NameBright is the only DNS provider.
+Those specific hosts were not added.
+
+The [Netcraft DMARC visualization page](https://www.netcraft.com/platform/detection-enhancements/dmarc-visualizations-and-detection)
+describes DMARC visualization and does not print a rua mailbox or a
+reporting host. The fetched site report for `netcraft.com` leaves its
+DMARC section as a loading placeholder and does not print a mailbox.
+No fetched first-party page prints an aggregate reporting host at
+`netcraft.com`. The catalog DMARC suffix stays undated.
+
+The [CSC registration-data policy page](https://www.cscdbs.com/en/icann-registration-data-policy-update/)
+prints nameservers `udns1.cscudns.com` and `udns2.cscudns.org`. It
+does not print `netnames.net`. Third-party DNS histories of older
+hosts under `netnames.net` are not a vendor basis. Those other hosts
+were not added. The catalog NS stays undated.
+
+The [NetSuite SPF page](https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/bridgehead_4820740297.html),
+published November 13, 2026, prints `include:sent-via.netsuite.com`
+for email and `include:mailsenders.netsuite.com` for fax. It does not
+print `include:netsuite.com`. Those narrower includes were not added.
+The catalog SPF stays undated.
+
+The [OCI DNS zone page](https://docs.oracle.com/en-us/iaas/Content/DNS/Tasks/managingdnszones.htm),
+updated March 18, 2026, describes zones and SOA records and does not
+print a nameserver hostname under `oraclecloud.net`. Database and
+private DNS pages print `oraclecloud.com` as a connection hostname
+suffix, not as an NS target. No nameserver host was added. The
+catalog NS stays undated.
+
+The [Oracle Applications Cloud email security page](https://docs.oracle.com/en/cloud/saas/applications-common/26d/facia/configure-email-security.html#s20081308),
+published September 30, 2026, prints `include:spf_c.oraclecloud.com`.
+The Oracle Integration SPF page, published November 13, 2026, prints
+the same narrower include for earlier instances. Neither prints
+`include:oraclecloud.com`. The narrower include was not added. The
+catalog SPF stays undated.
+
+The [OCI domain verification page](https://docs.oracle.com/en-us/iaas/Content/General/domain/create-domain.htm),
+updated February 2, 2026, says the console shows a generated TXT name
+and value. It does not print the prefix `oci-domain-verification=`.
+No token was copied. The catalog TXT stays undated.
+
+The [OCI Email Delivery SPF page](https://docs.oracle.com/en-us/iaas/Content/Email/Tasks/configurespf.htm),
+updated March 17, 2026, prints `include:rp.oracleemaildelivery.com`,
+`include:ap.rp.oracleemaildelivery.com`, and
+`include:eu.rp.oracleemaildelivery.com`. The Oracle Integration SPF
+page prints the same narrower includes. Neither prints
+`include:oracleemaildelivery.com`. Those narrower includes were not
+added. The catalog SPF stays undated.
 
 ## Executable path
 

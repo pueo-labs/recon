@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "a41e7137d4df580ae237fdb3b89b7ff4fcee51550ba114194d57b69e3138270f",
+  "catalog_digest": "062cf8aeb8519352435ca697fdd5e5622d5b05b8460300cebeb919b1980557e4",
   "reviews": [
     {
       "basis": "First-party documentation checked for the exact role and grammar; bounded synthetic family tests preserve namespace provenance. See docs/catalog-maintenance.md documented family review, 2026-10-23.",
@@ -2112,8 +2112,104 @@
       "rule_id": "discovered-signals.yaml/mxtoolbox-dmarc/dmarc_rua/dmarc-report.com",
       "source_checked_on": "2026-11-16",
       "source_status": "checked"
+    },
+    {
+      "basis": "NameBright help page What is a nameserver, updated September 2026, checked 2026-11-16 says the default nameservers are ns1.namebrightdns.com and ns2.namebrightdns.com. The change-nameservers guide prints the same two hosts. The rule observes an NS host under namebrightdns.com. It does not prove that the zone is delegated or that NameBright is the only DNS provider. Those specific hosts were not added.",
+      "disposition": "narrowed",
+      "new_reference": "https://help.namebright.com/knowledgebase/dns-nameservers-explained/nameservers-explained/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "33b088eb5b916274486bbc279b5a7e05abfd340059498aaa03cc4c04485e13a7",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/namebright/ns/namebrightdns.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Netcraft DMARC visualization page checked 2026-11-16 describes DMARC visualization and does not print a rua mailbox or a reporting host. The fetched site report for netcraft.com leaves its DMARC section as a loading placeholder and does not print a mailbox. No fetched first-party page prints an aggregate reporting host at netcraft.com. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://www.netcraft.com/platform/detection-enhancements/dmarc-visualizations-and-detection",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "79d83f2de1a3accfaba0867d7a2839d9515bbe9423b3f1d485333edf02bf92d4",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/netcraft/dmarc_rua/netcraft.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "CSC registration-data policy page checked 2026-11-16 prints nameservers udns1.cscudns.com and udns2.cscudns.org. It does not print netnames.net. Third-party DNS histories of older hosts under netnames.net are not a vendor basis. Those other hosts were not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://www.cscdbs.com/en/icann-registration-data-policy-update/",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "6e69bd4f79c93edbe45832b51006efa6df619f62d86a4b50cc7b3c46dee2df19",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/netnames/ns/netnames.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "NetSuite Sender Policy Framework page, published 2026-11-13, checked 2026-11-16 prints include:sent-via.netsuite.com for email and include:mailsenders.netsuite.com for fax. It does not print include:netsuite.com. Those narrower includes were not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/bridgehead_4820740297.html",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "e77eafa9455eacafbb8e22610e5163bf2924aa5cad18bb74a287cf2767d34159",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/netsuite/spf/netsuite.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "OCI public DNS zone management page, updated 2026-03-18, checked 2026-11-16 describes zones and SOA records and does not print a nameserver hostname under oraclecloud.net. Database and private DNS pages print oraclecloud.com as a connection hostname suffix, not as an NS target. No nameserver host was added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.oracle.com/en-us/iaas/Content/DNS/Tasks/managingdnszones.htm",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "09646a3f7e8fb0959001ae5fb9942dfc9bd7c4725bcb2059c7f041a35d1bbd36",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/oracle-cloud/ns/oraclecloud.net",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "Oracle Applications Cloud email security page, published 2026-09-30, checked 2026-11-16 prints include:spf_c.oraclecloud.com. The Oracle Integration SPF page, published 2026-11-13, prints the same narrower include for earlier instances. Neither prints include:oraclecloud.com. The narrower include was not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.oracle.com/en/cloud/saas/applications-common/26d/facia/configure-email-security.html#s20081308",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "05e991ddc8bd650735a08de0b74942dd71d556243afef444dba8bbeb2ee76a6d",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/oracle-cloud/spf/oraclecloud.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "OCI Domain Management page for adding and verifying a domain, updated 2026-02-02, checked 2026-11-16 says the console shows a generated TXT name and value. It does not print the prefix oci-domain-verification=. No token was copied. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.oracle.com/en-us/iaas/Content/General/domain/create-domain.htm",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "9eafe02dccbc15244756f1e808216387d9c86d76ac1d59c7c4fe0f2b20dfd549",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/oracle-cloud/txt/^oci-domain-verification=",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
+    },
+    {
+      "basis": "OCI Email Delivery SPF page, updated 2026-03-17, checked 2026-11-16 prints include:rp.oracleemaildelivery.com, include:ap.rp.oracleemaildelivery.com, and include:eu.rp.oracleemaildelivery.com. The Oracle Integration SPF page, published 2026-11-13, prints the same narrower includes. Neither prints include:oracleemaildelivery.com. Those narrower includes were not added. Verification date not advanced.",
+      "disposition": "deferred",
+      "new_reference": "https://docs.oracle.com/en-us/iaas/Content/Email/Tasks/configurespf.htm",
+      "next_review": "2026-12-16",
+      "prior_reference": null,
+      "review_digest": "8db23005c5af40f56e78cdceb31baa512dae2d7b600fe3cf564be1f96a985f1a",
+      "reviewed_on": "2026-11-16",
+      "rule_id": "discovered-signals.yaml/oracle-email-delivery/spf/oracleemaildelivery.com",
+      "source_checked_on": "2026-11-16",
+      "source_status": "checked"
     }
   ],
   "schema_version": 1,
-  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, not a complete catalog review"
+  "scope": "Documented checks through 2026-11-16, including the 2026-10-30 Salesforce and advertising reference check, a 2026-11-02 CRM and advertising reference check, a later 2026-11-02 data and analytics reference check, a later 2026-11-02 data, analytics, and infrastructure reference check, the 2026-11-16 email and cloud reference check, and a later 2026-11-16 email reporting reference check, and a later 2026-11-16 email, DNS, and event reference check, and a later 2026-11-16 DNS and email reference check, and a later 2026-11-16 DMARC reporting and DNS reference check, and a later 2026-11-16 DNS provider reference check, and a later 2026-11-16 email and DNS reference check, and a later 2026-11-16 nameserver and mail reference check, and a later 2026-11-16 nameserver, mail, and reporting reference check, and a later 2026-11-16 mail, SPF, and custom-DNS reference check, and a later 2026-11-16 mail and verification reference check, and a later 2026-11-16 mail exchanger and reporting reference check, and a later 2026-11-16 CloudHub and mail exchanger reference check, and a later 2026-11-16 nameserver and sender-policy reference check, not a complete catalog review"
 }

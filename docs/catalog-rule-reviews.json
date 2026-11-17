@@ -924,6 +924,20 @@
       "reviewed_on": "2026-11-16",
       "source_checked_on": "2026-11-16",
       "reason": "Cloudflare Email Security guide for Google Workspace, last updated 2026-04-21, checked 2026-11-16: https://developers.cloudflare.com/email-security/deployment/inline/setup/gsuite-area1-mx/. It prints mailstream-central.mxrecord.mx as an MX host. The rule observes an MX host under mxrecord.mx. It does not prove that mail is delivered or that Cloudflare Email Security is the only exchanger. That specific host was not added. Hosts under mxrecord.io on the same page were not added."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "namebright",
+        "detection_type": "ns",
+        "pattern": "namebrightdns.com"
+      },
+      "before": "6fa22ca57122ca56adb75339a61bb7cfc3bd5c81f9b2fee67c1a3916bd1f1e46",
+      "after": "33b088eb5b916274486bbc279b5a7e05abfd340059498aaa03cc4c04485e13a7",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "NameBright help page What is a nameserver, updated September 2026, checked 2026-11-16: https://help.namebright.com/knowledgebase/dns-nameservers-explained/nameservers-explained/. It says the default nameservers are ns1.namebrightdns.com and ns2.namebrightdns.com. The change-nameservers guide prints the same two hosts. The rule observes an NS host under namebrightdns.com. It does not prove that the zone is delegated or that NameBright is the only DNS provider. Those specific hosts were not added."
     }
   ]
 }
