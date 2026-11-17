@@ -14,6 +14,7 @@ import os
 import sys
 from io import StringIO
 from pathlib import Path
+from types import SimpleNamespace
 from typing import NamedTuple
 from unittest.mock import AsyncMock, MagicMock, patch
 
@@ -193,7 +194,10 @@ class TestDoctorCommandHappyPath:
             releaselevel: str
             serial: int
 
-        with patch("recon_tool.cli.doctor.sys.version_info", Version(3, minor, 1, releaselevel, 0)):
+        interpreter = SimpleNamespace(
+            executable=sys.executable, version=sys.version, version_info=Version(3, minor, 1, releaselevel, 0)
+        )
+        with patch("recon_tool.cli.doctor.sys", interpreter):
             result = runner.invoke(app, ["doctor"])
         assert ("outside the tested stable range (3.11 through 3.15)" in result.output) is warning
         assert result.exit_code == 0
