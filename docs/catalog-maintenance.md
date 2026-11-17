@@ -237,7 +237,8 @@ and a later 2026-11-16 nameserver and sender-policy reference check,
 and a later 2026-11-16 portal verification and mail routing
 reference check, and a later 2026-11-16 SPF, reporting, and
 support-domain reference check, and a later 2026-11-16 mail
-exchanger, SPF, and site-validation reference check.
+exchanger, SPF, and site-validation reference check, and a later
+2026-11-16 SPF include and mail-exchanger reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
 bind due rules to their exact claim/catalog digest, prior/new reference, actual
@@ -1616,6 +1617,56 @@ new TXT value or merged into an existing TXT record. It also prints
 a DKIM CNAME target at `dkim.stibee.com`. It does not print
 `include:stibee.com`. Those narrower hosts were not added. Example
 local-parts were not copied. The catalog SPF stays undated.
+
+### Documented reference check, later on 2026-11-16, SPF includes and mail exchangers
+
+This pass checked eight undated CNAME, SPF, MX, and DMARC rules.
+Two MX suffixes received a `verified` date because the fetched page
+prints a specific exchanger under the existing suffix. Six rules stay
+undated. No new detection, DNS record type, or collection path was
+added. This note does not cut a release.
+
+`www.etouches.com` redirects to the [Stova homepage](https://stova.io/).
+The saved page does not print `etouches.com` or a CNAME target.
+`help.etouches.com` and `developer.etouches.com` presented an expired
+certificate and were not used as a document. `help.stova.io`,
+`support.stova.io`, and `docs.stova.io` did not resolve. The catalog
+CNAME stays undated.
+
+The [SAP SuccessFactors SPF article](https://help.sap.com/docs/successfactors-platform/it-landscape-requirements-for-sap-successfactors/adding-listings-for-sender-policy-framework)
+says to add a data-center include under `sapsf.com`. The rendered
+page does not print `include:sapsf.com`. The example data-center host
+was not added. The catalog SPF stays undated.
+
+The [SAP SuccessFactors Onboarding allowlist](https://help.sap.com/docs/successfactors-onboarding/implementing-onboarding/allowlist-methods-for-emails-from-sap-successfactors-onboarding)
+prints data-center includes under `sapsf.eu` and
+`successfactors.com`. It does not print `include:sapsf.eu` or
+`include:successfactors.com`. Those narrower hosts were not added.
+Both catalog SPF suffixes stay undated.
+
+The [Tipalti email domain setup article](https://help.tipalti.com/hc/en-us/articles/36111535514775-Email-domain-setup)
+describes a temporary TXT ownership record and a CNAME registration
+record. It does not print `include:tipalti.com`. No narrower host was
+added. The catalog SPF stays undated.
+
+The [TitanHQ MX article](https://docs.titanhq.com/en/540-change-your-mx-records.html),
+last modified 2026-05-18, prints `us1-smtp-mx1.titanhq.com` as an
+example MX value. The rule observes an MX host under `titanhq.com`.
+It does not prove that mail is delivered or that SpamTitan is the
+only exchanger. That specific host was not added.
+
+The [Trellix inline-mode article](https://docs.trellix.com/data-and-email/docs/configuring-inline-mode-2)
+names `mx.us.etp.fireeyegov.com` as a preferred USGOV MX next hop.
+The rule observes an MX host under `fireeyegov.com`. It does not
+prove that the domain publishes that next hop or that Trellix is the
+only exchanger. That specific host was not added. Address values on
+the page were not copied.
+
+The [Trend Micro DMARC report article](https://docs.trendmicro.com/en-us/documentation/article/trend-micro-email-security-online-help-analyzing-dmarc-repo)
+prints a Germany report address at `dmarcrua.tmes.trendmicro.eu`. It
+does not print the literal `rua=` grammar for the broad suffix. The
+narrower mailbox host was not added. The catalog DMARC suffix stays
+undated.
 
 ## Executable path
 

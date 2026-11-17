@@ -804,9 +804,14 @@ fingerprints:
   detections:
   - type: mx
     pattern: titanhq.com
+    reference: https://docs.titanhq.com/en/540-change-your-mx-records.html
+    verified: '2026-11-16'
     description: >-
-      TitanHQ (SpamTitan email security) MX target (`titanhq.com`).
-      Indicates inbound mail is filtered by SpamTitan.
+      MX host under the documented SpamTitan exchanger
+      `us1-smtp-mx1.titanhq.com`. The MX-record article prints
+      that host as an example MX value. This observes an MX
+      host under `titanhq.com`. It does not prove that mail is
+      delivered or that SpamTitan is the only exchanger.
 - name: Apple iCloud Mail
   slug: icloud-mail
   category: Email
@@ -1696,9 +1701,15 @@ fingerprints:
   detections:
   - type: mx
     pattern: fireeyegov.com
+    reference: https://docs.trellix.com/data-and-email/docs/configuring-inline-mode-2
+    verified: '2026-11-16'
     description: >-
-      Trellix / FireEye Email Security Gov MX target
-      (`fireeyegov.com`).
+      MX host under the documented Trellix Email Security Gov
+      exchanger `mx.us.etp.fireeyegov.com`. The inline-mode
+      article names that host as a preferred USGOV MX next hop.
+      This observes an MX host under `fireeyegov.com`. It does
+      not prove that the domain publishes that next hop or that
+      Trellix is the only exchanger.
 - name: Fortinet
   slug: fortinet
   category: Security

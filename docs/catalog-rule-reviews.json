@@ -966,6 +966,34 @@
       "reviewed_on": "2026-11-16",
       "source_checked_on": "2026-11-16",
       "reason": "Proton Mail Cloudflare custom-domain guide, last modified 2026-11-16, checked 2026-11-16: https://proton.me/support/custom-domain-cloudflare. It says to publish MX mail.protonmail.ch at priority 10 and mailsec.protonmail.ch at priority 20. The rule observes an MX host under protonmail.ch. It does not prove that mail is delivered or that Proton Mail is the only exchanger. Those specific hosts were not added."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "titanhq",
+        "detection_type": "mx",
+        "pattern": "titanhq.com"
+      },
+      "before": "53908230b9814d4e194a503c059d996b644aec2d4bf1460cbf60f70aa69ce77e",
+      "after": "757c04fafb147a7aafb5e93b8cdb5dd13a24efa838ddacc50d17876d2b7566c6",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "TitanHQ change-MX article, last modified 2026-05-18, checked 2026-11-16: https://docs.titanhq.com/en/540-change-your-mx-records.html. It prints us1-smtp-mx1.titanhq.com as an example MX value. The rule observes an MX host under titanhq.com. It does not prove that mail is delivered or that SpamTitan is the only exchanger. That specific host was not added."
+    },
+    {
+      "rule": {
+        "source": "discovered-signals.yaml",
+        "slug": "trellix",
+        "detection_type": "mx",
+        "pattern": "fireeyegov.com"
+      },
+      "before": "b562e961a4a06562a62d898a629187cb98cc3d1dffab90b817362782e9d404a8",
+      "after": "2f93be5af7b85f1747fcb0d2bd587eb5caf62695c94f12bd44e70a9840149459",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Trellix inline-mode article checked 2026-11-16: https://docs.trellix.com/data-and-email/docs/configuring-inline-mode-2. It names mx.us.etp.fireeyegov.com as a preferred USGOV MX next hop. The rule observes an MX host under fireeyegov.com. It does not prove that the domain publishes that next hop or that Trellix is the only exchanger. That specific host was not added. Address values on the page were not copied."
     }
   ]
 }
