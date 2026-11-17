@@ -459,12 +459,14 @@ fingerprints:
   detections:
   - type: ns
     pattern: dynect.net
-    reference: https://help.dyn.com/managed-dns/
+    reference: https://help.dyn.com/how-to-format-a-zone-file.html
+    verified: '2026-11-16'
     description: >-
-      NS records terminating at Dyn's managed DNS
-      (`*.dynect.net`). Dyn is now part of Oracle Cloud
-      Infrastructure after the 2016 acquisition. Indicates
-      the domain uses Dyn as authoritative DNS.
+      NS records terminating at dynect.net. The zone file
+      page prints name servers under that suffix. This
+      observes that suffix. It does not prove that every
+      name under the suffix is a customer delegation. The
+      example name servers were not added.
 - name: Akamai
   slug: akamai
   category: Infrastructure
@@ -616,21 +618,25 @@ fingerprints:
   detections:
   - type: cname
     pattern: fastly.net
-    reference: https://docs.fastly.com/en/guides/working-with-domains
+    reference: https://www.fastly.com/documentation/guides/getting-started/domains/working-with-domains/working-with-cname-records-and-your-dns-provider/
+    verified: '2026-11-16'
     description: >-
-      CNAME terminating in fastly.net (Fastly CDN edge
-      domain). Indicates the domain delegates traffic to
-      Fastly's edge, used for CDN, image optimization, and
-      Compute@Edge workloads.
+      CNAME terminating in fastly.net. The DNS provider page
+      prints CNAME record values under that suffix, including
+      a zone-file CNAME. This observes that suffix. It does
+      not prove that every name under the suffix is a Fastly
+      service. The example hostnames were not added.
   - type: cname
     pattern: fastly\.net$|fastlylb\.net$
-    reference: https://docs.fastly.com/en/guides/working-with-domains
+    reference: https://www.fastly.com/documentation/guides/getting-started/domains/working-with-domains/working-with-cname-records-and-your-dns-provider/
+    verified: '2026-11-16'
     description: >-
-      CNAME terminating in fastly.net or fastlylb.net (the
-      latter is Fastly's load-balancer endpoint domain).
-      Indicates the domain uses Fastly for CDN or edge
-      compute. The combined-regex form covers configurations
-      that use either domain.
+      CNAME ending in fastly.net or fastlylb.net. The DNS
+      provider page prints CNAME record values ending in
+      fastly.net. This observes that ending. It does not
+      prove that every matching name is a Fastly service.
+      The page does not print fastlylb.net. The example
+      hostnames were not added.
 - name: Shopify
   slug: shopify
   category: Infrastructure
@@ -962,12 +968,14 @@ fingerprints:
   detections:
   - type: cname
     pattern: ghost.io
-    reference: https://ghost.org/docs/
+    reference: https://ghost.org/help/using-custom-domains/
+    verified: '2026-11-16'
     description: >-
-      CNAME pointing into ghost.io (Ghost is an open-source
-      blogging and newsletter platform; ghost.io is the
-      managed-hosting offering). Indicates the domain hosts
-      a Ghost-managed publication.
+      CNAME terminating in ghost.io. The custom domain page
+      prints a CNAME value under that suffix. This observes
+      that suffix. It does not prove that every name under
+      the suffix is a Ghost publication. The placeholder and
+      the address were not added.
 - name: 'CAA: Let''s Encrypt'
   slug: letsencrypt
   category: Infrastructure

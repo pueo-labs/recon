@@ -1386,6 +1386,62 @@
       "reviewed_on": "2026-11-16",
       "source_checked_on": "2026-11-16",
       "reason": "Knowledge base tutorial checked 2026-11-16: https://knowledge.digicert.com/tutorials/edit-domain-dns-caa-rr-to-get-digicert-certificate-brand. It prints a CAA issue value whose issuer is digicert.com. The rule observes that issuer. It does not prove that a certificate was issued. The example domain and the other issuer hosts were not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "dyn",
+        "detection_type": "ns",
+        "pattern": "dynect.net"
+      },
+      "before": "064e6308d25ef2e84dc4bc13615d8455d1e7f4dbb3d09c4fef0a1bd790bf9ef4",
+      "after": "7e721bd39594ce3f04d0c76140c04de726a9ae5ff3cdf44c7518a26860589c86",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Zone file page checked 2026-11-16: https://help.dyn.com/how-to-format-a-zone-file.html. It prints NS records for hosts under dynect.net. The rule observes that suffix. It does not prove that every name under the suffix is a customer delegation. The example name servers were not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "fastly",
+        "detection_type": "cname",
+        "pattern": "fastly.net"
+      },
+      "before": "b1239fba191d59fca96c6e7e70b0a5c140277d97f7b0c8380c75ba16fb50cfd7",
+      "after": "a2c5cf9d336706395eab3f26c2377a2e1af5e0cfcca1b321c400796b705ed958",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "DNS provider page checked 2026-11-16: https://www.fastly.com/documentation/guides/getting-started/domains/working-with-domains/working-with-cname-records-and-your-dns-provider/. It prints CNAME record values under fastly.net, including a zone-file CNAME to a host under that suffix. The rule observes that suffix. It does not prove that every name under the suffix is a Fastly service. The example hostnames were not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "fastly",
+        "detection_type": "cname",
+        "pattern": "fastly\\.net$|fastlylb\\.net$"
+      },
+      "before": "b4e9221a59074ce587013f3a080456fee503aba2e7dfd0ef35d145d61dde95ff",
+      "after": "5d37fd10dbae9428375c41f1de54a5b8f04285a1ce9db0f1cc6fea7039ad233d",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "DNS provider page checked 2026-11-16: https://www.fastly.com/documentation/guides/getting-started/domains/working-with-domains/working-with-cname-records-and-your-dns-provider/. It prints CNAME record values ending in fastly.net. The regex observes that ending. It does not prove that every matching name is a Fastly service. fastlylb.net was not printed and was not added. The example hostnames were not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "ghost",
+        "detection_type": "cname",
+        "pattern": "ghost.io"
+      },
+      "before": "43adb146b62372d3176c1b55589c5320df2aeaf1288c956edfea14ce1bf65ccd",
+      "after": "bd7f33a3dca41cb86c71e80cbd5926ebb11c1bc4c6b978e71a3f5f2377a3f213",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Custom domain page checked 2026-11-16: https://ghost.org/help/using-custom-domains/. It prints a CNAME value under ghost.io. The rule observes that suffix. It does not prove that every name under the suffix is a Ghost publication. The placeholder and the address were not added."
     }
   ]
 }

@@ -251,6 +251,8 @@ reference check, and a later 2026-11-16 nameserver label,
 website infix, REST suffix, and edge hostname
 reference check, and a later 2026-11-16 endpoint suffix,
 routing suffix, token prefix, and issuer host
+reference check, and a later 2026-11-16 nameserver suffix,
+edge hostname, edge pattern, and publication hostname
 reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
@@ -2118,6 +2120,67 @@ The cited FAQ returned HTTP 404. The
 prints a CAA issue value whose issuer is `digicert.com`. The rule
 observes that issuer. It does not prove that a certificate was
 issued. The example domain and the other issuer hosts were not
+added.
+
+### Documented reference check, later on 2026-11-16, nameserver suffix, edge hostname, edge pattern, and publication hostname
+
+This pass checked eight undated NS, CNAME, and TXT rules. Four
+rules received a `verified` date because the fetched page prints
+the catalog grammar. Four rules stay undated. No new detection,
+DNS record type, or collection path was added. This note does not
+cut a release.
+
+The cited managed DNS page returned HTTP 404 and does not print
+`dynect.net`. The
+[zone file page](https://help.dyn.com/how-to-format-a-zone-file.html)
+prints NS records for hosts under `dynect.net`. The rule observes
+that suffix. It does not prove that every name under the suffix is
+a customer delegation. The example name servers were not added.
+
+The cited domains page does not print `fastly.net`. The
+[DNS provider page](https://www.fastly.com/documentation/guides/getting-started/domains/working-with-domains/working-with-cname-records-and-your-dns-provider/)
+prints CNAME record values under `fastly.net`, including a
+zone-file CNAME to a host under that suffix. The rule observes
+that suffix. It does not prove that every name under the suffix is
+a Fastly service. The example hostnames were not added.
+
+The same page prints CNAME record values ending in `fastly.net`.
+The regex rule observes that ending. It does not prove that every
+matching name is a Fastly service. The page does not print
+`fastlylb.net`. The example hostnames were not added.
+
+The cited mapping page does not print `appspot.com` in its DNS
+instructions. The record data for a CNAME is a domain name shown
+in the console. The
+[routing page](https://docs.cloud.google.com/appengine/docs/standard/how-requests-are-routed)
+prints `appspot.com` only as default HTTPS URLs and does not print
+a DNS CNAME target. The catalog suffix stays undated. No hostname
+was added.
+
+The cited mapping page says the default Cloud Run URL ends in
+`run.app` and does not print a CNAME target under `run.app`. The
+[custom URLs page](https://docs.cloud.google.com/run/docs/custom-urls)
+prints `run.app` only as a default URL form and says those URLs do
+not require DNS records. The catalog suffix stays undated. No
+hostname was added.
+
+The cited overview does not print a Cloud DNS name server
+hostname. The
+[update name servers page](https://docs.cloud.google.com/dns/docs/update-name-servers)
+prints name servers under `googledomains.com`. That suffix does
+not match the `google.com` rule. The catalog suffix stays undated.
+No name server was added.
+
+The cited docs home does not print `ghost.io`. The
+[custom domain page](https://ghost.org/help/using-custom-domains/)
+prints a CNAME value under `ghost.io`. The rule observes that
+suffix. It does not prove that every name under the suffix is a
+Ghost publication. The placeholder and the address were not added.
+
+The cited verification page prints `_github-pages-challenge` as
+the owner name in a dig TXT query. The catalog pattern matches the
+TXT value, and the page does not print a TXT value starting with
+that prefix. The catalog prefix stays undated. No owner name was
 added.
 
 ## Executable path
