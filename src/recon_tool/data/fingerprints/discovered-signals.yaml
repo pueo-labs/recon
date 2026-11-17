@@ -487,8 +487,14 @@ fingerprints:
   detections:
   - type: ns
     pattern: worldnic.com
+    reference: https://www.networksolutions.com/manage-it/move-ns-warning.jsp
+    verified: '2026-11-16'
     description: >-
-      Network Solutions nameserver (`worldnic.com`). Indicates the org runs authoritative DNS on Network Solutions.
+      Nameserver under the documented Network Solutions suffix
+      `worldnic.com`. The account page names `ns1.worldnic.com`
+      and `ns2.worldnic.com` when DNS hosting is moved. This
+      observes a nameserver under `worldnic.com`. It does not
+      prove that Network Solutions is the only DNS provider.
 - name: Afternic (parking)
   slug: afternic
   category: Infrastructure
@@ -1464,9 +1470,14 @@ fingerprints:
       (Mail, CRM, Desk).
   - type: spf
     pattern: zcsend.net
+    reference: https://help.zoho.com/portal/en/kb/campaigns/getting-started-guide/articles/how-to-authenticate-email-domain
+    verified: '2026-11-16'
     description: >-
-      Zoho Campaigns SPF include (`zcsend.net`). Marketing email
-      dispatched through Zoho Campaigns.
+      SPF include documented for Zoho Campaigns
+      (`include:zcsend.net`). The authentication article prints
+      that include. This observes the include. It does not prove
+      that mail is sent through Zoho Campaigns or that the
+      include is the only sender authorization.
 - name: Qualtrics
   slug: qualtrics
   category: HR & Operations
@@ -1971,8 +1982,14 @@ fingerprints:
   detections:
   - type: cname_target
     pattern: zohohost.com
+    reference: https://help.zoho.com/portal/en/kb/forms/form-settings/branding/articles/using-custom-domain-in-forms
+    verified: '2026-11-16'
     description: >-
-      Zoho hosted-app CNAME target (`zohohost.com`).
+      CNAME target under the documented Zoho Forms suffix
+      `zohohost.com`. The custom-domain article says to point a
+      CNAME at `forms.cs.zohohost.com`. This observes a CNAME
+      target under `zohohost.com`. It does not prove that the
+      name is delegated only to Zoho Forms.
 - name: Cloudflare
   slug: cloudflare
   category: Infrastructure

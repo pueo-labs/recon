@@ -32,6 +32,11 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Check eight undated DMARC, NS, CNAME, and SPF rules against current
+  vendor pages. Three rules received a `verified` date because the
+  fetched page prints the catalog grammar or a specific host under
+  the existing suffix. Five rules stay undated. No new detection was
+  added. This does not cut a release.
 - Check eight undated CNAME, SPF, MX, and DMARC rules against current
   vendor pages. Two MX suffixes received a `verified` date because the
   fetched page prints a specific exchanger under the existing suffix.
