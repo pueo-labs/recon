@@ -1414,3 +1414,17 @@ class TestDmarcNoneIsNotAHardeningControl:
         assert len(dmarc) == 1
         assert dmarc[0].domain_a_has is True
         assert dmarc[0].domain_b_has is False
+        assert "monitoring only" in dmarc[0].description
+        assert "absent" not in dmarc[0].description
+
+    def test_published_ineffective_policies_survive_comparison(self) -> None:
+        inactive = replace(
+            self._info(queried_domain="partial.invalid", dmarc_policy="quarantine", dmarc_pct=50), mta_sts_mode="none"
+        )
+        active = replace(self._info(queried_domain="active.invalid", dmarc_policy="reject"), mta_sts_mode="enforce")
+        differences = compare_postures_from_infos(inactive, active).differences
+        for label, detail in (("DMARC", "quarantine (effective none)"), ("MTA-STS", "mode none (not in effect)")):
+            item = next(diff for diff in differences if diff.description.startswith(label))
+            assert detail in item.description
+            assert "absent" not in item.description
+            assert (item.domain_a_has, item.domain_b_has) == (False, True)

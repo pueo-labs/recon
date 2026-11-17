@@ -6,6 +6,7 @@ import json
 import math
 import os
 import stat
+import sys
 import time
 from collections.abc import Callable
 from dataclasses import dataclass
@@ -13,6 +14,11 @@ from pathlib import Path
 from typing import TypeGuard
 
 MAX_JSON_NESTING = 100
+
+
+def is_positive_timeout(value: object) -> bool:
+    """Accept positive JSON numbers representable as a finite float timeout."""
+    return isinstance(value, (int, float)) and not isinstance(value, bool) and 0 < value <= sys.float_info.max
 
 
 def _is_object_mapping(value: object) -> TypeGuard[dict[object, object]]:
@@ -157,7 +163,7 @@ def read_bounded_regular_file(
 
 
 def load_bounded_json_file(
-    path: Path,
+    path: Path | DirectoryFile,
     *,
     maximum_bytes: int,
     maximum_age_seconds: float | None = None,

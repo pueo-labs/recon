@@ -135,6 +135,8 @@ _CLI_TYPE_ALIASES = {
 
 def _cli_type_name(param_type: object) -> str:
     """Return a dependency-independent label for a Click parameter type."""
+    if isinstance(param_type, type):
+        return _CLI_TYPE_ALIASES.get(param_type.__name__, param_type.__name__.lower())
     observed = str(getattr(param_type, "name", param_type))
     return _CLI_TYPE_ALIASES.get(observed, observed)
 
@@ -236,12 +238,16 @@ def _parameter_entry(param: click.Parameter) -> dict[str, object]:
     kind = "option" if any(item.startswith("-") for item in names) else "argument"
     if not names:
         names = [param.human_readable_name]
+    # Typer 0.29 exposes the annotation through its descriptor. Older
+    # supported versions expose the parsed Click type directly.
+    descriptor = getattr(param, "type_descriptor", None)
+    param_type = descriptor.annotation if descriptor is not None else param.type
     entry: dict[str, object] = {
         "name": param.name or param.human_readable_name,
         "kind": kind,
         "tokens": names,
         "required": bool(param.required),
-        "type": _cli_type_name(param.type),
+        "type": _cli_type_name(param_type),
     }
     default = getattr(param, "default", None)
     if default is not None:
@@ -249,7 +255,7 @@ def _parameter_entry(param: click.Parameter) -> dict[str, object]:
     if kind == "option":
         entry["is_flag"] = bool(getattr(param, "is_flag", False))
         entry["multiple"] = bool(getattr(param, "multiple", False))
-    choices = getattr(param.type, "choices", None)
+    choices = getattr(param_type, "choices", None)
     if choices:
         entry["choices"] = [str(choice) for choice in choices]
     return entry

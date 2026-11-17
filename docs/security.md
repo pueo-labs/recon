@@ -331,12 +331,12 @@ JSON loader:
   clear-all path. Unrelated temporary files remain untouched. Deletion stays
   nonrecursive and inside the validated cache directory.
 
-**Boundary:** The cache is not a privilege boundary against another local actor
-who can replace directories inside the invoking user's configuration tree while
-an operation is in progress. Such an actor already controls that user's cache
-contents. Stable symlinks, junctions, reparse points, and self-referencing
-redirects are rejected; races by an actor with write access remain inside the
-documented local-user trust boundary.
+**Boundary:** The operator chooses the cache root and controls its location.
+An explicit root may be a symlink. Result and CT cache operations bind the
+direct child directory before reading, publishing, or deleting entries. POSIX
+uses a no-follow directory descriptor. Windows holds the layer open and
+rejects reparse points. Another writer with access to the cache can still
+modify entries within that directory. Use a private root for cache integrity.
 
 ### Malicious CT provider responses
 

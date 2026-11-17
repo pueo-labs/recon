@@ -93,7 +93,7 @@ class CollectionWarnings:
             entries = [f"{host} {address}" if host != address else host for host, address in self.private_hosts]
             count = len(entries)
             subject = "1 host" if count == 1 else f"{count} hosts"
-            lines.append(f"{subject} skipped: resolves to a private address ({_listed(entries)}).")
+            lines.append(f"{subject} skipped: resolves to a private address ({_listed(entries)}). Run recon doctor.")
         if self.other:
             noun = "warning" if self.other == 1 else "warnings"
             lines.append(f"{self.other} other collection {noun}. Run with --debug for details.")

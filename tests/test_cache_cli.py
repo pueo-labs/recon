@@ -18,6 +18,7 @@ from rich.console import Console
 from typer.testing import CliRunner
 
 from recon_tool.cache import cache_dir, cache_put
+from recon_tool.cache_paths import BoundCacheDirectory
 from recon_tool.cli import app
 from recon_tool.ct_cache import ct_cache_put
 from recon_tool.exit_codes import EXIT_INTERNAL
@@ -517,16 +518,16 @@ class TestCacheClear:
                 domain_count=1,
             ),
         )
-        original_unlink = Path.unlink
+        original_unlink = BoundCacheDirectory.unlink
 
-        def unlink_with_ct_failure(path: Path, missing_ok: bool = False) -> None:
-            if path.parent.name == "ct-cache":
+        def unlink_with_ct_failure(directory: BoundCacheDirectory, name: str) -> None:
+            if directory.path.name == "ct-cache":
                 raise PermissionError("secret-cache-path")
-            original_unlink(path, missing_ok=missing_ok)
+            original_unlink(directory, name)
 
         with (
             caplog.at_level(logging.DEBUG, logger="recon"),
-            patch.object(Path, "unlink", unlink_with_ct_failure),
+            patch.object(BoundCacheDirectory, "unlink", unlink_with_ct_failure),
         ):
             result = runner.invoke(app, ["cache", "clear", domain])
 
@@ -560,14 +561,14 @@ class TestCacheClear:
                 domain_count=1,
             ),
         )
-        original_unlink = Path.unlink
+        original_unlink = BoundCacheDirectory.unlink
 
-        def unlink_with_result_failure(path: Path, missing_ok: bool = False) -> None:
-            if path.parent.name == "cache":
+        def unlink_with_result_failure(directory: BoundCacheDirectory, name: str) -> None:
+            if directory.path.name == "cache":
                 raise PermissionError("secret-result-path")
-            original_unlink(path, missing_ok=missing_ok)
+            original_unlink(directory, name)
 
-        with patch.object(Path, "unlink", unlink_with_result_failure):
+        with patch.object(BoundCacheDirectory, "unlink", unlink_with_result_failure):
             result = runner.invoke(app, ["cache", "clear", "--all", "--force"])
 
         normalized = " ".join(result.output.split())
@@ -601,7 +602,7 @@ class TestCacheClear:
             ),
         )
 
-        with patch.object(Path, "unlink", side_effect=PermissionError("private unlink detail")):
+        with patch.object(BoundCacheDirectory, "unlink", side_effect=PermissionError("private unlink detail")):
             result = runner.invoke(app, ["cache", "clear", domain])
 
         assert result.exit_code == EXIT_INTERNAL

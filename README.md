@@ -104,6 +104,9 @@ scanning or application crawling. Replace the placeholder to start:
 recon "<domain-you-want-to-review>"
 ```
 
+If the panel warns that related domains may be artifacts, run `recon doctor`
+to check whether your resolver answers names that should not exist.
+
 Ordinary lookups may reuse the 24-hour result cache and say so when they do; a
 result whose collection had unavailable sources is never reused. Use
 `--no-cache` to bypass the cache for both reading and writing;

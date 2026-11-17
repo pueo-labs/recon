@@ -29,6 +29,8 @@ ObservationChannel: TypeAlias = Literal[
     "srv",
 ]
 
+PUBLIC_ENDPOINT_PRIVATE_ADDRESS = "resolver:public_endpoint_private_address"
+
 _WHOLE_DNS_MARKERS = frozenset({"dns", "dns_records"})
 _CHANNEL_MARKERS: dict[ObservationChannel, frozenset[str]] = {
     "dmarc": frozenset({"dns:dmarc", "detector:email_security"}),

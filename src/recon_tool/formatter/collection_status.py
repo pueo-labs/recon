@@ -15,7 +15,7 @@ from typing import Literal
 
 from recon_tool.confidence import is_confidence_contributor
 from recon_tool.models import ConfidenceLevel, SourceResult, TenantInfo
-from recon_tool.source_status import CT_PROVIDER_MARKERS
+from recon_tool.source_status import CT_PROVIDER_MARKERS, PUBLIC_ENDPOINT_PRIVATE_ADDRESS
 
 _CT_SOURCES = CT_PROVIDER_MARKERS
 # Whole-source markers for each default lookup source. The opt-in Google CSE
@@ -86,15 +86,21 @@ class CollectionStatusProjection:
     # was observed or recovered, so the note can say "All N" instead of "N".
     all_sources_unavailable: bool = False
 
+    resolver_note: str | None = None
+
     @property
     def is_warning(self) -> bool:
         """Return whether the projected state includes incomplete collection."""
-        return bool(self.unavailable_sources) or self.ct_state == "unavailable"
+        return bool(self.resolver_note or self.unavailable_sources) or self.ct_state == "unavailable"
 
 
 def project_collection_status(info: TenantInfo) -> CollectionStatusProjection:
     """Classify degraded markers without assigning renderer-specific prose."""
-    unavailable_sources = tuple(source for source in info.degraded_sources if source not in _CT_SOURCES)
+    unavailable_sources = tuple(
+        source
+        for source in info.degraded_sources
+        if source not in _CT_SOURCES and source != PUBLIC_ENDPOINT_PRIVATE_ADDRESS
+    )
     ct_sources = tuple(source for source in info.degraded_sources if source in _CT_SOURCES)
 
     ct_state: CTCollectionState = "none"
@@ -123,6 +129,12 @@ def project_collection_status(info: TenantInfo) -> CollectionStatusProjection:
         ct_cache_age_days=info.ct_cache_age_days,
         ct_subdomain_count=info.ct_subdomain_count,
         all_sources_unavailable=all_sources_unavailable,
+        resolver_note=(
+            "The resolver returned a private or reserved address for a public service. "
+            "Related domains may be artifacts. Run recon doctor"
+            if PUBLIC_ENDPOINT_PRIVATE_ADDRESS in degraded
+            else None
+        ),
     )
 
 
@@ -161,6 +173,8 @@ def collection_note_parts(status: CollectionStatusProjection) -> tuple[str, ...]
         age = status.ct_cache_age_days
         age_str = "today" if age == 0 else f"{age} day{'s' if age != 1 else ''} old"
         parts.append(f"CT: from local cache, {age_str} ({status.ct_subdomain_count} subdomains)")
+    if status.resolver_note:
+        parts.append(status.resolver_note)
     return tuple(parts)
 
 

@@ -245,13 +245,17 @@ Times recon has been wrong in empirically verified ways:
 
 ### Resolvers that answer names that should not exist
 
-Lookups use the system resolver. Some resolvers answer names that do not
+By default the CLI uses the system resolver. Some resolvers answer names that do not
 exist: captive portals, filtering or content-blocking resolvers, and ISP
 resolvers that rewrite NXDOMAIN into an advertising or search address. Behind
 one of them, related-domain probing receives an answer for every candidate, so
 artifact hosts can be listed as related domains and a nonexistent name can look
-like it exists. recon cannot tell such a synthesized answer from a real one at
-lookup time, and it adds no lookup-time probe to try.
+like it exists. An individual candidate answer cannot establish whether it was
+synthesized. When an existing lookup request finds a fixed public identity or
+certificate-transparency endpoint at a private or reserved address, the panel
+warns that related domains may be artifacts. JSON records the condition as
+`resolver:public_endpoint_private_address` in `degraded_sources`. This uses
+the existing destination check without sending another probe.
 
 `recon doctor` checks for the condition with one query for a random name under
 the reserved `.invalid` top-level domain, where no name can exist

@@ -364,17 +364,19 @@ def _build_differences(info_a: TenantInfo, info_b: TenantInfo) -> tuple[PostureD
         ):
             continue
         if ctrl_a.present != ctrl_b.present:
+            first, second = info_a.queried_domain, info_b.queried_domain
+            active, inactive = (first, second) if ctrl_a.present else (second, first)
+            inactive_control = ctrl_b if ctrl_a.present else ctrl_a
             if ctrl_a.name == "DKIM":
-                observed_domain = info_a.queried_domain if ctrl_a.present else info_b.queried_domain
-                unobserved_domain = info_b.queried_domain if ctrl_a.present else info_a.queried_domain
                 desc = (
-                    f"DKIM observed at a probed selector for {observed_domain}; no DKIM record was observed "
-                    f"at recon's bounded common-selector set for {unobserved_domain}"
+                    f"DKIM observed at a probed selector for {active}; no DKIM record was observed "
+                    f"at recon's bounded common-selector set for {inactive}"
                 )
-            elif ctrl_a.present:
-                desc = f"{ctrl_a.name} present in {info_a.queried_domain} but absent in {info_b.queried_domain}"
+            elif ctrl_a.name in {"DMARC", "MTA-STS"}:
+                active_control = ctrl_a if ctrl_a.present else ctrl_b
+                desc = f"{ctrl_a.name} in {active}: {active_control.detail}; in {inactive}: {inactive_control.detail}"
             else:
-                desc = f"{ctrl_a.name} present in {info_b.queried_domain} but absent in {info_a.queried_domain}"
+                desc = f"{ctrl_a.name} present in {active} but absent in {inactive}"
             diffs.append(
                 PostureDifference(
                     description=desc,

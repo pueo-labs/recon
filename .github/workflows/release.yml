@@ -10,8 +10,8 @@ on:
 # granted OIDC-token minting to every job, including ``test`` and
 # ``build`` which install and execute dependency code. A compromised
 # dependency could mint a token and publish to PyPI under our trusted-
-# publisher identity. Scoping to ``publish-pypi`` / ``github-release``
-# respects least-privilege.
+# publisher identity. Only the attest, publish-pypi, and publish-mcp-registry jobs
+# can request an OIDC token.
 #
 # Supply-chain isolation contract (v1.9.3.3+):
 #

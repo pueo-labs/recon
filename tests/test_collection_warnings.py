@@ -32,7 +32,9 @@ from recon_tool.cli.collection_warnings import (
     print_collection_warnings,
 )
 from recon_tool.collection_progress import ProgressEvent, UnitOutcome, ct_outcome, mta_sts_outcome
+from recon_tool.formatter import format_tenant_json, format_tenant_markdown, render_tenant_panel
 from recon_tool.models import SourceResult, TenantInfo
+from recon_tool.resolver import SourcePool, resolve_tenant
 
 _LOGGER = logging.getLogger("recon")
 
@@ -115,7 +117,7 @@ def test_capture_dedupes_bounds_and_summarizes(capsys: pytest.CaptureFixture[str
     assert sink.summary_lines() == [
         "7 hosts could not be resolved (login.microsoftonline.com, autodiscover.example.com, "
         "host0.example.com, and 4 more). Run recon doctor.",
-        "1 host skipped: resolves to a private address (mta-sts.example.com 10.0.0.5).",
+        "1 host skipped: resolves to a private address (mta-sts.example.com 10.0.0.5). Run recon doctor.",
         "1 other collection warning. Run with --debug for details.",
     ]
 
@@ -338,3 +340,32 @@ def test_ct_outcome(fields: dict[str, Any], expected: UnitOutcome) -> None:
 )
 def test_mta_sts_outcome(fields: dict[str, Any], expected: UnitOutcome) -> None:
     assert mta_sts_outcome(**fields) == expected
+
+
+@pytest.mark.asyncio
+async def test_public_endpoint_refusal_is_local_to_its_lookup(monkeypatch: pytest.MonkeyPatch) -> None:
+    async def reserved_answer(_host: str) -> tuple[str, ...]:
+        return ("198.18.0.1",)
+
+    class Source:
+        name = "fixture"
+
+        async def lookup(self, domain: str, **kwargs: Any) -> SourceResult:
+            host = "accounts.google.com" if domain == "public.test" else "mta-sts.private.test"
+            async with http_mod.http_client() as client:
+                with pytest.raises(httpx.ConnectError):
+                    await client.get(f"https://{host}/")
+            return SourceResult(source_name=self.name)
+
+    monkeypatch.setattr("recon_tool.network_policy.selected_addresses", reserved_answer)
+    pool = SourcePool([Source()])
+    (public, _), (private, _) = await asyncio.gather(
+        resolve_tenant("public.test", pool=pool), resolve_tenant("private.test", pool=pool)
+    )
+    assert json.loads(format_tenant_json(public))["degraded_sources"] == ["resolver:public_endpoint_private_address"]
+    assert private.degraded_sources == ()
+    console = Console(file=io.StringIO(), width=100, record=True)
+    console.print(render_tenant_panel(public))
+    for rendered in (console.export_text(), format_tenant_markdown(public)):
+        assert "Related domains may be artifacts" in " ".join(rendered.split())
+        assert "Run recon doctor" in " ".join(rendered.split())

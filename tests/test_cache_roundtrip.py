@@ -35,6 +35,7 @@ from recon_tool.cache import (
     tenant_info_from_dict,
     tenant_info_to_dict,
 )
+from recon_tool.cache_paths import bind_cache_directory
 from recon_tool.models import (
     BIMIIdentity,
     CertSummary,
@@ -804,3 +805,21 @@ def test_catalog_discovery_payload_survives_the_cache_round_trip() -> None:
 
     assert restored.dns_catalog_summaries == info.dns_catalog_summaries
     assert restored.unclassified_dns_observations == info.unclassified_dns_observations
+
+
+def test_bound_cache_enumerates_only_the_open_directory(tmp_path: Path) -> None:
+    layer = tmp_path / "cache"
+    layer.mkdir()
+    (layer / "original.test.json").touch()
+    with bind_cache_directory(layer, enumerate_names=True, mutate=True) as bound:
+        if os.name == "nt":
+            with pytest.raises(PermissionError):
+                layer.rename(tmp_path / "previous")
+        else:
+            layer.rename(tmp_path / "previous")
+            layer.mkdir()
+            (layer / "new.test.json").touch()
+        assert [name for name in bound.names() if name.endswith(".json")] == ["original.test.json"]
+        bound.unlink("original.test.json")
+    if os.name != "nt":
+        assert (layer / "new.test.json").is_file()

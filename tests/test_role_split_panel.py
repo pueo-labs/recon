@@ -15,10 +15,12 @@ only where the ambiguity exists.
 from __future__ import annotations
 
 import io
+from dataclasses import replace
 from io import StringIO
 
 from rich.console import Console
 
+from recon_tool.bayesian import load_network
 from recon_tool.formatter import render_tenant_panel
 from recon_tool.formatter.classify import categorize_services
 from recon_tool.formatter.roles import identity_role_vendors, model_support_claims, role_split_vendors
@@ -34,13 +36,15 @@ _GOOGLE_DKIM = EvidenceRecord("DKIM", "google._domainkey.beta.invalid", "DKIM (G
 
 
 def _posterior(name: str, posterior: float, low: float) -> PosteriorObservation:
+    node = next(node for node in load_network().nodes if node.name == name)
+    binding = node.evidence[0]
     return PosteriorObservation(
         name=name,
-        description=name,
+        description=node.description,
         posterior=posterior,
         interval_low=low,
         interval_high=0.99,
-        evidence_used=(f"slug:{name}",),
+        evidence_used=(f"{binding.kind}:{binding.name}",),
         n_eff=4.0,
         sparse=False,
     )
@@ -155,3 +159,21 @@ def test_model_support_still_reports_the_weakest_single_claim() -> None:
 
     assert fill == 2
     assert [claim.name for claim in named] == ["email_gateway_present"]
+
+
+def test_model_support_vendor_is_visible_on_secondary_mail_selector() -> None:
+    google = EvidenceRecord("DKIM", "v=DKIM1; p=example", "DKIM (Google Workspace)", "google-workspace")
+    mx = EvidenceRecord("MX", "10 mx.beta.invalid", "Custom or unclassified MX", "self-hosted-email")
+    info = replace(
+        split_info(),
+        evidence=(_OIDC, _REALM, google, mx),
+        primary_email_provider="Custom or unclassified MX",
+        posterior_observations=(
+            _posterior("google_workspace_tenant", 0.90, 0.82),
+            _posterior("m365_tenant", 0.95, 0.89),
+        ),
+    )
+    panel = _panel_text(info)
+    facts, services = panel.split("Services", maxsplit=1)
+    assert "Google Workspace tenant" in " ".join(facts.split())
+    assert "DKIM (Google Workspace)" in " ".join(services.split())

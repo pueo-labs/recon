@@ -18,6 +18,7 @@ from recon_tool.review_bundle import (
     ReviewCollectionContext,
     build_review_bundle,
     build_review_error_bundle,
+    validate_review_bundle,
 )
 from recon_tool.review_bundle_schema import (
     REVIEW_BUNDLE_TOP_LEVEL_FIELDS,
@@ -240,3 +241,10 @@ def test_generator_check_detects_drift(tmp_path: Path) -> None:
         )
         == 1
     )
+
+
+def test_oversized_integer_timeout_is_a_validation_error(success_bundle: dict[str, Any]) -> None:
+    bundle = copy.deepcopy(success_bundle)
+    bundle["collection"]["options"]["timeout_seconds"] = 10**400
+    with pytest.raises(ValueError, match="timeout_seconds"):
+        validate_review_bundle(bundle)

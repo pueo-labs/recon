@@ -454,7 +454,7 @@ interpreter, then restore their locked dependencies:
 uv venv --clear --python 3.15.2 .venv
 uv sync --locked
 uv run python -c "import sys, certifi; print(sys.version); print(certifi.__version__)"
-uv run python -m pip --version  # development environment: >=26.2.2
+uv run python -m pip --version  # development environment: >=26.3
 uv lock --check
 uv run python scripts/check.py
 ```

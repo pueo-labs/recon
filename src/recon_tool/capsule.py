@@ -26,7 +26,7 @@ from typing import Any
 from recon_tool import __version__
 from recon_tool.cache import tenant_info_from_dict, tenant_info_to_dict
 from recon_tool.formatter import format_tenant_dict
-from recon_tool.json_limits import load_bounded_json_file
+from recon_tool.json_limits import is_positive_timeout, load_bounded_json_file
 from recon_tool.models import SourceResult, TenantInfo
 from recon_tool.signals import signal_rule_names_from_observation
 from recon_tool.validator import strip_control_chars, validate_domain
@@ -334,7 +334,7 @@ def build_capsule(
     ended_text = _utc_text(collection.ended_at)
     if collection.ended_at < collection.started_at:
         raise ValueError("capsule collection end must not precede its start")
-    if not math.isfinite(collection.timeout_seconds) or collection.timeout_seconds <= 0:
+    if not is_positive_timeout(collection.timeout_seconds):
         raise ValueError("capsule timeout must be finite and positive")
     safe_vantage = validate_collection_vantage(collection.vantage)
 
@@ -447,7 +447,7 @@ def _validate_collection(capsule: Mapping[str, Any]) -> None:
         if type(options.get(field)) is not bool:
             raise ValueError(f"collection.options.{field} must be a boolean")
     timeout = options.get("timeout_seconds")
-    if isinstance(timeout, bool) or not isinstance(timeout, (int, float)) or not math.isfinite(timeout) or timeout <= 0:
+    if not is_positive_timeout(timeout):
         raise ValueError("collection.options.timeout_seconds must be finite and positive")
     cache = _require_mapping(collection.get("cache"), "collection.cache")
     _require_keys(
