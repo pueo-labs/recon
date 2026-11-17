@@ -354,12 +354,14 @@ fingerprints:
   detections:
   - type: spf
     pattern: mailgun.org
-    reference: https://documentation.mailgun.com/en/latest/quickstart-sending.html
+    reference: https://documentation.mailgun.com/docs/mailgun/user-manual/domains/domains-verify
+    verified: '2026-11-16'
     description: >-
-      SPF `include:mailgun.org` authorizes Mailgun (a Sinch
-      property) to send mail on behalf of the domain.
-      Transactional and API-driven outbound sender; the signal
-      is outbound only.
+      SPF include documented for Mailgun (`include:mailgun.org`).
+      The domain verification guide prints that include. This
+      observes the include. It does not prove that mail is sent
+      through Mailgun or that the include is the only sender
+      authorization.
 - name: SendCloud
   slug: sendcloud
   category: Email & Communication
@@ -489,11 +491,14 @@ fingerprints:
       uses OnDMARC for SPF or DMARC management.
   - type: dmarc_rua
     pattern: ondmarc.com
-    reference: https://www.redsift.com/ondmarc
+    reference: https://redsift.com/guides/email-protocol-configuration-guide/learn-more-about-dmarc
+    verified: '2026-11-16'
     description: >-
-      DMARC `rua=` aggregate-report target at OnDMARC (Red
-      Sift). Indicates the domain sends DMARC aggregate reports
-      to OnDMARC for analysis.
+      DMARC aggregate reporting destination under `ondmarc.com`.
+      The Red Sift guide prints aggregate report targets at that
+      domain. This observes that reporting domain. It does not
+      prove that reports go only there. The narrower host
+      `inbox.ondmarc.com` was not added.
 - name: dmarcian
   slug: dmarcian
   category: Email & Communication

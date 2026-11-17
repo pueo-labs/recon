@@ -1036,6 +1036,34 @@
       "reviewed_on": "2026-11-16",
       "source_checked_on": "2026-11-16",
       "reason": "Zoho Campaigns authentication article checked 2026-11-16: https://help.zoho.com/portal/en/kb/campaigns/getting-started-guide/articles/how-to-authenticate-email-domain. It prints include:zcsend.net. The rule observes that include. It does not prove that mail is sent through Zoho Campaigns or that the include is the only sender authorization. Regional includes and the books host were not added."
+    },
+    {
+      "rule": {
+        "source": "email.yaml",
+        "slug": "mailgun",
+        "detection_type": "spf",
+        "pattern": "mailgun.org"
+      },
+      "before": "3bee13b292af9bbfefdc14b0313bd76849a774ee8921a51498f449a2a764e2da",
+      "after": "3aee5f8abb907c53ebc84a55bc2a1a725e7d29e403d46063f38cad56a57fd5d9",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Mailgun domain verification guide checked 2026-11-16: https://documentation.mailgun.com/docs/mailgun/user-manual/domains/domains-verify. It prints v=spf1 include:mailgun.org ~all. The rule observes that include. It does not prove that Mailgun is the only sender. The MX hosts on the same page belong to an already dated rule and were not added again."
+    },
+    {
+      "rule": {
+        "source": "email.yaml",
+        "slug": "ondmarc",
+        "detection_type": "dmarc_rua",
+        "pattern": "ondmarc.com"
+      },
+      "before": "57ff5eb654512e9564339bbc748e496779557b93c82e521f48a5442043a56726",
+      "after": "5d2b2a94643ebe336e64aebc7d0e867c47b832bda1b778d7e7df0fb487249425",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-16",
+      "source_checked_on": "2026-11-16",
+      "reason": "Red Sift DMARC guide checked 2026-11-16: https://redsift.com/guides/email-protocol-configuration-guide/learn-more-about-dmarc. It prints aggregate report targets at ondmarc.com. The rule observes that reporting domain. It does not prove that reports go only there. The narrower host inbox.ondmarc.com was not added. Example domains and local-parts were not copied."
     }
   ]
 }

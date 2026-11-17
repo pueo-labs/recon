@@ -32,6 +32,12 @@ Tool surface changes: no CLI command or flag changes.
 
 ### Changed
 
+- Check eight undated SPF and DMARC rules against current vendor
+  pages. Two rules received a `verified` date because the fetched
+  page prints the catalog grammar. Six rules stay undated because
+  the fetched page prints a narrower or different host, or does not
+  print the catalog include. No new detection was added. This does
+  not cut a release.
 - Check eight undated TXT, DMARC, and SPF rules against current
   vendor pages. None received a `verified` date. A fetched page does
   not print the catalog grammar, prints a narrower reporting host, or
