@@ -816,7 +816,13 @@ do not cut a release. Tag `v2.27.2` stays `071c4356`. Qualifying CI
 jobs install the project environment with `uv sync --locked` and
 `UV_LOCKED`. A dependency change that `uv.lock` does not contain
 fails those jobs and leaves the lock unchanged. Issue 399 is that
-policy, and it does not cut a release. The next round uses a new
+policy, and it does not cut a release. Hosted Ubuntu jobs stay on
+`ubuntu-latest`. actionlint v1.7.12 does not recognize
+`ubuntu-26.04`, and its configuration can only add self-hosted
+labels or ignore errors. GitHub moves that label to Ubuntu 26.04
+through 2026-11-19, and the required CI lint job on 2026-11-17
+already ran on that image. Issue 402 is that recorded floor, and
+it does not cut a release. The next round uses a new
 question list and the rules that are still due. The 2026-10 documentation
 pass read the IANA DNS parameter update and left collection on the existing
 record types. Agent portability remains a separate maintainer track and does

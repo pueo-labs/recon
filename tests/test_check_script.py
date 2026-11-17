@@ -221,3 +221,36 @@ def test_reproducible_build_feeds_blocking_cross_platform_artifact_smoke() -> No
     assert 'scripts/check_installed_wheel.py --wheel "$RUNNER_TEMP/wheel-smoke-dist"' in command
     assert '--manifest agents/agent-plugin/mcp.json --version "$version"' in command
     assert 'tomllib.load(open("pyproject.toml", "rb"))["project"]["version"]' in command
+
+
+def _assigned_runner_labels(text: str) -> list[str]:
+    labels: list[str] = []
+    for raw in text.splitlines():
+        stripped = raw.strip()
+        if stripped.startswith(("runs-on:", "- os:", "os: [")):
+            payload = stripped.split(":", 1)[1].strip()
+            if payload.startswith("["):
+                payload = payload.strip("[]")
+                labels.extend(part.strip().strip("'\"") for part in payload.split(","))
+            else:
+                labels.append(payload.strip("'\""))
+    return labels
+
+
+def test_hosted_ubuntu_jobs_stay_on_the_label_actionlint_recognizes() -> None:
+    root = _CI_WORKFLOW.parents[2]
+    for path in sorted((root / ".github" / "workflows").glob("*.yml")):
+        text = path.read_text(encoding="utf-8")
+        ubuntu_labels = [label for label in _assigned_runner_labels(text) if label.startswith("ubuntu-")]
+        assert ubuntu_labels
+        assert set(ubuntu_labels) == {"ubuntu-latest"}
+
+    workflow = _CI_WORKFLOW.read_text(encoding="utf-8")
+    assert "actionlint v1.7.12 does not" in workflow
+    assert "recognize ubuntu-26.04" in workflow
+    pre_commit = yaml.safe_load(_PRE_COMMIT_CONFIG.read_text(encoding="utf-8"))
+    actionlint = next(repo for repo in pre_commit["repos"] if str(repo["repo"]).endswith("rhysd/actionlint"))
+    assert actionlint["rev"] == "v1.7.12"
+    supply = " ".join((root / "docs" / "supply-chain.md").read_text(encoding="utf-8").split())
+    assert "actionlint v1.7.12 does not recognize `ubuntu-26.04`" in supply
+    assert "through 2026-11-19" in supply

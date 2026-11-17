@@ -14,6 +14,10 @@ permissions:
 # UV_LOCKED is set on each job that syncs or runs the project environment.
 # It is not a workflow variable: reproducible-build and installed-wheel-smoke
 # do not sync that environment, and a workflow setting would reach them.
+# Hosted Ubuntu jobs stay on ubuntu-latest. actionlint v1.7.12 does not
+# recognize ubuntu-26.04, and its configuration can only add self-hosted
+# labels or ignore errors. ubuntu-latest moves to Ubuntu 26.04 through
+# 2026-11-19. Windows and macOS jobs stay on their latest labels.
 env:
   UV_PYTHON: "3.15"
 
