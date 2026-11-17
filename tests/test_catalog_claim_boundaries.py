@@ -340,15 +340,22 @@ _CHALLENGE_OWNERS = (
 )
 
 
-def test_shopify_undated_rules_do_not_claim_account_or_live_service_state() -> None:
+def test_shopify_rules_do_not_claim_account_or_live_service_state() -> None:
     token = _rules("shopify", "txt")["^shopify-verification-code="]
     assert token.verified == ""
     assert "does not establish account binding, SSO, completed verification, or active use" in token.description
-    for kind in ("cname", "cname_target"):
-        route = _rules("shopify", kind)["myshopify.com"]
-        assert route.verified == ""
-        assert "does not establish" in route.description
-        assert "a currently published storefront" in route.description
+    route = _rules("shopify", "cname")["myshopify.com"]
+    assert route.verified == "2026-11-17"
+    assert (
+        route.reference
+        == "https://help.shopify.com/en/manual/domains/add-a-domain/connecting-domains/connect-domain-manual"
+    )
+    assert "does not establish" in route.description
+    assert "a currently published storefront" in route.description
+    related = _rules("shopify", "cname_target")["myshopify.com"]
+    assert related.verified == ""
+    assert "does not establish" in related.description
+    assert "a currently published storefront" in related.description
     assets = _rules("shopify", "cname_target")["shopifycdn.com"]
     assert assets.verified == ""
     assert "does not establish current asset delivery" in assets.description

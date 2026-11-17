@@ -1540,6 +1540,48 @@
       "reviewed_on": "2026-11-17",
       "source_checked_on": "2026-11-17",
       "reason": "GCDN cutover page checked 2026-11-17: https://docs.pantheon.io/guides/nextgen-gcdn/o2o. It says the hostname CNAME points to a name under pantheon.io. The rule observes that suffix. It does not prove that Pantheon is serving the site. The placeholder and the platform domain were not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "sectigo",
+        "detection_type": "caa",
+        "pattern": "sectigo.com"
+      },
+      "before": "1d8dd06cb30cd1d249a34e9adbe730d99f0cafad63b64dc40a6ea21615829b38",
+      "after": "45e862adbf1b6d5197b7801ba31b22f597cdf8c922a9a4947ef14f1b7b5c936d",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-17",
+      "source_checked_on": "2026-11-17",
+      "reason": "CAA knowledge-base article checked 2026-11-17: https://www.sectigo.com/knowledge-base/detail/CAA-Record-Certification-Authority-Authorization-1527076091491. It prints a CAA issue record whose issuer is sectigo.com. The rule observes that issuer. It does not prove that a certificate was issued. The example name and the other issuer hosts were not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "shopify",
+        "detection_type": "cname",
+        "pattern": "myshopify.com"
+      },
+      "before": "0ea73ff3e05710a774fbc55d13d6220e2d62453ae20926fd21a68b15acb0cf8f",
+      "after": "2ed860c48193f3bc1f9e7eebc32101de054c55ddf5851f1d2332361159968845",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-17",
+      "source_checked_on": "2026-11-17",
+      "reason": "Manual connection page checked 2026-11-17: https://help.shopify.com/en/manual/domains/add-a-domain/connecting-domains/connect-domain-manual. It says the www CNAME points to a name under myshopify.com. The rule observes that suffix. It does not establish completed setup, a currently published storefront, account ownership, or a product plan. The specific target, the example name, and the address values were not added."
+    },
+    {
+      "rule": {
+        "source": "infrastructure.yaml",
+        "slug": "squarespace",
+        "detection_type": "cname",
+        "pattern": "squarespace.com"
+      },
+      "before": "c6be8ae307054234bb35a3c5191b7e49d732c73b12ea853e60c247c1fe7181fe",
+      "after": "737540c01b5a826434900845e59603848130334d922c5f61f622d327bc13b03b",
+      "disposition": "semantic",
+      "reviewed_on": "2026-11-17",
+      "source_checked_on": "2026-11-17",
+      "reason": "Third-party domain article checked 2026-11-17: https://support.squarespace.com/hc/en-us/articles/205812378-Connect-a-third-party-domain-to-your-Squarespace-site. It prints CNAME targets under squarespace.com. The rule observes that suffix. It does not prove that Squarespace is serving the site. The specific targets and the verification code were not added."
     }
   ]
 }

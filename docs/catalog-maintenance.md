@@ -259,6 +259,8 @@ reference check, and a later 2026-11-17 image suffix,
 edge suffix, and issuer host
 reference check, and a later 2026-11-17 traffic edge
 hostname
+reference check, and a later 2026-11-17 store suffix,
+site suffix, and issuer host
 reference check.
 It is a bounded
 review record, not a claim that every rule was reviewed that month. Private monthly receipts
@@ -2347,6 +2349,60 @@ stays undated. No service hostname was added.
 The cited docs page prints `sanity.io` as the documentation
 site and does not print a CNAME target. The catalog suffix
 stays undated. No asset hostname was added.
+
+### Documented reference check, later on 2026-11-17, store suffix, site suffix, and issuer host
+
+This pass checked eight undated CAA, TXT, and CNAME rules. Three
+rules received a `verified` date because the fetched page prints
+the catalog grammar. Five rules stay undated. No new
+detection, DNS record type, or collection path was added. This
+note does not cut a release.
+
+The cited resource-library URL returned no body. The CAA
+knowledge-base article does not print `comodoca.com`. The
+catalog issuer stays undated. No issuer host was added.
+
+The cited resource-library URL returned no body. The
+[CAA knowledge-base article](https://www.sectigo.com/knowledge-base/detail/CAA-Record-Certification-Authority-Authorization-1527076091491)
+prints a CAA issue record whose issuer is `sectigo.com`. The
+rule observes that issuer. It does not prove that a certificate
+was issued. The example name and the other issuer hosts were
+not added.
+
+The cited docs host did not resolve to a usable address, so no
+article body was available. The catalog prefix stays undated.
+No token was added.
+
+The cited domains URL redirects to the domains overview. That
+page prints `myshopify.com` as the default store URL and does
+not print a CNAME target. The
+[manual connection page](https://help.shopify.com/en/manual/domains/add-a-domain/connecting-domains/connect-domain-manual)
+says the www CNAME points to a name under that suffix. The
+rule observes that suffix. It does not establish completed
+setup, a currently published storefront, account ownership,
+or a product plan. The specific target, the example name, and
+the address values were not added.
+
+The cited help URL redirects to the Harness documentation home.
+That page does not print `split-domain-verification=`. The
+catalog prefix stays undated. No token was added.
+
+The cited docs URL redirects to the Splunk help home. That page
+does not print `signalfx.com`. The domain transition guide
+prints `signalfx.com` as product and ingest URLs and does not
+print a CNAME target. The catalog suffix stays undated. No
+endpoint hostname was added.
+
+The cited product page does not print `splunk-verification=`.
+The catalog prefix stays undated. No token was added.
+
+The cited section URL returns HTTP 404 and does not print a
+CNAME target. The
+[third-party domain article](https://support.squarespace.com/hc/en-us/articles/205812378-Connect-a-third-party-domain-to-your-Squarespace-site)
+prints CNAME targets under `squarespace.com`. The rule observes
+that suffix. It does not prove that Squarespace is serving the
+site. The specific targets and the verification code were not
+added.
 
 ## Executable path
 
