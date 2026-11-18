@@ -29,8 +29,8 @@ def test_installers_bootstrap_pinned_uv_without_system_pip() -> None:
     assert "pip install" not in powershell
     assert "https://astral.sh/uv/install.sh" not in script
     assert "https://astral.sh/uv/install.ps1" not in powershell
-    assert 'UV_VERSION="0.13.5"' in script
-    assert '$UvVersion = "0.13.5"' in powershell
+    assert 'UV_VERSION="0.13.9"' in script
+    assert '$UvVersion = "0.13.9"' in powershell
     assert "https://astral.sh/uv/$UV_VERSION/install.sh" in script
     assert "https://astral.sh/uv/$UvVersion/install.ps1" in powershell
     assert "Invoke-Expression (Invoke-RestMethod" not in powershell
@@ -802,7 +802,7 @@ def test_installer_bootstraps_uv_on_a_fresh_machine(tmp_path: Path) -> None:
     run = _run_windows_installer if os.name == "nt" else _run_unix_installer
     result, log = run(tmp_path, pipx=False, extra_env={"FAKE_BOOTSTRAP": "1", "FAKE_BIN_OFF_PATH": "1"})
     assert result.returncode == 0, result.stdout + result.stderr
-    assert "https://astral.sh/uv/0.13.5/install." in log
+    assert "https://astral.sh/uv/0.13.9/install." in log
     assert f"uv tool install --force recon-tool=={_VERSION} --python 3.15" in log
     assert f"reports recon {_VERSION}" in result.stdout
 

@@ -135,7 +135,7 @@ def test_registry_gate_is_wired_into_local_and_ci_gates() -> None:
     assert '(_CORE, "mcp-registry", [_PY, "scripts/generate_mcp_registry.py", "--check"]),' in check_source
     assert "run: uv run python scripts/generate_mcp_registry.py --check" in workflow
     assert "publish-mcp-registry:" in release
-    assert "MCP_PUBLISHER_VERSION: v1.8.1" in release
+    assert "MCP_PUBLISHER_VERSION: v1.8.9" in release
     assert "releases/latest" not in release
     assert "./mcp-publisher login github-oidc" in release
     assert 'test "$GITHUB_REPOSITORY" = "pueo-labs/recon"' in release

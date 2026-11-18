@@ -38,7 +38,7 @@ See the [maintainer acceptance rule](maintainer-loop-runbook.md#acceptance-rule)
 
 ## Start offline, without private context
 
-Use a source checkout, Python 3.11-3.15 and the repository's pinned uv 0.13.5.
+Use a source checkout, Python 3.11-3.15 and the repository's pinned uv 0.13.9.
 The installed PyPI CLI does not include `validation/` or `agents/`. From the
 checkout root:
 
@@ -210,6 +210,22 @@ upload globs are refused. The existing gate also catches force-added private
 artifacts. File-list checks do not anonymize content or replace disclosure
 review; do not upload the private receipt directory. This workflow performs no
 upload or GitHub write itself.
+
+## November 17 mail and custom-domain recheck
+
+All eight rules scheduled for November 23 still have a first-party basis.
+The [ImprovMX API](https://www.improvmx.com/api/v4/) documents the primary
+MX and SPF include. Its [white-label guide](https://improvmx.com/guides/white-label-mx-records/)
+also identifies the secondary MX. The [Forward Email FAQ](https://forwardemail.net/en/faq)
+documents both MX targets, its verification TXT prefix and its SPF include.
+These records describe routing, a published verification marker or a sender
+policy reference. Each claim retains its original scope.
+
+The [Convex proxy guide](https://docs.convex.dev/production/abuse-protection)
+documents the custom-domain CNAME and a deployment behind a proxy. Only a
+visible matching CNAME supports this host-level attribution. A proxy can
+hide the upstream routing. The synthetic family tests cover a visible
+target, a visible proxy route, lookalikes and unavailable CNAME evidence.
 
 ## Monthly due work and review receipts
 

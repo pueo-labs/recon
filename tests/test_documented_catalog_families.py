@@ -98,6 +98,13 @@ def test_convex_lookalikes_and_child_hosts_do_not_match(target: str) -> None:
     assert infrastructure is None
 
 
+def test_convex_backend_behind_a_proxy_only_attributes_the_visible_route() -> None:
+    application, infrastructure = classify_chain(["cname.vercel-dns.com."], get_cname_target_rules())
+    assert application is not None
+    assert application.slug == "vercel"
+    assert infrastructure is None
+
+
 @pytest.mark.asyncio
 async def test_convex_surface_keeps_queried_host_and_chain_without_apex_claim(monkeypatch: pytest.MonkeyPatch) -> None:
     queries = _fixture(monkeypatch, {("api.example.com", "CNAME"): ["CONVEX.DOMAINS."]})

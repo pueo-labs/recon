@@ -26,6 +26,10 @@ operator, corporate group, ownership, or control.
 
 ## [Unreleased]
 
+Refresh the pinned build, installer, security and release tools, the draft
+Terraform module lock, and two development dependencies. Recheck eight
+mail-routing, verification and custom-domain rules against vendor guidance.
+
 Maintainer tooling rejects invalid or duplicated required OpenSSF Scorecard
 scores and identifies checks the provider could not evaluate. The optional
 validation harness now pins OpenAI 3.54.0.

@@ -68,7 +68,7 @@ This doc answers:
 
 ## Quick Start
 
-Use uv 0.13.5 for repository tasks: CI, the release workflow, and artifact
+Use uv 0.13.9 for repository tasks: CI, the release workflow, and artifact
 builds all pin that exact release, so it is the version that reproduces lock,
 constraint, test, and release-shaped build behavior. `pyproject.toml` requires
 uv `>=0.13.4,<0.14`, excluding the affected bundled CA store. Dependabot and
@@ -77,10 +77,9 @@ updater still bundles older uv, its update must fail closed until that tool is
 upgraded; do not lower the floor to restore compatibility. The hosted
 Dependabot executable is not verified by the local gate.
 
-`.python-version` pins the local toolchain to final CPython 3.15.2. uv 0.13.5
-can use an installed 3.15.2 interpreter. Its managed download index does not
-yet offer a 3.15.2 build, so install that interpreter before recreating the
-environment. CI asks setup-python for 3.15 and sets `UV_PYTHON` to that
+`.python-version` pins the local toolchain to final CPython 3.15.2. uv 0.13.9
+offers a managed 3.15.2 build for Linux x86-64 and can use an existing
+3.15.2 interpreter. CI asks setup-python for 3.15 and sets `UV_PYTHON` to that
 request, which tracks setup-python's maintained 3.15 patch.
 Existing managed interpreters and virtual environments are not updated just
 by changing this manifest. See the
@@ -91,8 +90,8 @@ with setup-python.
 ```bash
 git clone https://github.com/pueo-labs/recon.git
 cd recon
-uv self update 0.13.5      # select the repository's reproducible uv release
-uv --version                # must report uv 0.13.5
+uv self update 0.13.9      # select the repository's reproducible uv release
+uv --version                # must report uv 0.13.9
 uv sync --locked            # dev group from uv.lock (pip: pip install -e . --group dev, pip 25.1+)
 uv run pre-commit install              # activate pre-commit hooks
 uv run pre-commit install --hook-type commit-msg

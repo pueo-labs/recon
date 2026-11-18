@@ -73,7 +73,7 @@ _EXPECTED_COVERAGE_TARGET = "--cov=src/recon_tool"
 _STALE_COVERAGE_TARGET = "--cov=recon_tool"
 _COVERAGE_FLOOR = "--cov-fail-under=90.2"
 _REQUIRED_REMOTE_WORKFLOWS = ("CI", "Secrets scan", "Scorecard supply-chain security")
-_PINNED_UV_VERSION = "0.13.5"
+_PINNED_UV_VERSION = "0.13.9"
 _UV_VERSION_RE = re.compile(r"^uv\s+(?P<version>[0-9]+\.[0-9]+\.[0-9]+)(?:\s|$)")
 _REQUIRED_BRANCH_CHECKS = frozenset({"ci-gate", "gitleaks", "CodeQL Python analysis"})
 _REQUIRED_BRANCH_RULE_TYPES = frozenset(
@@ -99,7 +99,7 @@ _REQUIRED_SCORECARD_MINIMUMS = {
     "SAST": 10,
 }
 _PYPI_PACKAGE = "recon-tool"
-_PYPI_ATTESTATIONS_SPEC = "pypi-attestations==0.0.29"
+_PYPI_ATTESTATIONS_SPEC = "pypi-attestations==0.0.31"
 _COMMAND_TIMEOUT_SECONDS = 120
 _MAX_RELEASE_ASSET_BYTES = 64 * 1024 * 1024
 _REMOTE_RELEASE_HINT = "not requested; pass --remote on the exact published current-version tag"
