@@ -144,6 +144,52 @@ class TestDeclarativeEvidenceCount:
         fired = [node.evidence[0]]
         assert _declarative_evidence_count(node, fired) == 5
 
+    @pytest.mark.parametrize(
+        ("slugs", "signals", "expected_fired", "expected_units", "posterior_odds"),
+        [
+            # Both names appear on one channel. Only its declared binding fires.
+            # The prior odds are one. Multiply the fired and absent likelihood ratios.
+            (
+                ["member", "ticket"],
+                [],
+                "slug:member",
+                {("shared", "group", "fired"), ("ticket", "signal", "absent")},
+                (0.75 / 0.25) * (0.5 / 0.25),
+            ),
+            (
+                [],
+                ["member", "ticket"],
+                "signal:ticket",
+                {("shared", "group", "absent"), ("ticket", "signal", "fired")},
+                (0.25 / 0.75) * (0.5 / 0.75),
+            ),
+        ],
+        ids=["slug-observed", "signal-observed"],
+    )
+    def test_mixed_declarations_keep_counts_and_provenance_by_kind(
+        self,
+        slugs: list[str],
+        signals: list[str],
+        expected_fired: str,
+        expected_units: set[tuple[str, str, str]],
+        posterior_odds: float,
+    ) -> None:
+        node = self._node(
+            evidence=(
+                _ev("member", 0.75, 0.25, group="shared"),
+                _ev("ticket", 0.5, 0.75, kind="signal"),
+                _ev("neutral", 0.5, 0.5),
+            ),
+            group_absence=(("shared", 0.25, 0.75),),
+        )
+        post = infer(BayesianNetwork(1, (node,)), slugs, signals, priors_override={}).posteriors[0]
+
+        assert post.evidence_used == (expected_fired,)
+        assert {(cf.unit, cf.kind, cf.observed) for cf in post.unit_counterfactuals} == expected_units
+        assert post.absence_informative
+        assert post.n_eff == 6.0  # Baseline four plus one fired and one informative absent unit.
+        assert post.posterior == round(posterior_odds / (1 + posterior_odds), 4)
+
     def test_fired_group_not_double_counted_as_absent(self) -> None:
         node = self._node(
             evidence=(_ev("g1", 0.8, 0.2, group="g"), _ev("g2", 0.7, 0.2, group="g")),
@@ -339,20 +385,21 @@ class TestNEffExactValues:
         assert all(item.observed == "absent" for item in absences.values())
         assert all(item.delta != 0.0 for item in absences.values())
 
-    def test_network_calibration_drives_n_eff_arithmetic(self) -> None:
+    @pytest.mark.parametrize(("contribution", "expected"), [(3.0, 12.0), (3.4567, 12.46)])
+    def test_network_calibration_drives_n_eff_arithmetic(self, contribution: float, expected: float) -> None:
         base = load_network()
         net = BayesianNetwork(
             version=base.version,
             nodes=base.nodes,
             calibration=CalibrationSettings(
                 min_n_eff=10.0,
-                evidence_n_eff_contrib=3.0,
+                evidence_n_eff_contrib=contribution,
                 conflict_n_eff_penalty=1.0,
             ),
         )
         result = infer(net, [], ["cdn_cname_observed"], conflict_field_count=1, priors_override={})
         post = {p.name: p for p in result.posteriors}
-        assert post["cdn_fronting"].n_eff == 12.0
+        assert post["cdn_fronting"].n_eff == expected
         assert post["cdn_fronting"].sparse is False
 
     def test_absence_informative_flag_tracks_declarative_missingness(self) -> None:

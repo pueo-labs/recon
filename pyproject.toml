@@ -143,7 +143,7 @@ build = [
 # without adding either SDK to recon's runtime or default development graph.
 agentic-validation = [
     "anthropic==2.10.0",
-    "openai==3.54.0",
+    "openai==3.55.0",
 ]
 dev = [
     "hypothesis>=6.0",

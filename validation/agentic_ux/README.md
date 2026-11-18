@@ -56,7 +56,7 @@ are falsifiable.
 ## What you need
 
 1. Use the repository's locked `agentic-validation` dependency group. It pins
-   `anthropic==2.10.0` and `openai==3.54.0` in `pyproject.toml`, with artifact
+   `anthropic==2.10.0` and `openai==3.55.0` in `pyproject.toml`, with artifact
    hashes captured in `uv.lock`. These are not runtime dependencies of recon
    and are installed only when the group is selected.
 2. The matching API key in your environment:
