@@ -32,7 +32,10 @@ mail-routing, verification and custom-domain rules against vendor guidance.
 
 Maintainer tooling rejects invalid or duplicated required OpenSSF Scorecard
 scores and identifies checks the provider could not evaluate. The optional
-validation harness now pins OpenAI 3.54.0.
+validation harness now pins OpenAI 3.55.0.
+
+Refresh the runtime lock and its hash-pinned export to Typer 0.29.2,
+annotated-doc 0.0.7, and the November 18 Public Suffix List package.
 
 ### Tool Surface Changes
 
