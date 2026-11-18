@@ -687,7 +687,7 @@ def test_ruleset_rejects_bypass_or_unknown_bypass_state(actors: object) -> None:
     assert "ruleset bypass actors" in "; ".join(release_readiness._ruleset_problems(payload))
 
 
-def _scorecard_payload(sha: str, score: float = 8.3, **check_overrides: int) -> dict[str, object]:
+def _scorecard_payload(sha: str, score: float = 8.3, **check_overrides: object) -> dict[str, object]:
     checks = [
         {"name": name, "score": check_overrides.get(name, 10)} for name in release_readiness._REQUIRED_SCORECARD_TENS
     ]
@@ -698,8 +698,31 @@ def _scorecard_payload(sha: str, score: float = 8.3, **check_overrides: int) -> 
     return {"repo": {"commit": sha}, "score": score, "checks": checks}
 
 
-def test_scorecard_api_passes_current_commit_and_required_controls() -> None:
+@pytest.mark.parametrize(
+    ("aggregate", "sast", "duplicate", "expected"),
+    [
+        (8.3, 10, False, None),
+        (float("nan"), 10, False, "number from 0 to 10"),
+        (float("inf"), 10, False, "number from 0 to 10"),
+        (11, 10, False, "number from 0 to 10"),
+        (True, 10, False, "number from 0 to 10"),
+        (8.3, float("nan"), False, "SAST score must be an integer"),
+        (8.3, float("inf"), False, "SAST score must be an integer"),
+        (8.3, 11, False, "SAST score must be an integer"),
+        (8.3, 9.5, False, "SAST score must be an integer"),
+        (8.3, True, False, "SAST score must be an integer"),
+        (8.3, "10", False, "SAST score must be an integer"),
+        (8.3, -1, False, "could not evaluate SAST"),
+        (8.3, 10, True, "duplicate required Scorecard check: SAST"),
+    ],
+)
+def test_scorecard_api_assesses_current_commit_and_required_controls(
+    aggregate: float, sast: object, duplicate: bool, expected: str | None
+) -> None:
     sha = "a" * 40
+    payload = _scorecard_payload(sha, score=aggregate, SAST=sast)
+    if duplicate:
+        payload["checks"] = [{"name": "SAST", "score": 7}, {"name": "SAST", "score": 10}]
 
     def runner(cmd: list[str]) -> subprocess.CompletedProcess[str]:
         if cmd == ["git", "remote", "get-url", "origin"]:
@@ -708,13 +731,17 @@ def test_scorecard_api_passes_current_commit_and_required_controls() -> None:
             return _cp(cmd, stdout=f"{sha}\n")
         if cmd[1] == "-c":
             assert f"github.com/pueo-labs/recon?commit={sha}" in cmd[2]
-            return _cp(cmd, stdout=json.dumps(_scorecard_payload(sha)))
+            return _cp(cmd, stdout=json.dumps(payload))
         raise AssertionError(f"unexpected command: {cmd}")
 
     check = release_readiness._check_scorecard_api(runner)
 
-    assert check.status == "pass"
-    assert sha[:7] in check.detail
+    if expected is None:
+        assert check.status == "pass"
+        assert sha[:7] in check.detail
+    else:
+        assert check.status == "fail"
+        assert expected in check.detail
 
 
 def test_scorecard_api_fails_on_stale_commit() -> None:

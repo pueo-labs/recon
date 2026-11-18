@@ -6,12 +6,11 @@ while the Best Practices Badge is an account-backed project questionnaire.
 
 ## Current Snapshot
 
-- Date checked: 2026-10-20.
-- Live API state at check time: public API rechecked for the exact current
-  release `HEAD` after CI and publication completed.
-- Scorecard version: `v5.6.0`.
-- Score: `8.4`.
-- Public source: `https://api.securityscorecards.dev/projects/github.com/pueo-labs/recon`.
+The November 17, 2026 recheck of the v2.27.3 release commit returned
+an overall score of 8.3 from Scorecard v5.6.0. The
+[manual Scorecard run](https://github.com/pueo-labs/recon/actions/runs/44202514366)
+completed successfully and refreshed the
+[public result](https://api.securityscorecards.dev/projects/github.com/pueo-labs/recon).
 
 The public API is authoritative for the exact commit behind the badge. Docs-only
 commits can move `main` after a snapshot is written, so this file records the
@@ -20,16 +19,11 @@ durable status promise. Remote release readiness queries that API for `HEAD`,
 requires an overall score of at least `8.0`, keeps the non-SAST required
 code-owned controls at `10`, and requires the documented SAST floor of `10`.
 
-The measured code-owned controls are green: dangerous workflow patterns,
-dependency update automation, token permissions, pinned dependencies, binary
-artifacts, security policy, known vulnerabilities, packaging, fuzzing, signed
-releases, license and SAST all score `10`. CI-Tests also scores `10` because
-every sampled merged pull request ran CI. The public API reports successful
-supported SAST checks for every merged pull request in its sampled window.
-Current pull requests provide supported SAST evidence; pull requests targeting
-`main` and pushes to `main` run CodeQL, while weekly and manual main analysis
-remain available. The temporary SAST floor of `7` is retired. The sample size
-and overall score remain dated external state, not a permanent promise.
+Every required check except SAST scored 10. SAST and CI-Tests both returned
+`-1` because GitHub denied the scanner access to third-party check data.
+SAST therefore fails remote release readiness even though the repository's
+CodeQL and CI runs passed. Pull requests targeting `main` and pushes to
+`main` run CodeQL, with weekly and manual default-branch analysis available.
 
 The remaining low or unknown checks are process-bound:
 

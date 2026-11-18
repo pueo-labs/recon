@@ -359,17 +359,17 @@ def test_openssf_posture_docs_track_real_scorecard_limits() -> None:
     text = " ".join((_ROOT / "docs" / "openssf-posture.md").read_text(encoding="utf-8").split())
 
     for required in (
-        "2026-10-20",
-        "Score: `8.4`",
-        "public API rechecked for the exact current release `HEAD`",
+        "November 17, 2026 recheck of the v2.27.3 release commit",
+        "overall score of 8.3",
+        "manual Scorecard run",
         "live API URL",
         "Remote release readiness queries that API for `HEAD`",
         "overall score of at least `8.0`",
         "requires the documented SAST floor of `10`",
-        "every sampled merged pull request ran CI",
-        "Current pull requests provide supported SAST evidence",
+        "Every required check except SAST scored 10",
+        "SAST and CI-Tests both returned `-1`",
         "pushes to `main` run CodeQL",
-        "public API reports successful supported SAST checks for every merged pull request",
+        "SAST therefore fails remote release readiness",
         "Passing at 100 percent on 2026-10-23",
         "not an independent security audit or a security guarantee",
         "openssf-badge-readiness.md",
@@ -397,11 +397,11 @@ def test_supply_chain_docs_name_current_scorecard_recheck() -> None:
     text = " ".join((_ROOT / "docs" / "supply-chain.md").read_text(encoding="utf-8").split())
 
     for required in (
-        "2026-10-20 Scorecard recheck for the exact current-release `HEAD` reports score `8.4`",
-        "All required measured code-owned controls, including SAST, are at `10`",
+        "For v2.27.3 the public result reported 8.3 overall",
+        "An unavailable required check fails remote readiness",
         "overall score of at least `8.0`",
         "enforces the current SAST floor of `10`",
-        "public API reports successful supported SAST checks for every merged pull request",
+        "prevented OpenSSF from scoring SAST and CI-Tests",
         "Current pull requests and pushes to `main` run CodeQL",
         "retry exactly once only when their output matches a narrow set of recognized transport failures",
         "requires the CI matrix, gitleaks, and CodeQL checks",
@@ -426,6 +426,8 @@ def test_openssf_docs_do_not_turn_live_api_state_into_commit_promise() -> None:
     scorecard_text = "\n".join((openssf, supply_chain))
 
     assert "durable status promise" in openssf
+    # Numeric GitHub Actions run IDs are evidence links, not commit references.
+    scorecard_text = re.sub(r"https://github\.com/pueo-labs/recon/actions/runs/[0-9]+\b", "", scorecard_text)
     documented_shas = set(re.findall(r"\b[0-9a-f]{7,40}\b", scorecard_text))
     # Immutable signer identities are not a live Scorecard status promise.
     historical_signer_sha = "9c213f79cfa92eb2e40e76d605a2f9d6a341e4d9"
