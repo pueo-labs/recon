@@ -186,7 +186,7 @@ mutation = [
 ]
 
 [tool.uv]
-# CI, release, installers and the container select uv 0.13.5. The security
+# CI, release, installers and the container select uv 0.13.9. The security
 # floor excludes uv's affected bundled CA store (GHSA-hq85-5cpj-mr62).
 # Lock-update tooling, including Dependabot, must also satisfy this floor;
 # an older bundled uv must fail closed rather than retain the old exception.

@@ -16,7 +16,7 @@ $Package = "recon-tool"
 $Version = "2.27.3"
 $Spec = "$Package==$Version"
 $Cli = "recon"
-$UvVersion = "0.13.5"
+$UvVersion = "0.13.9"
 
 function Test-Have($name) {
     return [bool](Get-Command $name -ErrorAction SilentlyContinue)

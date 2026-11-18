@@ -155,7 +155,7 @@ def _write_minimal_root(root: Path, version: str = "2.2.8") -> None:
                 "--signer-workflow",
                 "--source-ref",
                 "--source-digest",
-                "pypi-attestations==0.0.29",
+                "pypi-attestations==0.0.31",
                 "pypi-attestations verify pypi",
                 "URL_COUNT",
                 "RECON_INSTALL_MANAGER",
@@ -174,7 +174,7 @@ def _happy_runner(cmd: list[str]) -> subprocess.CompletedProcess[str]:
         return _cp(cmd, stdout="## main...origin/main\n")
     uv_outputs = {
         ("uv", "lock", "--check"): "Resolved 1 package\n",
-        ("uv", "--version"): "uv 0.13.5 (synthetic build)\n",
+        ("uv", "--version"): "uv 0.13.9 (synthetic build)\n",
     }
     if tuple(cmd) in uv_outputs:
         return _cp(cmd, stdout=uv_outputs[tuple(cmd)])
@@ -212,8 +212,8 @@ def test_uv_toolchain_requires_the_reproducible_release_pin() -> None:
 
     assert check.status == "fail"
     assert "0.12.6" in check.detail
-    assert "0.13.5" in check.detail
-    assert check.action == "run uv self update 0.13.5, then confirm uv --version"
+    assert "0.13.9" in check.detail
+    assert check.action == "run uv self update 0.13.9, then confirm uv --version"
 
 
 def test_uv_toolchain_rejects_malformed_version_output() -> None:
@@ -923,7 +923,7 @@ def test_pypi_attestations_verify_wheel_and_sdist(tmp_path: Path, version: str, 
             return _cp(cmd, stdout=source_sha + "\n")
         if cmd[1] == "-c":
             return _cp(cmd, stdout=_pypi_payload(version))
-        if cmd[:4] == ["uvx", "--from", "pypi-attestations==0.0.29", "pypi-attestations"]:
+        if cmd[:4] == ["uvx", "--from", "pypi-attestations==0.0.31", "pypi-attestations"]:
             assert cmd[4:8] == ["verify", "pypi", "--repository", f"https://github.com/{signer}"]
             verified_urls.append(cmd[8])
             return _cp(cmd, stdout="OK\n")
@@ -946,7 +946,7 @@ def test_pypi_attestations_fail_when_verification_fails(tmp_path: Path) -> None:
             return _cp(cmd, stdout=_RELEASE_SHA + "\n")
         if cmd[1] == "-c":
             return _cp(cmd, stdout=_pypi_payload())
-        if cmd[:4] == ["uvx", "--from", "pypi-attestations==0.0.29", "pypi-attestations"]:
+        if cmd[:4] == ["uvx", "--from", "pypi-attestations==0.0.31", "pypi-attestations"]:
             return _cp(cmd, returncode=1, stderr="verification failed\n")
         raise AssertionError(f"unexpected command: {cmd}")
 

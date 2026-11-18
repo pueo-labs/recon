@@ -382,7 +382,7 @@ should use JSON rather than the spreadsheet-oriented CSV surface.
   subdomain orderings are sorted and canonical. Enriched services, slugs, and
   `degraded_sources` are emitted sorted.
 - **Constrained same-job build repeatability is checked.** With
-  `SOURCE_DATE_EPOCH`, uv 0.13.5, and the hash-locked backend graph fixed, CI
+  `SOURCE_DATE_EPOCH`, uv 0.13.9, and the hash-locked backend graph fixed, CI
   builds the sdist, reconstructs its wheel, repeats that sequence inside one
   Ubuntu job, and requires matching hashes. This does not promise byte identity
   across different Python, runner, operating-system, or archive environments;

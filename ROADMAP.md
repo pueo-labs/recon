@@ -37,6 +37,10 @@ absent.
 
 ## Resume here
 
+The November 17 follow-up checked all eight November 23 references. The
+next previously scheduled batch is November 28. See the
+[catalog review](docs/catalog-maintenance.md#november-17-mail-and-custom-domain-recheck).
+
 GitHub, PyPI, and the MCP Registry published [v2.27.3](CHANGELOG.md#2273---2026-11-17) from commit `c5482aad`.
 It covers the resolver warning, DKIM vendor display, policy comparisons,
 cache directory handling, and a compatible dependency refresh. Continue with

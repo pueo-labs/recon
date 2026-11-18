@@ -185,8 +185,8 @@ def test_codeql_workflow_covers_main_prs_pushes_and_schedule_with_least_privileg
     assert triggers["push"] == {"branches": ["main"]}
     assert workflow["permissions"] == _READ_ONLY_PERMISSIONS
     assert job["permissions"] == _ALLOWED_ELEVATED_JOB_PERMISSIONS[".github/workflows/codeql.yml"]["analyze"]
-    assert "github/codeql-action/init@9b3254085494b55a0f7c4c2b3d2d52cc712ce370" in step_text
-    assert "github/codeql-action/analyze@9b3254085494b55a0f7c4c2b3d2d52cc712ce370" in step_text
+    assert "github/codeql-action/init@33d7b85da1a04171e211befe2c739303b9a4c066" in step_text
+    assert "github/codeql-action/analyze@33d7b85da1a04171e211befe2c739303b9a4c066" in step_text
 
 
 def test_provider_drift_workflow_runs_scheduled_live_integration_smoke() -> None:
@@ -252,8 +252,8 @@ def test_workflow_actions_are_pinned_with_readable_version_comments() -> None:
         path.read_text(encoding="utf-8") for path in sorted((_ROOT / ".github" / "workflows").glob("*.yml"))
     )
 
-    assert "uses: github/codeql-action/init@9b3254085494b55a0f7c4c2b3d2d52cc712ce370 # v4.39.1" in workflow_text
-    assert "uses: github/codeql-action/upload-sarif@9b3254085494b55a0f7c4c2b3d2d52cc712ce370 # v4.39.1" in workflow_text
+    assert "uses: github/codeql-action/init@33d7b85da1a04171e211befe2c739303b9a4c066 # v4.39.3" in workflow_text
+    assert "uses: github/codeql-action/upload-sarif@33d7b85da1a04171e211befe2c739303b9a4c066 # v4.39.3" in workflow_text
     assert "github/codeql-action/upload-sarif@dd903d2e4f5405488e5ef1422510ee31c8b32357" not in workflow_text
     assert "uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1" in workflow_text
     for line in workflow_text.splitlines():
@@ -466,7 +466,7 @@ def test_supply_chain_docs_provide_consumer_verification_recipe() -> None:
         "--source-digest",
         "--deny-self-hosted-runners",
         'done < "${URL_FILE}"',
-        'uvx --from "pypi-attestations==0.0.29" pypi-attestations verify pypi',
+        'uvx --from "pypi-attestations==0.0.31" pypi-attestations verify pypi',
         "uv run --isolated --no-project --with",
         "RECON_INSTALL_MANAGER",
         "both working wheel entry points",

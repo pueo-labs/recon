@@ -64,9 +64,9 @@ It does not call the network by default and it is not part of the user-facing
 2. Version consistency between `pyproject.toml` and the package fallback, plus
    current-version references in both roadmaps, `CITATION.cff`, and the
    supply-chain consumer-verification recipe.
-3. The exact maintainer uv toolchain (`0.13.5`), followed by `uv.lock`
+3. The exact maintainer uv toolchain (`0.13.9`), followed by `uv.lock`
    freshness with `uv lock --check`. A toolchain mismatch is reported
-   separately and must be corrected with `uv self update 0.13.5`; readiness
+   separately and must be corrected with `uv self update 0.13.9`; readiness
    never changes the maintainer's toolchain automatically.
 4. Coverage authority in `scripts/check.py` and main CI, with the release helper
    and release workflow required to delegate to that canonical gate.
@@ -109,7 +109,7 @@ default-branch ruleset, and public
 Scorecard API freshness and code-owned control scores, PyPI's exact
 current-version record, and the exact four GitHub Release assets for the current
 version, with the human maintainer as release author and every asset uploader. It verifies
-both PyPI files with pinned `pypi-attestations==0.0.29`, validates the completed
+both PyPI files with pinned `pypi-attestations==0.0.31`, validates the completed
 CycloneDX SBOM without repairing it, and verifies the GitHub subjects required
 by the exact release policy against the downloaded bundle with the release
 workflow, tag ref, local release tag commit digest, and hosted-runner boundary.
@@ -282,7 +282,7 @@ Triggered by any tag matching `v*` pushed to the repo. The workflow:
    runner resolves the installed auditor under Python isolated mode and retries
    once only for recognized transport failures; findings, unknown failures, and
    a second transport failure remain fatal.
-3. **build**: after `test`, exact uv 0.13.5 uses the hash-locked build graph to
+3. **build**: after `test`, exact uv 0.13.9 uses the hash-locked build graph to
    produce one sdist, constructs one wheel from that exact sdist, and
    immediately seals both under `dist/`. Main CI runs the same sequence twice,
    requires matching hashes, and passes the same built wheel to blocking
@@ -317,7 +317,7 @@ Triggered by any tag matching `v*` pushed to the repo. The workflow:
    SHA-256 digests to match before GitHub publication can proceed.
 10. **publish-mcp-registry**: after `verify-pypi-parity`, checks out the tag and
     publishes `server.json` with `mcp-publisher login github-oidc`. The binary
-    is pinned to `v1.8.1` and verified with cosign before it runs. The job does
+    is pinned to `v1.8.9` and verified with cosign before it runs. The job does
     not download `dist/` or execute project code. The Registry entry is a
     metadata pointer. It does not block the human GitHub Release check, and the
     workflow stays red until this job succeeds. The Registry is preview and can
@@ -648,7 +648,7 @@ Before the next separately authorized release, complete these external steps:
 5. **Deprecate the old registry entry only after the new entry is verified.**
    With separate authorization and authentication as the old namespace owner
    (`blisspixel`), use the pinned publisher's
-   [status command](https://github.com/modelcontextprotocol/registry/blob/v1.8.1/docs/reference/cli/commands.md).
+   [status command](https://github.com/modelcontextprotocol/registry/blob/v1.8.9/docs/reference/cli/commands.md).
    Do not try this with the new repository's OIDC identity, which does not
    own the old namespace. Deprecation preserves history; do not delete it.
 

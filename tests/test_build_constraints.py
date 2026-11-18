@@ -23,7 +23,7 @@ _WORKFLOW_DIR = _REPO_ROOT / ".github" / "workflows"
 # workflow, and artifact builds pin this through `astral-sh/setup-uv`; the
 # `pyproject.toml` floor admits patched lock-update tooling, including
 # Dependabot once its bundled uv meets the security minimum.
-_REPRODUCIBLE_UV_VERSION = "0.13.5"
+_REPRODUCIBLE_UV_VERSION = "0.13.9"
 _DEPENDENCY_UPDATE_UV_VERSION = "0.13.4"
 _EXPECTED_BUILD_PACKAGES = {
     "hatchling",
@@ -193,5 +193,5 @@ def test_container_uses_the_reviewed_uv_image() -> None:
     dockerfile = (_REPO_ROOT / "deploy/container/Dockerfile").read_text(encoding="utf-8")
     assert (
         f"ghcr.io/astral-sh/uv:{_REPRODUCIBLE_UV_VERSION}"
-        "@sha256:32a7bb39b496babbd997b0a39a4d66c126bdaf5661b302bf6f06abda8deca6ff"
+        "@sha256:d3b601f0c7b118bc1753febf7c41cc80981df678445e0254284eecf84db79a7d"
     ) in dockerfile
