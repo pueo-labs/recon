@@ -188,19 +188,28 @@ session DB is uploaded as a CI artifact on every run, so this is checkable.
   `pop(-1)`, some `continue` to `break`): the topological sort accepts any
   valid order and checks only the visited count, so the traversal order
   does not change the result.
-- *Coarser/finer rounding on a value with no decimals to lose* (`round(n_eff,
-  2)` to `round(_, 1)` / `round(_, 3)`): with the shipped calibration block,
-  `n_eff` is always a multiple of `0.5` (`min_n_eff` plus integer-count
-  multiples of `evidence_n_eff_contrib` and `conflict_n_eff_penalty`), so it
-  carries no second decimal and the granularity argument is irrelevant.
-  Equivalent. The float-bearing output fields (`posterior`, intervals,
-  entropy, counterfactual `delta`) are *not* equivalent and are pinned per
-  field, above.
+- *Rounding under the shipped calibration*: the defaults produce `n_eff`
+  in multiples of 0.5. A supported custom calibration can yield additional
+  decimal places. The unit suite covers the two-decimal output for that case.
 - *Union to symmetric difference on fresh elements*: configuration-relative.
   Node names are distinct from their validated parents, and counterfactual
   units are enumerated only after already-masked units are excluded. Under
   those invariants, the three surviving runtime-union mutants produce the same
   sets. Runtime unions remain tested so an invariant change is visible.
+
+## November 18 evidence-reporting review
+
+The [November 17 main run](https://github.com/pueo-labs/recon/actions/runs/44238891321)
+left 69 of 749 tested mutants alive. A targeted replay of nine survivors
+found observable differences in evidence counts, provenance labels, binding
+selection, or rounding with a custom calibration.
+
+The mixed-declaration fixture supplies both names on one observation channel.
+It checks which binding fired, which absence affected the posterior, and
+whether each counterfactual identifies a group or a single signal. A neutral
+absence contributes zero evidence units. Swapping the input channel changes
+the expected posterior from 6/7 to 2/11 under the fixture's equal prior odds.
+All nine replayed variants failed an assertion; the original passed.
 
 ## The floor
 
